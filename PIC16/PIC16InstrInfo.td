@@ -147,7 +147,7 @@ class BinOpFW<bits<6> OpCode, string OpcStr, SDNode OpNode>:
 // This insn class is not marked as TwoAddress because the reg is
 // being used as a source operand only. (Remember a TwoAddress insn
 // needs a copy.)
-let mayStore = 1 in
+//let mayStore = 1 in
 class BinOpWF<bits<6> OpCode, string OpcStr, SDNode OpNode>:
   ByteFormat<OpCode, (outs),
              (ins GPR:$src, i8imm:$offset, i8mem:$ptrlo, i8imm:$ptrhi),
@@ -269,7 +269,7 @@ def restore_fsr1: RESTORE_FSR<"restore_fsr1">;
 
 // Direct store.
 // Input operands are: val = W, ptrlo = GA, offset = offset, ptrhi = banksel.
-let mayStore = 1 in
+//let mayStore = 1 in
 class MOVWF_INSN<bits<6> OpCode, SDNode OpNodeDest, SDNode Op>:
   ByteFormat<0, (outs), 
              (ins GPR:$val, i8imm:$offset, i8mem:$ptrlo, i8imm:$ptrhi),
@@ -382,7 +382,7 @@ let Defs = [STATUS], isTerminator = 1 in
 def subfw_cc: SUBFW<0, "subwf", PIC16Subcc>;
 
 // [F] -= W ; 
-let mayStore = 1 in
+//let mayStore = 1 in
 class SUBWF<bits<6> OpCode, string OpcStr, SDNode OpNode>:
   ByteFormat<OpCode, (outs),
              (ins GPR:$src, i8imm:$offset, i8mem:$ptrlo, i8imm:$ptrhi),

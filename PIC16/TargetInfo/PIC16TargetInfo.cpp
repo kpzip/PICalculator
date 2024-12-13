@@ -10,13 +10,22 @@
 #include "PIC16.h"
 #include "llvm/Module.h"
 #include "llvm/Target/TargetRegistry.h"
-using namespace llvm;
 
-Target llvm::ThePIC16Target, llvm::TheCooperTarget;
+namespace llvm {
+  Target &getThePIC16Target() {
+    static Target ThePIC16Target;
+    return ThePIC16Target;
+  }
+  
+  Target &getTheCooperTarget() {
+    static Target TheCooperTarget;
+    return TheCooperTarget;
+  }
+}
 
 extern "C" LLVM_EXTERNAL_VISIBILITY void LLVMInitializePIC16TargetInfo() { 
-  RegisterTarget<Triple::pic16> X(ThePIC16Target, "pic16",
+  llvm::RegisterTarget<Triple::pic16> X(llvm::getThePIC16Target(), "pic16",
                                   "PIC16 14-bit [experimental]");
 
-  RegisterTarget<> Y(TheCooperTarget, "cooper", "PIC16 Cooper [experimental]");
+  llvm::RegisterTarget<> Y(llvm::getTheCooperTarget(), "cooper", "PIC16 Cooper [experimental]");
 }

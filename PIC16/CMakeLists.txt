@@ -28,3 +28,5 @@ add_llvm_target(PIC16CodeGen
   PIC16TargetObjectFile.cpp
   PIC16SelectionDAGInfo.cpp
   )
+
+add_subdirectory(TargetInfo)
