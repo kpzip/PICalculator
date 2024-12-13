@@ -126,9 +126,9 @@ namespace PIC16CC {
 
 // Defines symbolic names for PIC16 registers.  This defines a mapping from
 // register name to register number.
-#include "PIC16GenRegisterNames.inc"
+//#include "PIC16GenRegisterNames.inc"
 
 // Defines symbolic names for the PIC16 instructions.
-#include "PIC16GenInstrNames.inc"
+//#include "PIC16GenInstrNames.inc"
 
 #endif

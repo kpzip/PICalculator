@@ -8,7 +8,7 @@
 //===----------------------------------------------------------------------===//
 
 #include "PIC16.h"
-#include "llvm/Module.h"
+//#include "llvm/Module.h"
 #include "llvm/Target/TargetRegistry.h"
 
 namespace llvm {

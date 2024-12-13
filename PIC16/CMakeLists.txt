@@ -15,7 +15,7 @@ tablegen(LLVM PIC16GenSubtarget.inc -gen-subtarget)
 add_public_tablegen_target(PIC16CommonTableGen)
 
 add_llvm_target(PIC16CodeGen
-  PIC16DebugInfo.cpp
+  #PIC16DebugInfo.cpp
   PIC16InstrInfo.cpp
   PIC16ISelDAGToDAG.cpp
   PIC16ISelLowering.cpp
