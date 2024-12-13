@@ -3,10 +3,10 @@ add_llvm_component_group(PIC16)
 set(LLVM_TARGET_DEFINITIONS PIC16.td)
 
 tablegen(LLVM PIC16GenRegisterInfo.h.inc -gen-register-info) # -gen-register-desc-header
-tablegen(LLVM PIC16GenRegisterNames.inc -gen-register-enums)
-tablegen(LLVM PIC16GenRegisterInfo.inc -gen-register-desc)
-tablegen(LLVM PIC16GenInstrNames.inc -gen-instr-enums)
-tablegen(LLVM PIC16GenInstrInfo.inc -gen-instr-desc)
+#tablegen(LLVM PIC16GenRegisterNames.inc -gen-register-enums)
+#tablegen(LLVM PIC16GenRegisterInfo.inc -gen-register-desc)
+#tablegen(LLVM PIC16GenInstrNames.inc -gen-instr-enums)
+tablegen(LLVM PIC16GenInstrInfo.inc -gen-instr-info) # -gen-instr-desc
 tablegen(LLVM PIC16GenAsmWriter.inc -gen-asm-writer)
 tablegen(LLVM PIC16GenDAGISel.inc -gen-dag-isel)
 tablegen(LLVM PIC16GenCallingConv.inc -gen-callingconv)
