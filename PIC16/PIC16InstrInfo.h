@@ -16,7 +16,9 @@
 
 #include "PIC16.h"
 #include "PIC16RegisterInfo.h"
-#include "llvm/Target/TargetInstrInfo.h"
+#include "llvm/CodeGen/TargetInstrInfo.h"
+
+#include "PIC16GenInstrInfo.inc"
 
 namespace llvm {
 

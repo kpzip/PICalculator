@@ -20,8 +20,8 @@
 #include "PIC16SelectionDAGInfo.h"
 #include "PIC16RegisterInfo.h"
 #include "PIC16Subtarget.h"
-#include "llvm/Target/TargetData.h"
-#include "llvm/Target/TargetFrameInfo.h"
+#include "llvm/IR/DataLayout.h"
+#include "llvm/CodeGen/MachineFrameInfo.h"
 #include "llvm/Target/TargetMachine.h"
 
 namespace llvm {

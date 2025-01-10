@@ -14,9 +14,9 @@
 #include "PIC16.h"
 #include "PIC16MCAsmInfo.h"
 #include "PIC16TargetMachine.h"
-#include "llvm/PassManager.h"
+#include "llvm/IR/PassManager.h"
 #include "llvm/CodeGen/Passes.h"
-#include "llvm/Target/TargetRegistry.h"
+#include "llvm/MC/TargetRegistry.h"
 
 using namespace llvm;
 

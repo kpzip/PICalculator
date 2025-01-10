@@ -12,16 +12,17 @@
 //===----------------------------------------------------------------------===//
 
 #include "PIC16Subtarget.h"
-#include "PIC16GenSubtarget.inc"
+
+#include "llvm/Target/TargetMachine.h"
 
 using namespace llvm;
 
-PIC16Subtarget::PIC16Subtarget(const std::string &TT, const std::string &FS, 
-                               bool Cooper)
-  :IsCooper(Cooper)
+PIC16Subtarget::PIC16Subtarget(const StringRef &CPU, const StringRef &TuneCPU,
+                               const StringRef &FS, const TargetMachine &TM, bool Cooper)
+  : PIC16GenSubtargetInfo(TM.getTargetTriple(), CPU, TuneCPU, FS),
+    IsCooper(Cooper)
 {
-  std::string CPU = "generic";
 
   // Parse features string.
-  ParseSubtargetFeatures(FS, CPU);
+  ParseSubtargetFeatures("generic", TuneCPU, FS);
 }

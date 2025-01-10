@@ -26,13 +26,10 @@ PIC16RegisterInfo::PIC16RegisterInfo(const TargetInstrInfo &tii,
     TII(tii),
     ST(st) {}
 
-#include "PIC16GenRegisterInfo.inc"
-
 /// PIC16 Callee Saved Registers
-const unsigned* PIC16RegisterInfo::
+const MCPhysReg*
 getCalleeSavedRegs(const MachineFunction *MF) const {
-  static const unsigned CalleeSavedRegs[] = { 0 };
-  return CalleeSavedRegs;
+  return CSR_SaveList;
 }
 
 BitVector PIC16RegisterInfo::getReservedRegs(const MachineFunction &MF) const {

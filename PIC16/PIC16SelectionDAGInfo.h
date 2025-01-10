@@ -14,7 +14,7 @@
 #ifndef PIC16SELECTIONDAGINFO_H
 #define PIC16SELECTIONDAGINFO_H
 
-#include "llvm/Target/TargetSelectionDAGInfo.h"
+#include "llvm/CodeGen/SelectionDAGTargetInfo.h"
 
 namespace llvm {
 

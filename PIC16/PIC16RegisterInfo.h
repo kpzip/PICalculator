@@ -14,8 +14,10 @@
 #ifndef PIC16REGISTERINFO_H
 #define PIC16REGISTERINFO_H
 
+#include "llvm/CodeGen/TargetRegisterInfo.h"
+
+#define GET_REGINFO_HEADER
 #include "PIC16GenRegisterInfo.h.inc"
-#include "llvm/Target/TargetRegisterInfo.h"
 
 namespace llvm {
 
@@ -38,8 +40,7 @@ class PIC16RegisterInfo : public PIC16GenRegisterInfo {
   //------------------------------------------------------
 
   // PIC16 callee saved registers
-  virtual const unsigned* 
-  getCalleeSavedRegs(const MachineFunction *MF = 0) const;
+  const MCPhysReg *getCalleeSavedRegs(const MachineFunction *MF = 0) const;
 
   virtual BitVector getReservedRegs(const MachineFunction &MF) const;
   virtual bool hasFP(const MachineFunction &MF) const;

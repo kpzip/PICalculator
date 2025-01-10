@@ -15,7 +15,7 @@
 #define LLVM_PIC16SECTION_H
 
 #include "llvm/MC/MCSection.h"
-#include "llvm/GlobalVariable.h"
+#include "llvm/IR/GlobalVariable.h"
 #include <vector>
 
 namespace llvm {
@@ -43,8 +43,14 @@ namespace llvm {
     /// Total size of all data objects contained here.
     unsigned Size;
     
+    // PIC16Section(StringRef name, SectionKind K, StringRef addr, int color)
+    //   : MCSection(SV_PIC16, K), Name(name), Address(addr),
+    //     Color(color), Size(0) {
+    // }
+    
+    // HACK
     PIC16Section(StringRef name, SectionKind K, StringRef addr, int color)
-      : MCSection(SV_PIC16, K), Name(name), Address(addr),
+      : MCSection(SV_PIC16, name, K.isText(), false, 0), Name(name), Address(addr),
         Color(color), Size(0) {
     }
     

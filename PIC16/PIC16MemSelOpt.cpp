@@ -28,10 +28,10 @@
 #include "llvm/CodeGen/MachineFunctionPass.h"
 #include "llvm/CodeGen/MachineInstrBuilder.h"
 #include "llvm/CodeGen/Passes.h"
-#include "llvm/Target/TargetInstrInfo.h"
+#include "llvm/CodeGen/TargetInstrInfo.h"
 #include "llvm/Target/TargetMachine.h"
-#include "llvm/GlobalValue.h"
-#include "llvm/DerivedTypes.h"
+#include "llvm/IR/GlobalValue.h"
+#include "llvm/IR/DerivedTypes.h"
 
 using namespace llvm;
 
