@@ -22,7 +22,7 @@ using namespace llvm;
 
 PIC16RegisterInfo::PIC16RegisterInfo(const TargetInstrInfo &tii,
                                      const PIC16Subtarget &st)
-  : PIC16GenRegisterInfo(PIC16::ADJCALLSTACKDOWN, PIC16::ADJCALLSTACKUP),
+  : PIC16GenRegisterInfo(),
     TII(tii),
     ST(st) {}
 
@@ -41,10 +41,10 @@ bool PIC16RegisterInfo::hasFP(const MachineFunction &MF) const {
   return false;
 }
 
-void PIC16RegisterInfo::
-eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj,
+bool PIC16RegisterInfo::
+eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj, unsigned int balls,
                     RegScavenger *RS) const
-{ /* NOT YET IMPLEMENTED */ }
+{ return false; /* NOT YET IMPLEMENTED */ }
 
 void PIC16RegisterInfo::emitPrologue(MachineFunction &MF) const
 {    /* NOT YET IMPLEMENTED */  }

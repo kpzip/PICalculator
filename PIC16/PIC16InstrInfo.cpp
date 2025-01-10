@@ -28,7 +28,7 @@ using namespace llvm;
 
 // FIXME: Add the subtarget support on this constructor.
 PIC16InstrInfo::PIC16InstrInfo(PIC16TargetMachine &tm)
-  : TargetInstrInfoImpl(PIC16Insts, array_lengthof(PIC16Insts)),
+  : PIC16GenInstrInfo(),
     TM(tm), 
     RegInfo(*this, *TM.getSubtargetImpl()) {}
 

@@ -45,9 +45,9 @@ class PIC16RegisterInfo : public PIC16GenRegisterInfo {
   virtual BitVector getReservedRegs(const MachineFunction &MF) const;
   virtual bool hasFP(const MachineFunction &MF) const;
 
-  virtual void eliminateFrameIndex(MachineBasicBlock::iterator MI,
-                                   int SPAdj, RegScavenger *RS=NULL) const;
-
+  virtual bool eliminateFrameIndex(MachineBasicBlock::iterator MI,
+                                   int SPAdj, unsigned int balls, RegScavenger *RS=NULL) const;
+                                   
   void eliminateCallFramePseudoInstr(MachineFunction &MF,
                                      MachineBasicBlock &MBB,
                                      MachineBasicBlock::iterator I) const;
