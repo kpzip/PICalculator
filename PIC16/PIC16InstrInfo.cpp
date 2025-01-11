@@ -75,13 +75,12 @@ void PIC16InstrInfo::storeRegToStackSlot(MachineBasicBlock &MBB,
   DebugLoc DL;
   if (I != MBB.end()) DL = I->getDebugLoc();
 
-  const Function *Func = MBB.getParent()->getFunction();
-  const std::string FuncName = Func->getName();
+  const StringRef FuncName = MBB.getParent()->getName();
 
-  const char *tmpName = ESNames::createESName(PAN::getTempdataLabel(FuncName));
+  const char *tmpName = ESNames::createESName(PAN::getTempdataLabel(FuncName.str()));
 
   // On the order of operands here: think "movwf SrcReg, tmp_slot, offset".
-  if (RC == PIC16::GPRRegisterClass) {
+  if (RC->getID() == PIC16::GPRRegClass.getID()) {
     //MachineFunction &MF = *MBB.getParent();
     //MachineRegisterInfo &RI = MF.getRegInfo();
     BuildMI(MBB, I, DL, get(PIC16::movwf))
@@ -90,7 +89,7 @@ void PIC16InstrInfo::storeRegToStackSlot(MachineBasicBlock &MBB,
       .addExternalSymbol(tmpName)
       .addImm(1); // Emit banksel for it.
   }
-  else if (RC == PIC16::FSR16RegisterClass) {
+  else if (RC->getID() == PIC16::FSR16RegClass.getID()) {
     // This is a 16-bit register and the frameindex given by llvm is of
     // size two here. Break this index N into two zero based indexes and 
     // put one into the map. The second one is always obtained by adding 1
@@ -118,13 +117,12 @@ void PIC16InstrInfo::loadRegFromStackSlot(MachineBasicBlock &MBB,
   DebugLoc DL;
   if (I != MBB.end()) DL = I->getDebugLoc();
 
-  const Function *Func = MBB.getParent()->getFunction();
-  const std::string FuncName = Func->getName();
+  const StringRef FuncName = MBB.getParent()->getName();
 
-  const char *tmpName = ESNames::createESName(PAN::getTempdataLabel(FuncName));
+  const char *tmpName = ESNames::createESName(PAN::getTempdataLabel(FuncName.str()));
 
   // On the order of operands here: think "movf FrameIndex, W".
-  if (RC == PIC16::GPRRegisterClass) {
+  if (RC->getID() == PIC16::GPRRegClass.getID()) {
     //MachineFunction &MF = *MBB.getParent();
     //MachineRegisterInfo &RI = MF.getRegInfo();
     BuildMI(MBB, I, DL, get(PIC16::movf), DestReg)
@@ -132,7 +130,7 @@ void PIC16InstrInfo::loadRegFromStackSlot(MachineBasicBlock &MBB,
       .addExternalSymbol(tmpName)
       .addImm(1); // Emit banksel for it.
   }
-  else if (RC == PIC16::FSR16RegisterClass) {
+  else if (RC->getID() == PIC16::FSR16RegClass.getID()) {
     // This is a 16-bit register and the frameindex given by llvm is of
     // size two here. Break this index N into two zero based indexes and 
     // put one into the map. The second one is always obtained by adding 1

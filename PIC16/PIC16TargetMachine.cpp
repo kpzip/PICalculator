@@ -40,14 +40,14 @@ PIC16TargetMachine::PIC16TargetMachine(const Target &T, const std::string &TT,
 
 
 bool PIC16TargetMachine::addInstSelector(PassManagerBase &PM,
-                                         CodeGenOpt::Level OptLevel) {
+                                         CodeGenOptLevel OptLevel) {
   // Install an instruction selector.
   PM.add(createPIC16ISelDag(*this));
   return false;
 }
 
 bool PIC16TargetMachine::addPreEmitPass(PassManagerBase &PM, 
-                                         CodeGenOpt::Level OptLevel) {
+                                         CodeGenOptLevel OptLevel) {
   PM.add(createPIC16MemSelOptimizerPass());
   return true;  // -print-machineinstr should print after this.
 }

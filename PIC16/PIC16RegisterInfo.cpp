@@ -15,20 +15,30 @@
 
 #include "PIC16.h"
 #include "PIC16RegisterInfo.h"
+#include "PIC16Subtarget.h"
 #include "llvm/ADT/BitVector.h"
 #include "llvm/Support/ErrorHandling.h"
+#include "llvm/CodeGen/MachineFunction.h"
+
+#define GET_REGINFO_TARGET_DESC
+#define GET_REGINFO_ENUM
+#include "PIC16GenRegisterInfo.h.inc"
+
+#define GET_INSTRINFO_ENUM
+#include "PIC16GenInstrInfo.inc"
 
 using namespace llvm;
 
 PIC16RegisterInfo::PIC16RegisterInfo(const TargetInstrInfo &tii,
                                      const PIC16Subtarget &st)
-  : PIC16GenRegisterInfo(),
+  : PIC16GenRegisterInfo(PIC16::ADJCALLSTACKDOWN, PIC16::ADJCALLSTACKUP),
     TII(tii),
     ST(st) {}
 
 /// PIC16 Callee Saved Registers
 const MCPhysReg*
-getCalleeSavedRegs(const MachineFunction *MF) const {
+getCalleeSavedRegs(const MachineFunction *MF) {
+  static const MCPhysReg CSR_SaveList[] = { 0 }; // HACK
   return CSR_SaveList;
 }
 
@@ -37,7 +47,7 @@ BitVector PIC16RegisterInfo::getReservedRegs(const MachineFunction &MF) const {
   return Reserved;
 }
 
-bool PIC16RegisterInfo::hasFP(const MachineFunction &MF) const {
+bool PIC16FrameLowering::hasFP(const MachineFunction &MF) const {
   return false;
 }
 
@@ -46,11 +56,10 @@ eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj, unsigned int ball
                     RegScavenger *RS) const
 { return false; /* NOT YET IMPLEMENTED */ }
 
-void PIC16RegisterInfo::emitPrologue(MachineFunction &MF) const
+void PIC16FrameLowering::emitPrologue(MachineFunction &MF, MachineBasicBlock &MBB) const
 {    /* NOT YET IMPLEMENTED */  }
 
-void PIC16RegisterInfo::
-emitEpilogue(MachineFunction &MF, MachineBasicBlock &MBB) const
+void PIC16FrameLowering::emitEpilogue(MachineFunction &MF, MachineBasicBlock &MBB) const
 {    /* NOT YET IMPLEMENTED */  }
 
 int PIC16RegisterInfo::
@@ -59,7 +68,7 @@ getDwarfRegNum(unsigned RegNum, bool isEH) const {
   return -1;
 }
 
-unsigned PIC16RegisterInfo::getFrameRegister(const MachineFunction &MF) const {
+Register PIC16RegisterInfo::getFrameRegister(const MachineFunction &MF) const {
   llvm_unreachable("PIC16 Does not have any frame register");
   return 0;
 }
@@ -71,11 +80,12 @@ unsigned PIC16RegisterInfo::getRARegister() const {
 
 // This function eliminates ADJCALLSTACKDOWN,
 // ADJCALLSTACKUP pseudo instructions
-void PIC16RegisterInfo::
+MachineBasicBlock::iterator PIC16FrameLowering::
 eliminateCallFramePseudoInstr(MachineFunction &MF, MachineBasicBlock &MBB,
                               MachineBasicBlock::iterator I) const {
   // Simply discard ADJCALLSTACKDOWN,
   // ADJCALLSTACKUP instructions.
   MBB.erase(I);
+  return 0;
 }
 

@@ -125,14 +125,14 @@ namespace llvm {
     PIC16Section *findPIC16Section(const std::string &Name) const;
 
     /// Override section allocations for user specified sections.
-    virtual const MCSection *
-    getExplicitSectionGlobal(const GlobalValue *GV, SectionKind Kind, 
-                             Mangler *Mang, const TargetMachine &TM) const;
+    virtual MCSection *
+    getExplicitSectionGlobal(const GlobalObject *GV, SectionKind Kind,
+                             /* Mangler *Mang, */ const TargetMachine &TM) const;
     
     /// Select sections for Data and Auto variables(globals).
-    virtual const MCSection *SelectSectionForGlobal(const GlobalValue *GV,
+    virtual MCSection *SelectSectionForGlobal(const GlobalObject *GV,
                                                     SectionKind Kind,
-                                                    Mangler *Mang,
+                                                    /* Mangler *Mang, */
                                                     const TargetMachine&) const;
 
 

@@ -48,7 +48,7 @@ namespace {
 
     virtual bool runOnMachineFunction(MachineFunction &MF);
 
-    virtual const char *getPassName() const { 
+    virtual StringRef getPassName() const { 
       return "PIC16 Memsel Optimizer"; 
     }
 

@@ -19,25 +19,23 @@ using namespace llvm;
 
 /// createPIC16ISelDag - This pass converts a legalized DAG into a
 /// PIC16-specific DAG, ready for instruction scheduling.
-FunctionPass *llvm::createPIC16ISelDag(PIC16TargetMachine &TM) {
-  return new PIC16DAGToDAGISel(TM);
+FunctionPass *llvm::createPIC16ISelDag(PIC16TargetMachine &TM, CodeGenOptLevel OptLevel) {
+  return new PIC16DAGToDAGISelLegacy(TM, OptLevel);
 }
 
 
 /// Select - Select instructions not customized! Used for
 /// expanded, promoted and normal instructions.
-SDNode* PIC16DAGToDAGISel::Select(SDNode *N) {
+void PIC16DAGToDAGISel::Select(SDNode *N) {
 
   // Select the default instruction.
-  SDNode *ResNode = SelectCode(N);
-
-  return ResNode;
+  SelectCode(N);
 }
 
 
 // SelectDirectAddr - Match a direct address for DAG. 
 // A direct address could be a globaladdress or externalsymbol.
-bool PIC16DAGToDAGISel::SelectDirectAddr(SDNode *Op, SDValue N, 
+bool PIC16DAGToDAGISel::SelectDirectAddr(SDValue &N,
                                       SDValue &Address) {
   // Return true if TGA or ES.
   if (N.getOpcode() == ISD::TargetGlobalAddress

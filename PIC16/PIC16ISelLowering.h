@@ -173,7 +173,7 @@ namespace llvm {
     unsigned GetTmpOffsetForFI(unsigned FI, unsigned slot_size,
                                MachineFunction &MF) const;
     void ResetTmpOffsetMap(SelectionDAG &DAG) const;
-    void InitReservedFrameCount(const Function *F,
+    void InitReservedFrameCount(const Function &F,
                                 SelectionDAG &DAG) const;
 
     /// getFunctionAlignment - Return the Log2 alignment of this function.
@@ -183,7 +183,7 @@ namespace llvm {
     }
   protected:
     std::pair<const TargetRegisterClass*, uint8_t>
-    findRepresentativeClass(EVT VT) const;
+    findRepresentativeClass(PIC16TargetMachine &TM, EVT VT) const;
   private:
     // If the Node is a BUILD_PAIR representing a direct Address,
     // then this function will return true.

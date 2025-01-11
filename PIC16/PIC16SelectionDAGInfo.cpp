@@ -16,7 +16,7 @@
 using namespace llvm;
 
 PIC16SelectionDAGInfo::PIC16SelectionDAGInfo(const PIC16TargetMachine &TM)
-  : TargetSelectionDAGInfo(TM) {
+  : SelectionDAGTargetInfo() {
 }
 
 PIC16SelectionDAGInfo::~PIC16SelectionDAGInfo() {

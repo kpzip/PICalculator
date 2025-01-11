@@ -115,7 +115,7 @@ namespace PIC16CC {
 
 
 
-  FunctionPass *createPIC16ISelDag(PIC16TargetMachine &TM);
+  FunctionPass *createPIC16ISelDag(PIC16TargetMachine &TM, CodeGenOptLevel OptLevel);
   // Banksel optimizer pass.
   FunctionPass *createPIC16MemSelOptimizerPass();
 

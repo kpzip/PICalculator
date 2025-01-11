@@ -30,24 +30,26 @@ namespace llvm {
 ///
 class PIC16TargetMachine : public LLVMTargetMachine {
   PIC16Subtarget        Subtarget;
-  const TargetData      DataLayout;       // Calculates type size & alignment
+  const char           *DataLayout;       // Calculates type size & alignment
   PIC16InstrInfo        InstrInfo;
   PIC16TargetLowering   TLInfo;
   PIC16SelectionDAGInfo TSInfo;
 
   // PIC16 does not have any call stack frame, therefore not having 
   // any PIC16 specific FrameInfo class.
-  TargetFrameInfo       FrameInfo;
+  PIC16FrameLowering       FrameInfo;
 
 public:
   PIC16TargetMachine(const Target &T, const std::string &TT,
                      const std::string &FS, bool Cooper = false);
 
-  virtual const TargetFrameInfo *getFrameInfo() const { return &FrameInfo; }
-  virtual const PIC16InstrInfo *getInstrInfo() const  { return &InstrInfo; }
-  virtual const TargetData *getTargetData() const     { return &DataLayout;}
-  virtual const PIC16Subtarget *getSubtargetImpl() const { return &Subtarget; }
- 
+  virtual const PIC16FrameLowering  *getFrameInfo() const { return &FrameInfo; }
+  virtual const PIC16InstrInfo      *getInstrInfo() const  { return &InstrInfo; }
+  virtual const char                *getTargetData()       { return DataLayout; }
+  virtual const PIC16Subtarget      *getSubtargetImpl(const Function &F) const { return &Subtarget; }
+  const PIC16Subtarget      *getSubtargetImpl() const { return &Subtarget; } // HACK!!!!!
+  const PIC16Subtarget      *getSubtarget() const { return &Subtarget; } // HACK!!!!!
+
   virtual const PIC16RegisterInfo *getRegisterInfo() const { 
     return &(InstrInfo.getRegisterInfo()); 
   }
@@ -61,8 +63,8 @@ public:
   }
 
   virtual bool addInstSelector(PassManagerBase &PM,
-                               CodeGenOpt::Level OptLevel);
-  virtual bool addPreEmitPass(PassManagerBase &PM, CodeGenOpt::Level OptLevel);
+                               CodeGenOptLevel OptLevel);
+  virtual bool addPreEmitPass(PassManagerBase &PM, CodeGenOptLevel OptLevel);
 }; // PIC16TargetMachine.
 
 } // end namespace llvm

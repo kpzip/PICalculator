@@ -227,15 +227,15 @@ PIC16TargetObjectFile::allocateAUTO(const GlobalVariable *GV) const {
 // Override default implementation to put the true globals into
 // multiple data sections if required.
 const MCSection *
-PIC16TargetObjectFile::SelectSectionForGlobal(const GlobalValue *GV1,
+PIC16TargetObjectFile::SelectSectionForGlobal(const GlobalObject *GV1,
                                               SectionKind Kind,
-                                              Mangler *Mang,
+                                              /* Mangler *Mang, */
                                               const TargetMachine &TM) const {
   // We select the section based on the initializer here, so it really
   // has to be a GlobalVariable.
   const GlobalVariable *GV = dyn_cast<GlobalVariable>(GV1); 
   if (!GV)
-    return TargetLoweringObjectFile::SelectSectionForGlobal(GV1, Kind, Mang,TM);
+    return TargetLoweringObjectFile::SelectSectionForGlobal(GV1, Kind,TM);
 
   assert(GV->hasInitializer() && "A def without initializer?");
 
@@ -267,9 +267,9 @@ PIC16TargetObjectFile::SelectSectionForGlobal(const GlobalValue *GV1,
 
 /// getExplicitSectionGlobal - Allow the target to completely override
 /// section assignment of a global.
-const MCSection *PIC16TargetObjectFile::
-getExplicitSectionGlobal(const GlobalValue *GV, SectionKind Kind, 
-                         Mangler *Mang, const TargetMachine &TM) const {
+MCSection *PIC16TargetObjectFile::
+getExplicitSectionGlobal(const GlobalObject *GV, SectionKind Kind,
+                         /* Mangler *Mang, */ const TargetMachine &TM) const {
   assert(GV->hasSection());
   
   if (const GlobalVariable *GVar = cast<GlobalVariable>(GV)) {
@@ -280,10 +280,12 @@ getExplicitSectionGlobal(const GlobalValue *GV, SectionKind Kind,
     std::string AddrStr = "Address=";
     if (SectName.compare(0, AddrStr.length(), AddrStr) == 0) {
       std::string SectAddr = SectName.substr(AddrStr.length());
-      if (SectAddr.compare("NEAR") == 0)
-        return allocateSHARED(GVar, Mang);
-      else
-        return allocateAtGivenAddress(GVar, SectAddr);
+//      if (SectAddr.compare("NEAR") == 0)
+//        return allocateSHARED(GVar, Mang);
+//      else
+//        return allocateAtGivenAddress(GVar, SectAddr);
+      return allocateAtGivenAddress(GVar, SectAddr);
+      // HACK
     }
      
     // Create the section specified with section attribute. 

@@ -20,7 +20,7 @@ namespace llvm {
 
 class PIC16TargetMachine;
 
-class PIC16SelectionDAGInfo : public TargetSelectionDAGInfo {
+class PIC16SelectionDAGInfo : public SelectionDAGTargetInfo {
 public:
   explicit PIC16SelectionDAGInfo(const PIC16TargetMachine &TM);
   ~PIC16SelectionDAGInfo();
