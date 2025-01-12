@@ -21,7 +21,6 @@
 #include "llvm/CodeGen/MachineFunction.h"
 
 #define GET_REGINFO_TARGET_DESC
-#define GET_REGINFO_ENUM
 #include "PIC16GenRegisterInfo.h.inc"
 
 #define GET_INSTRINFO_ENUM

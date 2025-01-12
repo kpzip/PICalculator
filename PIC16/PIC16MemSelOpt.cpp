@@ -74,7 +74,7 @@ FunctionPass *llvm::createPIC16MemSelOptimizerPass() {
 /// register references into FP stack references.
 ///
 bool MemSelOpt::runOnMachineFunction(MachineFunction &MF) {
-  TII = MF.getTarget().getInstrInfo();
+  TII = MF.getSubtarget().getInstrInfo();
   bool Changed = false;
   for (MachineFunction::iterator I = MF.begin(), E = MF.end();
        I != E; ++I) {
@@ -98,7 +98,7 @@ bool MemSelOpt::processBasicBlock(MachineFunction &MF, MachineBasicBlock &BB) {
 
   MachineBasicBlock::iterator I;
   for (I = BB.begin(); I != BB.end(); ++I) {
-    Changed |= processInstruction(I);
+    Changed |= processInstruction(&*I);
 
     // if the page has changed insert a page sel before 
     // any instruction that needs one
@@ -132,7 +132,7 @@ bool MemSelOpt::processBasicBlock(MachineFunction &MF, MachineBasicBlock &BB) {
       // save the end pointer before we move back to last insn.
      MachineBasicBlock::iterator J = I;
      I--;
-     const TargetInstrDesc &TID = TII->get(I->getOpcode());
+     const MCInstrDesc &TID = TII->get(I->getOpcode());
      if (! TID.isReturn())
      {
        DebugLoc dl = I->getDebugLoc();
@@ -155,7 +155,7 @@ bool MemSelOpt::processInstruction(MachineInstr *MI) {
 
 
   // If this insn is not going to access any memory, return.
-  const TargetInstrDesc &TID = TII->get(MI->getOpcode());
+  const MCInstrDesc &TID = TII->get(MI->getOpcode());
   if (!(TID.isBranch() || TID.isCall() || TID.mayLoad() || TID.mayStore()))
     return false;
 
@@ -207,7 +207,7 @@ bool MemSelOpt::processInstruction(MachineInstr *MI) {
     // Get the BBOp.
     MachineOperand &MemOp = MI->getOperand(MemOpPos);
     DebugLoc dl = MI->getDebugLoc();
-    BuildMI(*MBB, MI, dl, TII->get(PIC16::pagesel)).addOperand(MemOp);   
+    BuildMI(*MBB, MI, dl, TII->get(PIC16::pagesel)).add(MemOp);
 
     // CALL and br_ucond needs only pagesel. so we are done.
     return true; 
@@ -244,7 +244,7 @@ bool MemSelOpt::processInstruction(MachineInstr *MI) {
   if (NewBank.compare(CurBank) != 0 || hasExternalLinkage) {
     DebugLoc dl = MI->getDebugLoc();
     BuildMI(*MBB, MI, dl, TII->get(PIC16::banksel)).
-      addOperand(Op);
+      add(Op);
     Changed = true;
     CurBank = NewBank;
   }

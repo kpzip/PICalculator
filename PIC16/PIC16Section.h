@@ -91,8 +91,11 @@ namespace llvm {
     
     /// Override this as PIC16 has its own way of printing switching
     /// to a section.
-    virtual void PrintSwitchToSection(const MCAsmInfo &MAI,
-                                      raw_ostream &OS) const;
+    virtual void printSwitchToSection(const MCAsmInfo &MAI, const Triple &T,
+                                      raw_ostream &OS, uint32_t Subsection) const;
+
+    virtual bool useCodeAlign() const { return false; }
+    virtual bool isVirtualSection() const { return false; }
 
     static bool classof(const MCSection *S) {
       return S->getVariant() == SV_PIC16;

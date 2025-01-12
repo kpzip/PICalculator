@@ -23,6 +23,8 @@
 
 namespace llvm {
 
+class PIC16TargetMachine;
+
 class PIC16Subtarget : public PIC16GenSubtargetInfo {
 
   // IsCooper - Target ISA is Cooper.
@@ -32,8 +34,8 @@ public:
   /// This constructor initializes the data members to match that
   /// of the specified triple.
   ///
-  PIC16Subtarget(const StringRef &CPU, const StringRef &TuneCPU,
-                 const StringRef &FS, const TargetMachine &TM, bool Cooper);
+  PIC16Subtarget(const Triple &TT, const std::string &CPU,
+          const std::string &FS, const PIC16TargetMachine &TM, bool Cooper = false);
   
   /// isCooper - Returns true if the target ISA is Cooper.
   bool isCooper() const { return IsCooper; }

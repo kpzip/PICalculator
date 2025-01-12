@@ -23,6 +23,7 @@
 #include "llvm/IR/DataLayout.h"
 #include "llvm/CodeGen/MachineFrameInfo.h"
 #include "llvm/Target/TargetMachine.h"
+#include "llvm/CodeGen/TargetPassConfig.h"
 
 namespace llvm {
 
@@ -40,8 +41,12 @@ class PIC16TargetMachine : public LLVMTargetMachine {
   PIC16FrameLowering       FrameInfo;
 
 public:
-  PIC16TargetMachine(const Target &T, const std::string &TT,
-                     const std::string &FS, bool Cooper = false);
+  PIC16TargetMachine(const Target &T, const Triple &TT,
+			StringRef CPU, StringRef FS,
+			const TargetOptions &Options,
+			std::optional<Reloc::Model> RM,
+			std::optional<CodeModel::Model> CM,
+			CodeGenOptLevel OL, bool JIT);
 
   virtual const PIC16FrameLowering  *getFrameInfo() const { return &FrameInfo; }
   virtual const PIC16InstrInfo      *getInstrInfo() const  { return &InstrInfo; }
@@ -62,10 +67,27 @@ public:
     return &TSInfo;
   }
 
-  virtual bool addInstSelector(PassManagerBase &PM,
-                               CodeGenOptLevel OptLevel);
-  virtual bool addPreEmitPass(PassManagerBase &PM, CodeGenOptLevel OptLevel);
+  TargetPassConfig *createPassConfig(PassManagerBase &PM) override;
+
+//  virtual bool addInstSelector(PassManagerBase &PM,
+//                               CodeGenOptLevel OptLevel);
+//  virtual bool addPreEmitPass(PassManagerBase &PM, CodeGenOptLevel OptLevel);
 }; // PIC16TargetMachine.
+
+class PIC16PassConfig : public TargetPassConfig {
+public:
+  PIC16PassConfig(PIC16TargetMachine &TM, PassManagerBase &PM)
+      : TargetPassConfig(TM, PM) {}
+
+  PIC16TargetMachine &getPIC16TargetMachine() const {
+    return getTM<PIC16TargetMachine>();
+  }
+
+  void addIRPasses() override;
+  bool addInstSelector() override;
+  void addPreSched2() override;
+  void addPreEmitPass() override;
+};
 
 } // end namespace llvm
 
