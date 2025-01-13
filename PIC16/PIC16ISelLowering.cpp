@@ -17,10 +17,10 @@
 #include "PIC16TargetObjectFile.h"
 #include "PIC16TargetMachine.h"
 #include "PIC16MachineFunctionInfo.h"
-#include "llvm/DerivedTypes.h"
-#include "llvm/GlobalValue.h"
-#include "llvm/Function.h"
-#include "llvm/CallingConv.h"
+#include "llvm/IR/DerivedTypes.h"
+#include "llvm/IR/GlobalValue.h"
+#include "llvm/IR/Function.h"
+#include "llvm/IR/CallingConv.h"
 #include "llvm/CodeGen/MachineFrameInfo.h"
 #include "llvm/CodeGen/MachineFunction.h"
 #include "llvm/CodeGen/MachineInstrBuilder.h"
@@ -76,8 +76,8 @@ static const char *getIntrinsicName(unsigned opcode) {
   //////////////////////
 
   // Float to signed integrals
-  case RTLIB::FPTOSINT_F32_I8: Basename = "f32_to_si32"; break;
-  case RTLIB::FPTOSINT_F32_I16: Basename = "f32_to_si32"; break;
+//  case RTLIB::FPTOSINT_F32_I8: Basename = "f32_to_si32"; break;
+//  case RTLIB::FPTOSINT_F32_I16: Basename = "f32_to_si32"; break;
   case RTLIB::FPTOSINT_F32_I32: Basename = "f32_to_si32"; break;
 
   // Signed integrals to float. char and int are first sign extended to i32 
@@ -88,8 +88,8 @@ static const char *getIntrinsicName(unsigned opcode) {
   // Signed conversion can be used for unsigned conversion as well.
   // In signed and unsigned versions only the interpretation of the 
   // MSB is different. Bit representation remains the same. 
-  case RTLIB::FPTOUINT_F32_I8: Basename = "f32_to_si32"; break;
-  case RTLIB::FPTOUINT_F32_I16: Basename = "f32_to_si32"; break;
+  //case RTLIB::FPTOUINT_F32_I8: Basename = "f32_to_si32"; break; // HACK!!
+  //case RTLIB::FPTOUINT_F32_I16: Basename = "f32_to_si32"; break;
   case RTLIB::FPTOUINT_F32_I32: Basename = "f32_to_si32"; break;
 
   // Unsigned to Float conversions. char and int are first zero extended 
@@ -103,7 +103,7 @@ static const char *getIntrinsicName(unsigned opcode) {
   case RTLIB::DIV_F32: Basename = "div.f32"; break;
 
   // Floating point comparison
-  case RTLIB::O_F32: Basename = "unordered.f32"; break;
+  //case RTLIB::O_F32: Basename = "unordered.f32"; break;
   case RTLIB::UO_F32: Basename = "unordered.f32"; break;
   case RTLIB::OLE_F32: Basename = "le.f32"; break;
   case RTLIB::OGE_F32: Basename = "ge.f32"; break;
@@ -146,13 +146,13 @@ static const char *getStdLibCallName(unsigned opcode) {
 
 // PIC16TargetLowering Constructor.
 PIC16TargetLowering::PIC16TargetLowering(PIC16TargetMachine &TM)
-  : TargetLowering(TM, new PIC16TargetObjectFile()) {
+  : TargetLowering(TM) {
  
-  Subtarget = &TM.getSubtarget<PIC16Subtarget>();
+  Subtarget = TM.getSubtarget();
 
-  addRegisterClass(MVT::i8, PIC16::GPRRegisterClass);
+  addRegisterClass(MVT::i8, &PIC16::GPRRegClass);
 
-  setShiftAmountType(MVT::i8);
+  //setShiftAmountType(MVT::i8); HACK
   
   // Std lib call names
   setLibcallName(RTLIB::COS_F32, getStdLibCallName(RTLIB::COS_F32));
@@ -198,10 +198,10 @@ PIC16TargetLowering::PIC16TargetLowering(PIC16TargetMachine &TM)
   setLibcallName(RTLIB::UREM_I32, getIntrinsicName(RTLIB::UREM_I32));
  
   // Floating point to signed int conversions.
-  setLibcallName(RTLIB::FPTOSINT_F32_I8, 
-                 getIntrinsicName(RTLIB::FPTOSINT_F32_I8));
-  setLibcallName(RTLIB::FPTOSINT_F32_I16, 
-                 getIntrinsicName(RTLIB::FPTOSINT_F32_I16));
+//  setLibcallName(RTLIB::FPTOSINT_F32_I8,
+//                 getIntrinsicName(RTLIB::FPTOSINT_F32_I8));
+//  setLibcallName(RTLIB::FPTOSINT_F32_I16,
+//                 getIntrinsicName(RTLIB::FPTOSINT_F32_I16)); HACK
   setLibcallName(RTLIB::FPTOSINT_F32_I32, 
                  getIntrinsicName(RTLIB::FPTOSINT_F32_I32));
 
@@ -210,10 +210,10 @@ PIC16TargetLowering::PIC16TargetLowering(PIC16TargetMachine &TM)
                  getIntrinsicName(RTLIB::SINTTOFP_I32_F32));
 
   // Floating points to unsigned ints.
-  setLibcallName(RTLIB::FPTOUINT_F32_I8, 
-                 getIntrinsicName(RTLIB::FPTOUINT_F32_I8));
-  setLibcallName(RTLIB::FPTOUINT_F32_I16, 
-                 getIntrinsicName(RTLIB::FPTOUINT_F32_I16));
+//  setLibcallName(RTLIB::FPTOUINT_F32_I8,
+//                 getIntrinsicName(RTLIB::FPTOUINT_F32_I8));
+//  setLibcallName(RTLIB::FPTOUINT_F32_I16,
+//                 getIntrinsicName(RTLIB::FPTOUINT_F32_I16));
   setLibcallName(RTLIB::FPTOUINT_F32_I32, 
                  getIntrinsicName(RTLIB::FPTOUINT_F32_I32));
 
@@ -228,7 +228,7 @@ PIC16TargetLowering::PIC16TargetLowering(PIC16TargetMachine &TM)
   setLibcallName(RTLIB::DIV_F32, getIntrinsicName(RTLIB::DIV_F32));
 
   // Floationg point comparison
-  setLibcallName(RTLIB::O_F32, getIntrinsicName(RTLIB::O_F32));
+//  setLibcallName(RTLIB::O_F32, getIntrinsicName(RTLIB::O_F32));
   setLibcallName(RTLIB::UO_F32, getIntrinsicName(RTLIB::UO_F32));
   setLibcallName(RTLIB::OLE_F32, getIntrinsicName(RTLIB::OLE_F32));
   setLibcallName(RTLIB::OGE_F32, getIntrinsicName(RTLIB::OGE_F32));
@@ -245,7 +245,7 @@ PIC16TargetLowering::PIC16TargetLowering(PIC16TargetMachine &TM)
   setCmpLibcallCC(RTLIB::OGE_F32, ISD::SETNE);
   setCmpLibcallCC(RTLIB::OGT_F32, ISD::SETNE);
   setCmpLibcallCC(RTLIB::UO_F32, ISD::SETNE);
-  setCmpLibcallCC(RTLIB::O_F32, ISD::SETEQ);
+//  setCmpLibcallCC(RTLIB::O_F32, ISD::SETEQ);
 
   setOperationAction(ISD::GlobalAddress, MVT::i16, Custom);
   setOperationAction(ISD::ExternalSymbol, MVT::i16, Custom);
@@ -309,16 +309,16 @@ PIC16TargetLowering::PIC16TargetLowering(PIC16TargetMachine &TM)
 
   // Now deduce the information based on the above mentioned 
   // actions
-  computeRegisterProperties();
+  computeRegisterProperties(&TM.getInstrInfo()->getRegisterInfo());
 }
 
 std::pair<const TargetRegisterClass*, uint8_t>
-PIC16TargetLowering::findRepresentativeClass(EVT VT) const {
+PIC16TargetLowering::findRepresentativeClass(PIC16TargetMachine &TM, EVT VT) const {
   switch (VT.getSimpleVT().SimpleTy) {
   default:
-    return TargetLowering::findRepresentativeClass(VT);
+    return TargetLowering::findRepresentativeClass(&TM.getInstrInfo()->getRegisterInfo(), VT.getSimpleVT());
   case MVT::i16:
-    return std::make_pair(PIC16::FSR16RegisterClass, 1);
+    return std::make_pair(&PIC16::FSR16RegClass, 1);
   }
 }
 
@@ -327,7 +327,7 @@ static SDValue getOutFlag(SDValue &Op) {
   // Flag is the last value of the node.
   SDValue Flag = Op.getValue(Op.getNode()->getNumValues() - 1);
 
-  assert (Flag.getValueType() == MVT::Flag 
+  assert (Flag.getValueType() == MVT::Glue
           && "Node does not have an out Flag");
 
   return Flag;
@@ -365,7 +365,7 @@ static SDValue getChain(SDValue &Op) {
 
   // If the last value returned in Flag then the chain is
   // second last value returned.
-  if (Chain.getValueType() == MVT::Flag)
+  if (Chain.getValueType() == MVT::Glue)
     Chain = Op.getValue(Op.getNode()->getNumValues() - 2);
   
   // All nodes may not produce a chain. Therefore following assert
@@ -421,7 +421,7 @@ SDValue
 PIC16TargetLowering::MakePIC16Libcall(PIC16ISD::PIC16Libcall Call,
                                       EVT RetVT, const SDValue *Ops,
                                       unsigned NumOps, bool isSigned,
-                                      SelectionDAG &DAG, DebugLoc dl) const {
+                                      SelectionDAG &DAG, SDLoc dl) const {
 
   TargetLowering::ArgListTy Args;
   Args.reserve(NumOps);
@@ -430,19 +430,31 @@ PIC16TargetLowering::MakePIC16Libcall(PIC16ISD::PIC16Libcall Call,
   for (unsigned i = 0; i != NumOps; ++i) {
     Entry.Node = Ops[i];
     Entry.Ty = Entry.Node.getValueType().getTypeForEVT(*DAG.getContext());
-    Entry.isSExt = isSigned;
-    Entry.isZExt = !isSigned;
+    Entry.IsSExt = isSigned;
+    Entry.IsZExt = !isSigned;
     Args.push_back(Entry);
   }
 
   SDValue Callee = DAG.getExternalSymbol(getPIC16LibcallName(Call), MVT::i16);
 
-   const Type *RetTy = RetVT.getTypeForEVT(*DAG.getContext());
-   std::pair<SDValue,SDValue> CallInfo = 
-     LowerCallTo(DAG.getEntryNode(), RetTy, isSigned, !isSigned, false,
-                 false, 0, CallingConv::C, false,
-                 /*isReturnValueUsed=*/true,
-                 Callee, Args, DAG, dl);
+   Type *RetTy = RetVT.getTypeForEVT(*DAG.getContext());
+
+   TargetLowering::CallLoweringInfo CLI(DAG);
+   CLI.Chain = DAG.getEntryNode();
+   CLI.RetTy = RetTy;
+   CLI.RetSExt = isSigned;
+   CLI.RetZExt = !isSigned;
+   CLI.IsVarArg = false;
+   CLI.IsInReg = false;
+   CLI.NumFixedArgs = 0;
+   CLI.CallConv = CallingConv::C;
+   CLI.IsTailCall = false;
+   CLI.IsReturnValueUsed = true;
+   CLI.Callee = Callee;
+   CLI.Args = Args;
+   CLI.DL = dl;
+
+   std::pair<SDValue,SDValue> CallInfo = LowerCallTo(CLI);
 
   return CallInfo.first;
 }
@@ -520,13 +532,12 @@ SDValue PIC16TargetLowering::ExpandFrameIndex(SDNode *N,
   // The constant will represent the frame index number
   // Get the current function frame
   MachineFunction &MF = DAG.getMachineFunction();
-  const Function *Func = MF.getFunction();
-  const std::string Name = Func->getName();
+  const std::string Name = MF.getName().str();
   
   FrameIndexSDNode *FR = dyn_cast<FrameIndexSDNode>(SDValue(N,0));
   // FIXME there isn't really debug info here
-  DebugLoc dl = FR->getDebugLoc();
-
+  SDLoc dl(FR);
+  
   // Expand FrameIndex like GlobalAddress and ExternalSymbol
   // Also use Offset field for lo and hi parts. The default 
   // offset is zero.
@@ -535,7 +546,7 @@ SDValue PIC16TargetLowering::ExpandFrameIndex(SDNode *N,
   int FrameOffset;
   SDValue FI = SDValue(N,0);
   LegalizeFrameIndex(FI, DAG, ES, FrameOffset);
-  SDValue Offset = DAG.getConstant(FrameOffset, MVT::i8);
+  SDValue Offset = DAG.getConstant(FrameOffset, dl, MVT::i8);
   SDValue Lo = DAG.getNode(PIC16ISD::Lo, dl, MVT::i8, ES, Offset);
   SDValue Hi = DAG.getNode(PIC16ISD::Hi, dl, MVT::i8, ES, Offset);
   return DAG.getNode(ISD::BUILD_PAIR, dl, N->getValueType(0), Lo, Hi);
@@ -549,7 +560,7 @@ SDValue PIC16TargetLowering::ExpandStore(SDNode *N, SelectionDAG &DAG) const {
   SDValue Ptr = St->getBasePtr();
   EVT ValueType = Src.getValueType();
   unsigned StoreOffset = 0;
-  DebugLoc dl = N->getDebugLoc();
+  SDLoc dl(N);
 
   SDValue PtrLo, PtrHi;
   LegalizeAddress(Ptr, DAG, PtrLo, PtrHi, StoreOffset, dl);
@@ -557,7 +568,7 @@ SDValue PIC16TargetLowering::ExpandStore(SDNode *N, SelectionDAG &DAG) const {
   if (ValueType == MVT::i8) {
     return DAG.getNode (PIC16ISD::PIC16Store, dl, MVT::Other, Chain, Src,
                         PtrLo, PtrHi, 
-                        DAG.getConstant (0 + StoreOffset, MVT::i8));
+                        DAG.getConstant (0 + StoreOffset, dl, MVT::i8));
   }
   else if (ValueType == MVT::i16) {
     // Get the Lo and Hi parts from MERGE_VALUE or BUILD_PAIR.
@@ -575,11 +586,11 @@ SDValue PIC16TargetLowering::ExpandStore(SDNode *N, SelectionDAG &DAG) const {
     SDValue Store1 = DAG.getNode(PIC16ISD::PIC16Store, dl, MVT::Other,
                                  ChainLo,
                                  SrcLo, PtrLo, PtrHi,
-                                 DAG.getConstant (0 + StoreOffset, MVT::i8));
+                                 DAG.getConstant (0 + StoreOffset, dl, MVT::i8));
 
     SDValue Store2 = DAG.getNode(PIC16ISD::PIC16Store, dl, MVT::Other, ChainHi, 
                                  SrcHi, PtrLo, PtrHi,
-                                 DAG.getConstant (1 + StoreOffset, MVT::i8));
+                                 DAG.getConstant (1 + StoreOffset, dl, MVT::i8));
 
     return DAG.getNode(ISD::TokenFactor, dl, MVT::Other, getChain(Store1),
                        getChain(Store2));
@@ -615,19 +626,19 @@ SDValue PIC16TargetLowering::ExpandStore(SDNode *N, SelectionDAG &DAG) const {
     SDValue Store1 = DAG.getNode(PIC16ISD::PIC16Store, dl, MVT::Other,
                                  ChainLo1,
                                  SrcLo1, PtrLo, PtrHi,
-                                 DAG.getConstant (0 + StoreOffset, MVT::i8));
+                                 DAG.getConstant (0 + StoreOffset, dl, MVT::i8));
 
     SDValue Store2 = DAG.getNode(PIC16ISD::PIC16Store, dl, MVT::Other, ChainLo2,
                                  SrcLo2, PtrLo, PtrHi,
-                                 DAG.getConstant (1 + StoreOffset, MVT::i8));
+                                 DAG.getConstant (1 + StoreOffset, dl, MVT::i8));
 
     SDValue Store3 = DAG.getNode(PIC16ISD::PIC16Store, dl, MVT::Other, ChainHi1,
                                  SrcHi1, PtrLo, PtrHi,
-                                 DAG.getConstant (2 + StoreOffset, MVT::i8));
+                                 DAG.getConstant (2 + StoreOffset, dl, MVT::i8));
 
     SDValue Store4 = DAG.getNode(PIC16ISD::PIC16Store, dl, MVT::Other, ChainHi2,
                                  SrcHi2, PtrLo, PtrHi,
-                                 DAG.getConstant (3 + StoreOffset, MVT::i8));
+                                 DAG.getConstant (3 + StoreOffset, dl, MVT::i8));
 
     SDValue RetLo =  DAG.getNode(ISD::TokenFactor, dl, MVT::Other, 
                                  getChain(Store1), getChain(Store2));
@@ -644,13 +655,13 @@ SDValue PIC16TargetLowering::ExpandStore(SDNode *N, SelectionDAG &DAG) const {
       ChainLo = Chain.getOperand(0);
       ChainHi = Chain.getOperand(1);
     }
-    SDValue Store1 = DAG.getStore(ChainLo, dl, SrcLo, Ptr, NULL,
-                                  0 + StoreOffset, false, false, 0);
+    SDValue Store1 = DAG.getStore(ChainLo, dl, SrcLo, Ptr, MachinePointerInfo(),
+                                  Align(StoreOffset), MachineMemOperand::MONone, AAMDNodes());
 
     Ptr = DAG.getNode(ISD::ADD, dl, Ptr.getValueType(), Ptr,
-                      DAG.getConstant(4, Ptr.getValueType()));
-    SDValue Store2 = DAG.getStore(ChainHi, dl, SrcHi, Ptr, NULL,
-                                  1 + StoreOffset, false, false, 0);
+                      DAG.getConstant(4, dl, Ptr.getValueType()));
+    SDValue Store2 = DAG.getStore(ChainLo, dl, SrcLo, Ptr, MachinePointerInfo(),
+            					  Align(1 + StoreOffset), MachineMemOperand::MONone, AAMDNodes());
 
     return DAG.getNode(ISD::TokenFactor, dl, MVT::Other, Store1,
                        Store2);
@@ -665,10 +676,10 @@ SDValue PIC16TargetLowering::ExpandExternalSymbol(SDNode *N,
  const {
   ExternalSymbolSDNode *ES = dyn_cast<ExternalSymbolSDNode>(SDValue(N, 0));
   // FIXME there isn't really debug info here
-  DebugLoc dl = ES->getDebugLoc();
+  SDLoc dl(ES);
 
   SDValue TES = DAG.getTargetExternalSymbol(ES->getSymbol(), MVT::i8);
-  SDValue Offset = DAG.getConstant(0, MVT::i8);
+  SDValue Offset = DAG.getConstant(0, dl, MVT::i8);
   SDValue Lo = DAG.getNode(PIC16ISD::Lo, dl, MVT::i8, TES, Offset);
   SDValue Hi = DAG.getNode(PIC16ISD::Hi, dl, MVT::i8, TES, Offset);
 
@@ -680,13 +691,13 @@ SDValue PIC16TargetLowering::ExpandGlobalAddress(SDNode *N,
                                                  SelectionDAG &DAG) const {
   GlobalAddressSDNode *G = dyn_cast<GlobalAddressSDNode>(SDValue(N, 0));
   // FIXME there isn't really debug info here
-  DebugLoc dl = G->getDebugLoc();
+  SDLoc dl(G);
   
-  SDValue TGA = DAG.getTargetGlobalAddress(G->getGlobal(), N->getDebugLoc(),
+  SDValue TGA = DAG.getTargetGlobalAddress(G->getGlobal(), N,
                                            MVT::i8,
                                            G->getOffset());
 
-  SDValue Offset = DAG.getConstant(0, MVT::i8);
+  SDValue Offset = DAG.getConstant(0, dl, MVT::i8);
   SDValue Lo = DAG.getNode(PIC16ISD::Lo, dl, MVT::i8, TGA, Offset);
   SDValue Hi = DAG.getNode(PIC16ISD::Hi, dl, MVT::i8, TGA, Offset);
 
@@ -732,16 +743,16 @@ bool PIC16TargetLowering::isRomAddress(const SDValue &Op) const {
 void PIC16TargetLowering::GetExpandedParts(SDValue Op, SelectionDAG &DAG,
                                            SDValue &Lo, SDValue &Hi) const {
   SDNode *N = Op.getNode();
-  DebugLoc dl = N->getDebugLoc();
+  SDLoc dl(N);
   EVT NewVT = getTypeToTransformTo(*DAG.getContext(), N->getValueType(0));
 
   // Extract the lo component.
   Lo = DAG.getNode(ISD::EXTRACT_ELEMENT, dl, NewVT, Op,
-                   DAG.getConstant(0, MVT::i8));
+                   DAG.getConstant(0, dl, MVT::i8));
 
   // extract the hi component
   Hi = DAG.getNode(ISD::EXTRACT_ELEMENT, dl, NewVT, Op,
-                   DAG.getConstant(1, MVT::i8));
+                   DAG.getConstant(1, dl, MVT::i8));
 }
 
 // Legalize FrameIndex into ExternalSymbol and offset.
@@ -750,10 +761,9 @@ PIC16TargetLowering::LegalizeFrameIndex(SDValue Op, SelectionDAG &DAG,
                                         SDValue &ES, int &Offset) const {
 
   MachineFunction &MF = DAG.getMachineFunction();
-  const Function *Func = MF.getFunction();
-  MachineFrameInfo *MFI = MF.getFrameInfo();
+  MachineFrameInfo *MFI = &MF.getFrameInfo();
   PIC16MachineFunctionInfo *FuncInfo = MF.getInfo<PIC16MachineFunctionInfo>();
-  const std::string Name = Func->getName();
+  const std::string Name = MF.getName().str();
 
   FrameIndexSDNode *FR = dyn_cast<FrameIndexSDNode>(Op);
 
@@ -795,7 +805,7 @@ PIC16TargetLowering::LegalizeFrameIndex(SDValue Op, SelectionDAG &DAG,
 
 void PIC16TargetLowering::LegalizeAddress(SDValue Ptr, SelectionDAG &DAG, 
                                           SDValue &Lo, SDValue &Hi,
-                                          unsigned &Offset, DebugLoc dl) const {
+                                          unsigned &Offset, SDLoc dl) const {
 
   // Offset, by default, should be 0
   Offset = 0;
@@ -824,7 +834,7 @@ void PIC16TargetLowering::LegalizeAddress(SDValue Ptr, SelectionDAG &DAG,
     switch (Ptr.getOpcode()) {
     case ISD::TargetExternalSymbol:
       Lo = Ptr;
-      Hi = DAG.getConstant(1, MVT::i8);
+      Hi = DAG.getConstant(1, dl, MVT::i8);
       return;
     }
   }
@@ -835,14 +845,14 @@ void PIC16TargetLowering::LegalizeAddress(SDValue Ptr, SelectionDAG &DAG,
       int FrameOffset;
       if (TFI.getOpcode() == ISD::TargetFrameIndex) {
         LegalizeFrameIndex(TFI, DAG, Lo, FrameOffset);
-        Hi = DAG.getConstant(1, MVT::i8);
+        Hi = DAG.getConstant(1, dl, MVT::i8);
         Offset += FrameOffset; 
         return;
       } else if (TFI.getOpcode() == ISD::TargetExternalSymbol) {
         // FrameIndex has already been expanded.
         // Now just make use of its expansion
         Lo = TFI;
-        Hi = DAG.getConstant(1, MVT::i8);
+        Hi = DAG.getConstant(1, dl, MVT::i8);
         SDValue FOffset = Ptr.getOperand(0).getOperand(1);
         assert (FOffset.getOpcode() == ISD::Constant && 
                           "Invalid operand of PIC16ISD::Lo");
@@ -860,7 +870,7 @@ void PIC16TargetLowering::LegalizeAddress(SDValue Ptr, SelectionDAG &DAG,
     // signifies that banksel needs to generated for it. Value 0 for
     // the constant signifies that banksel does not need to be generated 
     // for it. Mark it as 1 now and optimize later. 
-    Hi = DAG.getConstant(1, MVT::i8);
+    Hi = DAG.getConstant(1, dl, MVT::i8);
     return; 
   }
 
@@ -878,7 +888,7 @@ SDValue PIC16TargetLowering::ExpandLoad(SDNode *N, SelectionDAG &DAG) const {
   LoadSDNode *LD = dyn_cast<LoadSDNode>(SDValue(N, 0));
   SDValue Chain = LD->getChain();
   SDValue Ptr = LD->getBasePtr();
-  DebugLoc dl = LD->getDebugLoc();
+  SDLoc dl(LD);
 
   SDValue Load, Offset;
   SDVTList Tys; 
@@ -899,7 +909,7 @@ SDValue PIC16TargetLowering::ExpandLoad(SDNode *N, SelectionDAG &DAG) const {
   if(ISD::isNON_EXTLoad(N)) {
     for (iter=0; iter<NumLoads ; ++iter) {
       // Add the pointer offset if any
-      Offset = DAG.getConstant(iter + LoadOffset, MVT::i8);
+      Offset = DAG.getConstant(iter + LoadOffset, dl, MVT::i8);
       Tys = DAG.getVTList(MVT::i8, MVT::Other); 
       Load = DAG.getNode(PIC16ISD::PIC16Load, dl, Tys, Chain, PtrLo, PtrHi,
                          Offset); 
@@ -920,13 +930,13 @@ SDValue PIC16TargetLowering::ExpandLoad(SDNode *N, SelectionDAG &DAG) const {
     if (MemBytes == 0) MemBytes = 1;
     
     unsigned ExtdBytes = VT.getSizeInBits() / 8;
-    Offset = DAG.getConstant(LoadOffset, MVT::i8);
+    Offset = DAG.getConstant(LoadOffset, dl, MVT::i8);
 
     Tys = DAG.getVTList(MVT::i8, MVT::Other); 
     // For MemBytes generate PIC16Load with proper offset
     for (iter=0; iter < MemBytes; ++iter) {
       // Add the pointer offset if any
-      Offset = DAG.getConstant(iter + LoadOffset, MVT::i8);
+      Offset = DAG.getConstant(iter + LoadOffset, dl, MVT::i8);
       Load = DAG.getNode(PIC16ISD::PIC16Load, dl, Tys, Chain, PtrLo, PtrHi,
                          Offset); 
       PICLoads.push_back(Load);
@@ -937,14 +947,14 @@ SDValue PIC16TargetLowering::ExpandLoad(SDNode *N, SelectionDAG &DAG) const {
       // For all ExtdBytes use the Right Shifted(Arithmetic) Value of the 
       // highest MemByte
       SDValue SRA = DAG.getNode(ISD::SRA, dl, MVT::i8, Load, 
-                                DAG.getConstant(7, MVT::i8));
+                                DAG.getConstant(7, dl, MVT::i8));
       for (iter=MemBytes; iter<ExtdBytes; ++iter) { 
         PICLoads.push_back(SRA);
       }
     } else if (ISD::isZEXTLoad(N) || ISD::isEXTLoad(N)) {
     //} else if (ISD::isZEXTLoad(N)) {
       // ZeroExtendedLoad -- For all ExtdBytes use constant 0
-      SDValue ConstZero = DAG.getConstant(0, MVT::i8);
+      SDValue ConstZero = DAG.getConstant(0, dl, MVT::i8);
       for (iter=MemBytes; iter<ExtdBytes; ++iter) { 
         PICLoads.push_back(ConstZero);
       }
@@ -1015,7 +1025,7 @@ SDValue PIC16TargetLowering::LowerShift(SDValue Op, SelectionDAG &DAG) const {
   Ops[0] = Value;
   Ops[1] = Amt;
   SDValue Call = MakePIC16Libcall(CallCode, N->getValueType(0), &Ops[0], 2, 
-                                  true, DAG, N->getDebugLoc());
+                                  true, DAG, N);
   return Call;
 }
 
@@ -1028,7 +1038,7 @@ SDValue PIC16TargetLowering::LowerMUL(SDValue Op, SelectionDAG &DAG) const {
   Ops[0] = N->getOperand(0);
   Ops[1] = N->getOperand(1);
   SDValue Call = MakePIC16Libcall(PIC16ISD::MUL_I8, N->getValueType(0), 
-                                  &Ops[0], 2, true, DAG, N->getDebugLoc());
+                                  &Ops[0], 2, true, DAG, N);
   return Call;
 }
 
@@ -1094,18 +1104,17 @@ SDValue PIC16TargetLowering::LowerOperation(SDValue Op,
 
 SDValue PIC16TargetLowering::ConvertToMemOperand(SDValue Op,
                                                  SelectionDAG &DAG,
-                                                 DebugLoc dl) const {
+                                                 SDLoc dl) const {
   assert (Op.getValueType() == MVT::i8 
           && "illegal value type to store on stack.");
 
   MachineFunction &MF = DAG.getMachineFunction();
-  const Function *Func = MF.getFunction();
-  const std::string FuncName = Func->getName();
+  const std::string FuncName = MF.getName().str();
 
 
   // Put the value on stack.
   // Get a stack slot index and convert to es.
-  int FI = MF.getFrameInfo()->CreateStackObject(1, 1, false);
+  int FI = MF.getFrameInfo().CreateStackObject(1, Align(1), false);
   const char *tmpName = ESNames::createESName(PAN::getTempdataLabel(FuncName));
   SDValue ES = DAG.getTargetExternalSymbol(tmpName, MVT::i8);
 
@@ -1113,15 +1122,15 @@ SDValue PIC16TargetLowering::ConvertToMemOperand(SDValue Op,
   SDValue Store = DAG.getNode (PIC16ISD::PIC16Store, dl, MVT::Other,
                                DAG.getEntryNode(),
                                Op, ES, 
-                               DAG.getConstant (1, MVT::i8), // Banksel.
-                               DAG.getConstant (GetTmpOffsetForFI(FI, 1, MF), 
+                               DAG.getConstant (1, dl, MVT::i8), // Banksel.
+                               DAG.getConstant (GetTmpOffsetForFI(FI, 1, MF), dl, 
                                                 MVT::i8));
 
   // Load the value from ES.
   SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Other);
   SDValue Load = DAG.getNode(PIC16ISD::PIC16Load, dl, Tys, Store,
-                             ES, DAG.getConstant (1, MVT::i8),
-                             DAG.getConstant (GetTmpOffsetForFI(FI, 1, MF), 
+                             ES, DAG.getConstant (1, dl, MVT::i8),
+                             DAG.getConstant (GetTmpOffsetForFI(FI, 1, MF), dl, 
                              MVT::i8));
     
   return Load.getValue(0);
@@ -1133,7 +1142,7 @@ LowerIndirectCallArguments(SDValue Chain, SDValue InFlag,
                            const SmallVectorImpl<ISD::OutputArg> &Outs,
                            const SmallVectorImpl<SDValue> &OutVals,
                            const SmallVectorImpl<ISD::InputArg> &Ins,
-                           DebugLoc dl, SelectionDAG &DAG) const {
+                           SDLoc dl, SelectionDAG &DAG) const {
   unsigned NumOps = Outs.size();
 
   // If call has no arguments then do nothing and return.
@@ -1141,7 +1150,7 @@ LowerIndirectCallArguments(SDValue Chain, SDValue InFlag,
     return Chain;
 
   std::vector<SDValue> Ops;
-  SDVTList Tys = DAG.getVTList(MVT::Other, MVT::Flag);
+  SDVTList Tys = DAG.getVTList(MVT::Other, MVT::Glue);
   SDValue Arg, StoreRet;
 
   // For PIC16 ABI the arguments come after the return value. 
@@ -1155,10 +1164,10 @@ LowerIndirectCallArguments(SDValue Chain, SDValue InFlag,
     Ops.push_back(Arg);
     Ops.push_back(DataAddr_Lo);
     Ops.push_back(DataAddr_Hi);
-    Ops.push_back(DAG.getConstant(ArgOffset, MVT::i8));
+    Ops.push_back(DAG.getConstant(ArgOffset, dl, MVT::i8));
     Ops.push_back(InFlag);
 
-    StoreRet = DAG.getNode (PIC16ISD::PIC16StWF, dl, Tys, &Ops[0], Ops.size());
+    StoreRet = DAG.getNode(PIC16ISD::PIC16StWF, dl, Tys, ArrayRef<SDValue>(Ops));
 
     Chain = getChain(StoreRet);
     InFlag = getOutFlag(StoreRet);
@@ -1171,7 +1180,7 @@ SDValue PIC16TargetLowering::
 LowerDirectCallArguments(SDValue ArgLabel, SDValue Chain, SDValue InFlag,
                          const SmallVectorImpl<ISD::OutputArg> &Outs,
                          const SmallVectorImpl<SDValue> &OutVals,
-                         DebugLoc dl, SelectionDAG &DAG) const {
+                         SDLoc dl, SelectionDAG &DAG) const {
   unsigned NumOps = Outs.size();
   std::string Name;
   SDValue Arg, StoreAt;
@@ -1193,7 +1202,7 @@ LowerDirectCallArguments(SDValue ArgLabel, SDValue Chain, SDValue InFlag,
   SDValue StoreRet;
 
   std::vector<SDValue> Ops;
-  SDVTList Tys = DAG.getVTList(MVT::Other, MVT::Flag);
+  SDVTList Tys = DAG.getVTList(MVT::Other, MVT::Glue);
   for (unsigned i=0, Offset = 0; i<NumOps; i++) {
     // Get the argument
     Arg = OutVals[i];
@@ -1206,10 +1215,10 @@ LowerDirectCallArguments(SDValue ArgLabel, SDValue Chain, SDValue InFlag,
     Ops.push_back(Arg);
     Ops.push_back(PtrLo);
     Ops.push_back(PtrHi);
-    Ops.push_back(DAG.getConstant(StoreOffset, MVT::i8));
+    Ops.push_back(DAG.getConstant(StoreOffset, dl, MVT::i8));
     Ops.push_back(InFlag);
 
-    StoreRet = DAG.getNode (PIC16ISD::PIC16StWF, dl, Tys, &Ops[0], Ops.size());
+    StoreRet = DAG.getNode (PIC16ISD::PIC16StWF, dl, Tys, ArrayRef<SDValue>(Ops));
 
     Chain = getChain(StoreRet);
     InFlag = getOutFlag(StoreRet);
@@ -1227,7 +1236,7 @@ SDValue PIC16TargetLowering::
 LowerIndirectCallReturn(SDValue Chain, SDValue InFlag,
                         SDValue DataAddr_Lo, SDValue DataAddr_Hi,
                         const SmallVectorImpl<ISD::InputArg> &Ins,
-                        DebugLoc dl, SelectionDAG &DAG,
+                        SDLoc dl, SelectionDAG &DAG,
                         SmallVectorImpl<SDValue> &InVals) const {
   unsigned RetVals = Ins.size();
 
@@ -1239,10 +1248,10 @@ LowerIndirectCallReturn(SDValue Chain, SDValue InFlag,
   // Call has something to return
   SDValue LoadRet;
 
-  SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Other, MVT::Flag);
+  SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Other, MVT::Glue);
   for(unsigned i=0;i<RetVals;i++) {
     LoadRet = DAG.getNode(PIC16ISD::PIC16LdWF, dl, Tys, Chain, DataAddr_Lo,
-                          DataAddr_Hi, DAG.getConstant(i, MVT::i8),
+                          DataAddr_Hi, DAG.getConstant(i, dl, MVT::i8),
                           InFlag);
     InFlag = getOutFlag(LoadRet);
     Chain = getChain(LoadRet);
@@ -1254,7 +1263,7 @@ LowerIndirectCallReturn(SDValue Chain, SDValue InFlag,
 SDValue PIC16TargetLowering::
 LowerDirectCallReturn(SDValue RetLabel, SDValue Chain, SDValue InFlag,
                       const SmallVectorImpl<ISD::InputArg> &Ins,
-                      DebugLoc dl, SelectionDAG &DAG,
+                      SDLoc dl, SelectionDAG &DAG,
                       SmallVectorImpl<SDValue> &InVals) const {
 
   // Currently handling primitive types only. They will come in
@@ -1272,13 +1281,13 @@ LowerDirectCallReturn(SDValue RetLabel, SDValue Chain, SDValue InFlag,
   unsigned LdOffset;
   LegalizeAddress(RetLabel, DAG, LdLo, LdHi, LdOffset, dl);
 
-  SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Other, MVT::Flag);
+  SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Other, MVT::Glue);
   SDValue LoadRet;
  
   for(unsigned i=0, Offset=0;i<RetVals;i++) {
 
     LoadRet = DAG.getNode(PIC16ISD::PIC16LdWF, dl, Tys, Chain, LdLo, LdHi,
-                          DAG.getConstant(LdOffset + Offset, MVT::i8),
+                          DAG.getConstant(LdOffset + Offset, dl, MVT::i8),
                           InFlag);
 
     InFlag = getOutFlag(LoadRet);
@@ -1296,7 +1305,7 @@ PIC16TargetLowering::LowerReturn(SDValue Chain,
                                  CallingConv::ID CallConv, bool isVarArg,
                                  const SmallVectorImpl<ISD::OutputArg> &Outs,
                                  const SmallVectorImpl<SDValue> &OutVals,
-                                 DebugLoc dl, SelectionDAG &DAG) const {
+                                 SDLoc dl, SelectionDAG &DAG) const {
 
   // Number of values to return 
   unsigned NumRet = Outs.size();
@@ -1304,31 +1313,30 @@ PIC16TargetLowering::LowerReturn(SDValue Chain,
   // Function returns value always on stack with the offset starting
   // from 0 
   MachineFunction &MF = DAG.getMachineFunction();
-  const Function *F = MF.getFunction();
-  std::string FuncName = F->getName();
+  std::string FuncName = MF.getName().str();
 
   const char *tmpName = ESNames::createESName(PAN::getFrameLabel(FuncName));
   SDValue ES = DAG.getTargetExternalSymbol(tmpName, MVT::i8);
-  SDValue BS = DAG.getConstant(1, MVT::i8);
+  SDValue BS = DAG.getConstant(1, dl, MVT::i8);
   SDValue RetVal;
   for(unsigned i=0;i<NumRet; ++i) {
     RetVal = OutVals[i];
     Chain =  DAG.getNode (PIC16ISD::PIC16Store, dl, MVT::Other, Chain, RetVal,
                         ES, BS,
-                        DAG.getConstant (i, MVT::i8));
+                        DAG.getConstant (i, dl, MVT::i8));
       
   }
   return DAG.getNode(PIC16ISD::RET, dl, MVT::Other, Chain);
 }
 
 void PIC16TargetLowering::
-GetDataAddress(DebugLoc dl, SDValue Callee, SDValue &Chain, 
+GetDataAddress(SDLoc dl, SDValue Callee, SDValue &Chain, 
                SDValue &DataAddr_Lo, SDValue &DataAddr_Hi,
                SelectionDAG &DAG) const {
    assert (Callee.getOpcode() == PIC16ISD::PIC16Connect
            && "Don't know what to do of such callee!!");
-   SDValue ZeroOperand = DAG.getConstant(0, MVT::i8);
-   SDValue SeqStart  = DAG.getCALLSEQ_START(Chain, ZeroOperand);
+   SDValue ZeroOperand = DAG.getConstant(0, dl, MVT::i8);
+   SDValue SeqStart  = DAG.getCALLSEQ_START(Chain, ZeroOperand, dl);
    Chain = getChain(SeqStart);
    SDValue OperFlag = getOutFlag(SeqStart); // To manage the data dependency
 
@@ -1337,13 +1345,13 @@ GetDataAddress(DebugLoc dl, SDValue Callee, SDValue &Chain,
    SDValue Hi = Callee.getOperand(1);
 
    SDValue Data_Lo, Data_Hi;
-   SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Other, MVT::Flag);
+   SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Other, MVT::Glue);
    // Subtract 2 from Address to get the Lower part of DataAddress.
-   SDVTList VTList = DAG.getVTList(MVT::i8, MVT::Flag);
+   SDVTList VTList = DAG.getVTList(MVT::i8, MVT::Glue);
    Data_Lo = DAG.getNode(ISD::SUBC, dl, VTList, Lo, 
-                         DAG.getConstant(2, MVT::i8));
-   SDValue Ops[3] = { Hi, DAG.getConstant(0, MVT::i8), Data_Lo.getValue(1)};
-   Data_Hi = DAG.getNode(ISD::SUBE, dl, VTList, Ops, 3);
+                         DAG.getConstant(2, dl, MVT::i8));
+   SDValue Ops[3] = { Hi, DAG.getConstant(0, dl, MVT::i8), Data_Lo.getValue(1)};
+   Data_Hi = DAG.getNode(ISD::SUBE, dl, VTList, ArrayRef<SDValue>(Ops, 3));
    SDValue PCLATH = DAG.getNode(PIC16ISD::MTPCLATH, dl, MVT::i8, Data_Hi);
    Callee = DAG.getNode(PIC16ISD::PIC16Connect, dl, MVT::i8, Data_Lo, PCLATH);
    SDValue Call = DAG.getNode(PIC16ISD::CALLW, dl, Tys, Chain, Callee,
@@ -1351,7 +1359,7 @@ GetDataAddress(DebugLoc dl, SDValue Callee, SDValue &Chain,
    Chain = getChain(Call);
    OperFlag = getOutFlag(Call);
    SDValue SeqEnd = DAG.getCALLSEQ_END(Chain, ZeroOperand, ZeroOperand,
-                                       OperFlag);
+                                       OperFlag, dl);
    Chain = getChain(SeqEnd);
    OperFlag = getOutFlag(SeqEnd);
 
@@ -1359,15 +1367,15 @@ GetDataAddress(DebugLoc dl, SDValue Callee, SDValue &Chain,
    DataAddr_Lo = DAG.getNode(PIC16ISD::MTLO, dl, MVT::i8, Call, OperFlag);
 
    // Make the second call.
-   SeqStart  = DAG.getCALLSEQ_START(Chain, ZeroOperand);
+   SeqStart  = DAG.getCALLSEQ_START(Chain, ZeroOperand, dl);
    Chain = getChain(SeqStart);
    OperFlag = getOutFlag(SeqStart); // To manage the data dependency
 
    // Subtract 1 from Address to get high part of data address.
    Data_Lo = DAG.getNode(ISD::SUBC, dl, VTList, Lo, 
-                         DAG.getConstant(1, MVT::i8));
-   SDValue HiOps[3] = { Hi, DAG.getConstant(0, MVT::i8), Data_Lo.getValue(1)};
-   Data_Hi = DAG.getNode(ISD::SUBE, dl, VTList, HiOps, 3);
+                         DAG.getConstant(1, dl, MVT::i8));
+   SDValue HiOps[3] = { Hi, DAG.getConstant(0, dl, MVT::i8), Data_Lo.getValue(1)};
+   Data_Hi = DAG.getNode(ISD::SUBE, dl, VTList, ArrayRef<SDValue>(HiOps, 3));
    PCLATH = DAG.getNode(PIC16ISD::MTPCLATH, dl, MVT::i8, Data_Hi);
 
    // Use new Lo to make another CALLW
@@ -1376,7 +1384,7 @@ GetDataAddress(DebugLoc dl, SDValue Callee, SDValue &Chain,
    Chain = getChain(Call);
    OperFlag = getOutFlag(Call);
    SeqEnd = DAG.getCALLSEQ_END(Chain, ZeroOperand, ZeroOperand,
-                                        OperFlag);
+                                        OperFlag, dl);
    Chain = getChain(SeqEnd);
    OperFlag = getOutFlag(SeqEnd);
    // Hi part of Data Address
@@ -1390,7 +1398,7 @@ PIC16TargetLowering::LowerCall(SDValue Chain, SDValue Callee,
                                const SmallVectorImpl<ISD::OutputArg> &Outs,
                                const SmallVectorImpl<SDValue> &OutVals,
                                const SmallVectorImpl<ISD::InputArg> &Ins,
-                               DebugLoc dl, SelectionDAG &DAG,
+                               SDLoc dl, SelectionDAG &DAG,
                                SmallVectorImpl<SDValue> &InVals) const {
     // PIC16 target does not yet support tail call optimization.
     isTailCall = false;
@@ -1426,12 +1434,12 @@ PIC16TargetLowering::LowerCall(SDValue Chain, SDValue Callee,
          GetDataAddress(dl, Callee, Chain, DataAddr_Lo, DataAddr_Hi, DAG);
     }
 
-    SDValue ZeroOperand = DAG.getConstant(0, MVT::i8);
+    SDValue ZeroOperand = DAG.getConstant(0, dl, MVT::i8);
 
     // Start the call sequence.
     // Carring the Constant 0 along the CALLSEQSTART
     // because there is nothing else to carry.
-    SDValue SeqStart  = DAG.getCALLSEQ_START(Chain, ZeroOperand);
+    SDValue SeqStart  = DAG.getCALLSEQ_START(Chain, ZeroOperand, dl);
     Chain = getChain(SeqStart);
     SDValue OperFlag = getOutFlag(SeqStart); // To manage the data dependency
     std::string Name;
@@ -1487,7 +1495,7 @@ PIC16TargetLowering::LowerCall(SDValue Chain, SDValue Callee,
       OperFlag = getOutFlag(CallArgs);
     }
 
-    SDVTList Tys = DAG.getVTList(MVT::Other, MVT::Flag);
+    SDVTList Tys = DAG.getVTList(MVT::Other, MVT::Glue);
     SDValue PICCall = DAG.getNode(PIC16ISD::CALL, dl, Tys, Chain, Callee,
                                   OperFlag);
     Chain = getChain(PICCall);
@@ -1497,7 +1505,7 @@ PIC16TargetLowering::LowerCall(SDValue Chain, SDValue Callee,
     // Carrying the Constant 0 along the CALLSEQSTART
     // because there is nothing else to carry.
     SDValue SeqEnd = DAG.getCALLSEQ_END(Chain, ZeroOperand, ZeroOperand,
-                                        OperFlag);
+                                        OperFlag, dl);
     Chain = getChain(SeqEnd);
     OperFlag = getOutFlag(SeqEnd);
 
@@ -1548,7 +1556,7 @@ bool PIC16TargetLowering::NeedToConvertToMemOp(SDValue Op, unsigned &MemOp,
       // convert this direct load to a separate memory operation.
       if (SelectionDAGISel::IsLegalToFold(Op.getOperand(0),
                                           Op.getNode(), Op.getNode(),
-                                          CodeGenOpt::Default))
+                                          CodeGenOptLevel::Default))
         return false;
       else 
         MemOp = 0;
@@ -1558,8 +1566,9 @@ bool PIC16TargetLowering::NeedToConvertToMemOp(SDValue Op, unsigned &MemOp,
   // For operations that are non-cummutative there is no need to check 
   // for right operand because folding right operand may result in 
   // incorrect operation. 
-  if (! SelectionDAG::isCommutativeBinOp(Op.getOpcode()))
-    return true;
+//  if (!SelectionDAG::isCommutativeBinOp(Op.getOpcode()))
+//    return true;
+  // HACK!!
 
   if (isDirectLoad(Op.getOperand(1))) {
     if (Op.getOperand(1).hasOneUse()) {
@@ -1577,7 +1586,7 @@ bool PIC16TargetLowering::NeedToConvertToMemOp(SDValue Op, unsigned &MemOp,
       // convert this direct load to a separate memory operation.
       if (SelectionDAGISel::IsLegalToFold(Op.getOperand(1),
                                           Op.getNode(), Op.getNode(),
-                                          CodeGenOpt::Default))
+                                          CodeGenOptLevel::Default))
          return false;
       else 
          MemOp = 1; 
@@ -1589,7 +1598,7 @@ bool PIC16TargetLowering::NeedToConvertToMemOp(SDValue Op, unsigned &MemOp,
 // LowerBinOp - Lower a commutative binary operation that does not
 // affect status flag carry.
 SDValue PIC16TargetLowering::LowerBinOp(SDValue Op, SelectionDAG &DAG) const {
-  DebugLoc dl = Op.getDebugLoc();
+  SDLoc dl(Op);
 
   // We should have handled larger operands in type legalizer itself.
   assert (Op.getValueType() == MVT::i8 && "illegal Op to lower");
@@ -1612,14 +1621,14 @@ SDValue PIC16TargetLowering::LowerBinOp(SDValue Op, SelectionDAG &DAG) const {
 SDValue PIC16TargetLowering::LowerADD(SDValue Op, SelectionDAG &DAG) const {
   // We should have handled larger operands in type legalizer itself.
   assert (Op.getValueType() == MVT::i8 && "illegal add to lower");
-  DebugLoc dl = Op.getDebugLoc();
+  SDLoc dl(Op);
   unsigned MemOp = 1;
   if (NeedToConvertToMemOp(Op, MemOp, DAG)) {
     // Put one value on stack.
     SDValue NewVal = ConvertToMemOperand (Op.getOperand(MemOp), DAG, dl);
     
     // ADDC and ADDE produce two results.
-    SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Flag);
+    SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Glue);
 
     // ADDE has three operands, the last one is the carry bit.
     if (Op.getOpcode() == ISD::ADDE)
@@ -1639,11 +1648,11 @@ SDValue PIC16TargetLowering::LowerADD(SDValue Op, SelectionDAG &DAG) const {
 }
 
 SDValue PIC16TargetLowering::LowerSUB(SDValue Op, SelectionDAG &DAG) const {
-  DebugLoc dl = Op.getDebugLoc();
+  SDLoc dl(Op);
   // We should have handled larger operands in type legalizer itself.
   assert (Op.getValueType() == MVT::i8 && "illegal sub to lower");
   unsigned MemOp = 1;
-  SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Flag);
+  SDVTList Tys = DAG.getVTList(MVT::i8, MVT::Glue);
 
   // Since we don't have an instruction for X - c , 
   // we can change it to X + (-c)
@@ -1652,7 +1661,7 @@ SDValue PIC16TargetLowering::LowerSUB(SDValue Op, SelectionDAG &DAG) const {
     {
       return DAG.getNode(ISD::ADD, 
                          dl, MVT::i8, Op.getOperand(0), 
-                         DAG.getConstant(0-(C->getZExtValue()), MVT::i8));
+                         DAG.getConstant(0-(C->getZExtValue()), dl, MVT::i8));
     }
 
   if (NeedToConvertToMemOp(Op, MemOp, DAG) ||
@@ -1664,8 +1673,6 @@ SDValue PIC16TargetLowering::LowerSUB(SDValue Op, SelectionDAG &DAG) const {
       SDValue NewVal = ConvertToMemOperand (Op.getOperand(0), DAG, dl);
       
       switch (Op.getOpcode()) {
-      default:
-        assert (0 && "Opcode unknown."); 
       case ISD::SUBE:
         return DAG.getNode(Op.getOpcode(), 
                            dl, Tys, NewVal, Op.getOperand(1),
@@ -1679,20 +1686,23 @@ SDValue PIC16TargetLowering::LowerSUB(SDValue Op, SelectionDAG &DAG) const {
         return DAG.getNode(Op.getOpcode(), 
                            dl, MVT::i8, NewVal, Op.getOperand(1));
         break;
+      default:
+        assert (0 && "Opcode unknown.");
+        break;
       }
     }
   else 
     return Op;
 }
 
-void PIC16TargetLowering::InitReservedFrameCount(const Function *F,
+void PIC16TargetLowering::InitReservedFrameCount(const Function &F,
                                                  SelectionDAG &DAG) const {
   MachineFunction &MF = DAG.getMachineFunction();
   PIC16MachineFunctionInfo *FuncInfo = MF.getInfo<PIC16MachineFunctionInfo>();
 
-  unsigned NumArgs = F->arg_size();
+  unsigned NumArgs = F.arg_size();
 
-  bool isVoidFunc = (F->getReturnType()->getTypeID() == Type::VoidTyID);
+  bool isVoidFunc = (F.getReturnType()->getTypeID() == Type::VoidTyID);
 
   if (isVoidFunc)
     FuncInfo->setReservedFrameCount(NumArgs);
@@ -1709,7 +1719,7 @@ PIC16TargetLowering::LowerFormalArguments(SDValue Chain,
                                           CallingConv::ID CallConv,
                                           bool isVarArg,
                                       const SmallVectorImpl<ISD::InputArg> &Ins,
-                                          DebugLoc dl,
+                                          SDLoc dl,
                                           SelectionDAG &DAG,
                                           SmallVectorImpl<SDValue> &InVals)
                                             const {
@@ -1717,8 +1727,8 @@ PIC16TargetLowering::LowerFormalArguments(SDValue Chain,
 
   // Get the callee's name to create the <fname>.args label to pass args.
   MachineFunction &MF = DAG.getMachineFunction();
-  const Function *F = MF.getFunction();
-  std::string FuncName = F->getName();
+  const Function &F = MF.getFunction();
+  std::string FuncName = MF.getName().str();
 
   // Reset the map of FI and TmpOffset 
   ResetTmpOffsetMap(DAG);
@@ -1731,9 +1741,9 @@ PIC16TargetLowering::LowerFormalArguments(SDValue Chain,
 
   // Load arg values from the label + offset.
   SDVTList VTs  = DAG.getVTList (MVT::i8, MVT::Other);
-  SDValue BS = DAG.getConstant(1, MVT::i8);
+  SDValue BS = DAG.getConstant(1, dl, MVT::i8);
   for (unsigned i = 0; i < NumArgVals ; ++i) {
-    SDValue Offset = DAG.getConstant(i, MVT::i8);
+    SDValue Offset = DAG.getConstant(i, dl, MVT::i8);
     SDValue PICLoad = DAG.getNode(PIC16ISD::PIC16LdArg, dl, VTs, Chain, ES, BS,
                                   Offset);
     Chain = getChain(PICLoad);
@@ -1807,14 +1817,14 @@ static PIC16CC::CondCodes IntCCToPIC16CC(ISD::CondCode CC) {
 static void LookThroughSetCC(SDValue &LHS, SDValue &RHS,
                              ISD::CondCode CC, unsigned &SPCC) {
   if (isa<ConstantSDNode>(RHS) &&
-      cast<ConstantSDNode>(RHS)->isNullValue() &&
+      RHS.isUndef() &&
       CC == ISD::SETNE &&
       (LHS.getOpcode() == PIC16ISD::SELECT_ICC &&
         LHS.getOperand(3).getOpcode() == PIC16ISD::SUBCC) &&
       isa<ConstantSDNode>(LHS.getOperand(0)) &&
       isa<ConstantSDNode>(LHS.getOperand(1)) &&
       cast<ConstantSDNode>(LHS.getOperand(0))->isOne() &&
-      cast<ConstantSDNode>(LHS.getOperand(1))->isNullValue()) {
+      LHS.getOperand(1).isUndef()) {
     SDValue CMPCC = LHS.getOperand(3);
     SPCC = cast<ConstantSDNode>(LHS.getOperand(2))->getZExtValue();
     LHS = CMPCC.getOperand(0);
@@ -1825,7 +1835,7 @@ static void LookThroughSetCC(SDValue &LHS, SDValue &RHS,
 // Returns appropriate CMP insn and corresponding condition code in PIC16CC
 SDValue PIC16TargetLowering::getPIC16Cmp(SDValue LHS, SDValue RHS, 
                                          unsigned CC, SDValue &PIC16CC, 
-                                         SelectionDAG &DAG, DebugLoc dl) const {
+                                         SelectionDAG &DAG, SDLoc dl) const {
   PIC16CC::CondCodes CondCode = (PIC16CC::CondCodes) CC;
 
   // PIC16 sub is literal - W. So Swap the operands and condition if needed.
@@ -1865,16 +1875,16 @@ SDValue PIC16TargetLowering::getPIC16Cmp(SDValue LHS, SDValue RHS,
     }
   }
 
-  PIC16CC = DAG.getConstant(CondCode, MVT::i8);
+  PIC16CC = DAG.getConstant(CondCode, dl, MVT::i8);
 
   // These are signed comparisons. 
-  SDValue Mask = DAG.getConstant(128, MVT::i8);
+  SDValue Mask = DAG.getConstant(128, dl, MVT::i8);
   if (isSignedComparison(CondCode)) {
     LHS = DAG.getNode (ISD::XOR, dl, MVT::i8, LHS, Mask);
     RHS = DAG.getNode (ISD::XOR, dl, MVT::i8, RHS, Mask); 
   }
 
-  SDVTList VTs = DAG.getVTList (MVT::i8, MVT::Flag);
+  SDVTList VTs = DAG.getVTList (MVT::i8, MVT::Glue);
   // We can use a subtract operation to set the condition codes. But
   // we need to put one operand in memory if required.
   // Nothing to do if the first operand is already a valid type (direct load 
@@ -1897,7 +1907,7 @@ SDValue PIC16TargetLowering::LowerSELECT_CC(SDValue Op,
   SDValue TrueVal = Op.getOperand(2);
   SDValue FalseVal = Op.getOperand(3);
   unsigned ORIGCC = ~0;
-  DebugLoc dl = Op.getDebugLoc();
+  SDLoc dl(Op);
 
   // If this is a select_cc of a "setcc", and if the setcc got lowered into
   // an CMP[IF]CC/SELECT_[IF]CC pair, find the original compared values.
@@ -1919,16 +1929,17 @@ SDValue PIC16TargetLowering::LowerSELECT_CC(SDValue Op,
 MachineBasicBlock *
 PIC16TargetLowering::EmitInstrWithCustomInserter(MachineInstr *MI,
                                                  MachineBasicBlock *BB) const {
-  const TargetInstrInfo &TII = *getTargetMachine().getInstrInfo();
+  const PIC16TargetMachine *TM = (PIC16TargetMachine*)(&getTargetMachine());
+  const PIC16InstrInfo *TII = TM->getInstrInfo();
   unsigned CC = (PIC16CC::CondCodes)MI->getOperand(3).getImm();
-  DebugLoc dl = MI->getDebugLoc();
+  DebugLoc dl(MI->getDebugLoc());
 
   // To "insert" a SELECT_CC instruction, we actually have to insert the diamond
   // control-flow pattern.  The incoming instruction knows the destination vreg
   // to set, the condition code register to branch on, the true/false values to
   // select between, and a branch opcode to use.
   const BasicBlock *LLVM_BB = BB->getBasicBlock();
-  MachineFunction::iterator It = BB;
+  MachineFunction::iterator It = BB->getIterator();
   ++It;
 
   //  thisMBB:
@@ -1940,13 +1951,13 @@ PIC16TargetLowering::EmitInstrWithCustomInserter(MachineInstr *MI,
   MachineFunction *F = BB->getParent();
   MachineBasicBlock *copy0MBB = F->CreateMachineBasicBlock(LLVM_BB);
   MachineBasicBlock *sinkMBB = F->CreateMachineBasicBlock(LLVM_BB);
-  BuildMI(BB, dl, TII.get(PIC16::pic16brcond)).addMBB(sinkMBB).addImm(CC);
+  BuildMI(BB, dl, TII->get(PIC16::pic16brcond)).addMBB(sinkMBB).addImm(CC);
   F->insert(It, copy0MBB);
   F->insert(It, sinkMBB);
 
   // Transfer the remainder of BB and its successor edges to sinkMBB.
   sinkMBB->splice(sinkMBB->begin(), BB,
-                  llvm::next(MachineBasicBlock::iterator(MI)),
+                  std::next(MachineBasicBlock::iterator(MI)),
                   BB->end());
   sinkMBB->transferSuccessorsAndUpdatePHIs(BB);
 
@@ -1967,7 +1978,7 @@ PIC16TargetLowering::EmitInstrWithCustomInserter(MachineInstr *MI,
   //  ...
   BB = sinkMBB;
   BuildMI(*BB, BB->begin(), dl,
-          TII.get(PIC16::PHI), MI->getOperand(0).getReg())
+          TII->get(PIC16::PHI), MI->getOperand(0).getReg())
     .addReg(MI->getOperand(2).getReg()).addMBB(copy0MBB)
     .addReg(MI->getOperand(1).getReg()).addMBB(thisMBB);
 
@@ -1983,7 +1994,7 @@ SDValue PIC16TargetLowering::LowerBR_CC(SDValue Op, SelectionDAG &DAG) const {
   SDValue RHS = Op.getOperand(3);   // RHS of the condition.
   SDValue Dest = Op.getOperand(4);  // BB to jump to
   unsigned ORIGCC = ~0;
-  DebugLoc dl = Op.getDebugLoc();
+  SDLoc dl(Op);
 
   // If this is a br_cc of a "setcc", and if the setcc got lowered into
   // an CMP[IF]CC/SELECT_[IF]CC pair, find the original compared values.

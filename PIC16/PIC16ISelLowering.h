@@ -18,7 +18,7 @@
 #include "PIC16.h"
 #include "PIC16Subtarget.h"
 #include "llvm/CodeGen/SelectionDAG.h"
-#include "llvm/Target/TargetLowering.h"
+#include "llvm/CodeGen/TargetLowering.h"
 #include <map>
 
 namespace llvm {
@@ -93,13 +93,13 @@ namespace llvm {
     SDValue 
     LowerDirectCallReturn(SDValue RetLabel, SDValue Chain, SDValue InFlag,
                           const SmallVectorImpl<ISD::InputArg> &Ins,
-                          DebugLoc dl, SelectionDAG &DAG,
+                          SDLoc dl, SelectionDAG &DAG,
                           SmallVectorImpl<SDValue> &InVals) const;
     SDValue 
     LowerIndirectCallReturn(SDValue Chain, SDValue InFlag,
                              SDValue DataAddr_Lo, SDValue DataAddr_Hi,
                             const SmallVectorImpl<ISD::InputArg> &Ins,
-                            DebugLoc dl, SelectionDAG &DAG,
+                            SDLoc dl, SelectionDAG &DAG,
                             SmallVectorImpl<SDValue> &InVals) const;
 
     // Call arguments
@@ -107,7 +107,7 @@ namespace llvm {
     LowerDirectCallArguments(SDValue ArgLabel, SDValue Chain, SDValue InFlag,
                              const SmallVectorImpl<ISD::OutputArg> &Outs,
                              const SmallVectorImpl<SDValue> &OutVals,
-                             DebugLoc dl, SelectionDAG &DAG) const;
+                             SDLoc dl, SelectionDAG &DAG) const;
 
     SDValue 
     LowerIndirectCallArguments(SDValue Chain, SDValue InFlag,
@@ -115,12 +115,12 @@ namespace llvm {
                                const SmallVectorImpl<ISD::OutputArg> &Outs,
                                const SmallVectorImpl<SDValue> &OutVals,
                                const SmallVectorImpl<ISD::InputArg> &Ins,
-                               DebugLoc dl, SelectionDAG &DAG) const;
+                               SDLoc dl, SelectionDAG &DAG) const;
 
     SDValue LowerBR_CC(SDValue Op, SelectionDAG &DAG) const;
     SDValue LowerSELECT_CC(SDValue Op, SelectionDAG &DAG) const;
     SDValue getPIC16Cmp(SDValue LHS, SDValue RHS, unsigned OrigCC, SDValue &CC,
-                        SelectionDAG &DAG, DebugLoc dl) const;
+                        SelectionDAG &DAG, SDLoc dl) const;
     virtual MachineBasicBlock *
       EmitInstrWithCustomInserter(MachineInstr *MI,
                                   MachineBasicBlock *MBB) const;
@@ -138,7 +138,7 @@ namespace llvm {
                          CallingConv::ID CallConv,
                          bool isVarArg,
                          const SmallVectorImpl<ISD::InputArg> &Ins,
-                         DebugLoc dl, SelectionDAG &DAG,
+                         SDLoc dl, SelectionDAG &DAG,
                          SmallVectorImpl<SDValue> &InVals) const;
 
     virtual SDValue
@@ -147,7 +147,7 @@ namespace llvm {
                 const SmallVectorImpl<ISD::OutputArg> &Outs,
                 const SmallVectorImpl<SDValue> &OutVals,
                 const SmallVectorImpl<ISD::InputArg> &Ins,
-                DebugLoc dl, SelectionDAG &DAG,
+                SDLoc dl, SelectionDAG &DAG,
                 SmallVectorImpl<SDValue> &InVals) const;
 
     virtual SDValue
@@ -155,7 +155,7 @@ namespace llvm {
                   CallingConv::ID CallConv, bool isVarArg,
                   const SmallVectorImpl<ISD::OutputArg> &Outs,
                   const SmallVectorImpl<SDValue> &OutVals,
-                  DebugLoc dl, SelectionDAG &DAG) const;
+                  SDLoc dl, SelectionDAG &DAG) const;
 
     SDValue ExpandStore(SDNode *N, SelectionDAG &DAG) const;
     SDValue ExpandLoad(SDNode *N, SelectionDAG &DAG) const;
@@ -173,7 +173,7 @@ namespace llvm {
     unsigned GetTmpOffsetForFI(unsigned FI, unsigned slot_size,
                                MachineFunction &MF) const;
     void ResetTmpOffsetMap(SelectionDAG &DAG) const;
-    void InitReservedFrameCount(const Function *F,
+    void InitReservedFrameCount(const Function &F,
                                 SelectionDAG &DAG) const;
 
     /// getFunctionAlignment - Return the Log2 alignment of this function.
@@ -183,7 +183,7 @@ namespace llvm {
     }
   protected:
     std::pair<const TargetRegisterClass*, uint8_t>
-    findRepresentativeClass(EVT VT) const;
+    findRepresentativeClass(PIC16TargetMachine &TM, EVT VT) const;
   private:
     // If the Node is a BUILD_PAIR representing a direct Address,
     // then this function will return true.
@@ -202,7 +202,7 @@ namespace llvm {
     // addresses need Banksel and Indirect addresses need to be loaded to
     // FSR first. Handle address specific cases here.
     void LegalizeAddress(SDValue Ptr, SelectionDAG &DAG, SDValue &Chain, 
-                         SDValue &NewPtr, unsigned &Offset, DebugLoc dl) const;
+                         SDValue &NewPtr, unsigned &Offset, SDLoc dl) const;
 
     // FrameIndex should be broken down into ExternalSymbol and FrameOffset. 
     void LegalizeFrameIndex(SDValue Op, SelectionDAG &DAG, SDValue &ES, 
@@ -211,14 +211,14 @@ namespace llvm {
     // For indirect calls data address of the callee frame need to be
     // extracted. This function fills the arguments DataAddr_Lo and 
     // DataAddr_Hi with the address of the callee frame.
-    void GetDataAddress(DebugLoc dl, SDValue Callee, SDValue &Chain,
+    void GetDataAddress(SDLoc dl, SDValue Callee, SDValue &Chain,
                         SDValue &DataAddr_Lo, SDValue &DataAddr_Hi,
                         SelectionDAG &DAG) const;
 
     // We can not have both operands of a binary operation in W.
     // This function is used to put one operand on stack and generate a load.
     SDValue ConvertToMemOperand(SDValue Op, SelectionDAG &DAG,
-                                DebugLoc dl) const; 
+                                SDLoc dl) const; 
 
     // This function checks if we need to put an operand of an operation on
     // stack and generate a load or not.
@@ -243,7 +243,7 @@ namespace llvm {
     // Make PIC16 Libcall.
     SDValue MakePIC16Libcall(PIC16ISD::PIC16Libcall Call, EVT RetVT, 
                              const SDValue *Ops, unsigned NumOps, bool isSigned,
-                             SelectionDAG &DAG, DebugLoc dl) const;
+                             SelectionDAG &DAG, SDLoc dl) const;
 
     // Check if operation has a direct load operand.
     inline bool isDirectLoad(const SDValue Op) const;

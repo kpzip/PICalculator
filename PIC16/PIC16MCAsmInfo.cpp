@@ -22,9 +22,9 @@ using namespace llvm;
 
 PIC16MCAsmInfo::PIC16MCAsmInfo(const Target &T, StringRef TT) {
   CommentString = ";";
-  GlobalPrefix = PAN::getTagName(PAN::PREFIX_SYMBOL);
+  PrivateGlobalPrefix = PAN::getTagName(PAN::PREFIX_SYMBOL);
   GlobalDirective = "\tglobal\t";
-  ExternDirective = "\textern\t";
+  //ExternDirective = "\textern\t";
 
   Data8bitsDirective = " db ";
   Data16bitsDirective = " dw ";
@@ -37,7 +37,7 @@ PIC16MCAsmInfo::PIC16MCAsmInfo(const Target &T, StringRef TT) {
   RomData8bitsDirective = " dw ";
   RomData16bitsDirective = " rom_di ";
   RomData32bitsDirective = " rom_dl ";
-  HasSetDirective = false;  
+  //HasSetDirective = false;
     
   // Set it to false because we weed to generate c file name and not bc file
   // name.

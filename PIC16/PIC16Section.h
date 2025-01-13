@@ -15,7 +15,7 @@
 #define LLVM_PIC16SECTION_H
 
 #include "llvm/MC/MCSection.h"
-#include "llvm/GlobalVariable.h"
+#include "llvm/IR/GlobalVariable.h"
 #include <vector>
 
 namespace llvm {
@@ -43,8 +43,14 @@ namespace llvm {
     /// Total size of all data objects contained here.
     unsigned Size;
     
+    // PIC16Section(StringRef name, SectionKind K, StringRef addr, int color)
+    //   : MCSection(SV_PIC16, K), Name(name), Address(addr),
+    //     Color(color), Size(0) {
+    // }
+    
+    // HACK
     PIC16Section(StringRef name, SectionKind K, StringRef addr, int color)
-      : MCSection(SV_PIC16, K), Name(name), Address(addr),
+      : MCSection(SV_PIC16, name, K.isText(), false, 0), Name(name), Address(addr),
         Color(color), Size(0) {
     }
     
@@ -85,8 +91,11 @@ namespace llvm {
     
     /// Override this as PIC16 has its own way of printing switching
     /// to a section.
-    virtual void PrintSwitchToSection(const MCAsmInfo &MAI,
-                                      raw_ostream &OS) const;
+    virtual void printSwitchToSection(const MCAsmInfo &MAI, const Triple &T,
+                                      raw_ostream &OS, uint32_t Subsection) const;
+
+    virtual bool useCodeAlign() const { return false; }
+    virtual bool isVirtualSection() const { return false; }
 
     static bool classof(const MCSection *S) {
       return S->getVariant() == SV_PIC16;

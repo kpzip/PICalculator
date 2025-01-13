@@ -94,22 +94,22 @@ namespace llvm {
                                        int Color = -1) const;
 
     /// Allocate Un-initialized data to a standard UDATA section. 
-    const MCSection *allocateUDATA(const GlobalVariable *GV) const;
+    MCSection *allocateUDATA(const GlobalVariable *GV) const;
 
     /// Allocate Initialized data to a standard IDATA section. 
-    const MCSection *allocateIDATA(const GlobalVariable *GV) const;
+    MCSection *allocateIDATA(const GlobalVariable *GV) const;
 
     /// Allocate ROM data to the standard ROMDATA section. 
-    const MCSection *allocateROMDATA(const GlobalVariable *GV) const;
+    MCSection *allocateROMDATA(const GlobalVariable *GV) const;
 
     /// Allocate an AUTO variable to an AUTO section.
-    const MCSection *allocateAUTO(const GlobalVariable *GV) const;
+    MCSection *allocateAUTO(const GlobalVariable *GV) const;
     
     /// Allocate DATA in user specified section.
-    const MCSection *allocateInGivenSection(const GlobalVariable *GV) const;
+    MCSection *allocateInGivenSection(const GlobalVariable *GV) const;
 
     /// Allocate DATA at user specified address.
-    const MCSection *allocateAtGivenAddress(const GlobalVariable *GV,
+    MCSection *allocateAtGivenAddress(const GlobalVariable *GV,
                                             const std::string &Addr) const;
 
     /// Allocate a shared variable to SHARED section.
@@ -125,14 +125,14 @@ namespace llvm {
     PIC16Section *findPIC16Section(const std::string &Name) const;
 
     /// Override section allocations for user specified sections.
-    virtual const MCSection *
-    getExplicitSectionGlobal(const GlobalValue *GV, SectionKind Kind, 
-                             Mangler *Mang, const TargetMachine &TM) const;
+    virtual MCSection *
+    getExplicitSectionGlobal(const GlobalObject *GV, SectionKind Kind,
+                             /* Mangler *Mang, */ const TargetMachine &TM) const;
     
     /// Select sections for Data and Auto variables(globals).
-    virtual const MCSection *SelectSectionForGlobal(const GlobalValue *GV,
+    virtual MCSection *SelectSectionForGlobal(const GlobalObject *GV,
                                                     SectionKind Kind,
-                                                    Mangler *Mang,
+                                                    /* Mangler *Mang, */
                                                     const TargetMachine&) const;
 
 

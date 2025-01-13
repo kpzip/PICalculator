@@ -14,13 +14,13 @@
 #ifndef PIC16SELECTIONDAGINFO_H
 #define PIC16SELECTIONDAGINFO_H
 
-#include "llvm/Target/TargetSelectionDAGInfo.h"
+#include "llvm/CodeGen/SelectionDAGTargetInfo.h"
 
 namespace llvm {
 
 class PIC16TargetMachine;
 
-class PIC16SelectionDAGInfo : public TargetSelectionDAGInfo {
+class PIC16SelectionDAGInfo : public SelectionDAGTargetInfo {
 public:
   explicit PIC16SelectionDAGInfo(const PIC16TargetMachine &TM);
   ~PIC16SelectionDAGInfo();

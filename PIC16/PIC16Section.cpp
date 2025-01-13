@@ -60,9 +60,9 @@ PIC16Section *PIC16Section::Create(StringRef Name, PIC16SectionType Ty,
 
   // Copy strings into context allocated memory so they get free'd when the
   // context is destroyed.
-  char *NameCopy = static_cast<char*>(Ctx.Allocate(Name.size(), 1));
+  char *NameCopy = static_cast<char*>(Ctx.allocate(Name.size(), 1));
   memcpy(NameCopy, Name.data(), Name.size());
-  char *AddressCopy = static_cast<char*>(Ctx.Allocate(Address.size(), 1));
+  char *AddressCopy = static_cast<char*>(Ctx.allocate(Address.size(), 1));
   memcpy(AddressCopy, Address.data(), Address.size());
 
   // Create the Section.
@@ -74,13 +74,13 @@ PIC16Section *PIC16Section::Create(StringRef Name, PIC16SectionType Ty,
 }
 
 // A generic way to print all types of sections.
-void PIC16Section::PrintSwitchToSection(const MCAsmInfo &MAI,
-                                          raw_ostream &OS) const {
+void PIC16Section::printSwitchToSection(const MCAsmInfo &MAI, const Triple &T,
+                                        raw_ostream &OS, uint32_t Subsection) const {
  
   // If the section is overlaid(i.e. it has a color), print overlay name for 
   // it. Otherwise print its normal name.
   if (Color != -1)
-    OS << PAN::getOverlayName(getName(), Color) << '\t';
+    OS << PAN::getOverlayName(getName().str(), Color) << '\t';
   else
     OS << getName() << '\t';
 

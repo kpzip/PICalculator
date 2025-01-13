@@ -10,8 +10,8 @@
 #include "PIC16TargetObjectFile.h"
 #include "PIC16TargetMachine.h"
 #include "PIC16Section.h"
-#include "llvm/DerivedTypes.h"
-#include "llvm/Module.h"
+#include "llvm/IR/DerivedTypes.h"
+#include "llvm/IR/Module.h"
 #include "llvm/MC/MCSection.h"
 #include "llvm/MC/MCContext.h"
 #include "llvm/Support/raw_ostream.h"
@@ -130,16 +130,15 @@ void PIC16TargetObjectFile::Initialize(MCContext &Ctx, const TargetMachine &tm){
 
 /// allocateUDATA - Allocate a un-initialized global to an existing or new UDATA
 /// section and return that section.
-const MCSection *
+MCSection *
 PIC16TargetObjectFile::allocateUDATA(const GlobalVariable *GV) const {
   assert(GV->hasInitializer() && "This global doesn't need space");
   const Constant *C = GV->getInitializer();
   assert(C->isNullValue() && "Unitialized globals has non-zero initializer");
 
   // Find how much space this global needs.
-  const TargetData *TD = TM->getTargetData();
-  const Type *Ty = C->getType(); 
-  unsigned ValSize = TD->getTypeAllocSize(Ty);
+  Type *Ty = C->getType();
+  unsigned ValSize = TM->createDataLayout().getTypeAllocSize(Ty);
  
   // Go through all UDATA Sections and assign this variable
   // to the first available section having enough space.
@@ -165,7 +164,7 @@ PIC16TargetObjectFile::allocateUDATA(const GlobalVariable *GV) const {
 
 /// allocateIDATA - allocate an initialized global into an existing
 /// or new section and return that section.
-const MCSection *
+MCSection *
 PIC16TargetObjectFile::allocateIDATA(const GlobalVariable *GV) const{
   assert(GV->hasInitializer() && "This global doesn't need space");
   const Constant *C = GV->getInitializer();
@@ -174,9 +173,8 @@ PIC16TargetObjectFile::allocateIDATA(const GlobalVariable *GV) const{
          "can allocate initialized RAM data only");
 
   // Find how much space this global needs.
-  const TargetData *TD = TM->getTargetData();
-  const Type *Ty = C->getType(); 
-  unsigned ValSize = TD->getTypeAllocSize(Ty);
+  Type *Ty = C->getType();
+  unsigned ValSize = TM->createDataLayout().getTypeAllocSize(Ty);
  
   // Go through all IDATA Sections and assign this variable
   // to the first available section having enough space.
@@ -201,7 +199,7 @@ PIC16TargetObjectFile::allocateIDATA(const GlobalVariable *GV) const{
 } 
 
 // Allocate a program memory variable into ROMDATA section.
-const MCSection *
+MCSection *
 PIC16TargetObjectFile::allocateROMDATA(const GlobalVariable *GV) const {
 
   std::string name = PAN::getRomdataSectionName();
@@ -213,10 +211,10 @@ PIC16TargetObjectFile::allocateROMDATA(const GlobalVariable *GV) const {
 
 // Get the section for an automatic variable of a function.
 // For PIC16 they are globals only with mangled names.
-const MCSection *
+MCSection *
 PIC16TargetObjectFile::allocateAUTO(const GlobalVariable *GV) const {
 
-  const std::string name = PAN::getSectionNameForSym(GV->getName());
+  const std::string name = PAN::getSectionNameForSym(GV->getName().str());
   PIC16Section *S = getPIC16AutoSection(name.c_str());
 
   S->Items.push_back(GV);
@@ -226,22 +224,22 @@ PIC16TargetObjectFile::allocateAUTO(const GlobalVariable *GV) const {
 
 // Override default implementation to put the true globals into
 // multiple data sections if required.
-const MCSection *
-PIC16TargetObjectFile::SelectSectionForGlobal(const GlobalValue *GV1,
+MCSection *
+PIC16TargetObjectFile::SelectSectionForGlobal(const GlobalObject *GV1,
                                               SectionKind Kind,
-                                              Mangler *Mang,
+                                              /* Mangler *Mang, */
                                               const TargetMachine &TM) const {
   // We select the section based on the initializer here, so it really
   // has to be a GlobalVariable.
-  const GlobalVariable *GV = dyn_cast<GlobalVariable>(GV1); 
+  const GlobalVariable *GV = dyn_cast<GlobalVariable>(GV1);
   if (!GV)
-    return TargetLoweringObjectFile::SelectSectionForGlobal(GV1, Kind, Mang,TM);
+    return TargetLoweringObjectFile::SelectSectionForGlobal(GV1, Kind,TM);
 
   assert(GV->hasInitializer() && "A def without initializer?");
 
   // First, if this is an automatic variable for a function, get the section
   // name for it and return.
-  std::string name = GV->getName();
+  std::string name = GV->getName().str();
   if (PAN::isLocalName(name))
     return allocateAUTO(GV);
 
@@ -259,7 +257,7 @@ PIC16TargetObjectFile::SelectSectionForGlobal(const GlobalValue *GV1,
     return allocateROMDATA(GV);
 
   // Else let the default implementation take care of it.
-  return TargetLoweringObjectFile::SelectSectionForGlobal(GV, Kind, Mang,TM);
+  return TargetLoweringObjectFile::SelectSectionForGlobal(GV, Kind, TM);
 }
 
 
@@ -267,30 +265,32 @@ PIC16TargetObjectFile::SelectSectionForGlobal(const GlobalValue *GV1,
 
 /// getExplicitSectionGlobal - Allow the target to completely override
 /// section assignment of a global.
-const MCSection *PIC16TargetObjectFile::
-getExplicitSectionGlobal(const GlobalValue *GV, SectionKind Kind, 
-                         Mangler *Mang, const TargetMachine &TM) const {
+MCSection *PIC16TargetObjectFile::
+getExplicitSectionGlobal(const GlobalObject *GV, SectionKind Kind,
+                         /* Mangler *Mang, */ const TargetMachine &TM) const {
   assert(GV->hasSection());
   
   if (const GlobalVariable *GVar = cast<GlobalVariable>(GV)) {
-    std::string SectName = GVar->getSection();
+    std::string SectName = GVar->getSection().str();
     // If address for a variable is specified, get the address and create
     // section.
     // FIXME: move this attribute checking in PAN.
     std::string AddrStr = "Address=";
     if (SectName.compare(0, AddrStr.length(), AddrStr) == 0) {
       std::string SectAddr = SectName.substr(AddrStr.length());
-      if (SectAddr.compare("NEAR") == 0)
-        return allocateSHARED(GVar, Mang);
-      else
-        return allocateAtGivenAddress(GVar, SectAddr);
+//      if (SectAddr.compare("NEAR") == 0)
+//        return allocateSHARED(GVar, Mang);
+//      else
+//        return allocateAtGivenAddress(GVar, SectAddr);
+      return allocateAtGivenAddress(GVar, SectAddr);
+      // HACK
     }
      
     // Create the section specified with section attribute. 
     return allocateInGivenSection(GVar);
   }
 
-  return getPIC16DataSection(GV->getSection().c_str(), UDATA);
+  return getPIC16DataSection(GV->getSection().str().c_str(), UDATA);
 }
 
 const MCSection *
@@ -301,7 +301,7 @@ PIC16TargetObjectFile::allocateSHARED(const GlobalVariable *GV,
   if (!GV->getInitializer()->isNullValue()) {
     // FIXME: Generate a warning in this case that near qualifier will be 
     // ignored.
-    return SelectSectionForGlobal(GV, SectionKind::getDataRel(), Mang, *TM); 
+    return SelectSectionForGlobal(GV, SectionKind::getData(), *TM);
   } 
   std::string Name = PAN::getSharedUDataSectionName(); 
 
@@ -331,7 +331,7 @@ PIC16TargetObjectFile::SectionForFrame(const std::string &FnName) const {
 }
 
 // Allocate a global var in existing or new section of given name.
-const MCSection *
+MCSection *
 PIC16TargetObjectFile::allocateInGivenSection(const GlobalVariable *GV) const {
   // Determine the type of section that we need to create.
   PIC16SectionType SecTy;
@@ -349,13 +349,13 @@ PIC16TargetObjectFile::allocateInGivenSection(const GlobalVariable *GV) const {
   else
     llvm_unreachable ("Could not determine section type for global");
 
-  PIC16Section *S = getPIC16UserSection(GV->getSection().c_str(), SecTy);
+  PIC16Section *S = getPIC16UserSection(GV->getSection().str().c_str(), SecTy);
   S->Items.push_back(GV);
   return S;
 }
 
 // Allocate a global var in a new absolute sections at given address.
-const MCSection *
+MCSection *
 PIC16TargetObjectFile::allocateAtGivenAddress(const GlobalVariable *GV,
                                                const std::string &Addr) const {
   // Determine the type of section that we need to create.
@@ -374,7 +374,7 @@ PIC16TargetObjectFile::allocateAtGivenAddress(const GlobalVariable *GV,
   else
     llvm_unreachable ("Could not determine section type for global");
 
-  std::string Prefix = GV->getNameStr() + "." + Addr + ".";
+  std::string Prefix = GV->getName().str() + "." + Addr + ".";
   std::string SName = PAN::getUserSectionName(Prefix);
   PIC16Section *S = getPIC16UserSection(SName.c_str(), SecTy, Addr.c_str());
   S->Items.push_back(GV);

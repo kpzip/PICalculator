@@ -16,13 +16,15 @@
 
 #include "PIC16.h"
 #include "PIC16RegisterInfo.h"
-#include "llvm/Target/TargetInstrInfo.h"
+#include "llvm/CodeGen/TargetInstrInfo.h"
+
+#define GET_INSTRINFO_HEADER
+#define GET_INSTRINFO_ENUM
+#include "PIC16GenInstrInfo.inc"
 
 namespace llvm {
 
-
-class PIC16InstrInfo : public TargetInstrInfoImpl 
-{
+class PIC16InstrInfo : public PIC16GenInstrInfo {
   PIC16TargetMachine &TM;
   const PIC16RegisterInfo RegInfo;
 public:
