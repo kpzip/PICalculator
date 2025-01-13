@@ -27,6 +27,23 @@ add_llvm_target(PIC16CodeGen
   PIC16TargetMachine.cpp
   PIC16TargetObjectFile.cpp
   PIC16SelectionDAGInfo.cpp
+  
+  DEPENDS
+  intrinsics_gen
+  
+  LINK_COMPONENTS
+  PIC16Info
+  AsmPrinter
+  CodeGen
+  CodeGenTypes
+  Core
+  MC
+  SelectionDAG
+  Support
+  Target
+  
+  ADD_TO_COMPONENT
+  PIC16
   )
 
 add_subdirectory(TargetInfo)

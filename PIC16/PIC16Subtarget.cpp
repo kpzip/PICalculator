@@ -18,6 +18,11 @@
 
 using namespace llvm;
 
+#define GET_SUBTARGETINFO_ENUM
+#define GET_SUBTARGETINFO_TARGET_DESC
+#define GET_SUBTARGETINFO_CTOR
+#include "PIC16GenSubtargetInfo.inc"
+
 PIC16Subtarget::PIC16Subtarget(const Triple &TT, const std::string &CPU,
         const std::string &FS, const PIC16TargetMachine &TM, bool Cooper)
   : PIC16GenSubtargetInfo(TT, CPU, CPU, FS),
