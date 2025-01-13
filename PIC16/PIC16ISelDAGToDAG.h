@@ -54,7 +54,7 @@ private:
 
   // Match direct address complex pattern.
   //bool SelectDirectAddr(SDNode *Op, SDValue N, SDValue &Address);
-  bool SelectDirectAddr(SDValue &N, SDValue &Address); //HACK
+  bool SelectDirectAddr(SDValue &N, SDValue &Address); // HACK
 
 };
 
@@ -65,6 +65,8 @@ public:
       : SelectionDAGISelLegacy(
             ID, std::make_unique<PIC16DAGToDAGISel>(TM, OptLevel)) {}
 };
+
+char PIC16DAGToDAGISelLegacy::ID = 0;
 
 }
 

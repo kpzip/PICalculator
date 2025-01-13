@@ -21,6 +21,7 @@ using namespace llvm;
 #define GET_SUBTARGETINFO_ENUM
 #define GET_SUBTARGETINFO_TARGET_DESC
 #define GET_SUBTARGETINFO_CTOR
+#define GET_SUBTARGETINFO_MC_DESC
 #include "PIC16GenSubtargetInfo.inc"
 
 PIC16Subtarget::PIC16Subtarget(const Triple &TT, const std::string &CPU,

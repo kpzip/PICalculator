@@ -23,6 +23,9 @@
 #include "llvm/Support/ErrorHandling.h"
 #include <cstdio>
 
+#define GET_INSTRINFO_CTOR_DTOR
+#define GET_INSTRINFO_MC_DESC
+#include "PIC16GenInstrInfo.inc"
 
 using namespace llvm;
 

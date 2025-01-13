@@ -26,7 +26,7 @@ static const char *PIC16DataLayout =
 extern "C" void LLVMInitializePIC16Target() {
   // Register the target. Curretnly the codegen works for
   // enhanced pic16 mid-range.
-  RegisterTargetMachine<PIC16TargetMachine> X(ThePIC16Target);
+  RegisterTargetMachine<PIC16TargetMachine> X(getThePIC16Target());
   //RegisterAsmInfo<PIC16MCAsmInfo> A(ThePIC16Target);
 }
 

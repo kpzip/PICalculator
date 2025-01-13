@@ -20,6 +20,7 @@
 #include "PIC16SelectionDAGInfo.h"
 #include "PIC16RegisterInfo.h"
 #include "PIC16Subtarget.h"
+#include "TargetInfo/PIC16TargetInfo.h"
 #include "llvm/IR/DataLayout.h"
 #include "llvm/CodeGen/MachineFrameInfo.h"
 #include "llvm/Target/TargetMachine.h"
@@ -83,10 +84,10 @@ public:
     return getTM<PIC16TargetMachine>();
   }
 
-  void addIRPasses() override;
-  bool addInstSelector() override;
-  void addPreSched2() override;
-  void addPreEmitPass() override;
+  virtual void addIRPasses() {}
+  virtual bool addInstSelector() override;
+  virtual void addPreSched2() {}
+  virtual void addPreEmitPass() override;
 };
 
 } // end namespace llvm

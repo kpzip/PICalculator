@@ -28,11 +28,11 @@ namespace llvm {
   class TargetInstrInfo;
 
 class PIC16RegisterInfo : public PIC16GenRegisterInfo {
-  private:
-    const TargetInstrInfo &TII;
-    const PIC16Subtarget &ST;
+private:
+	const TargetInstrInfo &TII;
+	const PIC16Subtarget &ST;
   
-  public:
+public:
     PIC16RegisterInfo(const TargetInstrInfo &tii, 
                       const PIC16Subtarget &st);
 
@@ -42,13 +42,13 @@ class PIC16RegisterInfo : public PIC16GenRegisterInfo {
   //------------------------------------------------------
 
   // PIC16 callee saved registers
-  const MCPhysReg *getCalleeSavedRegs(const MachineFunction *MF = 0) const;
+  const MCPhysReg *getCalleeSavedRegs(const MachineFunction *MF = 0) const override;
 
-  virtual BitVector getReservedRegs(const MachineFunction &MF) const;
+  BitVector getReservedRegs(const MachineFunction &MF) const override;
   //virtual bool hasFP(const MachineFunction &MF) const;
 
-  virtual bool eliminateFrameIndex(MachineBasicBlock::iterator MI,
-                                   int SPAdj, unsigned int balls, RegScavenger *RS=NULL) const;
+  bool eliminateFrameIndex(MachineBasicBlock::iterator MI,
+                               int SPAdj, unsigned balls, RegScavenger *RS = nullptr) const override;
                                    
   // void eliminateCallFramePseudoInstr(MachineFunction &MF,
   //                                    MachineBasicBlock &MBB,
@@ -56,10 +56,9 @@ class PIC16RegisterInfo : public PIC16GenRegisterInfo {
 
   //virtual void emitPrologue(MachineFunction &MF) const;
   //virtual void emitEpilogue(MachineFunction &MF, MachineBasicBlock &MBB) const;
-  virtual int getDwarfRegNum(unsigned RegNum, bool isEH) const;
-  virtual Register getFrameRegister(const MachineFunction &MF) const;
-  virtual unsigned getRARegister() const;
-
+//  int getDwarfRegNum(unsigned RegNum, bool isEH) const override;
+  Register getFrameRegister(const MachineFunction &MF) const override;
+//  unsigned getRARegister() const override;
 };
 
 /// Utilities for creating function call frames.

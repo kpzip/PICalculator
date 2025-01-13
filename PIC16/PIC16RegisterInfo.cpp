@@ -21,6 +21,7 @@
 #include "llvm/CodeGen/MachineFunction.h"
 
 #define GET_REGINFO_TARGET_DESC
+#define GET_REGINFO_MC_DESC
 #include "PIC16GenRegisterInfo.h.inc"
 
 #define GET_INSTRINFO_ENUM
@@ -35,8 +36,7 @@ PIC16RegisterInfo::PIC16RegisterInfo(const TargetInstrInfo &tii,
     ST(st) {}
 
 /// PIC16 Callee Saved Registers
-const MCPhysReg*
-getCalleeSavedRegs(const MachineFunction *MF) {
+const MCPhysReg* PIC16RegisterInfo::getCalleeSavedRegs(const MachineFunction *MF) const {
   static const MCPhysReg CSR_SaveList[] = { 0 }; // HACK
   return CSR_SaveList;
 }
@@ -51,7 +51,7 @@ bool PIC16FrameLowering::hasFP(const MachineFunction &MF) const {
 }
 
 bool PIC16RegisterInfo::
-eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj, unsigned int balls,
+eliminateFrameIndex(MachineBasicBlock::iterator II, int SPAdj, unsigned balls,
                     RegScavenger *RS) const
 { return false; /* NOT YET IMPLEMENTED */ }
 
@@ -61,21 +61,21 @@ void PIC16FrameLowering::emitPrologue(MachineFunction &MF, MachineBasicBlock &MB
 void PIC16FrameLowering::emitEpilogue(MachineFunction &MF, MachineBasicBlock &MBB) const
 {    /* NOT YET IMPLEMENTED */  }
 
-int PIC16RegisterInfo::
-getDwarfRegNum(unsigned RegNum, bool isEH) const {
-  llvm_unreachable("Not keeping track of debug information yet!!");
-  return -1;
-}
+//int PIC16RegisterInfo::
+//getDwarfRegNum(unsigned RegNum, bool isEH) const {
+//  llvm_unreachable("Not keeping track of debug information yet!!");
+//  return -1;
+//}
 
 Register PIC16RegisterInfo::getFrameRegister(const MachineFunction &MF) const {
   llvm_unreachable("PIC16 Does not have any frame register");
   return 0;
 }
 
-unsigned PIC16RegisterInfo::getRARegister() const {
-  llvm_unreachable("PIC16 Does not have any return address register");
-  return 0;
-}
+//unsigned PIC16RegisterInfo::getRARegister() const {
+//  llvm_unreachable("PIC16 Does not have any return address register");
+//  return 0;
+//}
 
 // This function eliminates ADJCALLSTACKDOWN,
 // ADJCALLSTACKUP pseudo instructions
@@ -88,3 +88,5 @@ eliminateCallFramePseudoInstr(MachineFunction &MF, MachineBasicBlock &MBB,
   return 0;
 }
 
+PIC16FrameLowering::PIC16FrameLowering()
+    : TargetFrameLowering(TargetFrameLowering::StackGrowsUp, Align(8), 0) {}
