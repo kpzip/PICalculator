@@ -11,6 +11,8 @@
 //
 //===----------------------------------------------------------------------===//
 
+#define DEBUG_TYPE "pic16-subtarget"
+
 #include "PIC16Subtarget.h"
 
 #include "llvm/Target/TargetMachine.h"
