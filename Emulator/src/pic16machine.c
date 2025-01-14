@@ -9,6 +9,9 @@
 
 // addr Low 9 bits are used
 uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
+
+	static uint8_t ZERO = 0;
+
 	assert(addr <= 0x1FF && "invalid file address");
 	GPRegisters* gpr = &machine->gpr;
 	IORegisters* io = &machine->io;
@@ -18,7 +21,7 @@ uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
 	uint8_t offset = addr & 0b01111111;
 	if (offset == 0) {
 		uint16_t new_addr = io->FSR;
-		if (new_addr & 0b01111111 == 0) {
+		if ((new_addr & 0b01111111) == 0) {
 			return &ZERO;
 		}
 		new_addr |= ((uint16_t)(io->STATUS & (1 << 7))) << 1;
@@ -73,7 +76,7 @@ uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
 				offset == 0x0F) {
 				return &ZERO;
 			}
-			return io + offset + 32;
+			return io_ptr + offset + 32;
 		} else if (offset <= 0x6F) {
 			return gpr->bank3 + (offset - 0x10);
 		} else {
