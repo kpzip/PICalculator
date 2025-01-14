@@ -27,7 +27,7 @@ extern "C" void LLVMInitializePIC16Target() {
   // Register the target. Curretnly the codegen works for
   // enhanced pic16 mid-range.
   RegisterTargetMachine<PIC16TargetMachine> X(getThePIC16Target());
-  //RegisterAsmInfo<PIC16MCAsmInfo> A(ThePIC16Target);
+  //RegisterAsmInfo<PIC16MCAsmInfo> A(getThePIC16Target());
 }
 
 static Reloc::Model getEffectiveRelocModel(std::optional<Reloc::Model> RM) {
@@ -49,7 +49,11 @@ PIC16TargetMachine::PIC16TargetMachine(const Target &T, const Triple &TT,
   DataLayout(PIC16DataLayout),
   InstrInfo(*this), TLInfo(*this), TSInfo(*this),
   //FrameInfo(TargetFrameInfo::StackGrowsUp, 8, 0) { } //HACK!!!
-  FrameInfo() {}
+  FrameInfo() {
+
+  // Maybe do something like this->TLOF = std::make_unique<AVRTargetObjectFile>();
+  // initAsmInfo();
+}
 
 
 bool PIC16PassConfig::addInstSelector() {
