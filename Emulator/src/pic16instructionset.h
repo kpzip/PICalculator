@@ -82,5 +82,7 @@ public:
 
 PIC16InstructionType fromString(std::string_view str);
 
+PIC16InstructionType fromOpcode(uint16_t opcode);
+
 
 #endif /* SRC_PIC16INSTRUCTIONSET_H_ */
