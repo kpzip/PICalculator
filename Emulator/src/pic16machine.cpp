@@ -22,7 +22,7 @@ uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
 	if (offset == 0) {
 		uint16_t new_addr = io->FSR;
 		if ((new_addr & 0b01111111) == 0) {
-			return &ZERO;
+			return &machine->zero;
 		}
 		new_addr |= ((uint16_t)(io->STATUS & (1 << 7))) << 1;
 		return getRegFile(machine, new_addr);
@@ -56,7 +56,7 @@ uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
 				offset == 0x0D ||
 				offset == 0x0E ||
 				offset == 0x0F) {
-				return &ZERO;
+				return &machine->zero;
 			}
 			return io_ptr + offset;
 		} else if (offset <= 0x6F) {
@@ -74,7 +74,7 @@ uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
 				offset == 0x0D ||
 				offset == 0x0E ||
 				offset == 0x0F) {
-				return &ZERO;
+				return &machine->zero;
 			}
 			return io_ptr + offset + 32;
 		} else if (offset <= 0x6F) {
@@ -83,7 +83,7 @@ uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
 			return gpr->bank0 + offset;
 		}
 	}
-	return &ZERO;
+	return &machine->zero;
 }
 
 
