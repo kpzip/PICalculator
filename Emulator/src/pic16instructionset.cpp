@@ -62,10 +62,10 @@ PIC16InstructionType fromOpcode(uint16_t opcode) {
 
 PIC16Instruction::PIC16Instruction(uint16_t opcode)
 	: type(fromOpcode(opcode)),
-	file_address(0b1111111 & opcode),
-	bit_address(0b111 & (opcode >> 7)),
-	literal(opcode), // TODO fix for CALL and GOTO instructions
-	dest_select(0b1 & (opcode >> 7))
+	file_address(0b0111'1111 & opcode),
+	bit_address(0b0111 & (opcode >> 7)),
+	literal(0b1111'1111 & opcode), // TODO fix for CALL and GOTO instructions
+	dest_select(0b0001 & (opcode >> 7))
 	{}
 
 
