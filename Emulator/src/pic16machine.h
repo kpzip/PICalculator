@@ -9,6 +9,7 @@
 #define SRC_PIC16MACHINE_H_
 
 #include <stdint.h>
+#define PROGRAM_MEMORY_SIZE 4000
 
 typedef struct {
 	// BANK 0
@@ -91,8 +92,24 @@ public:
 	IORegisters io;
 	GPRegisters gpr;
 	CPURegisters cpur;
+	uint16_t *prgm_memory;
+	size_t prgm_memory_size;
 
-	uint8_t *getRegFile(uint16_t addr);
+	virtual uint8_t *getRegFile(uint16_t addr);
+	virtual ~PIC16Machine() {
+		free(prgm_memory);
+	}
+
+	PIC16Machine()
+	: zero(0),
+	stack{0},
+	SP(0),
+	io({}),
+	gpr({}),
+	cpur({}),
+	prgm_memory((uint16_t*)malloc(sizeof(uint16_t) * PROGRAM_MEMORY_SIZE)),
+	prgm_memory_size(PROGRAM_MEMORY_SIZE)
+	{}
 
 };
 
