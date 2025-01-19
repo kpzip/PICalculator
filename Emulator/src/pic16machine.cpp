@@ -8,9 +8,10 @@
 #include "pic16machine.h"
 
 // addr Low 9 bits are used
-uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
+uint8_t *PIC16Machine::getRegFile(uint16_t addr) {
 
 	static uint8_t ZERO = 0;
+	PIC16Machine *machine = this;
 
 	assert(addr <= 0x1FF && "invalid file address");
 	GPRegisters* gpr = &machine->gpr;
@@ -25,7 +26,7 @@ uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr) {
 			return &machine->zero;
 		}
 		new_addr |= ((uint16_t)(io->STATUS & (1 << 7))) << 1;
-		return getRegFile(machine, new_addr);
+		return machine->getRegFile(new_addr);
 	} else if (bank == 0) {
 		if (offset < 0x20) {
 			return io_ptr + offset;
