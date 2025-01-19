@@ -83,7 +83,8 @@ typedef struct {
 } CPURegisters;
 
 
-typedef struct {
+class PIC16Machine {
+public:
 	uint8_t zero;
 	uint16_t stack[8];
 	uint8_t SP;
@@ -91,8 +92,10 @@ typedef struct {
 	GPRegisters gpr;
 	CPURegisters cpur;
 
-} PIC16Machine;
+	uint8_t *getRegFile(uint16_t addr);
 
-uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr);
+};
+
+
 
 #endif /* SRC_PIC16MACHINE_H_ */
