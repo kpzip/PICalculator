@@ -12,6 +12,10 @@
 #include <stdint.h>
 
 typedef enum {
+
+	// 0 is NOP
+	NOP,
+
 	// Byte oriented file register operations
 	ADDWF,
 	ANDWF,
@@ -25,7 +29,6 @@ typedef enum {
 	IORWF,
 	MOVF,
 	MOVWF,
-	NOP,
 	RLF,
 	RRF,
 	SUBWF,
