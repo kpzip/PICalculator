@@ -91,8 +91,6 @@ typedef struct {
 
 } PIC16Machine;
 
-static const uint8_t ZERO = 0;
-
 uint8_t *getRegFile(PIC16Machine* machine, uint16_t addr);
 
 #endif /* SRC_PIC16MACHINE_H_ */
