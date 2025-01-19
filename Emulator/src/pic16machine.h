@@ -4,14 +4,15 @@
  *  Created on: Jan 13, 2025
  *      Author: kpzip
  */
-#include <stdint.h>
 
 #ifndef SRC_PIC16MACHINE_H_
 #define SRC_PIC16MACHINE_H_
 
+#include <stdint.h>
+
 typedef struct {
 	// BANK 0
-	const uint8_t INDF[1];
+	const uint8_t INDF[1] = { 0 };
 	uint8_t TMR0;
 	uint8_t PCL;
 	uint8_t STATUS;
@@ -45,26 +46,26 @@ typedef struct {
 	uint8_t ADCON0;
 
 	// BANK 1
-	const uint8_t PADDING1[1];
+	const uint8_t PADDING1[1] = { 0 };
 	uint8_t OPTION;
-	const uint8_t PADDING2[3];
+	const uint8_t PADDING2[3] = { 0 };
 	uint8_t TRISA;
 	uint8_t TRISB;
 	uint8_t TRISC;
 	uint8_t TRISD;
 	uint8_t TRISE;
-	const uint8_t PADDING3[2];
+	const uint8_t PADDING3[2] = { 0 };
 	uint8_t PIE1;
 	uint8_t PIE2;
 	uint8_t PCON;
-	const uint8_t PADDING4[3];
+	const uint8_t PADDING4[3] = { 0 };
 	uint8_t PR2;
 	uint8_t SSPADD;
 	uint8_t SSPSTAT;
-	const uint8_t PADDING5[3];
+	const uint8_t PADDING5[3] = { 0 };
 	uint8_t TXSTA;
 	uint8_t SPBRG;
-	const uint8_t PADDING6[5];
+	const uint8_t PADDING6[5] = { 0 };
 	uint8_t ADCON1;
 } IORegisters;
 
@@ -83,6 +84,7 @@ typedef struct {
 
 
 typedef struct {
+	uint8_t zero;
 	uint16_t stack[8];
 	uint8_t SP;
 	IORegisters io;
