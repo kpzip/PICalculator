@@ -6,6 +6,11 @@
  */
 #include "pic16instructionset.h"
 
+#define INSTR_MATCH(opcode, opcode_base, bitmask, instruction_type) \
+	if ((opcode & (~bitmask)) == opcode_base) {\
+		return instruction_type;\
+	}
+
 PIC16InstructionType fromString(std::string_view str) {
 	// TODO
 	return NOP;
