@@ -60,7 +60,8 @@ private:
 	PIC16InstructionType type;
 	uint8_t file_address;
 	uint8_t bit_address;
-	uint8_t literal;
+	uint16_t literal;
+	// false = store in W; true = store in f;
 	bool dest_select;
 public:
 	PIC16Instruction(PIC16InstructionType t)
@@ -68,14 +69,15 @@ public:
 	  file_address(0),
 	  bit_address(0),
 	  literal(0),
-	  dest_select(false)
+	  dest_select(true)
 	{}
 
-	static PIC16InstructionType fromString(std::string_view str) const;
+	PIC16Instruction(uint16_t opcode);
+
 
 };
 
-
+PIC16InstructionType fromString(std::string_view str);
 
 
 #endif /* SRC_PIC16INSTRUCTIONSET_H_ */
