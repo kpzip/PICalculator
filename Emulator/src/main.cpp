@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "pic16machine.h"
+#include "pic16instructionset.h"
 
 int main() {
 
