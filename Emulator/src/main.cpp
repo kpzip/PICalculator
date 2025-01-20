@@ -5,14 +5,15 @@
 
 #include "pic16machine.h"
 #include "pic16instructionset.h"
+#include "C74.h"
 
 int main() {
 
-	PIC16Machine *pic = new PIC16Machine();
+	PIC16C74 *pic = new PIC16C74();
 
-	pic->io.PORTB = 0xAA;
-	pic->io.FSR = 0x06;
-	pic->io.STATUS |= 0b10000000;
+	pic->ioReg()->PORTB = 0xAA;
+	pic->ioReg()->FSR = 0x06;
+	pic->ioReg()->STATUS |= 0b10000000;
 	uint8_t *accessed = pic->getRegFile(0x00);
 	printf("PORTB: %d\n", *accessed);
 	*accessed += 1;
