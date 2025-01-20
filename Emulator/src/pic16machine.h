@@ -68,30 +68,25 @@ typedef struct {
 	uint8_t SPBRG;
 	const uint8_t PADDING6[5] = { 0 };
 	uint8_t ADCON1;
-} IORegisters;
+} C74IORegisters;
 
 typedef struct {
 	uint8_t bank0[96];
 	uint8_t bank1[96];
 	uint8_t bank2[96];
 	uint8_t bank3[96];
-} GPRegisters;
+} C74GPRegisters;
 
 typedef struct {
 	uint8_t W;
 	uint16_t INST;
 	uint16_t PC;
-} CPURegisters;
+} C74CPURegisters;
 
 
 class PIC16Machine {
 public:
 	uint8_t zero;
-	uint16_t stack[8];
-	uint8_t SP;
-	IORegisters io;
-	GPRegisters gpr;
-	CPURegisters cpur;
 	uint16_t *prgm_memory;
 	size_t prgm_memory_size;
 
@@ -100,17 +95,20 @@ public:
 		free(prgm_memory);
 	}
 
-	PIC16Machine()
+	PIC16Machine(size_t eeprom_size)
 	: zero(0),
-	stack{0},
-	SP(0),
-	io({}),
-	gpr({}),
-	cpur({}),
-	prgm_memory((uint16_t*)malloc(sizeof(uint16_t) * PROGRAM_MEMORY_SIZE)),
-	prgm_memory_size(PROGRAM_MEMORY_SIZE)
+	prgm_memory((uint16_t*)malloc(sizeof(uint16_t) * eeprom_size)),
+	prgm_memory_size(eeprom_size)
 	{}
 
+};
+
+class PIC16C74 : PIC16Machine {
+	uint16_t stack[8];
+	uint8_t SP;
+	C74IORegisters io;
+	C74GPRegisters gpr;
+	C74CPURegisters cpur;
 };
 
 

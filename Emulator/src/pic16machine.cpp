@@ -8,14 +8,14 @@
 #include "pic16machine.h"
 
 // addr Low 9 bits are used
-uint8_t *PIC16Machine::getRegFile(uint16_t addr) {
+uint8_t *PIC16C74::getRegFile(uint16_t addr) {
 
 	static uint8_t ZERO = 0;
-	PIC16Machine *machine = this;
+	PIC16C74 *machine = this;
 
 	assert(addr <= 0x1FF && "invalid file address");
-	GPRegisters* gpr = &machine->gpr;
-	IORegisters* io = &machine->io;
+	C74GPRegisters* gpr = &machine->gpr;
+	C74IORegisters* io = &machine->io;
 	//uint8_t *gpr_ptr = (uint8_t*)gpr;
 	uint8_t *io_ptr = (uint8_t*)io;
 	uint8_t bank = addr >> 7;
