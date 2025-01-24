@@ -9,6 +9,7 @@
 #define SRC_C74_H_
 
 #include "pic16machine.h"
+#include "pic16instructionset.h"
 
 #define C74_MEM_SIZE 4000
 
@@ -84,7 +85,7 @@ typedef struct {
 	uint16_t PC;
 } C74CPURegisters;
 
-class PIC16C74 : PIC16Machine {
+class PIC16C74 final: PIC16Machine {
 private:
 	uint16_t stack[8];
 	uint8_t SP;
@@ -106,6 +107,8 @@ public:
 	}
 
 	virtual uint8_t *getRegFile(uint16_t addr) override;
+	virtual uint16_t fetch() override;
+	virtual void execute() override;
 };
 
 

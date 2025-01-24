@@ -58,7 +58,7 @@ typedef enum {
 
 } PIC16InstructionType;
 
-class PIC16Instruction {
+class PIC16Instruction final {
 private:
 	PIC16InstructionType type;
 	uint8_t file_address;
