@@ -13,10 +13,13 @@ Cargo.lock
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
 
-# bruh
+# kicad
 *.bak
 **/proj-backups/*
-
+**/output/*
+*.gbr
+*.drl
+*.gbrjob
 
 # RustRover
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
