@@ -18068,7 +18068,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "74HC138"
+		(property "Value" "74HC238"
 			(at 131.572 40.386 0)
 			(effects
 				(font
