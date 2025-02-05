@@ -19,7 +19,7 @@ public:
 	virtual ~PIC16Register() {}
 };
 
-/* fucking */ template <class Machine>
+template <class Machine>
 class PIC16ValueRegister : PIC16Register<Machine> {
 private:
 	uint8_t value;
@@ -29,7 +29,7 @@ public:
 	virtual uint8_t read(Machine* machine) override { return this->value; }
 };
 
-/* fucking */ template <class Machine>
+template <class Machine>
 class PIC16TransparentRegister : PIC16Register<Machine> {
 private:
 	PIC16Register<Machine> *pointee;
@@ -40,14 +40,14 @@ public:
 	virtual uint8_t read(Machine* machine) override { return *pointee; }
 };
 
-/* fucking */ template <class Machine>
+template <class Machine>
 class PIC16ZeroRegister : PIC16Register<Machine> {
 public:
 	virtual void write(Machine* machine, uint8_t value) override {}
 	virtual uint8_t read(Machine* machine) override { return 0; }
 };
 
-/* fucking */ template <class Machine>
+template <class Machine>
 class PIC16PointerRegister : PIC16Register<Machine> {
 private:
 	PIC16Register<Machine> *FSR;
