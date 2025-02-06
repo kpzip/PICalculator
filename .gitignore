@@ -21,6 +21,7 @@ Cargo.lock
 *.drl
 *.gbrjob
 *.lck
+\#auto_saved_files\#
 
 # RustRover
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
