@@ -11209,7 +11209,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Γ(x)/"
 			(at 200.66 62.484 0)
 			(effects
 				(font
@@ -11495,7 +11495,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "x^2/√x"
 			(at 256.54 62.484 0)
 			(effects
 				(font
@@ -12377,7 +12377,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "x^y/y√x"
 			(at 228.6 62.484 0)
 			(effects
 				(font
@@ -13690,7 +13690,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "(/)"
 			(at 200.66 53.594 0)
 			(effects
 				(font
@@ -14172,7 +14172,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Deg/Rad"
 			(at 172.72 35.814 0)
 			(effects
 				(font
@@ -14543,7 +14543,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Sci/Norm"
 			(at 172.72 26.924 0)
 			(effects
 				(font
@@ -15634,7 +15634,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Sin(x)/Sin-1(x)"
 			(at 228.6 53.594 0)
 			(effects
 				(font
@@ -16117,7 +16117,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "log(x)/ln(x)"
 			(at 284.48 62.484 0)
 			(effects
 				(font
@@ -16619,7 +16619,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "e^x/10^x"
 			(at 312.42 62.484 0)
 			(effects
 				(font
@@ -19724,7 +19724,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Constants"
 			(at 172.72 44.704 0)
 			(effects
 				(font
@@ -20010,7 +20010,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Tan(x)/Tan-1(x)"
 			(at 284.48 53.594 0)
 			(effects
 				(font
@@ -20496,7 +20496,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Cos(x)/Cos-1(x)"
 			(at 256.54 53.594 0)
 			(effects
 				(font

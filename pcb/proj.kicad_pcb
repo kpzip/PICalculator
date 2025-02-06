@@ -5812,7 +5812,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Γ(x)/"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "2750f2bf-e895-4aeb-a7c8-1e5b18c22213")
@@ -6171,7 +6171,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Constants"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "cee0b035-d677-499a-80e1-b44f3dbcb400")
@@ -8699,7 +8699,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "log(x)/ln(x)"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "f345da5a-badc-4d7d-abfa-7df197445541")
@@ -9058,7 +9058,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Tan(x)/Tan-1(x)"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "a17d377e-944d-4518-a01e-1709c1426b73")
@@ -14878,7 +14878,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Sci/Norm"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "29170150-1a09-47cb-a941-51a5a040f06b")
@@ -16875,7 +16875,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "(/)"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "d1d8c31d-fcc8-41da-b331-68c3334e8043")
@@ -20746,7 +20746,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Cos(x)/Cos-1(x)"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "1931cf76-a91f-4141-acef-c06c34438698")
@@ -24000,7 +24000,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "x^2/√x"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "c15aff9f-0c13-4539-99fa-d11e7deaf460")
@@ -26028,7 +26028,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Sin(x)/Sin-1(x)"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "e8114ba6-41ed-4570-a28b-eea58b508032")
@@ -26981,7 +26981,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "e^x/10^x"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "18fd53dc-be7e-414f-be0f-6345b757bc68")
@@ -33432,7 +33432,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "x^y/y√x"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "761718e0-d408-4019-9321-3c2d1cbd9cf2")
@@ -35490,7 +35490,7 @@
 				)
 			)
 		)
-		(property "Value" "SW_Push"
+		(property "Value" "Deg/Rad"
 			(at 3.75 -2.25 0)
 			(layer "F.Fab")
 			(uuid "e445adbd-8e75-4499-bd33-730ab56e8cd6")
