@@ -7,10 +7,3 @@ build/
 # project files
 .project
 .cproject
-
-#Cmake Command files
-cmake_cmd.bat
-cmake_cmd.sh
-
-run.bat
-run.sh

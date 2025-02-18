@@ -90,7 +90,8 @@ uint8_t *PIC16C74::getRegFile(uint16_t addr) {
 
 uint16_t PIC16C74::fetch() {
 	this->cpur.PC++;
-	return this->prgm_memory[this->cpur.PC];
+	//return this->prgm_memory[this->cpur.PC];
+	return 0;
 }
 
 void PIC16C74::execute() {

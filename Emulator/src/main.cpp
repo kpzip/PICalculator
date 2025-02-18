@@ -6,17 +6,30 @@
 #include "pic16machine.h"
 #include "pic16instructionset.h"
 #include "C74.h"
+#include "mainwindow.h"
 
-int main() {
+#include <QApplication>
+#include <QDebug>
 
-	PIC16C74 *pic = new PIC16C74();
+int main(int argc, char *argv[]) {
 
-	pic->ioReg()->PORTB = 0xAA;
-	pic->ioReg()->FSR = 0x06;
-	pic->ioReg()->STATUS |= 0b10000000;
-	uint8_t *accessed = pic->getRegFile(0x00);
-	printf("PORTB: %d\n", *accessed);
-	*accessed += 1;
-	printf("PORTB: %d\n", *accessed);
-	return 0;
+	qDebug() << "Main";
+
+	QApplication app(argc, argv);
+
+	MainWindow w;
+	w.show();
+
+	return app.exec();
+
+//	PIC16C74 *pic = new PIC16C74();
+//
+//	pic->ioReg()->PORTB = 0xAA;
+//	pic->ioReg()->FSR = 0x06;
+//	pic->ioReg()->STATUS |= 0b10000000;
+//	uint8_t *accessed = pic->getRegFile(0x00);
+//	printf("PORTB: %d\n", *accessed);
+//	*accessed += 1;
+//	printf("PORTB: %d\n", *accessed);
+
 }
