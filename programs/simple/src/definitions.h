@@ -10,6 +10,8 @@
 
 typedef unsigned char uint8_t;
 
+#define EXPR_BUF_LEN 64
+
 #define DSS PIN_A4
 #define COSS PIN_A5
 
