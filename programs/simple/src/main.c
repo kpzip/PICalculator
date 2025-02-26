@@ -112,7 +112,7 @@ void main() {
 					uint8_t button_id = column_counter + row_counter * 6;
 					if (last_button != button_id) {
 						last_button = button_id;
-            any_button_pressed = 1;
+						any_button_pressed = 1;
 					} else {
 						any_button_pressed = 2;
 					}
@@ -124,7 +124,7 @@ void main() {
     } else if (any_button_pressed == 1) {
 			uint8_t second = (status >> 1) & 1;
 			uint8_t alpha = (status >> 2) & 1;
-      // Cases are responsible for updating the display
+			// Cases are responsible for updating the display
 			switch(last_button) {
 			case 0:
 				write_pointer = 0;
