@@ -68,7 +68,7 @@ void main() {
 	output_high(RADIANS_LED);
 	output_high(DEGREES_LED);
 
-	delay_ms(200);
+	delay_ms(1000);
 
 	output_low(SECOND_LED);
 	output_low(ALPHA_LED);
@@ -80,12 +80,15 @@ void main() {
 
 	// Initialize display
 	display_command(0x30, 0); // Function set: 8 bit interface, basic instruction set
-	//write_spi(0x08, 0); // Display status: Everything off
-	//write_spi(0x10, 0); // Cursor: Move left (?)
+	// display_command(0x08, 0); // Display status: Everything off
+	// display_command(0x10, 0); // Cursor: Move left (?)
 	display_command(0x0E, 0); // Display status: Display, cursor, and blink on
 	display_command(0x01, 0); // Clear
 	display_command(0x06, 0); // Make cursor move right
-	//write_spi(0x80, 0); // Home the cursor (unneccesary)
+	// display_command(0x80, 0); // Home the cursor (unneccesary)
+
+	// Sync
+	output_high(RADIANS_LED);
 
 	// Main calculator loop
 	while (TRUE) {
@@ -113,6 +116,9 @@ void main() {
 				write_pointer = 0;
 				display_command(0x01, 0); // Clear display
 				break;
+			////////////
+			// Numpad //
+			////////////
 			case 3:
 				// Numpad 0
 				expr_buffer[write_pointer++] = '0';
@@ -153,6 +159,44 @@ void main() {
 				// Numpad 3
 				expr_buffer[write_pointer++] = '3';
 				break;
+			/////////////////////////
+			// 2nd, Alpha, Deg/Rad //
+			/////////////////////////
+			case 12:
+				// Deg/Rad toggle
+				uint8_t second = (status >> 1) & 1;
+				if (second == 0) {
+					status |= 1;
+					output_high(DEGREES_LED);
+					output_low(RADIANS_LED);
+				} else {
+					status &= (~1);
+					output_low(DEGREES_LED);
+					output_high(RADIANS_LED);
+				}
+				goto TMP;
+			case 24:
+				// Alpha
+				uint8_t alpha = (status >> 2) & 1;
+				if (second == 0) {
+					status |= (1 << 2);
+					output_high(ALPHA_LED);
+				} else {
+					status &= (~(1 << 2));
+					output_low(ALPHA_LED);
+				}
+				goto TMP;
+			case 30:
+				// 2nd
+				uint8_t second = (status >> 1) & 1;
+				if (second == 0) {
+					status |= (1 << 1);
+					output_high(SECOND_LED);
+				} else {
+					status &= (~(1 << 1));
+					output_low(SECOND_LED);
+				}
+				goto TMP;
 			default:
 				// TODO other cases
 				goto TMP;
