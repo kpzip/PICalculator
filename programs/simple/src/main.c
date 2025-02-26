@@ -23,13 +23,13 @@ static uint8_t write_pointer = 0;
 
 
 void set_keyboard_row(uint8_t row) {
-	/*
+	
 	// Not sure how necessary all the bit shifting is since the single bit representation is ambiguous
-	output_bit(KEYBOARD_0, row & (~0x01));
-	output_bit(KEYBOARD_1, (row & (~(0x01 << 1))) >> 1);
-	output_bit(KEYBOARD_2, (row & (~(0x01 << 2))) >> 2); 
-	*/
-	output_a(row);
+	output_bit(KEYBOARD_0, row & 0x01);
+	output_bit(KEYBOARD_1, (row >> 1) & 0x01);
+	output_bit(KEYBOARD_2, (row >> 2) & 0x01); 
+	
+	//output_a(row);
 }
 
 void display_command(uint8_t data, uint8_t rs) {
@@ -111,11 +111,26 @@ void main() {
 			}
 		}
 		if (any_button_pressed) {
+			uint8_t second = (status >> 1) & 1;
+			uint8_t alpha = (status >> 2) & 1;
 			switch(last_button) {
 			case 0:
 				write_pointer = 0;
 				display_command(0x01, 0); // Clear display
 				break;
+			case 31:
+				output_low(COSS);
+				spi_write(status);
+				status = spi_read();
+				second = (status >> 1) & 1;
+				alpha = (status >> 2) & 1;
+				uint8_t degrad = status & 1;
+				output_bit(SECOND_LED, second);
+				output_bit(ALPHA_LED, alpha);
+				output_bit(RADIANS_LED, ~degrad);
+				output_bit(DEGREES_LED, degrad);
+				output_high(COSS);
+				goto TMP;
 			////////////
 			// Numpad //
 			////////////
@@ -164,7 +179,6 @@ void main() {
 			/////////////////////////
 			case 12:
 				// Deg/Rad toggle
-				uint8_t second = (status >> 1) & 1;
 				if (second == 0) {
 					status |= 1;
 					output_high(DEGREES_LED);
@@ -177,8 +191,7 @@ void main() {
 				goto TMP;
 			case 24:
 				// Alpha
-				uint8_t alpha = (status >> 2) & 1;
-				if (second == 0) {
+				if (alpha == 0) {
 					status |= (1 << 2);
 					output_high(ALPHA_LED);
 				} else {
@@ -188,7 +201,6 @@ void main() {
 				goto TMP;
 			case 30:
 				// 2nd
-				uint8_t second = (status >> 1) & 1;
 				if (second == 0) {
 					status |= (1 << 1);
 					output_high(SECOND_LED);
