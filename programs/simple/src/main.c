@@ -20,6 +20,7 @@ static uint8_t status = 0;
 
 static char expr_buffer[EXPR_BUF_LEN] = { 0 };
 static uint8_t write_pointer = 0;
+static uint8_t graph_data[96] = { 0 };
 
 
 void set_keyboard_row(uint8_t row) {
@@ -150,52 +151,52 @@ void main() {
 				// Numpad 0
 				expr_buffer[write_pointer++] = '0';
 				write_last_character();
-        break;
+				break;
 			case 8:
 				// Numpad 7
 				expr_buffer[write_pointer++] = '7';
 				write_last_character();
-        break;
+				break;
 			case 9:
 				// Numpad 8
 				expr_buffer[write_pointer++] = '8';
 				write_last_character();
-        break;
+				break;
 			case 10:
 				// Numpad 9
 				expr_buffer[write_pointer++] = '9';
 				write_last_character();
-        break;
+				break;
 			case 14:
 				// Numpad 4
 				expr_buffer[write_pointer++] = '4';
 				write_last_character();
-        break;
+				break;
 			case 15:
 				// Numpad 5
 				expr_buffer[write_pointer++] = '5';
-        write_last_character();
+				write_last_character();
 				break;
 			case 16:
 				// Numpad 6
 				expr_buffer[write_pointer++] = '6';
-        write_last_character();
+				write_last_character();
 				break;
 			case 20:
 				// Numpad 1
 				expr_buffer[write_pointer++] = '1';
 				write_last_character();
-        break;
+				break;
 			case 21:
 				// Numpad 2
 				expr_buffer[write_pointer++] = '2';
 				write_last_character();
-        break;
+				break;
 			case 22:
 				// Numpad 3
 				expr_buffer[write_pointer++] = '3';
 				write_last_character();
-        break;
+				break;
 			/////////////////////////
 			// 2nd, Alpha, Deg/Rad //
 			/////////////////////////
@@ -230,11 +231,11 @@ void main() {
 					status &= (~(1 << 1));
 					output_low(SECOND_LED);
 				}
-        break;
+				break;
 			default:
 				// TODO other cases
 			  break;
-      }
+			}
 		} else {
 			last_button = 255;
 		}
