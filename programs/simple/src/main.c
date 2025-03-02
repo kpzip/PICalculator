@@ -23,7 +23,6 @@ static char expr_buffer[EXPR_BUF_LEN] = { 0 };
 static uint8_t write_pointer = 0;
 
 
-
 void set_keyboard_row(uint8_t row) {
 	
 	// Not sure how necessary all the bit shifting is since the single bit representation is ambiguous
