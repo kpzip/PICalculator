@@ -9,7 +9,8 @@
 
 // Calculator global state
 // Bit Vector: each 6 bits represents the y position for each of the 128 x positions.
-//static uint8_t graphdata[96] = { 0 };
+static uint8_t graph_data_1[48] = { 0 };
+static uint8_t graph_data_2[48] = { 0 };
 
 static uint8_t row_counter = 0;
 static uint8_t column_counter = 0;
@@ -20,7 +21,7 @@ static uint8_t status = 0;
 
 static char expr_buffer[EXPR_BUF_LEN] = { 0 };
 static uint8_t write_pointer = 0;
-static uint8_t graph_data[96] = { 0 };
+
 
 
 void set_keyboard_row(uint8_t row) {
