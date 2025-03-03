@@ -278,7 +278,7 @@ _bif int1 psp_overflow(void);
 #define PSP_ENABLED    0x10
 #define PSP_DISABLED   0
 
-#byte  PSP_DATA = 8 
+#byte  PSP_DATA = 8
 
 ////////////////////////////////////////////////////////////////// SPI
 // SPI Functions: SETUP_SPI, SPI_WRITE, SPI_READ, SPI_DATA_IN

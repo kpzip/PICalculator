@@ -1,4 +1,4 @@
-#include <16C74.h>
+#include "16c74.h"
 
 #use delay(clock=20M, RESTART_WDT)
 
