@@ -1,8 +1,15 @@
+// Comment out for testing
 #include <16c74.h>
 
 #include "definitions.h"
 
+// Comment these out when compiling for the pic
+//#include "test/test_defs.h"
+//#include "test/main.h"
+//#include <stdio.h>
+
 // Clock settings
+// Comment out for testing
 #fuses PLL_DIV_1 PLL_DIV_4
 #use delay(clock=20M, RESTART_WDT)
 
@@ -20,7 +27,9 @@ static uint8_t last_button = 255;
 static uint8_t status = 0;
 
 static char expr_buffer[EXPR_BUF_LEN] = { 0 };
-static uint8_t write_pointer = 0;
+static char graph_eq_buffer[EXPR_BUF_LEN] = { 0 };
+static uint8_t expr_write_pointer = 0;
+static uint8_t graph_eq_write_pointer = 0;
 
 
 void set_keyboard_row(uint8_t row) {
@@ -44,13 +53,216 @@ void display_command(uint8_t data, uint8_t rs) {
 }
 
 void write_last_character() {
-  if (write_pointer != 0) {
-		display_command(expr_buffer[write_pointer - 1], 1);
+	if (expr_write_pointer != 0) {
+		display_command(expr_buffer[expr_write_pointer - 1], 1);
 	}
 		
-	if (write_pointer >= EXPR_BUF_LEN) {
-		write_pointer = 0;
+	if (expr_write_pointer >= EXPR_BUF_LEN) {
+		expr_write_pointer = 0;
 	}
+}
+
+uint8_t pow(uint8_t base, uint8_t exponent) {
+	uint8_t ret = 1;
+	for (uint8_t i = 0; i < exponent; i++) {
+		ret *= base;
+	}
+	return ret;
+}
+
+uint8_t char_to_num(char c) {
+	switch(c) {
+			case '0':
+				return 0;
+			case '1':
+				return 1;
+			case '2':
+				return 2;
+			case '3':
+				return 3;
+			case '4':
+				return 4;
+			case '5':
+				return 5;
+			case '6':
+				return 6;
+			case '7':
+				return 7;
+			case '8':
+				return 8;
+			case '9':
+				return 9;
+			default:
+				return 0xFF;
+			}
+}
+
+void write_num(uint8_t num) {
+
+    do {
+    	expr_buffer[expr_write_pointer++] = (num % 10) + '0';
+        num /= 10;
+    } while (num > 0);
+
+    uint8_t start = 0;
+    uint8_t end = expr_write_pointer - 1;
+    while (start < end) {
+        char temp = expr_buffer[start];
+        expr_buffer[start] = expr_buffer[end];
+        expr_buffer[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+void enable_normal_mode() {
+	// Clear display first
+	display_command(0x01, 0);
+
+	// Write the current normal mode expression
+	for (uint8_t i = 0; i < expr_write_pointer; i++) {
+		display_command(expr_buffer[i], 1);
+	}
+}
+
+void enable_graph_eq_mode() {
+	// Clear display first
+	display_command(0x01, 0);
+
+	// Write the function
+	display_command('Y', 1);
+	display_command('=', 1);
+	for (uint8_t i = 0; i < graph_eq_write_pointer; i++) {
+		display_command(graph_eq_buffer[i], 1);
+	}
+}
+
+void simplify_expr() {
+	uint8_t i;
+	uint8_t first_operator = 0xFF;
+	uint8_t second_operator = 0xFF;
+	for (i = 0; i < expr_write_pointer; i++) {
+		switch(expr_buffer[i]) {
+		case '+':
+		case '-':
+		case '*':
+		case '/':
+			if (first_operator == 0xFF) {
+				first_operator = i;
+			} else {
+				second_operator = i;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	// Maybe make these larger?
+	uint8_t first_number = 0;
+	uint8_t second_number = 0;
+	uint8_t third_number = 0;
+
+	uint8_t digit_val;
+	// Might consider turning this into a function
+	for (i = 0; i < first_operator; i++) {
+		digit_val = char_to_num(expr_buffer[i]);
+		if (digit_val == 0xFF) {
+			goto err;
+		}
+		first_number += pow(10, first_operator - (i + 1)) * digit_val;
+	}
+	for (i = first_operator + 1; i < second_operator; i++) {
+		digit_val = char_to_num(expr_buffer[i]);
+		if (digit_val == 0xFF) {
+			goto err;
+		}
+		second_number += pow(10, second_operator - (i + 1)) * digit_val;
+	}
+	for (i = second_operator + 1; i < expr_write_pointer; i++) {
+		digit_val = char_to_num(expr_buffer[i]);
+		if (digit_val == 0xFF) {
+			goto err;
+		}
+		third_number += pow(10, expr_write_pointer - (i + 1)) * digit_val;
+	}
+
+	first_operator = expr_buffer[first_operator];
+	second_operator = expr_buffer[second_operator];
+
+	uint8_t result;
+	if (first_operator == '*') {
+		// First operator precedence
+		result = first_number * second_number;
+		switch (second_operator) {
+		case '+':
+			result += third_number;
+			break;
+		case '-':
+			result -= third_number;
+			break;
+		case '*':
+			result *= third_number;
+			break;
+		case '/':
+			result /= third_number;
+			break;
+		}
+
+	} else if (first_operator == '/') {
+		// First operator precedence
+		result = first_number / second_number;
+		switch (second_operator) {
+		case '+':
+			result += third_number;
+			break;
+		case '-':
+			result -= third_number;
+			break;
+		case '*':
+			result *= third_number;
+			break;
+		case '/':
+			result /= third_number;
+			break;
+		}
+	} else {
+		// Second operator precedence
+		switch (second_operator) {
+		case '+':
+			result = second_number + third_number;
+			break;
+		case '-':
+			result = second_number - third_number;
+			break;
+		case '*':
+			result = second_number * third_number;
+			break;
+		case '/':
+			result = second_number / third_number;
+			break;
+		}
+		switch (first_operator) {
+		case '+':
+			result += first_number;
+			break;
+		case '-':
+			result = first_number - result;
+			break;
+		}
+	}
+
+	expr_write_pointer = 0;
+	write_num(result);
+
+	return;
+	err:
+	expr_buffer[0] = 'e';
+	expr_buffer[1] = 'r';
+	expr_buffer[2] = 'r';
+	expr_write_pointer = 3;
+	return;
+
 }
 
 void main() {
@@ -127,14 +339,16 @@ void main() {
 			uint8_t alpha = (status >> 2) & 1;
 			// Cases are responsible for updating the display
 			switch(last_button) {
+			// Reset
 			case 0:
-				write_pointer = 0;
+				expr_write_pointer = 0;
 				display_command(0x01, 0); // Clear display
 				break;
+			// Gamma
 			case 31:
 				output_low(COSS);
 				spi_write(status);
-				status = spi_read();
+				status = spi_read(0x00);
 				second = (status >> 1) & 1;
 				alpha = (status >> 2) & 1;
 				uint8_t degrad = status & 1;
@@ -149,52 +363,52 @@ void main() {
 			////////////
 			case 3:
 				// Numpad 0
-				expr_buffer[write_pointer++] = '0';
+				expr_buffer[expr_write_pointer++] = '0';
 				write_last_character();
 				break;
 			case 8:
 				// Numpad 7
-				expr_buffer[write_pointer++] = '7';
+				expr_buffer[expr_write_pointer++] = '7';
 				write_last_character();
 				break;
 			case 9:
 				// Numpad 8
-				expr_buffer[write_pointer++] = '8';
+				expr_buffer[expr_write_pointer++] = '8';
 				write_last_character();
 				break;
 			case 10:
 				// Numpad 9
-				expr_buffer[write_pointer++] = '9';
+				expr_buffer[expr_write_pointer++] = '9';
 				write_last_character();
 				break;
 			case 14:
 				// Numpad 4
-				expr_buffer[write_pointer++] = '4';
+				expr_buffer[expr_write_pointer++] = '4';
 				write_last_character();
 				break;
 			case 15:
 				// Numpad 5
-				expr_buffer[write_pointer++] = '5';
+				expr_buffer[expr_write_pointer++] = '5';
 				write_last_character();
 				break;
 			case 16:
 				// Numpad 6
-				expr_buffer[write_pointer++] = '6';
+				expr_buffer[expr_write_pointer++] = '6';
 				write_last_character();
 				break;
 			case 20:
 				// Numpad 1
-				expr_buffer[write_pointer++] = '1';
+				expr_buffer[expr_write_pointer++] = '1';
 				write_last_character();
 				break;
 			case 21:
 				// Numpad 2
-				expr_buffer[write_pointer++] = '2';
+				expr_buffer[expr_write_pointer++] = '2';
 				write_last_character();
 				break;
 			case 22:
 				// Numpad 3
-				expr_buffer[write_pointer++] = '3';
+				expr_buffer[expr_write_pointer++] = '3';
 				write_last_character();
 				break;
 			/////////////////////////
@@ -232,9 +446,42 @@ void main() {
 					output_low(SECOND_LED);
 				}
 				break;
+			/////////////////
+			// +, -, *, /  //
+			/////////////////
+			case 29:
+				// Add sign
+				expr_buffer[expr_write_pointer++] = '+';
+				write_last_character();
+				break;
+			case 23:
+				// Subtract sign
+				expr_buffer[expr_write_pointer++] = '-';
+				write_last_character();
+				break;
+			case 17:
+				// Multiplication sign
+				expr_buffer[expr_write_pointer++] = '*';
+				write_last_character();
+				break;
+			case 11:
+				// Divide sign
+				expr_buffer[expr_write_pointer++] = '/';
+				write_last_character();
+				break;
+			/// Other stuff
+			case 36:
+				// Graph mode
+				// TODO
+				break;
+			case 5:
+				// Eval / equals
+				simplify_expr();
+				enable_normal_mode();
+				break;
 			default:
 				// TODO other cases
-			  break;
+				break;
 			}
 		} else {
 			last_button = 255;

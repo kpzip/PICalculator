@@ -9,8 +9,10 @@
 #define SRC_DEFINITIONS_H_
 
 typedef unsigned char uint8_t;
+typedef long uint16_t;
+typedef long long uint32_t;
 
-#define EXPR_BUF_LEN 10
+#define EXPR_BUF_LEN 16
 
 #define DSS PIN_A4
 #define COSS PIN_A5
