@@ -5677,6 +5677,250 @@
 				)
 			)
 		)
+		(symbol "symbols:SN74LVC1G32DBVR"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -2.54 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SN74LVC1G32DBVR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Single OR Gate, Low-Voltage CMOS"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Single Gate OR LVC CMOS"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT* SG-*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SN74LVC1G32DBVR_0_1"
+				(arc
+					(start -7.62 -5.08)
+					(mid -5.838 0)
+					(end -7.62 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -5.08)
+					(mid 3.1986 -3.2054)
+					(end 5.08 0)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 -2.54) (xy -6.35 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 2.54) (xy -6.35 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -5.08) (xy -7.62 -5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 5.08) (xy -7.62 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(arc
+					(start 5.08 0)
+					(mid 3.2238 3.2304)
+					(end 0 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SN74LVC1G32DBVR_1_1"
+				(pin input line
+					(at -15.24 2.54 0)
+					(length 7.62)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -15.24 -2.54 0)
+					(length 7.62)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -10.16 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 12.7 0 180)
+					(length 7.62)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 10.16 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 	)
 	(junction
 		(at 246.38 49.53)
@@ -6816,6 +7060,16 @@
 	)
 	(wire
 		(pts
+			(xy 43.18 158.75) (xy 43.18 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09fa3353-a0e9-4d88-87c0-691e40ac1b2d")
+	)
+	(wire
+		(pts
 			(xy 275.59 124.46) (xy 271.78 124.46)
 		)
 		(stroke
@@ -7536,6 +7790,16 @@
 	)
 	(wire
 		(pts
+			(xy 43.18 144.78) (xy 58.42 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2bc294e4-b619-4cb6-b1ab-8e5908b4b947")
+	)
+	(wire
+		(pts
 			(xy 165.1 52.07) (xy 193.04 52.07)
 		)
 		(stroke
@@ -7773,6 +8037,16 @@
 			(type default)
 		)
 		(uuid "38bb034c-221f-49cd-bff1-287201a1e1dc")
+	)
+	(wire
+		(pts
+			(xy 38.1 161.29) (xy 38.1 163.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a1e10cf-dfb3-4457-abd4-fd0b9a708215")
 	)
 	(wire
 		(pts
@@ -8546,6 +8820,16 @@
 	)
 	(wire
 		(pts
+			(xy 54.61 158.75) (xy 43.18 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "630dac8f-0933-4b9a-884c-b6cf37303fdd")
+	)
+	(wire
+		(pts
 			(xy 246.38 40.64) (xy 246.38 49.53)
 		)
 		(stroke
@@ -9196,6 +9480,16 @@
 	)
 	(wire
 		(pts
+			(xy 54.61 147.32) (xy 58.42 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cf11a62-ce04-42c4-93c1-285e8ac3a331")
+	)
+	(wire
+		(pts
 			(xy 193.04 22.86) (xy 193.04 25.4)
 		)
 		(stroke
@@ -9203,6 +9497,16 @@
 			(type default)
 		)
 		(uuid "8d9f6c23-9ee6-4e62-b382-74491f8b042b")
+	)
+	(wire
+		(pts
+			(xy 50.8 173.99) (xy 54.61 173.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8dd0f3a0-9e40-4075-a3d5-9fa1f4d27224")
 	)
 	(wire
 		(pts
@@ -9523,6 +9827,16 @@
 			(type default)
 		)
 		(uuid "a13d80aa-77bf-4c14-8635-8682ecf901d0")
+	)
+	(wire
+		(pts
+			(xy 20.32 176.53) (xy 22.86 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a17fc128-9c67-42a2-a271-279c9c6def65")
 	)
 	(wire
 		(pts
@@ -10516,6 +10830,16 @@
 	)
 	(wire
 		(pts
+			(xy 38.1 184.15) (xy 38.1 186.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf5df303-dd98-46ca-b50a-8aec49b2d106")
+	)
+	(wire
+		(pts
 			(xy 280.67 185.42) (xy 280.67 189.23)
 		)
 		(stroke
@@ -10563,16 +10887,6 @@
 			(type default)
 		)
 		(uuid "d0c8e412-1487-4335-9555-c554178a6348")
-	)
-	(wire
-		(pts
-			(xy 54.61 147.32) (xy 58.42 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d135b1cf-f0e2-43f4-acf4-613a5fbaaa7c")
 	)
 	(wire
 		(pts
@@ -10713,6 +11027,16 @@
 			(type default)
 		)
 		(uuid "d9637a90-fcd0-4d1a-82d9-1d9232cf92e3")
+	)
+	(wire
+		(pts
+			(xy 54.61 173.99) (xy 54.61 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9779f12-ec15-4e7e-9f54-0d860e2402a9")
 	)
 	(wire
 		(pts
@@ -11206,16 +11530,6 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 144.78) (xy 58.42 144.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ef717f34-0b46-4eb9-bd59-1fb23a11d0b5")
-	)
-	(wire
-		(pts
 			(xy 330.2 40.64) (xy 330.2 49.53)
 		)
 		(stroke
@@ -11363,6 +11677,16 @@
 			(type default)
 		)
 		(uuid "f8b01152-3f7c-492e-a864-21ac5a42490c")
+	)
+	(wire
+		(pts
+			(xy 20.32 171.45) (xy 22.86 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9af49e5-0628-48bc-ac1b-1f0e723422da")
 	)
 	(wire
 		(pts
@@ -11596,7 +11920,7 @@
 	)
 	(global_label "SCK"
 		(shape input)
-		(at 54.61 144.78 180)
+		(at 20.32 171.45 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11604,31 +11928,9 @@
 			)
 			(justify right)
 		)
-		(uuid "24ce2a2b-93c1-487c-b712-af118ea1aff1")
+		(uuid "3a5b7829-fb87-4945-be5d-8e222a98ad92")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 47.8753 144.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "DSS"
-		(shape input)
-		(at 54.61 147.32 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "398bbcc3-4d15-420b-9a2e-c6a612550a84")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 47.9358 147.32 0)
+			(at 13.5853 171.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11656,6 +11958,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "DSS"
+		(shape input)
+		(at 54.61 147.32 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5a176cf8-1284-491e-a397-34de7d90848d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 47.9358 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -11876,6 +12200,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "DSS"
+		(shape input)
+		(at 20.32 176.53 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cdfc9ea3-180d-4446-b9e5-e6d754ec4e2d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 13.6458 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -12731,6 +13077,71 @@
 			(project "proj"
 				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
 					(reference "D21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 38.1 161.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0da73479-ce0a-466e-a1e7-0a33a57cf82a")
+		(property "Reference" "#PWR021"
+			(at 38.1 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 37.846 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 38.1 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 38.1 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 38.1 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "19f01efe-6e31-4a89-bdae-3db40aecc4c6")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -17454,6 +17865,82 @@
 			(project "proj"
 				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
 					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "symbols:SN74LVC1G32DBVR")
+		(at 38.1 173.99 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "79d5eb7d-1923-46b2-b4fe-c4c6aa46b86a")
+		(property "Reference" "U5"
+			(at 27.432 181.102 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SN74LVC1G32DBVR"
+			(at 27.432 183.642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering"
+			(at 38.1 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf"
+			(at 38.1 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Single OR Gate, Low-Voltage CMOS"
+			(at 38.1 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "cd5e40d0-4f9a-474e-b22e-ca41913a87ac")
+		)
+		(pin "1"
+			(uuid "0c29bee3-3007-41db-a000-b8964ac624d2")
+		)
+		(pin "5"
+			(uuid "1a529a15-ac20-4248-bddf-18615b5bd749")
+		)
+		(pin "2"
+			(uuid "f84f5f62-c450-4d74-a823-076fea0e55ab")
+		)
+		(pin "3"
+			(uuid "53404929-ca44-4b1f-84ff-7925249d799d")
+		)
+		(instances
+			(project ""
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "U5")
 					(unit 1)
 				)
 			)
@@ -22557,6 +23044,71 @@
 			(project "proj"
 				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
 					(reference "SW4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 38.1 186.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ef94cd16-09bc-4a38-9d81-5bf4e2bf039d")
+		(property "Reference" "#PWR020"
+			(at 38.1 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 38.1 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 38.1 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 38.1 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 38.1 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e04847e1-136f-40ee-8ab8-fb04801ed98b")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
