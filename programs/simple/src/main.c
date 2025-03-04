@@ -137,6 +137,91 @@ void enable_graph_eq_mode() {
 	}
 }
 
+typedef union {
+	uint32_t val;
+	uint8_t bytes[4];
+} packer;
+
+void regenerate_graph_data() {
+	// form: y=mx+b
+	uint8_t m = 0;
+	uint8_t b = 0;
+	uint8_t i;
+
+	// Can be unionized if need be
+	uint8_t pos;
+	uint8_t digit_val;
+	for (pos = 0; graph_eq_buffer[pos] != 'x'; pos++) {
+		if (pos >= graph_eq_write_pointer - 1) {
+			goto nox;
+		}
+	}
+	
+	// Might consider turning this into a function
+	for (i = 0; i < pos; i++) {
+		digit_val = char_to_num(expr_buffer[i]);
+		if (digit_val == 0xFF) {
+			goto err;
+		}
+		m += pow(10, pos - (i + 1)) * digit_val;
+	}
+	pos++;
+	if (pos < graph_eq_write_pointer - 1 && graph_eq_buffer[pos] == '+') {
+		pos++;
+		for (i = pos; i < graph_eq_write_pointer; i++) {
+			digit_val = char_to_num(expr_buffer[i]);
+			if (digit_val == 0xFF) {
+				goto err;
+			}
+			b += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
+		}
+	}
+	draw:
+	// X position loop
+	// slow. optimize by calculating one value and going from there
+	uint8_t val;
+	uint8_t index;
+	packer word;
+	for (i = 0; i < 128; i++) {
+		val = ((char)i - 63) * m + b + 31;
+		if (val > 63) {
+			val = 31;
+		}
+		word.val &= (val << (i % 4));
+		// Copy first 3 bytes of word into graphdata
+		if (i % 4 == 3) {
+			index = (i/4) * 3;
+			if (index >= 48) {
+				index -= 48;
+				graph_data_2[index] = word.bytes[0];
+				graph_data_2[index + 1] = word.bytes[1];
+				graph_data_2[index + 2] = word.bytes[2];
+			} else {
+				graph_data_1[index] = word.bytes[0];
+				graph_data_1[index + 1] = word.bytes[1];
+				graph_data_1[index + 2] = word.bytes[2];
+			}
+		}
+	}
+	
+	return;
+	nox:
+	for (i = 0; i < graph_eq_write_pointer; i++) {
+		digit_val = char_to_num(expr_buffer[i]);
+		if (digit_val == 0xFF) {
+			goto err;
+		}
+		m += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
+	}
+	goto draw;
+	err:
+	graph_eq_buffer[0] = 'e';
+	graph_eq_buffer[1] = 'r';
+	graph_eq_buffer[2] = 'r';
+	graph_eq_write_pointer = 3;
+	return;
+}
+
 void simplify_expr() {
 	uint8_t i;
 	uint8_t first_operator = 0xFF;
