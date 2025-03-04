@@ -557,6 +557,7 @@ void main() {
 			/// Other stuff
 			case 36:
 				// Graph mode
+
 				// TODO
 				break;
 			case 5:
