@@ -10,6 +10,7 @@
 
 // Clock settings
 // Comment out for testing
+// TODO define these since they are different on our pic
 #fuses PLL_DIV_1 PLL_DIV_4
 #use delay(clock=20M, RESTART_WDT)
 
@@ -176,12 +177,16 @@ void regenerate_graph_data() {
 			b += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
 		}
 	}
+
 	draw:
-	// X position loop
-	// slow. optimize by calculating one value and going from there
+	;
+
 	uint8_t val;
 	uint8_t index;
 	packer word;
+
+	// X position loop
+	// slow. optimize by calculating one value and going from there
 	for (i = 0; i < 128; i++) {
 		val = ((char)i - 63) * m + b + 31;
 		if (val > 63) {
@@ -243,6 +248,12 @@ void simplify_expr() {
 		}
 	}
 
+	// No need to simplify if there are no operators!
+	// The only way they can be equal is if they are both 0xFF
+	if (first_operator == second_operator) {
+		return;
+	}
+
 	// Maybe make these larger?
 	uint8_t first_number = 0;
 	uint8_t second_number = 0;
@@ -257,29 +268,41 @@ void simplify_expr() {
 		}
 		first_number += pow(10, first_operator - (i + 1)) * digit_val;
 	}
-	for (i = first_operator + 1; i < second_operator; i++) {
-		digit_val = char_to_num(expr_buffer[i]);
-		if (digit_val == 0xFF) {
-			goto err;
+
+	if (second_operator != 0xFF) {
+		for (i = first_operator + 1; i < second_operator; i++) {
+			digit_val = char_to_num(expr_buffer[i]);
+			if (digit_val == 0xFF) {
+				goto err;
+			}
+			second_number += pow(10, second_operator - (i + 1)) * digit_val;
 		}
-		second_number += pow(10, second_operator - (i + 1)) * digit_val;
+		for (i = second_operator + 1; i < expr_write_pointer; i++) {
+			digit_val = char_to_num(expr_buffer[i]);
+			if (digit_val == 0xFF) {
+				goto err;
+			}
+			third_number += pow(10, expr_write_pointer - (i + 1)) * digit_val;
+		}
 	}
-	for (i = second_operator + 1; i < expr_write_pointer; i++) {
-		digit_val = char_to_num(expr_buffer[i]);
-		if (digit_val == 0xFF) {
-			goto err;
+	else {
+		for (i = first_operator + 1; i < expr_write_pointer; i++) {
+			digit_val = char_to_num(expr_buffer[i]);
+			if (digit_val == 0xFF) {
+				goto err;
+			}
+			second_number += pow(10, expr_write_pointer - (i + 1)) * digit_val;
 		}
-		third_number += pow(10, expr_write_pointer - (i + 1)) * digit_val;
 	}
 
 	first_operator = expr_buffer[first_operator];
-	second_operator = expr_buffer[second_operator];
+	if (second_operator != 0xFF) second_operator = expr_buffer[second_operator];
 
 	uint8_t result;
 	if (first_operator == '*') {
 		// First operator precedence
 		result = first_number * second_number;
-		switch (second_operator) {
+		if (second_operator != 0xFF) switch (second_operator) {
 		case '+':
 			result += third_number;
 			break;
@@ -297,7 +320,7 @@ void simplify_expr() {
 	} else if (first_operator == '/') {
 		// First operator precedence
 		result = first_number / second_number;
-		switch (second_operator) {
+		if (second_operator != 0xFF) switch (second_operator) {
 		case '+':
 			result += third_number;
 			break;
@@ -311,7 +334,7 @@ void simplify_expr() {
 			result /= third_number;
 			break;
 		}
-	} else {
+	} else if (second_operator != 0xFF) {
 		// Second operator precedence
 		switch (second_operator) {
 		case '+':
@@ -333,6 +356,15 @@ void simplify_expr() {
 			break;
 		case '-':
 			result = first_number - result;
+			break;
+		}
+	} else {
+		switch (first_operator) {
+		case '+':
+			result = first_number + second_number;
+			break;
+		case '-':
+			result = first_number - second_number;
 			break;
 		}
 	}

@@ -17,7 +17,7 @@ void main() {
 	// Tests go here
 
 	// Test Expression Parsing
-	char *input = "10*2*3";
+	char *input = "5+2";
 	strcpy(expr_buffer, input);
 	expr_write_pointer = strlen(input);
 	simplify_expr();

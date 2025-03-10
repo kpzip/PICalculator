@@ -1,4 +1,4 @@
 # Simple Calculator
 
-CMake File exists only to allow for syntax checking on modern computers
+CMake File exists only to allow for testing
 This program runs only on the PIC.
