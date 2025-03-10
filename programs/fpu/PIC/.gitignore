@@ -1,0 +1,9 @@
+# ignore build folder
+build/
+
+# eclipse settings
+.settings/
+
+# project files
+.project
+.cproject
