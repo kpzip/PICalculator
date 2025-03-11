@@ -14,6 +14,8 @@
 #fuses PLL_DIV_1 PLL_DIV_4
 #use delay(clock=20M, RESTART_WDT)
 
+// Comment out to disable Joao mode
+#define JOAO_MODE
 
 // Calculator global state
 // Bit Vector: each 6 bits represents the y position for each of the 128 x positions.
@@ -27,7 +29,7 @@ static uint8_t last_button = 255;
 // Bit 0: Radians = 0, Degrees = 1; Bit 1: Second mode, 0 = off, Bit2: Alpha mode, 0 = off
 static uint8_t status = 0;
 
-// 0: Normal 1: Graph Eq Entry 2: Graph View
+// 0: Normal 1: Graph Eq Entry 2: Graph View 3: Joao Viewer
 static uint8_t mode = 0;
 
 static char expr_buffer[EXPR_BUF_LEN] = { 0 };
@@ -459,6 +461,7 @@ void main() {
 	output_low(ALPHA_LED);
 	output_low(RADIANS_LED);
 	output_low(DEGREES_LED);
+	display_command(0x01, 0);
 
 	// Sync LED
 	output_high(RADIANS_LED);
@@ -627,6 +630,11 @@ void main() {
 					enable_normal_mode();
 					mode = 0;
 					break;
+#ifdef JOAO_MODE
+				case 3:
+					// Joao Mode Behavior
+					break;
+#endif
 				default:
 					// Shouldnt end up here
 					break;
