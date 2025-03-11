@@ -437,7 +437,6 @@ void main() {
 		for (row_counter = 0; row_counter < 7; row_counter++) {
 			set_keyboard_row(row_counter);
 			for (column_counter = 0; column_counter < 6; column_counter++) {
-				// TODO look at the CCS compiler and figure out if having all global statics is a good idea
 				if (input(KEYBOARD_IN + column_counter)) {
 					uint8_t button_id = column_counter + row_counter * 6;
 					if (last_button != button_id) {
@@ -449,9 +448,9 @@ void main() {
 				}
 			}
 		}
-    if (any_button_pressed == 2) {
-      // Do Nothing since we just re-registered the last button press
-    } else if (any_button_pressed == 1) {
+		if (any_button_pressed == 2) {
+			// Do Nothing since we just re-registered the last button press
+		} else if (any_button_pressed == 1) {
 			uint8_t second = (status >> 1) & 1;
 			uint8_t alpha = (status >> 2) & 1;
 			// Cases are responsible for updating the display
