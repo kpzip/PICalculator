@@ -27,6 +27,9 @@ static uint8_t last_button = 255;
 // Bit 0: Radians = 0, Degrees = 1; Bit 1: Second mode, 0 = off, Bit2: Alpha mode, 0 = off
 static uint8_t status = 0;
 
+// 0: Normal 1: Graph Eq Entry 2: Graph View
+static uint8_t mode = 0;
+
 static char expr_buffer[EXPR_BUF_LEN] = { 0 };
 static char graph_eq_buffer[EXPR_BUF_LEN] = { 0 };
 static uint8_t expr_write_pointer = 0;
@@ -51,16 +54,6 @@ void display_command(uint8_t data, uint8_t rs) {
 	output_high(DSS);
 
 	delay_ms(10);
-}
-
-void write_last_character() {
-	if (expr_write_pointer != 0) {
-		display_command(expr_buffer[expr_write_pointer - 1], 1);
-	}
-		
-	if (expr_write_pointer >= EXPR_BUF_LEN) {
-		expr_write_pointer = 0;
-	}
 }
 
 uint8_t pow(uint8_t base, uint8_t exponent) {
@@ -136,6 +129,10 @@ void enable_graph_eq_mode() {
 	for (uint8_t i = 0; i < graph_eq_write_pointer; i++) {
 		display_command(graph_eq_buffer[i], 1);
 	}
+}
+
+void enable_graph_mode() {
+
 }
 
 typedef union {
@@ -382,6 +379,28 @@ void simplify_expr() {
 
 }
 
+void write_character(char c) {
+	if (mode == 0) {
+		expr_buffer[expr_write_pointer++] = c;
+		if (expr_write_pointer != 0) {
+			display_command(expr_buffer[expr_write_pointer - 1], 1);
+		}
+
+		if (expr_write_pointer >= EXPR_BUF_LEN) {
+			expr_write_pointer = 0;
+		}
+	} else if (mode == 1) {
+		graph_eq_buffer[graph_eq_write_pointer++] = c;
+		if (graph_eq_write_pointer != 0) {
+			display_command(graph_eq_buffer[graph_eq_write_pointer - 1], 1);
+		}
+
+		if (graph_eq_write_pointer >= EXPR_BUF_LEN) {
+			graph_eq_write_pointer = 0;
+		}
+	}
+}
+
 void main() {
 	// Initialize Pins
 
@@ -402,19 +421,6 @@ void main() {
 	output_low(KEYBOARD_1);
 	output_low(KEYBOARD_2);
 
-	// Indicator LEDs
-	output_high(SECOND_LED);
-	output_high(ALPHA_LED);
-	output_high(RADIANS_LED);
-	output_high(DEGREES_LED);
-
-	delay_ms(1000);
-
-	output_low(SECOND_LED);
-	output_low(ALPHA_LED);
-	output_low(RADIANS_LED);
-	output_low(DEGREES_LED);
-
 	// Init the SPI bus
 	setup_spi(SPI_MASTER | SPI_SCK_IDLE_HIGH);
 
@@ -427,7 +433,34 @@ void main() {
 	display_command(0x06, 0); // Make cursor move right
 	// display_command(0x80, 0); // Home the cursor (unneccesary)
 
-	// Sync
+	// Powerup sequence
+	output_high(SECOND_LED);
+	output_high(ALPHA_LED);
+	output_high(RADIANS_LED);
+	output_high(DEGREES_LED);
+
+	// Write PICalculator text
+	display_command('P', 1);
+	display_command('I', 1);
+	display_command('C', 1);
+	display_command('a', 1);
+	display_command('l', 1);
+	display_command('c', 1);
+	display_command('u', 1);
+	display_command('l', 1);
+	display_command('a', 1);
+	display_command('t', 1);
+	display_command('o', 1);
+	display_command('r', 1);
+
+	delay_ms(1000);
+
+	output_low(SECOND_LED);
+	output_low(ALPHA_LED);
+	output_low(RADIANS_LED);
+	output_low(DEGREES_LED);
+
+	// Sync LED
 	output_high(RADIANS_LED);
 
 	// Main calculator loop
@@ -479,53 +512,43 @@ void main() {
 			////////////
 			case 3:
 				// Numpad 0
-				expr_buffer[expr_write_pointer++] = '0';
-				write_last_character();
+				write_character('0');
 				break;
 			case 8:
 				// Numpad 7
-				expr_buffer[expr_write_pointer++] = '7';
-				write_last_character();
+				write_character('7');
 				break;
 			case 9:
 				// Numpad 8
-				expr_buffer[expr_write_pointer++] = '8';
-				write_last_character();
+				write_character('8');
 				break;
 			case 10:
 				// Numpad 9
-				expr_buffer[expr_write_pointer++] = '9';
-				write_last_character();
+				write_character('9');
 				break;
 			case 14:
 				// Numpad 4
-				expr_buffer[expr_write_pointer++] = '4';
-				write_last_character();
+				write_character('4');
 				break;
 			case 15:
 				// Numpad 5
-				expr_buffer[expr_write_pointer++] = '5';
-				write_last_character();
+				write_character('5');
 				break;
 			case 16:
 				// Numpad 6
-				expr_buffer[expr_write_pointer++] = '6';
-				write_last_character();
+				write_character('6');
 				break;
 			case 20:
 				// Numpad 1
-				expr_buffer[expr_write_pointer++] = '1';
-				write_last_character();
+				write_character('1');
 				break;
 			case 21:
 				// Numpad 2
-				expr_buffer[expr_write_pointer++] = '2';
-				write_last_character();
+				write_character('2');
 				break;
 			case 22:
 				// Numpad 3
-				expr_buffer[expr_write_pointer++] = '3';
-				write_last_character();
+				write_character('3');
 				break;
 			/////////////////////////
 			// 2nd, Alpha, Deg/Rad //
@@ -567,27 +590,47 @@ void main() {
 			/////////////////
 			case 29:
 				// Add sign
-				expr_buffer[expr_write_pointer++] = '+';
-				write_last_character();
+				write_character('+');
 				break;
 			case 23:
 				// Subtract sign
-				expr_buffer[expr_write_pointer++] = '-';
-				write_last_character();
+				write_character('-');
 				break;
 			case 17:
 				// Multiplication sign
-				expr_buffer[expr_write_pointer++] = '*';
-				write_last_character();
+				write_character('*');
 				break;
 			case 11:
 				// Divide sign
-				expr_buffer[expr_write_pointer++] = '/';
-				write_last_character();
+				write_character('/');
 				break;
 			/// Other stuff
 			case 36:
 				// Graph mode
+				switch(mode) {
+				case 0:
+					// Normal Mode
+					// Set to Graph eq mode
+					enable_graph_eq_mode();
+					mode = 1;
+					break;
+				case 1:
+					// Graph Equation Entry
+					// Graph the equation and go into the graph view
+					regenerate_graph_data();
+					enable_graph_mode();
+					mode = 2;
+					break;
+				case 2:
+					// Graph View
+					// Set back to normal mode
+					enable_normal_mode();
+					mode = 0;
+					break;
+				default:
+					// Shouldnt end up here
+					break;
+				}
 
 				// TODO
 				break;
