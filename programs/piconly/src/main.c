@@ -307,7 +307,7 @@ void simplify_expr() {
 	for (i = 0; i < first_operator; i++) {
 		digit_val = char_to_num(expr_buffer[i]);
 		if (digit_val == 0xFF) {
-			goto err;
+			goto err2;
 		}
 		first_number += pow(10, first_operator - (i + 1)) * digit_val;
 	}
@@ -316,14 +316,14 @@ void simplify_expr() {
 		for (i = first_operator + 1; i < second_operator; i++) {
 			digit_val = char_to_num(expr_buffer[i]);
 			if (digit_val == 0xFF) {
-				goto err;
+				goto err2;
 			}
 			second_number += pow(10, second_operator - (i + 1)) * digit_val;
 		}
 		for (i = second_operator + 1; i < expr_write_pointer; i++) {
 			digit_val = char_to_num(expr_buffer[i]);
 			if (digit_val == 0xFF) {
-				goto err;
+				goto err2;
 			}
 			third_number += pow(10, expr_write_pointer - (i + 1)) * digit_val;
 		}
@@ -332,7 +332,7 @@ void simplify_expr() {
 		for (i = first_operator + 1; i < expr_write_pointer; i++) {
 			digit_val = char_to_num(expr_buffer[i]);
 			if (digit_val == 0xFF) {
-				goto err;
+				goto err2;
 			}
 			second_number += pow(10, expr_write_pointer - (i + 1)) * digit_val;
 		}
@@ -416,7 +416,7 @@ void simplify_expr() {
 	write_num(result);
 
 	return;
-	err:
+	err2:
 	expr_buffer[0] = 'e';
 	expr_buffer[1] = 'r';
 	expr_buffer[2] = 'r';
@@ -433,7 +433,7 @@ void write_character(char c) {
 		}
 
 		if (expr_write_pointer >= EXPR_BUF_LEN) {
-			display_command(0x01, 0);
+			//display_command(0x01, 0);
 			expr_write_pointer = 0;
 		}
 	} else if (mode == 1) {
@@ -443,7 +443,7 @@ void write_character(char c) {
 		}
 
 		if (graph_eq_write_pointer >= EXPR_BUF_LEN) {
-			display_command(0x01, 0);
+			//display_command(0x01, 0);
 			graph_eq_write_pointer = 0;
 		}
 	}
