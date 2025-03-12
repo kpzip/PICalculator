@@ -59,7 +59,7 @@ void display_command(uint8_t data, uint8_t rs) {
 	spi_write((data << 4) & 0xF0);
 	output_high(DSS);
 
-	delay_ms(10);
+	delay_ms(1);
 }
 
 uint8_t pow(uint8_t base, uint8_t exponent) {
