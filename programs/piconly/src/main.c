@@ -116,7 +116,8 @@ void write_num(uint8_t num) {
 }
 
 void enable_normal_mode() {
-	// Clear display first
+	// Set mode and clear
+	display_command(0x30, 0);
 	display_command(0x01, 0);
 
 	// Write the current normal mode expression
@@ -126,7 +127,8 @@ void enable_normal_mode() {
 }
 
 void enable_graph_eq_mode() {
-	// Clear display first
+	// Set mode and clear
+	display_command(0x30, 0);
 	display_command(0x01, 0);
 
 	// Write the function
@@ -138,6 +140,9 @@ void enable_graph_eq_mode() {
 }
 
 void enable_graph_mode() {
+	// Set Mode
+	display_command(0x36, 0);
+	
 	for (uint8_t horizontal_addr = 0; horizontal_addr < 16; horizontal_addr++) {
 
 		// Memory-perf tradeoff. can change this based on which is more important later.
@@ -190,7 +195,7 @@ void regenerate_graph_data() {
 	// Can be unionized if need be
 	uint8_t pos;
 	uint8_t digit_val;
-	for (pos = 0; graph_eq_buffer[pos] != 'x'; pos++) {
+	for (pos = 0; graph_eq_buffer[pos] != 'X'; pos++) {
 		if (pos >= graph_eq_write_pointer - 1) {
 			goto nox;
 		}
@@ -428,6 +433,7 @@ void write_character(char c) {
 		}
 
 		if (expr_write_pointer >= EXPR_BUF_LEN) {
+			display_command(0x01, 0);
 			expr_write_pointer = 0;
 		}
 	} else if (mode == 1) {
@@ -437,6 +443,7 @@ void write_character(char c) {
 		}
 
 		if (graph_eq_write_pointer >= EXPR_BUF_LEN) {
+			display_command(0x01, 0);
 			graph_eq_write_pointer = 0;
 		}
 	}
@@ -494,7 +501,7 @@ void main() {
 	display_command('o', 1);
 	display_command('r', 1);
 
-	delay_ms(1000);
+	delay_ms(2000);
 
 	output_low(SECOND_LED);
 	output_low(ALPHA_LED);
@@ -645,6 +652,12 @@ void main() {
 			case 11:
 				// Divide sign
 				write_character('/');
+				break;
+			/////////////////
+			//  variables  //
+			/////////////////
+			case 7:
+				write_character('X');
 				break;
 			/// Other stuff
 			case 36:
