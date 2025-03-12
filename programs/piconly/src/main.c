@@ -186,6 +186,12 @@ void enable_graph_mode() {
 	}
 }
 
+#idfef JOAO_MODE
+void enable_joao_viewer() {
+	
+}
+#endif
+
 void regenerate_graph_data() {
 	// form: y=mx+b
 	uint8_t m = 0;
