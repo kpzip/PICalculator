@@ -146,7 +146,7 @@ void enable_graph_mode() {
 		packer p;
 
 		for (uint8_t group = 0; group < 4; group++) {
-			uint8_t index = 3 * (group + 4 * horizontal_addr)
+			uint8_t index = 3 * (group + 4 * horizontal_addr);
 			p.bytes[0] = graph_data_1[index + 0];
 			p.bytes[1] = graph_data_1[index + 1];
 			p.bytes[2] = graph_data_1[index + 2];
@@ -158,6 +158,25 @@ void enable_graph_mode() {
 
 		for (uint8_t vertical_addr = 0; vertical_addr < 64; vertical_addr++) {
 			uint8_t lsb, msb;
+			uint8_t bit_idx;
+			for (bit_idx = 0; bit_idx < 8; bit_idx++) {
+				if (values[bit_idx] == vertical_addr) {
+					msb &= (0x80 >> bit_idx);
+				}
+			}
+			for (bit_idx = 0; bit_idx < 8; bit_idx++) {
+				if (values[bit_idx + 8] == vertical_addr) {
+					lsb &= (0x80 >> bit_idx);
+				}
+			}
+			
+			// Set Address
+			display_command(0x80 & vertical_addr, 0);
+			display_command(0x80 & horizontal_addr, 0);
+			
+			// Send Data
+			display_command(msb, 0);
+			display_command(lsb, 0);
 		}
 	}
 }
