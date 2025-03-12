@@ -37,6 +37,10 @@ static char graph_eq_buffer[EXPR_BUF_LEN] = { 0 };
 static uint8_t expr_write_pointer = 0;
 static uint8_t graph_eq_write_pointer = 0;
 
+typedef union {
+	uint32_t val;
+	uint8_t bytes[4];
+} packer;
 
 void set_keyboard_row(uint8_t row) {
 	
@@ -134,13 +138,29 @@ void enable_graph_eq_mode() {
 }
 
 void enable_graph_mode() {
+	for (uint8_t horizontal_addr = 0; horizontal_addr < 16; horizontal_addr++) {
 
+		// Memory-perf tradeoff. can change this based on which is more important later.
+		// Stores the vertical positions of the dots
+		uint8_t values[16];
+		packer p;
+
+		for (uint8_t group = 0; group < 4; group++) {
+			uint8_t index = 3 * (group + 4 * horizontal_addr)
+			p.bytes[0] = graph_data_1[index + 0];
+			p.bytes[1] = graph_data_1[index + 1];
+			p.bytes[2] = graph_data_1[index + 2];
+			values[group * 4] = p.val & 0b00111111;
+			values[group * 4 + 1] = (p.val >> 6) & 0b00111111;
+			values[group * 4 + 2] = (p.val >> 12) & 0b00111111;
+			values[group * 4 + 3] = (p.val >> 18) & 0b00111111;
+		}
+
+		for (uint8_t vertical_addr = 0; vertical_addr < 64; vertical_addr++) {
+			uint8_t lsb, msb;
+		}
+	}
 }
-
-typedef union {
-	uint32_t val;
-	uint8_t bytes[4];
-} packer;
 
 void regenerate_graph_data() {
 	// form: y=mx+b
