@@ -152,7 +152,7 @@ void enable_graph_mode() {
 		// Memory-perf tradeoff. can change this based on which is more important later.
 		// Stores the vertical positions of the dots
 		uint8_t values[16];
-		packer p;
+		packer p = {0};
 
 		for (uint8_t group = 0; group < 4; group++) {
 			uint8_t index = 3 * (group + 4 * horizontal_addr);
@@ -238,14 +238,19 @@ void regenerate_graph_data() {
 	uint8_t index;
 	packer word;
 
+	word.val = 0;
+
+	printf("m: %d\n", m);
+	printf("b: %d\n", b);
+
 	// X position loop
 	// slow. optimize by calculating one value and going from there
 	for (i = 0; i < 128; i++) {
-		val = ((char)i - 63) * m + b + 31;
+		val = 63 - (((char)i - 63) * m + b + 31);
 		if (val > 63) {
 			val = 31;
 		}
-		word.val &= (val << (i % 4));
+		word.val |= (val << ((i % 4) * 6));
 		// Copy first 3 bytes of word into graphdata
 		if (i % 4 == 3) {
 			index = (i/4) * 3;
@@ -259,6 +264,7 @@ void regenerate_graph_data() {
 				graph_data_1[index + 1] = word.bytes[1];
 				graph_data_1[index + 2] = word.bytes[2];
 			}
+			word.val = 0;
 		}
 	}
 	
@@ -269,7 +275,7 @@ void regenerate_graph_data() {
 		if (digit_val == 0xFF) {
 			goto err;
 		}
-		m += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
+		b += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
 	}
 	goto draw;
 	err:
