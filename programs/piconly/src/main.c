@@ -166,19 +166,23 @@ void enable_graph_mode() {
 		}
 
 		for (uint8_t vertical_addr = 0; vertical_addr < 64; vertical_addr++) {
-			uint8_t lsb, msb;
+			uint8_t lsb = 0;
+			uint8_t msb = 0;
 			uint8_t bit_idx;
 			for (bit_idx = 0; bit_idx < 8; bit_idx++) {
 				if (values[bit_idx] == vertical_addr) {
-					msb &= (0x80 >> bit_idx);
+					msb |= (0x80 >> bit_idx);
 				}
 			}
 			for (bit_idx = 0; bit_idx < 8; bit_idx++) {
 				if (values[bit_idx + 8] == vertical_addr) {
-					lsb &= (0x80 >> bit_idx);
+					lsb |= (0x80 >> bit_idx);
 				}
 			}
 			
+			printf("msb: %d\n", msb);
+			printf("lsb: %d\n", lsb);
+
 			// Set Address
 			display_command(0x80 | vertical_addr, 0);
 			display_command(0x80 | horizontal_addr, 0);
