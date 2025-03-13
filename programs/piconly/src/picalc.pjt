@@ -2,7 +2,7 @@
 Target=MAIN.HEX
 Development_Mode=2
 Processor=0x6c74
-ToolSuite=Microchip
+ToolSuite=CCS
 [Fuses]
 Frequency=20000000.000000
 ClockSource=1
@@ -30,14 +30,14 @@ Library=
 LinkerScript=
 [Target Data]
 FileList=MAIN.C;
-BuildTool=MPASM
+BuildTool=C-COMPILER
 OptionString=
 AdditionalOptionString=
 BuildRequired=1
 [MAIN.C]
 Type=4
 Path=
-FileList=16C74.H;DEFINITI.H;
+FileList=16C74.H;DEFINITI.H;TEST_DEF.H;MAIN.H;DEFINITI.H;STDIO.H;
 BuildTool=
 OptionString=
 AdditionalOptionString=
@@ -50,7 +50,7 @@ OptionString=
 AdditionalOptionString=
 [DEFINITI.H]
 Type=5
-Path=
+Path=C:\MPLAB\PROJECTS\PICALC~1\PROGRAMS\PICONLY\SRC\TEST/\../\
 FileList=
 BuildTool=
 OptionString=
@@ -84,9 +84,34 @@ TimeStampDiplay=0
 TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
+[TEST_DEF.H]
+Type=5
+Path=C:\MPLAB\PROJECTS\PICALC~1\PROGRAMS\PICONLY\SRC\TEST/\
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[MAIN.H]
+Type=5
+Path=C:\MPLAB\PROJECTS\PICALC~1\PROGRAMS\PICONLY\SRC\TEST/\
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+[STDIO.H]
+Type=5
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
 [Windows]
-0=0000 c:\mplab\projects\picalc~1\programs\simple\src\main.c 87 39 957 477 9 0
+3=0004 108 197 961 635 9 0
+2=0000 c:\mplab\projects\picalc~1\programs\piconly\src\main.c 88 116 958 554 9 4
+1=0010 110 222 590 882 9 4 48
+0=0001 44 58 914 496 9 4
 [mru-list]
-1=c:\mplab\projects\picalc~1\programs\simple\src\main.c
-2=c:\mplab\psplus.err
-3=c:\mplab\projects\main.c
+1=c:\mplab\projects\picalc~1\programs\piconly\src\main.c
+2=c:\mplab\projects\picalc~1\programs\piconly\src\main.lst
+3=c:\mplab\psplus.err
+4=c:\mplab\projects\picalc~1\programs\piconly\src\main.lst

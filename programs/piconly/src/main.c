@@ -141,8 +141,12 @@ void enable_graph_eq_mode() {
 
 void enable_graph_mode() {
 	// Set Mode
-	display_command(0x36, 0);
 	
+	display_command(0x30, 0);
+	display_command(0x01, 0);
+	display_command(0x36, 0);
+	display_command(0x3E, 0);
+
 	for (uint8_t horizontal_addr = 0; horizontal_addr < 16; horizontal_addr++) {
 
 		// Memory-perf tradeoff. can change this based on which is more important later.
@@ -180,8 +184,8 @@ void enable_graph_mode() {
 			display_command(0x80 & horizontal_addr, 0);
 			
 			// Send Data
-			display_command(msb, 1);
-			display_command(lsb, 1);
+			display_command(0xFF, 1);
+			display_command(0xFF, 1);
 		}
 	}
 }
@@ -207,7 +211,6 @@ void regenerate_graph_data() {
 		}
 	}
 	
-	printf("%d\n", pos);
 
 	// Might consider turning this into a function
 	for (i = 0; i < pos; i++) {
@@ -217,7 +220,6 @@ void regenerate_graph_data() {
 		}
 		m += pow(10, pos - (i + 1)) * digit_val;
 	}
-	printf("m: %d\n", m);
 	pos++;
 	if (pos < graph_eq_write_pointer - 1 && graph_eq_buffer[pos] == '+') {
 		pos++;
@@ -229,7 +231,6 @@ void regenerate_graph_data() {
 			b += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
 		}
 	}
-	printf("%d\n", b);
 	draw:
 	;
 
