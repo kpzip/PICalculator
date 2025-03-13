@@ -144,8 +144,8 @@ void enable_graph_mode() {
 	
 	display_command(0x30, 0);
 	display_command(0x01, 0);
+	display_command(0x34, 0);
 	display_command(0x36, 0);
-	display_command(0x3E, 0);
 
 	for (uint8_t horizontal_addr = 0; horizontal_addr < 16; horizontal_addr++) {
 
@@ -180,8 +180,8 @@ void enable_graph_mode() {
 			}
 			
 			// Set Address
-			display_command(0x80 & vertical_addr, 0);
-			display_command(0x80 & horizontal_addr, 0);
+			display_command(0x80 | vertical_addr, 0);
+			display_command(0x80 | horizontal_addr, 0);
 			
 			// Send Data
 			display_command(0xFF, 1);
@@ -510,6 +510,64 @@ void main() {
 	display_command('t', 1);
 	display_command('o', 1);
 	display_command('r', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+
+	display_command('C', 1);
+	display_command('o', 1);
+	display_command('p', 1);
+	display_command('y', 1);
+	display_command('r', 1);
+	display_command('i', 1);
+	display_command('g', 1);
+	display_command('h', 1);
+	display_command('t', 1);
+	display_command(' ', 1);
+	display_command('2', 1);
+	display_command('0', 1);
+	display_command('2', 1);
+	display_command('5', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+
+	display_command('v', 1);
+	display_command('1', 1);
+	display_command('.', 1);
+	display_command('1', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+
+#ifdef JOAO_MODE
+	display_command('J', 1);
+	display_command('o', 1);
+	display_command('a', 1);
+	display_command('o', 1);
+	display_command(' ', 1);
+	display_command('E', 1);
+	display_command('d', 1);
+	display_command('i', 1);
+	display_command('t', 1);
+	display_command('i', 1);
+	display_command('o', 1);
+	display_command('n', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+	display_command(' ', 1);
+#endif
+
 	// Version? Copyright? Joao Edition?
 
 	delay_ms(2000);
