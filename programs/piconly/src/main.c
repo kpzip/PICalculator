@@ -180,13 +180,13 @@ void enable_graph_mode() {
 			display_command(0x80 & horizontal_addr, 0);
 			
 			// Send Data
-			display_command(msb, 0);
-			display_command(lsb, 0);
+			display_command(msb, 1);
+			display_command(lsb, 1);
 		}
 	}
 }
 
-#idfef JOAO_MODE
+#ifdef JOAO_MODE
 void enable_joao_viewer() {
 	
 }
@@ -207,26 +207,29 @@ void regenerate_graph_data() {
 		}
 	}
 	
+	printf("%d\n", pos);
+
 	// Might consider turning this into a function
 	for (i = 0; i < pos; i++) {
-		digit_val = char_to_num(expr_buffer[i]);
+		digit_val = char_to_num(graph_eq_buffer[i]);
 		if (digit_val == 0xFF) {
 			goto err;
 		}
 		m += pow(10, pos - (i + 1)) * digit_val;
 	}
+	printf("m: %d\n", m);
 	pos++;
 	if (pos < graph_eq_write_pointer - 1 && graph_eq_buffer[pos] == '+') {
 		pos++;
 		for (i = pos; i < graph_eq_write_pointer; i++) {
-			digit_val = char_to_num(expr_buffer[i]);
+			digit_val = char_to_num(graph_eq_buffer[i]);
 			if (digit_val == 0xFF) {
 				goto err;
 			}
 			b += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
 		}
 	}
-
+	printf("%d\n", b);
 	draw:
 	;
 
@@ -261,7 +264,7 @@ void regenerate_graph_data() {
 	return;
 	nox:
 	for (i = 0; i < graph_eq_write_pointer; i++) {
-		digit_val = char_to_num(expr_buffer[i]);
+		digit_val = char_to_num(graph_eq_buffer[i]);
 		if (digit_val == 0xFF) {
 			goto err;
 		}
@@ -506,6 +509,7 @@ void main() {
 	display_command('t', 1);
 	display_command('o', 1);
 	display_command('r', 1);
+	// Version? Copyright? Joao Edition?
 
 	delay_ms(2000);
 
@@ -702,8 +706,10 @@ void main() {
 				break;
 			case 5:
 				// Eval / equals
-				simplify_expr();
-				enable_normal_mode();
+				if (mode == 0) {
+					simplify_expr();
+					enable_normal_mode();
+				}
 				break;
 			default:
 				// TODO other cases

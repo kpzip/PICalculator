@@ -13,8 +13,12 @@
 extern char expr_buffer[EXPR_BUF_LEN];
 extern uint8_t expr_write_pointer;
 
+extern char graph_eq_buffer[EXPR_BUF_LEN];
+extern uint8_t graph_eq_write_pointer;
+
 void pic_main();
 void simplify_expr();
+void regenerate_graph_data();
 
 
 
