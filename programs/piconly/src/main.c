@@ -179,17 +179,14 @@ void enable_graph_mode() {
 					lsb |= (0x80 >> bit_idx);
 				}
 			}
-			
-			printf("msb: %d\n", msb);
-			printf("lsb: %d\n", lsb);
 
 			// Set Address
 			display_command(0x80 | vertical_addr, 0);
 			display_command(0x80 | horizontal_addr, 0);
 			
 			// Send Data
-			display_command(0xFF, 1);
-			display_command(0xFF, 1);
+			display_command(0b10101010, 1);
+			display_command(0b10101010, 1);
 		}
 	}
 }
@@ -243,9 +240,6 @@ void regenerate_graph_data() {
 	packer word;
 
 	word.val = 0;
-
-	printf("m: %d\n", m);
-	printf("b: %d\n", b);
 
 	// X position loop
 	// slow. optimize by calculating one value and going from there
@@ -493,6 +487,7 @@ void main() {
 	setup_spi(SPI_MASTER | SPI_SCK_IDLE_HIGH);
 
 	// Initialize display
+	delay_ms(1);
 	display_command(0x30, 0); // Function set: 8 bit interface, basic instruction set
 	// display_command(0x08, 0); // Display status: Everything off
 	// display_command(0x10, 0); // Cursor: Move left (?)
