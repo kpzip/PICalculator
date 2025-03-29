@@ -62,15 +62,15 @@ void display_command(uint8_t data, uint8_t rs) {
 	delay_ms(1);
 }
 
-uint8_t pow(uint8_t base, uint8_t exponent) {
-	uint8_t ret = 1;
+uint16_t pow(uint16_t base, uint16_t exponent) {
+	uint16_t ret = 1;
 	for (uint8_t i = 0; i < exponent; i++) {
 		ret *= base;
 	}
 	return ret;
 }
 
-uint8_t char_to_num(char c) {
+uint16_t char_to_num(char c) {
 	switch(c) {
 			case '0':
 				return 0;
@@ -97,7 +97,7 @@ uint8_t char_to_num(char c) {
 			}
 }
 
-void write_num(uint8_t num) {
+void write_num(uint16_t num) {
 
     do {
     	expr_buffer[expr_write_pointer++] = (num % 10) + '0';
@@ -119,6 +119,8 @@ void enable_normal_mode() {
 	// Set mode and clear
 	display_command(0x30, 0);
 	display_command(0x01, 0);
+
+	delay_ms(50);
 
 	// Write the current normal mode expression
 	for (uint8_t i = 0; i < expr_write_pointer; i++) {
@@ -197,6 +199,20 @@ void enable_joao_viewer() {
 }
 #endif
 
+uint16_t parse_from_buffer(char *buf, uint8_t begin, uint8_t end) {
+	uint8_t digit_val;
+	uint8_t i;	
+	uint16_t ret;
+	
+	for (i = begin; i < end; i++) {
+		digit_val = char_to_num(buf[i]);
+		if (digit_val == 0xFF) {
+			return 0xFFFF;
+		}
+		ret += pow(10, end - (i + 1)) * digit_val;
+	}
+}
+
 void regenerate_graph_data() {
 	// form: y=mx+b
 	uint8_t m = 0;
@@ -212,24 +228,17 @@ void regenerate_graph_data() {
 		}
 	}
 	
-
-	// Might consider turning this into a function
-	for (i = 0; i < pos; i++) {
-		digit_val = char_to_num(graph_eq_buffer[i]);
-		if (digit_val == 0xFF) {
-			goto err;
-		}
-		m += pow(10, pos - (i + 1)) * digit_val;
+	m = parse_from_buffer(graph_eq_buffer, 0, pos);
+	if (m == 0xFF) {
+		goto err;
 	}
 	pos++;
+	
 	if (pos < graph_eq_write_pointer - 1 && graph_eq_buffer[pos] == '+') {
 		pos++;
-		for (i = pos; i < graph_eq_write_pointer; i++) {
-			digit_val = char_to_num(graph_eq_buffer[i]);
-			if (digit_val == 0xFF) {
-				goto err;
-			}
-			b += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
+		b = parse_from_buffer(graph_eq_buffer, pos, graph_eq_write_pointer);
+		if (b == 0xFF) {
+			goto err;
 		}
 	}
 	draw:
@@ -268,12 +277,9 @@ void regenerate_graph_data() {
 	
 	return;
 	nox:
-	for (i = 0; i < graph_eq_write_pointer; i++) {
-		digit_val = char_to_num(graph_eq_buffer[i]);
-		if (digit_val == 0xFF) {
-			goto err;
-		}
-		b += pow(10, graph_eq_write_pointer - (i + 1)) * digit_val;
+	b = parse_from_buffer(graph_eq_buffer, 0, graph_eq_write_pointer);
+	if (b == 0xFF) {
+		goto err;
 	}
 	goto draw;
 	err:
@@ -294,6 +300,7 @@ void simplify_expr() {
 		case '-':
 		case '*':
 		case '/':
+		case '^':
 			if (first_operator == 0xFF) {
 				first_operator = i;
 			} else {
@@ -312,50 +319,30 @@ void simplify_expr() {
 	}
 
 	// Maybe make these larger?
-	uint8_t first_number = 0;
-	uint8_t second_number = 0;
-	uint8_t third_number = 0;
+	uint16_t first_number = 0;
+	uint16_t second_number = 0;
+	uint16_t third_number = 0;
 
 	uint8_t digit_val;
-	// Might consider turning this into a function
-	for (i = 0; i < first_operator; i++) {
-		digit_val = char_to_num(expr_buffer[i]);
-		if (digit_val == 0xFF) {
-			goto err2;
-		}
-		first_number += pow(10, first_operator - (i + 1)) * digit_val;
-	}
-
+	
+	first_number = parse_from_buffer(expr_buffer, 0, first_operator);
+	if (first_number == 0xFFFF) goto err2;
 	if (second_operator != 0xFF) {
-		for (i = first_operator + 1; i < second_operator; i++) {
-			digit_val = char_to_num(expr_buffer[i]);
-			if (digit_val == 0xFF) {
-				goto err2;
-			}
-			second_number += pow(10, second_operator - (i + 1)) * digit_val;
-		}
-		for (i = second_operator + 1; i < expr_write_pointer; i++) {
-			digit_val = char_to_num(expr_buffer[i]);
-			if (digit_val == 0xFF) {
-				goto err2;
-			}
-			third_number += pow(10, expr_write_pointer - (i + 1)) * digit_val;
-		}
+		second_number = parse_from_buffer(expr_buffer, first_operator + 1, second_operator);
+		if (second_number == 0xFFFF) goto err2;
+		third_number = parse_from_buffer(expr_buffer, second_operator + 1, expr_write_pointer);
+		if (third_number == 0xFFFF) goto err2;
 	}
 	else {
-		for (i = first_operator + 1; i < expr_write_pointer; i++) {
-			digit_val = char_to_num(expr_buffer[i]);
-			if (digit_val == 0xFF) {
-				goto err2;
-			}
-			second_number += pow(10, expr_write_pointer - (i + 1)) * digit_val;
-		}
+		second_number = parse_from_buffer(expr_buffer, first_operator + 1, expr_write_pointer);
+		if (second_number == 0xFFFF) goto err2;
 	}
 
 	first_operator = expr_buffer[first_operator];
 	if (second_operator != 0xFF) second_operator = expr_buffer[second_operator];
-
-	uint8_t result;
+	uint16_t result;
+	expr_write_pointer = 0;
+	write_num(result);
 	if (first_operator == '*') {
 		// First operator precedence
 		result = first_number * second_number;
@@ -371,6 +358,9 @@ void simplify_expr() {
 			break;
 		case '/':
 			result /= third_number;
+			break;
+		case '^':
+			result = pow(result, third_number);
 			break;
 		}
 
@@ -390,6 +380,28 @@ void simplify_expr() {
 		case '/':
 			result /= third_number;
 			break;
+		case '^':
+			result = pow(result, third_number);
+			break;
+		}
+	} else if (first_operator == '^') {
+		result = pow(first_number, second_number);
+		if (second_operator != 0xFF) switch (second_operator) {
+		case '+':
+			result += third_number;
+			break;
+		case '-':
+			result -= third_number;
+			break;
+		case '*':
+			result *= third_number;
+			break;
+		case '/':
+			result /= third_number;
+			break;
+		case '^':
+			result = pow(result, third_number);
+			break;
 		}
 	} else if (second_operator != 0xFF) {
 		// Second operator precedence
@@ -406,6 +418,8 @@ void simplify_expr() {
 		case '/':
 			result = second_number / third_number;
 			break;
+		case '^':
+			result = pow(first_number, second_number);
 		}
 		switch (first_operator) {
 		case '+':
@@ -425,10 +439,6 @@ void simplify_expr() {
 			break;
 		}
 	}
-
-	expr_write_pointer = 0;
-	write_num(result);
-
 	return;
 	err2:
 	expr_buffer[0] = 'e';
@@ -572,8 +582,6 @@ void main() {
 	display_command(' ', 1);
 	display_command(' ', 1);
 #endif
-
-	// Version? Copyright? Joao Edition?
 
 	delay_ms(2000);
 
