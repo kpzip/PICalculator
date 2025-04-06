@@ -1,18 +1,18 @@
 // Comment out for testing
-#include <16c74.h>
+//#include <16c74.h>
 
 #include "definitions.h"
 
 // Comment these out when compiling for the pic
-//#include "test/test_defs.h"
-//#include "test/main.h"
-//#include <stdio.h>
+#include "test/test_defs.h"
+#include "test/main.h"
+#include <stdio.h>
 
 // Clock settings
 // Comment out for testing
 // TODO define these since they are different on our pic
-#fuses PLL_DIV_1 PLL_DIV_4
-#use delay(clock=20M, RESTART_WDT)
+//#fuses PLL_DIV_1 PLL_DIV_4
+//#use delay(clock=20M, RESTART_WDT)
 
 // Comment out to disable Joao mode
 #define JOAO_MODE
@@ -202,7 +202,7 @@ void enable_joao_viewer() {
 uint16_t parse_from_buffer(char *buf, uint8_t begin, uint8_t end) {
 	uint8_t digit_val;
 	uint8_t i;	
-	uint16_t ret;
+	uint16_t ret = 0;
 	
 	for (i = begin; i < end; i++) {
 		digit_val = char_to_num(buf[i]);
@@ -211,6 +211,7 @@ uint16_t parse_from_buffer(char *buf, uint8_t begin, uint8_t end) {
 		}
 		ret += pow(10, end - (i + 1)) * digit_val;
 	}
+	return ret;
 }
 
 void regenerate_graph_data() {
@@ -342,7 +343,6 @@ void simplify_expr() {
 	if (second_operator != 0xFF) second_operator = expr_buffer[second_operator];
 	uint16_t result;
 	expr_write_pointer = 0;
-	write_num(result);
 	if (first_operator == '*') {
 		// First operator precedence
 		result = first_number * second_number;
@@ -357,6 +357,9 @@ void simplify_expr() {
 			result *= third_number;
 			break;
 		case '/':
+			if (third_number == 0) {
+				goto err2;
+			}
 			result /= third_number;
 			break;
 		case '^':
@@ -366,6 +369,9 @@ void simplify_expr() {
 
 	} else if (first_operator == '/') {
 		// First operator precedence
+		if (second_number == 0) {
+			goto err2;
+		}
 		result = first_number / second_number;
 		if (second_operator != 0xFF) switch (second_operator) {
 		case '+':
@@ -378,6 +384,9 @@ void simplify_expr() {
 			result *= third_number;
 			break;
 		case '/':
+			if (third_number == 0) {
+				goto err2;
+			}
 			result /= third_number;
 			break;
 		case '^':
@@ -397,6 +406,9 @@ void simplify_expr() {
 			result *= third_number;
 			break;
 		case '/':
+			if (third_number == 0) {
+				goto err2;
+			}
 			result /= third_number;
 			break;
 		case '^':
@@ -416,6 +428,9 @@ void simplify_expr() {
 			result = second_number * third_number;
 			break;
 		case '/':
+			if (third_number == 0) {
+				goto err2;
+			}
 			result = second_number / third_number;
 			break;
 		case '^':
@@ -439,8 +454,9 @@ void simplify_expr() {
 			break;
 		}
 	}
+	write_num(result);
 	return;
-	err2:
+err2:
 	expr_buffer[0] = 'e';
 	expr_buffer[1] = 'r';
 	expr_buffer[2] = 'r';
