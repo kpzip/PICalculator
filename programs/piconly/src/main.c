@@ -1,18 +1,18 @@
 // Comment out for testing
-//#include <16c74.h>
+#include <16c74.h>
 
 #include "definitions.h"
 
 // Comment these out when compiling for the pic
-#include "test/test_defs.h"
-#include "test/main.h"
-#include <stdio.h>
+//#include "test/test_defs.h"
+//#include "test/main.h"
+//#include <stdio.h>
 
 // Clock settings
 // Comment out for testing
 // TODO define these since they are different on our pic
-//#fuses PLL_DIV_1 PLL_DIV_4
-//#use delay(clock=20M, RESTART_WDT)
+#fuses PLL_DIV_1 PLL_DIV_4
+#use delay(clock=20M, RESTART_WDT)
 
 // Comment out to disable Joao mode
 #define JOAO_MODE
@@ -62,6 +62,13 @@ void display_command(uint8_t data, uint8_t rs) {
 	delay_ms(1);
 }
 
+void display_data(uint8_t data) {
+	output_low(DSS);
+	spi_write(data & 0xF0);
+	spi_write((data << 4) & 0xF0);
+	output_high(DSS);
+}
+
 uint16_t pow(uint16_t base, uint16_t exponent) {
 	uint16_t ret = 1;
 	for (uint8_t i = 0; i < exponent; i++) {
@@ -71,6 +78,7 @@ uint16_t pow(uint16_t base, uint16_t exponent) {
 }
 
 uint16_t char_to_num(char c) {
+	return c - 48;
 	switch(c) {
 			case '0':
 				return 0;
@@ -141,13 +149,32 @@ void enable_graph_eq_mode() {
 	}
 }
 
+#separate
 void enable_graph_mode() {
 	// Set Mode
 	
-	display_command(0x30, 0);
+	//display_command(0x30, 0);
+	//display_command(0x01, 0);
+	//display_command(0x34, 0);
+	//display_command(0x36, 0);
+
+	display_command(0x38, 0);
+	display_command(0x08, 0);
+	display_command(0x06, 0);
+	display_command(0x02, 0);
 	display_command(0x01, 0);
-	display_command(0x34, 0);
-	display_command(0x36, 0);
+	display_command(0x3E, 0);
+	display_command(0x3E, 0);
+
+	for (uint8_t i = 0; i < 32; i++) {
+		display_command(0x80 + i, 0);
+		display_command(0x80, 0);
+		for (uint8_t j = 0; j < 16; j++) {
+			display_data(0xF0 * (j % 2));
+			display_data(0xF0 * (j % 2));
+		}
+	}
+	return;
 
 	for (uint8_t horizontal_addr = 0; horizontal_addr < 16; horizontal_addr++) {
 
@@ -167,7 +194,7 @@ void enable_graph_mode() {
 			values[group * 4 + 3] = (p.val >> 18) & 0b00111111;
 		}
 
-		for (uint8_t vertical_addr = 0; vertical_addr < 64; vertical_addr++) {
+		for (uint8_t vertical_addr = 0; vertical_addr < 40; vertical_addr++) {
 			uint8_t lsb = 0;
 			uint8_t msb = 0;
 			uint8_t bit_idx;
@@ -187,8 +214,8 @@ void enable_graph_mode() {
 			display_command(0x80 | horizontal_addr, 0);
 			
 			// Send Data
-			display_command(0b10101010, 1);
-			display_command(0b10101010, 1);
+			display_data(msb);
+			display_data(lsb);
 		}
 	}
 }
@@ -214,6 +241,7 @@ uint16_t parse_from_buffer(char *buf, uint8_t begin, uint8_t end) {
 	return ret;
 }
 
+#separate
 void regenerate_graph_data() {
 	// form: y=mx+b
 	uint8_t m = 0;
@@ -291,6 +319,7 @@ void regenerate_graph_data() {
 	return;
 }
 
+#separate
 void simplify_expr() {
 	uint8_t i;
 	uint8_t first_operator = 0xFF;
@@ -357,9 +386,9 @@ void simplify_expr() {
 			result *= third_number;
 			break;
 		case '/':
-			if (third_number == 0) {
-				goto err2;
-			}
+			//if (third_number == 0) {
+			//	goto err2;
+			//}
 			result /= third_number;
 			break;
 		case '^':
@@ -369,9 +398,9 @@ void simplify_expr() {
 
 	} else if (first_operator == '/') {
 		// First operator precedence
-		if (second_number == 0) {
-			goto err2;
-		}
+		//if (second_number == 0) {
+		//	goto err2;
+		//}
 		result = first_number / second_number;
 		if (second_operator != 0xFF) switch (second_operator) {
 		case '+':
@@ -384,9 +413,9 @@ void simplify_expr() {
 			result *= third_number;
 			break;
 		case '/':
-			if (third_number == 0) {
-				goto err2;
-			}
+			//if (third_number == 0) {
+			//	goto err2;
+			//}
 			result /= third_number;
 			break;
 		case '^':
@@ -406,9 +435,9 @@ void simplify_expr() {
 			result *= third_number;
 			break;
 		case '/':
-			if (third_number == 0) {
-				goto err2;
-			}
+			//if (third_number == 0) {
+			//	goto err2;
+			//}
 			result /= third_number;
 			break;
 		case '^':
@@ -428,9 +457,9 @@ void simplify_expr() {
 			result = second_number * third_number;
 			break;
 		case '/':
-			if (third_number == 0) {
-				goto err2;
-			}
+			//if (third_number == 0) {
+			//	goto err2;
+			//}
 			result = second_number / third_number;
 			break;
 		case '^':
@@ -489,46 +518,8 @@ void write_character(char c) {
 	}
 }
 
-void main() {
-	// Initialize Pins
-
-	set_tris_a(0x00);
-	set_tris_b(0xFF);
-	set_tris_d(0x00);
-	set_tris_e(0x00);
-
-	// Chip Select pins
-	// Award winning unimplemented Chip Select!!!
-	output_high(DSS);
-	output_high(COSS);
-
-	disable_interrupts(GLOBAL);
-
-	// Keyboard matrix pins
-	output_low(KEYBOARD_0);
-	output_low(KEYBOARD_1);
-	output_low(KEYBOARD_2);
-
-	// Init the SPI bus
-	setup_spi(SPI_MASTER | SPI_SCK_IDLE_HIGH);
-
-	// Initialize display
-	delay_ms(1);
-	display_command(0x30, 0); // Function set: 8 bit interface, basic instruction set
-	// display_command(0x08, 0); // Display status: Everything off
-	// display_command(0x10, 0); // Cursor: Move left (?)
-	display_command(0x0E, 0); // Display status: Display, cursor, and blink on
-	display_command(0x01, 0); // Clear
-	display_command(0x06, 0); // Make cursor move right
-	// display_command(0x80, 0); // Home the cursor (unneccesary)
-
-	// Powerup sequence
-	output_high(SECOND_LED);
-	output_high(ALPHA_LED);
-	output_high(RADIANS_LED);
-	output_high(DEGREES_LED);
-
-	// Write PICalculator text
+#separate
+void splash_text() {
 	display_command('P', 1);
 	display_command('I', 1);
 	display_command('C', 1);
@@ -579,6 +570,49 @@ void main() {
 	display_command(' ', 1);
 	display_command(' ', 1);
 	display_command(' ', 1);
+}
+
+void main() {
+	// Initialize Pins
+
+	set_tris_a(0x00);
+	set_tris_b(0xFF);
+	set_tris_d(0x00);
+	set_tris_e(0x00);
+
+	// Chip Select pins
+	// Award winning unimplemented Chip Select!!!
+	output_high(DSS);
+	output_high(COSS);
+
+	disable_interrupts(GLOBAL);
+
+	// Keyboard matrix pins
+	output_low(KEYBOARD_0);
+	output_low(KEYBOARD_1);
+	output_low(KEYBOARD_2);
+
+	// Init the SPI bus
+	setup_spi(SPI_MASTER | SPI_SCK_IDLE_HIGH);
+
+	// Initialize display
+	delay_ms(1);
+	display_command(0x30, 0); // Function set: 8 bit interface, basic instruction set
+	// display_command(0x08, 0); // Display status: Everything off
+	// display_command(0x10, 0); // Cursor: Move left (?)
+	display_command(0x0E, 0); // Display status: Display, cursor, and blink on
+	display_command(0x01, 0); // Clear
+	display_command(0x06, 0); // Make cursor move right
+	// display_command(0x80, 0); // Home the cursor (unneccesary)
+
+	// Powerup sequence
+	output_high(SECOND_LED);
+	output_high(ALPHA_LED);
+	output_high(RADIANS_LED);
+	output_high(DEGREES_LED);
+
+	// Write PICalculator text
+	splash_text();
 
 #ifdef JOAO_MODE
 	display_command('J', 1);
