@@ -6541,12 +6541,6 @@
 		(uuid "16a27dee-b95d-459c-a075-4d01c2bf2323")
 	)
 	(junction
-		(at 340.36 140.97)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "173d3d80-0f8f-435d-96f5-0e7258c3306e")
-	)
-	(junction
 		(at 130.81 25.4)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6919,6 +6913,12 @@
 		(uuid "a2f0ff57-dbd5-4c3d-827a-25da5b27fdf6")
 	)
 	(junction
+		(at 342.9 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a9d7c59c-8924-4981-81b3-5082f2344156")
+	)
+	(junction
 		(at 130.81 95.25)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7045,12 +7045,6 @@
 		(uuid "d1cbec16-f401-4c30-81cf-b3608150898b")
 	)
 	(junction
-		(at 340.36 128.27)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d287f833-5720-4e30-91ef-b0c080613330")
-	)
-	(junction
 		(at 302.26 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7079,12 +7073,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "df223d6a-3460-42a9-8524-17202ce1d22f")
-	)
-	(junction
-		(at 351.79 140.97)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e5dd6782-ae3c-4b80-815d-7c6d8d653048")
 	)
 	(junction
 		(at 125.73 90.17)
@@ -7902,16 +7890,6 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 140.97) (xy 351.79 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "11450756-05d5-4a91-8db1-58890f5760ab")
-	)
-	(wire
-		(pts
 			(xy 240.03 129.54) (xy 240.03 133.35)
 		)
 		(stroke
@@ -7969,16 +7947,6 @@
 			(type default)
 		)
 		(uuid "14180000-5406-470d-8a50-77b13bba5ebc")
-	)
-	(wire
-		(pts
-			(xy 351.79 138.43) (xy 351.79 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "16b4af6d-e3e4-4fdf-92b0-37f9e9825855")
 	)
 	(wire
 		(pts
@@ -8652,16 +8620,6 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 128.27) (xy 340.36 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "358e9b30-a2fe-4f16-83c8-7dac85d214f7")
-	)
-	(wire
-		(pts
 			(xy 299.72 40.64) (xy 302.26 40.64)
 		)
 		(stroke
@@ -9102,7 +9060,7 @@
 	)
 	(wire
 		(pts
-			(xy 351.79 140.97) (xy 351.79 143.51)
+			(xy 342.9 140.97) (xy 342.9 143.51)
 		)
 		(stroke
 			(width 0)
@@ -10162,6 +10120,16 @@
 	)
 	(wire
 		(pts
+			(xy 342.9 128.27) (xy 342.9 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8ccbb498-2ff4-414a-8bd1-7bbb4659eaa7")
+	)
+	(wire
+		(pts
 			(xy 54.61 147.32) (xy 58.42 147.32)
 		)
 		(stroke
@@ -10792,16 +10760,6 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 128.27) (xy 351.79 128.27)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ad1ecf65-1737-4819-8e13-cca9dadf850c")
-	)
-	(wire
-		(pts
 			(xy 276.86 69.85) (xy 304.8 69.85)
 		)
 		(stroke
@@ -10922,7 +10880,7 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 140.97) (xy 340.36 143.51)
+			(xy 353.06 140.97) (xy 353.06 143.51)
 		)
 		(stroke
 			(width 0)
@@ -11382,16 +11340,6 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 138.43) (xy 340.36 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c4c4d24a-221f-492b-b326-0083f01b37fc")
-	)
-	(wire
-		(pts
 			(xy 302.26 67.31) (xy 302.26 76.2)
 		)
 		(stroke
@@ -11742,6 +11690,16 @@
 	)
 	(wire
 		(pts
+			(xy 342.9 140.97) (xy 342.9 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7fb7e0b-d38e-478d-ad38-d45be22b1099")
+	)
+	(wire
+		(pts
 			(xy 226.06 129.54) (xy 226.06 133.35)
 		)
 		(stroke
@@ -11922,16 +11880,6 @@
 	)
 	(wire
 		(pts
-			(xy 351.79 128.27) (xy 351.79 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ddd64aaf-99f9-4278-a302-d2b06c891a13")
-	)
-	(wire
-		(pts
 			(xy 248.92 34.29) (xy 276.86 34.29)
 		)
 		(stroke
@@ -12009,6 +11957,16 @@
 			(type default)
 		)
 		(uuid "e032d63e-c46b-43ed-80eb-90ef60158b35")
+	)
+	(wire
+		(pts
+			(xy 353.06 140.97) (xy 342.9 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e076fd20-4923-47f3-968d-744039f38359")
 	)
 	(wire
 		(pts
@@ -12292,7 +12250,7 @@
 	)
 	(wire
 		(pts
-			(xy 335.28 128.27) (xy 340.36 128.27)
+			(xy 335.28 128.27) (xy 342.9 128.27)
 		)
 		(stroke
 			(width 0)
@@ -13333,7 +13291,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 323.85 45.72 0)
 			(effects
 				(font
@@ -13341,7 +13299,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 323.85 49.53 0)
 			(effects
 				(font
@@ -13689,7 +13647,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 184.15 36.83 0)
 			(effects
 				(font
@@ -13697,7 +13655,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 184.15 40.64 0)
 			(effects
 				(font
@@ -13908,7 +13866,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 240.03 45.72 0)
 			(effects
 				(font
@@ -13916,7 +13874,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 240.03 49.53 0)
 			(effects
 				(font
@@ -14374,6 +14332,76 @@
 			(project "proj"
 				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
 					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Battery_Cell")
+		(at 342.9 135.89 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1674d18c-ad57-43c0-8115-b2639468c07b")
+		(property "Reference" "B1"
+			(at 346.71 132.7784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2x AA"
+			(at 346.71 135.3184 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Battery:BatteryHolder_MPD_BC2AAPC_2xAA"
+			(at 342.9 134.366 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 342.9 134.366 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Single-cell battery"
+			(at 342.9 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f3c84002-e66d-45b3-bee1-d5e3151cd95c")
+		)
+		(pin "1"
+			(uuid "afd26aa9-2f37-4997-b913-bdf4a56f99ba")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "B1")
 					(unit 1)
 				)
 			)
@@ -14980,7 +15008,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 295.91 36.83 0)
 			(effects
 				(font
@@ -14988,7 +15016,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 295.91 40.64 0)
 			(effects
 				(font
@@ -15398,7 +15426,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 212.09 19.05 0)
 			(effects
 				(font
@@ -15406,7 +15434,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 212.09 22.86 0)
 			(effects
 				(font
@@ -15483,7 +15511,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 295.91 19.05 0)
 			(effects
 				(font
@@ -15491,7 +15519,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 295.91 22.86 0)
 			(effects
 				(font
@@ -15633,7 +15661,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 184.15 19.05 0)
 			(effects
 				(font
@@ -15641,7 +15669,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 184.15 22.86 0)
 			(effects
 				(font
@@ -15852,7 +15880,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 184.15 54.61 0)
 			(effects
 				(font
@@ -15860,7 +15888,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 184.15 58.42 0)
 			(effects
 				(font
@@ -15937,7 +15965,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 212.09 36.83 0)
 			(effects
 				(font
@@ -15945,7 +15973,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 212.09 40.64 0)
 			(effects
 				(font
@@ -16022,7 +16050,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 323.85 72.39 0)
 			(effects
 				(font
@@ -16030,7 +16058,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 323.85 76.2 0)
 			(effects
 				(font
@@ -16107,7 +16135,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 267.97 63.5 0)
 			(effects
 				(font
@@ -16115,7 +16143,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 267.97 67.31 0)
 			(effects
 				(font
@@ -16259,7 +16287,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 267.97 54.61 0)
 			(effects
 				(font
@@ -16267,7 +16295,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 267.97 58.42 0)
 			(effects
 				(font
@@ -16411,7 +16439,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 184.15 72.39 0)
 			(effects
 				(font
@@ -16419,7 +16447,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 184.15 76.2 0)
 			(effects
 				(font
@@ -16561,7 +16589,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 240.03 63.5 0)
 			(effects
 				(font
@@ -16569,7 +16597,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 240.03 67.31 0)
 			(effects
 				(font
@@ -17527,7 +17555,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 212.09 54.61 0)
 			(effects
 				(font
@@ -17535,7 +17563,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 212.09 58.42 0)
 			(effects
 				(font
@@ -17612,7 +17640,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 267.97 45.72 0)
 			(effects
 				(font
@@ -17620,7 +17648,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 267.97 49.53 0)
 			(effects
 				(font
@@ -17904,7 +17932,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
 			(at 26.67 51.1048 0)
 			(effects
 				(font
@@ -17963,7 +17991,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 295.91 45.72 0)
 			(effects
 				(font
@@ -17971,7 +17999,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 295.91 49.53 0)
 			(effects
 				(font
@@ -18247,7 +18275,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 323.85 19.05 0)
 			(effects
 				(font
@@ -18255,7 +18283,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 323.85 22.86 0)
 			(effects
 				(font
@@ -18401,7 +18429,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 240.03 27.94 0)
 			(effects
 				(font
@@ -18409,7 +18437,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 240.03 31.75 0)
 			(effects
 				(font
@@ -18486,7 +18514,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 267.97 27.94 0)
 			(effects
 				(font
@@ -18494,7 +18522,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 267.97 31.75 0)
 			(effects
 				(font
@@ -18720,7 +18748,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
 			(at 26.67 58.7248 0)
 			(effects
 				(font
@@ -18849,7 +18877,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 295.91 63.5 0)
 			(effects
 				(font
@@ -18857,7 +18885,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 295.91 67.31 0)
 			(effects
 				(font
@@ -19267,7 +19295,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 240.03 19.05 0)
 			(effects
 				(font
@@ -19275,7 +19303,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 240.03 22.86 0)
 			(effects
 				(font
@@ -19759,7 +19787,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 323.85 63.5 0)
 			(effects
 				(font
@@ -19767,7 +19795,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 323.85 67.31 0)
 			(effects
 				(font
@@ -19844,7 +19872,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 212.09 63.5 0)
 			(effects
 				(font
@@ -19852,7 +19880,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 212.09 67.31 0)
 			(effects
 				(font
@@ -20263,7 +20291,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 323.85 54.61 0)
 			(effects
 				(font
@@ -20271,7 +20299,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 323.85 58.42 0)
 			(effects
 				(font
@@ -20535,7 +20563,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 295.91 27.94 0)
 			(effects
 				(font
@@ -20543,7 +20571,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 295.91 31.75 0)
 			(effects
 				(font
@@ -20605,7 +20633,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 340.36 143.51 180)
+		(at 353.06 143.51 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20613,7 +20641,7 @@
 		(dnp no)
 		(uuid "ae4da625-4061-4fa0-8cdb-0a01aed11d92")
 		(property "Reference" "#FLG02"
-			(at 340.36 145.415 0)
+			(at 353.06 145.415 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20622,7 +20650,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 340.36 147.32 0)
+			(at 353.06 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20630,7 +20658,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 340.36 143.51 0)
+			(at 353.06 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20639,7 +20667,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 340.36 143.51 0)
+			(at 353.06 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20648,7 +20676,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 340.36 143.51 0)
+			(at 353.06 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21293,7 +21321,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 267.97 36.83 0)
 			(effects
 				(font
@@ -21301,7 +21329,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 267.97 40.64 0)
 			(effects
 				(font
@@ -21378,7 +21406,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 267.97 19.05 0)
 			(effects
 				(font
@@ -21386,7 +21414,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 267.97 22.86 0)
 			(effects
 				(font
@@ -21574,7 +21602,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 323.85 36.83 0)
 			(effects
 				(font
@@ -21582,7 +21610,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 323.85 40.64 0)
 			(effects
 				(font
@@ -21726,7 +21754,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 184.15 27.94 0)
 			(effects
 				(font
@@ -21734,7 +21762,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 184.15 31.75 0)
 			(effects
 				(font
@@ -21811,7 +21839,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 295.91 54.61 0)
 			(effects
 				(font
@@ -21819,7 +21847,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 295.91 58.42 0)
 			(effects
 				(font
@@ -22221,76 +22249,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Battery_Cell")
-		(at 340.36 135.89 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cda3f656-5eb1-4246-a69c-18741b8cd2d4")
-		(property "Reference" "B1"
-			(at 344.17 132.7784 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2032"
-			(at 344.17 135.3184 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Parts:BAT_BAT-HLD-001-THM"
-			(at 340.36 134.366 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 340.36 134.366 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Single-cell battery"
-			(at 340.36 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "0437427f-ad17-43fe-b5e7-1688124fd339")
-		)
-		(pin "1"
-			(uuid "9f8776a3-f005-4dd5-b779-46216335be2c")
-		)
-		(instances
-			(project ""
-				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
-					(reference "B1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:D")
 		(at 212.09 31.75 180)
 		(unit 1)
@@ -22307,7 +22265,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 212.09 27.94 0)
 			(effects
 				(font
@@ -22315,7 +22273,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 212.09 31.75 0)
 			(effects
 				(font
@@ -22459,7 +22417,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 212.09 72.39 0)
 			(effects
 				(font
@@ -22467,7 +22425,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 212.09 76.2 0)
 			(effects
 				(font
@@ -22544,7 +22502,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 323.85 27.94 0)
 			(effects
 				(font
@@ -22552,7 +22510,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 323.85 31.75 0)
 			(effects
 				(font
@@ -22629,7 +22587,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 240.03 54.61 0)
 			(effects
 				(font
@@ -22637,7 +22595,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 240.03 58.42 0)
 			(effects
 				(font
@@ -22784,7 +22742,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 240.03 72.39 0)
 			(effects
 				(font
@@ -22792,7 +22750,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 240.03 76.2 0)
 			(effects
 				(font
@@ -23006,7 +22964,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 212.09 45.72 0)
 			(effects
 				(font
@@ -23014,7 +22972,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 212.09 49.53 0)
 			(effects
 				(font
@@ -23226,7 +23184,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 267.97 72.39 0)
 			(effects
 				(font
@@ -23234,7 +23192,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 267.97 76.2 0)
 			(effects
 				(font
@@ -23311,7 +23269,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 295.91 72.39 0)
 			(effects
 				(font
@@ -23319,7 +23277,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 295.91 76.2 0)
 			(effects
 				(font
@@ -23651,7 +23609,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 351.79 143.51 0)
+		(at 342.9 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23659,7 +23617,7 @@
 		(dnp no)
 		(uuid "e6ecedda-b2a7-4e59-b6c1-fd97188506b2")
 		(property "Reference" "#PWR023"
-			(at 351.79 149.86 0)
+			(at 342.9 149.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23668,7 +23626,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 351.79 147.32 0)
+			(at 342.9 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23676,7 +23634,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 351.79 143.51 0)
+			(at 342.9 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23685,7 +23643,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 351.79 143.51 0)
+			(at 342.9 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23694,7 +23652,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 351.79 143.51 0)
+			(at 342.9 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23816,7 +23774,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 184.15 45.72 0)
 			(effects
 				(font
@@ -23824,7 +23782,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 184.15 49.53 0)
 			(effects
 				(font
@@ -24286,76 +24244,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Battery_Cell")
-		(at 351.79 135.89 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f101f9fe-2c0e-4ed6-9762-644947451b17")
-		(property "Reference" "B2"
-			(at 355.6 132.7784 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2032"
-			(at 355.6 135.3184 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Parts:BAT_BAT-HLD-001-THM"
-			(at 351.79 134.366 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 351.79 134.366 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Single-cell battery"
-			(at 351.79 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "5f31221e-c913-4a87-a858-45b216fad95e")
-		)
-		(pin "1"
-			(uuid "03a8b721-2421-4042-b04d-34cc64186aec")
-		)
-		(instances
-			(project "proj"
-				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
-					(reference "B2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:D")
 		(at 184.15 67.31 180)
 		(unit 1)
@@ -24372,7 +24260,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 184.15 63.5 0)
 			(effects
 				(font
@@ -24380,7 +24268,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 184.15 67.31 0)
 			(effects
 				(font
@@ -24524,7 +24412,7 @@
 				)
 			)
 		)
-		(property "Value" "BAS7002"
+		(property "Value" "S040S2R0"
 			(at 240.03 36.83 0)
 			(effects
 				(font
@@ -24532,7 +24420,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
+		(property "Footprint" "Diode_SMD:D_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 240.03 40.64 0)
 			(effects
 				(font
