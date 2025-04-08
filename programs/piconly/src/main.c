@@ -79,30 +79,6 @@ uint16_t pow(uint16_t base, uint16_t exponent) {
 
 uint16_t char_to_num(char c) {
 	return c - 48;
-	switch(c) {
-			case '0':
-				return 0;
-			case '1':
-				return 1;
-			case '2':
-				return 2;
-			case '3':
-				return 3;
-			case '4':
-				return 4;
-			case '5':
-				return 5;
-			case '6':
-				return 6;
-			case '7':
-				return 7;
-			case '8':
-				return 8;
-			case '9':
-				return 9;
-			default:
-				return 0xFF;
-			}
 }
 
 void write_num(uint16_t num) {
@@ -153,11 +129,11 @@ void enable_graph_eq_mode() {
 void enable_graph_mode() {
 	// Set Mode
 	
-	//display_command(0x30, 0);
-	//display_command(0x01, 0);
-	//display_command(0x34, 0);
-	//display_command(0x36, 0);
-
+	display_command(0x01, 0);
+	display_command(0x30, 0);
+	display_command(0x34, 0);
+	display_command(0x36, 0);
+	/*
 	display_command(0x38, 0);
 	display_command(0x08, 0);
 	display_command(0x06, 0);
@@ -165,7 +141,7 @@ void enable_graph_mode() {
 	display_command(0x01, 0);
 	display_command(0x3E, 0);
 	display_command(0x3E, 0);
-
+	/*
 	for (uint8_t i = 0; i < 32; i++) {
 		display_command(0x80 + i, 0);
 		display_command(0x80, 0);
@@ -174,7 +150,7 @@ void enable_graph_mode() {
 			display_data(0xF0 * (j % 2));
 		}
 	}
-	return;
+	return;*/
 
 	for (uint8_t horizontal_addr = 0; horizontal_addr < 16; horizontal_addr++) {
 
@@ -194,7 +170,7 @@ void enable_graph_mode() {
 			values[group * 4 + 3] = (p.val >> 18) & 0b00111111;
 		}
 
-		for (uint8_t vertical_addr = 0; vertical_addr < 40; vertical_addr++) {
+		for (uint8_t vertical_addr = 0; vertical_addr < 32; vertical_addr++) {
 			uint8_t lsb = 0;
 			uint8_t msb = 0;
 			uint8_t bit_idx;
@@ -209,13 +185,19 @@ void enable_graph_mode() {
 				}
 			}
 
+			//printf("Vertical Address: %d\n", vertical_addr);
+			//printf("Horizontal Address: %d\n", horizontal_addr);
+
+			//printf("LSB: %d\n", lsb);
+			//printf("MSB: %d\n", msb);
+
 			// Set Address
 			display_command(0x80 | vertical_addr, 0);
 			display_command(0x80 | horizontal_addr, 0);
 			
 			// Send Data
-			display_data(msb);
-			display_data(lsb);
+			display_command(msb, 1);
+			display_command(lsb, 1);
 		}
 	}
 }
