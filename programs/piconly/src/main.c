@@ -102,6 +102,7 @@ void write_num(uint16_t num) {
 void enable_normal_mode() {
 	// Set mode and clear
 	display_command(0x30, 0);
+	display_command(0x0E, 0);
 	display_command(0x01, 0);
 
 	delay_ms(50);
@@ -129,30 +130,13 @@ void enable_graph_eq_mode() {
 void enable_graph_mode() {
 	// Set Mode
 	
-	display_command(0x01, 0);
-	display_command(0x30, 0);
+	//display_command(0x01, 0);
+	//display_command(0x30, 0);
+	display_command(0x0C, 0);
 	display_command(0x34, 0);
 	display_command(0x36, 0);
-	/*
-	display_command(0x38, 0);
-	display_command(0x08, 0);
-	display_command(0x06, 0);
-	display_command(0x02, 0);
-	display_command(0x01, 0);
-	display_command(0x3E, 0);
-	display_command(0x3E, 0);
-	/*
-	for (uint8_t i = 0; i < 32; i++) {
-		display_command(0x80 + i, 0);
-		display_command(0x80, 0);
-		for (uint8_t j = 0; j < 16; j++) {
-			display_data(0xF0 * (j % 2));
-			display_data(0xF0 * (j % 2));
-		}
-	}
-	return;*/
 
-	for (uint8_t horizontal_addr = 0; horizontal_addr < 16; horizontal_addr++) {
+	for (uint8_t horizontal_addr = 0; horizontal_addr < 8; horizontal_addr++) {
 
 		// Memory-perf tradeoff. can change this based on which is more important later.
 		// Stores the vertical positions of the dots
@@ -161,16 +145,23 @@ void enable_graph_mode() {
 
 		for (uint8_t group = 0; group < 4; group++) {
 			uint8_t index = 3 * (group + 4 * horizontal_addr);
-			p.bytes[0] = graph_data_1[index + 0];
-			p.bytes[1] = graph_data_1[index + 1];
-			p.bytes[2] = graph_data_1[index + 2];
+			if (index < 48) {
+				p.bytes[0] = graph_data_1[index + 0];
+				p.bytes[1] = graph_data_1[index + 1];
+				p.bytes[2] = graph_data_1[index + 2];
+			} else {
+				index -= 48;
+				p.bytes[0] = graph_data_2[index + 0];
+				p.bytes[1] = graph_data_2[index + 1];
+				p.bytes[2] = graph_data_2[index + 2];
+			}
 			values[group * 4] = p.val & 0b00111111;
 			values[group * 4 + 1] = (p.val >> 6) & 0b00111111;
 			values[group * 4 + 2] = (p.val >> 12) & 0b00111111;
 			values[group * 4 + 3] = (p.val >> 18) & 0b00111111;
 		}
 
-		for (uint8_t vertical_addr = 0; vertical_addr < 32; vertical_addr++) {
+		for (uint8_t vertical_addr = 0; vertical_addr < 64; vertical_addr++) {
 			uint8_t lsb = 0;
 			uint8_t msb = 0;
 			uint8_t bit_idx;
@@ -190,10 +181,16 @@ void enable_graph_mode() {
 
 			//printf("LSB: %d\n", lsb);
 			//printf("MSB: %d\n", msb);
+			
+			// X axis
+			if (vertical_addr == 32) {
+				msb = 0xFF;
+				lsb = 0xFF;
+			}
 
 			// Set Address
-			display_command(0x80 | vertical_addr, 0);
-			display_command(0x80 | horizontal_addr, 0);
+			display_command(0x80 + (vertical_addr >= 32 ? vertical_addr - 32 : vertical_addr), 0);
+			display_command(0x80 + (vertical_addr >= 32 ? horizontal_addr + 8 : horizontal_addr), 0);
 			
 			// Send Data
 			display_command(msb, 1);
@@ -266,9 +263,9 @@ void regenerate_graph_data() {
 	for (i = 0; i < 128; i++) {
 		val = 63 - (((char)i - 63) * m + b + 31);
 		if (val > 63) {
-			val = 31;
+			val = 32;
 		}
-		word.val |= (val << ((i % 4) * 6));
+		word.val |= ((uint32_t)val << ((i % 4) * 6));
 		// Copy first 3 bytes of word into graphdata
 		if (i % 4 == 3) {
 			index = (i/4) * 3;
@@ -575,7 +572,7 @@ void main() {
 	output_low(KEYBOARD_2);
 
 	// Init the SPI bus
-	setup_spi(SPI_MASTER | SPI_SCK_IDLE_HIGH);
+	setup_spi(SPI_MASTER | SPI_SCK_IDLE_HIGH | SPI_CLK_DIV_64);
 
 	// Initialize display
 	delay_ms(1);
