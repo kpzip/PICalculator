@@ -43,17 +43,17 @@ void display_command(uint8_t data, uint8_t rs) {
 
 void send_to_STM(uint8_t b) {
 	output_low(COSS);
-	spi_write(0x01); // PIC -> STM
-	delay_ms(SPI_DELAY);
+	// spi_write(0x01); // PIC -> STM
+	// delay_ms(SPI_DELAY);
 	spi_write(0x01); // Key Pressed
-	delay_ms(SPI_DELAY);
+	//delay_ms(SPI_DELAY);
 	spi_write(b);    // Key Pressed Data
 	output_high(COSS);
 }
 
 uint8_t handle_possible_STM_response() {
 	output_low(COSS);
-	spi_write(0x00); // STM -> PIC
+	/* spi_write(0x00); // STM -> PIC
 	while (TRUE) {
 		delay_ms(SPI_DELAY);
 		uint8_t status = spi_read(0x00); // Read STM Status
@@ -67,14 +67,40 @@ uint8_t handle_possible_STM_response() {
 		default:
 			return 0;
 		}
-	}
-	delay_ms(SPI_DELAY);
-	uint8_t display_rs = spi_read(0x00);
-	delay_ms(SPI_DELAY);
-	uint8_t display_byte = spi_read(0x00);
-	delay_ms(SPI_DELAY);
-	output_high(COSS);
-	display_command(display_byte, display_rs);
+	} */
+	
+	while (!input(CO_READY)); // Wait for STM to finish
+	
+	uint8_t display_rs;
+	uint8_t more_data;
+	
+	do {
+		
+		uint8_t status = spi_read(0x00); // Read STM status
+		
+		switch (status & 0x7F) { // Cut off top bit
+		case 0: // No data
+			return 0;
+		case 1: // Display command, RS=0
+			display_rs = 0;
+			break;
+		case 2: // Display command, RS=1
+			display_rs = 1;
+			break;
+		default:
+			return 0;
+		}
+		
+		uint8_t display_byte = spi_read(0x00);
+	
+		output_high(COSS);
+		display_command(display_byte, display_rs);
+		
+		// Top bit is set if the STM has more data to send
+		more_data = status & 0x80;
+		
+	} while (more_data);
+
 	return 1;
 }
 
@@ -85,6 +111,9 @@ void main() {
 	set_tris_b(0xFF);
 	set_tris_d(0x00);
 	set_tris_e(0x00);
+	
+	// Set STM ready pin and MISO as inputs
+	set_tris_c(0b00010010);
 
 	// Chip Select pins
 	// Award winning unimplemented Chip Select!!!
@@ -191,7 +220,8 @@ void main() {
 			}
 			
 			// Get display commands from STM
-			while(handle_possible_STM_response()) {}
+			//while(handle_possible_STM_response()) {}
+			handle_possible_STM_response();
 			
 		else {
 			last_button = 0xFF;
