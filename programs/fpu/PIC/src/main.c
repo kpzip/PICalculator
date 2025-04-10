@@ -70,12 +70,12 @@ uint8_t handle_possible_STM_response() {
 	} */
 	
 	while (!input(CO_READY)); // Wait for STM to finish
-	
+
 	uint8_t display_rs;
 	uint8_t more_data;
 	
 	do {
-		
+		output_low(COSS);
 		uint8_t status = spi_read(0x00); // Read STM status
 		
 		switch (status & 0x7F) { // Cut off top bit
@@ -95,9 +95,10 @@ uint8_t handle_possible_STM_response() {
 	
 		output_high(COSS);
 		display_command(display_byte, display_rs);
-		
+
 		// Top bit is set if the STM has more data to send
 		more_data = status & 0x80;
+		delay_ms(SPI_DELAY);
 		
 	} while (more_data);
 
@@ -141,7 +142,7 @@ void main() {
 	output_low(DEGREES_LED);
 
 	// Init the SPI bus
-	setup_spi(SPI_MASTER | SPI_SCK_IDLE_HIGH);
+	setup_spi(SPI_MASTER | SPI_SCK_IDLE_HIGH | SPI_CLK_DIV_64);
 
 	// Initialize display
 	display_command(0x30, 0); // Function set: 8 bit interface, basic instruction set
@@ -162,7 +163,7 @@ void main() {
 		uint8_t any_button_pressed = 0;
 		for (uint8_t row_counter = 0; row_counter < 7; row_counter++) {
 			set_keyboard_row(row_counter);
-			for (column_counter = 0; column_counter < 6; column_counter++) {
+			for (uint8_t column_counter = 0; column_counter < 6; column_counter++) {
 				if (input(KEYBOARD_IN + column_counter)) {
 					uint8_t button_id = column_counter + row_counter * 6;
 					if (last_button != button_id) {
@@ -205,10 +206,10 @@ void main() {
 			case 30:
 				// 2nd
 				if (second) {
-					status = 0;
+					second = 0;
 					output_low(SECOND_LED);
 				} else {
-					status = 1;
+					second = 1;
 					output_high(SECOND_LED);
 				}
 				break;
@@ -223,7 +224,7 @@ void main() {
 			//while(handle_possible_STM_response()) {}
 			handle_possible_STM_response();
 			
-		else {
+		} else {
 			last_button = 0xFF;
 		}	
 	}

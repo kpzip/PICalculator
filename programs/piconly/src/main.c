@@ -657,13 +657,14 @@ void main() {
 			case 31:
 				output_low(COSS);
 				spi_write(status);
+				delay_ms(10);
 				status = spi_read(0x00);
 				second = (status >> 1) & 1;
 				alpha = (status >> 2) & 1;
 				uint8_t degrad = status & 1;
 				output_bit(SECOND_LED, second);
 				output_bit(ALPHA_LED, alpha);
-				output_bit(RADIANS_LED, ~degrad);
+				output_bit(RADIANS_LED, degrad ^ 1);
 				output_bit(DEGREES_LED, degrad);
 				output_high(COSS);
 				break;
