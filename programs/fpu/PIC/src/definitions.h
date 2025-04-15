@@ -28,5 +28,7 @@ typedef long long uint32_t;
 #define RADIANS_LED PIN_D2
 #define DEGREES_LED PIN_D3
 
+#define CO_READY PIN_C1
+
 
 #endif /* SRC_DEFINITIONS_H_ */
