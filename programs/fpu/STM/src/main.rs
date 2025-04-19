@@ -4,183 +4,141 @@
 #![no_main]
 #![no_std]
 
+mod util;
+
+extern crate alloc;
+
+use alloc::format;
+use alloc::string::{String, ToString};
 // Halt on panic
 use panic_halt as _; // panic handler
 
-use cortex_m_rt::entry;
-use stm32f4xx_hal as hal;
 use crate::hal::{pac, prelude::*};
+use cortex_m_rt::entry;
 use hal::gpio::alt::spi1::Nss;
 use hal::spi::{Mode, Phase, Polarity};
-use stm32f4xx_hal::spi::{BitFormat, Error, Flag, SpiSlave};
 use rtt_target::{rprintln, rtt_init_print};
-// use stm32f4xx_hal::adc::config::Sequence::Eight;
-// use stm32f4xx_hal::gpio::Pin;
-// use stm32f4xx_hal::pac::rcc::cfgr::HPRE::Div2;
-// use stm32f4xx_hal::pac::SPI1;
-// use stm32f4xx_hal::pac::spi1::cr1::BIDIMODE::Unidirectional;
-// use stm32f4xx_hal::serial::CFlag;
-// use stm32f4xx_hal::spi::Flag::TxEmpty;
-//use stm32ral::{read_reg, write_reg, modify_reg, reset_reg};
-//use stm32ral::{gpio, spi, rcc};
-// use stm32ral::gpio::AFRL::AFRL5::RW::AF1;
-// #[inline(never)]
-// fn dostuff(spi: &mut SpiSlave<SPI1>) {
-//     let mut data: [u8; 2] = [0; 2];
-//     let mut buff: [u8; 1] = [0x02];
-//
-//     match spi.read(&mut data) {
-//         Ok(_) => {
-//             rprintln!("Received data: {:02X?}", data);
-//             //ready.set_high();
-//             let a = spi.is_tx_empty();
-//             if let Err(e) = spi.write(&mut buff) {
-//                 rprintln!("Write error: {:?}", e);
-//             }
-//             //ready.set_low();
-//             rprintln!("{} {} {}", spi.is_rx_not_empty(), spi.is_tx_empty(), a);
-//         },
-//         Err(e) => {
-//             rprintln!("Error: {:?}", e);
-//         },
-//     }
-// }
+use stm32f4xx_hal as hal;
+use stm32f4xx_hal::spi::{BitFormat, Error, Flag, SpiSlave};
+
+use embedded_alloc::LlffHeap as Heap;
+use lib::parser::parse;
+use crate::util::truncate_trailing_zeros;
+
+#[global_allocator]
+static HEAP: Heap = Heap::empty();
 
 #[entry]
 fn main() -> ! {
-
     rtt_init_print!();
 
-    //let mut gpioa = gpio::GPIOA::take().unwrap();
-    //let rcc = rcc::RCC::take().unwrap();
-    let dp = pac::Peripherals::take().unwrap();
-
-    // modify_reg!(rcc, rcc, CR, HSION: On, PLLON: On);
-    // modify_reg!(rcc, rcc, PLLCFGR, PLLM: 8, PLLN: 84, PLLP: 2, PLLSRC: HSI);
-    // modify_reg!(rcc, rcc, CFGR, SW: PLL, HPRE: Div2, PPRE1: Div2, PPRE2: Div1);
-    // modify_reg!(rcc, rcc, AHB1ENR, GPIOAEN: Enabled);
-    // modify_reg!(rcc, rcc, APB2ENR, SPI1EN: Enabled);
-
-    unsafe {
-        // dp.RCC.cr().write(|w| { w.bits(50360195) });
-        // dp.RCC.pllcfgr().write(|w| { w.bits(67114248) });
-        // dp.RCC.cfgr().write(|w| { w.bits(4234) });
-
-        dp.RCC.ahb1enr().write(|w| { w.bits(3) });
-        dp.RCC.ahb1lpenr().write(|w| { w.bits(6394015) });
-        dp.RCC.ahb1rstr().write(|w| { w.bits(0) });
-        dp.RCC.ahb2enr().write(|w| { w.bits(0) });
-        dp.RCC.ahb2lpenr().write(|w| { w.bits(128) });
-        dp.RCC.ahb1rstr().write(|w| { w.bits(0) });
-
-        dp.RCC.apb1enr().write(|w| { w.bits(268435456) });
-        dp.RCC.apb1lpenr().write(|w| { w.bits(283297807) });
-        dp.RCC.apb1rstr().write(|w| { w.bits(0) });
-        dp.RCC.apb2enr().write(|w| { w.bits(20480) });
-        dp.RCC.apb2lpenr().write(|w| { w.bits(489777) });
-        dp.RCC.apb1rstr().write(|w| { w.bits(0) });
-
-        dp.GPIOA.afrl().write(|w| { w.bits(1431633920) });
-        dp.GPIOA.moder().write(|w| { w.bits(2818615824) });
-        dp.GPIOA.ospeedr().write(|w| { w.bits(201391872) });
-        dp.GPIOA.otyper().modify(|_, w| w.ot2().clear_bit());
-
-        dp.SPI1.cr1().write(|w| { w.bits(67) });
-        dp.SPI1.cr2().write(|w| { w.bits(0) });
+    // Initialize the allocator BEFORE you use it
+    {
+        use core::mem::MaybeUninit;
+        const HEAP_SIZE: usize = 1024;
+        static mut HEAP_MEM: [MaybeUninit<u8>; HEAP_SIZE] = [MaybeUninit::uninit(); HEAP_SIZE];
+        unsafe { HEAP.init(&raw mut HEAP_MEM as usize, HEAP_SIZE) }
     }
 
-    let mut data: [u8; 2] = [0; 2];
+    let dp = pac::Peripherals::take().unwrap();
+    let cp = cortex_m::Peripherals::take().unwrap();
 
-    rprintln!("TX Empty: {}", dp.SPI1.sr().read().txe().bit());
+    // Set up the LED. On the Nucleo-446RE it's connected to pin PA5.
+    let gpioa = dp.GPIOA.split();
+    //let mut led = gpioa.pa5.into_push_pull_output();
+
+    // Set up the system clock. We want to run at 48MHz for this one.
+    let rcc = dp.RCC.constrain();
+    let clocks = rcc.cfgr.sysclk(48.MHz()).freeze();
+
+    // Create a delay abstraction based on SysTick
+    let mut delay = cp.SYST.delay(&clocks);
+
+    let mut ready = gpioa.pa2.into_push_pull_output();
+    ready.set_low();
+
+    let sck = gpioa.pa5;
+    let mut miso = gpioa.pa6;
+    let mosi = gpioa.pa7;
+    let nss = gpioa.pa4;
+
+    let mut spi = dp.SPI1.spi_slave(
+        (sck, miso, mosi, Some(Nss::from(nss))),
+        Mode {
+            phase: Phase::CaptureOnSecondTransition,
+            polarity: Polarity::IdleHigh,
+        },
+    );
+
+    let mut data: [u8; 2] = [0; 2];
+    let mut sci_mode_text: String = String::new();
 
     loop {
-        while dp.SPI1.sr().read().rxne().bit_is_clear() {}
-        data[0] = dp.SPI1.dr8().read().bits();
-        while dp.SPI1.sr().read().rxne().bit_is_clear() {}
-        data[1] = dp.SPI1.dr8().read().bits();
-        rprintln!("Got data: {:02X?}", data);
-        rprintln!("TX Empty: {}", dp.SPI1.sr().read().txe().bit());
-
-        dp.SPI1.dr8().write(|w| unsafe { w.bits(0x02) });
-        rprintln!("TX Empty: {}", dp.SPI1.sr().read().txe().bit());
-
-        dp.GPIOA.odr().write(|w| { w.odr2().set_bit() });
-
-        while dp.SPI1.sr().read().txe().bit_is_clear() {}
-        dp.SPI1.dr8().read();
-
-        dp.SPI1.dr8().write(|w| unsafe { w.bits('A' as u8) });
-        while dp.SPI1.sr().read().txe().bit_is_clear() {}
-        dp.SPI1.dr8().read();
-        rprintln!("Wrote data");
-        dp.GPIOA.odr().write(|w| { w.odr2().clear_bit() });
+        match spi.read(&mut data) {
+            Ok(_) => {
+                rprintln!("Received data: {:02X?}", data);
+                if data[0] == 1 {
+                    // Key press received
+                    let key = data[1];
+                    let c = match key {
+                        13 => {
+                            sci_mode_text.clear();
+                            ready.set_high();
+                            spi.write(&[0x01, 0x01]).unwrap();
+                            ready.set_low();
+                            ""
+                        },
+                        2 => ".",
+                        3 => "0",
+                        8 => "7",
+                        9 => "8",
+                        10 => "9",
+                        14 => "4",
+                        15 => "5",
+                        16 => "6",
+                        20 => "1",
+                        21 => "2",
+                        22 => "3",
+                        29 => "+",
+                        23 => "-",
+                        17 => "*",
+                        11 => "/",
+                        5 => {
+                            // Eval
+                            let parsed = parse(sci_mode_text.as_str()).map(|v| truncate_trailing_zeros(format!("{:.8}", v.evaluate()))).unwrap_or(String::from("err"));
+                            sci_mode_text = parsed;
+                            ready.set_high();
+                            // Reset Display
+                            spi.write(&[0x81, 0x01]).unwrap();
+                            for b in sci_mode_text.as_bytes().iter().copied() {
+                                spi.write(&[0x82, b]).unwrap();
+                            }
+                            spi.write(&[0x00]).unwrap();
+                            ready.set_low();
+                            ""
+                        }
+                        _ => {
+                            ready.set_high();
+                            spi.write(&[0x00]).unwrap();
+                            ready.set_low();
+                            ""
+                        },
+                    };
+                    sci_mode_text.push_str(c);
+                    if c.len() > 0 {
+                        ready.set_high();
+                        if let Err(e) = spi.write(&[0x02, c.as_bytes()[0]]) {
+                            rprintln!("Write error: {:?}", e);
+                        }
+                        ready.set_low();
+                    }
+                } else {
+                    rprintln!("Error Unknown Request: {:02X?}", data);
+                }
+            }
+            Err(e) => {
+                rprintln!("Error: {:?}", e);
+            }
+        }
     }
-/*
-    // write_reg!(gpio, gpioa, AFRL, 0b0101_0101_0101_0101_0000_0000_0000_0000);
-    // modify_reg!(gpio, gpioa, MODER, MODER4: Alternate, MODER5: Alternate, MODER6: Alternate, MODER7: Alternate);
-    // write_reg!(gpio, gpioa, OSPEEDR, 0xffffffff);
-
-    let mut data: [u8; 2] = [0; 2];
-
-    //let spi1 = spi::SPI1::take().unwrap();
-    // modify_reg!(spi, spi1, CR1, CPHA: SecondEdge, CPOL: IdleHigh,
-    //     MSTR: Slave, BR: Div2, SPE: Enabled, LSBFIRST: MSBFirst,
-    //     SSM: Disabled, RXONLY: FullDuplex, DFF: EightBit, BIDIMODE: Unidirectional);
-    write_reg!(spi, spi1, CR1, 3);
-    write_reg!(spi, spi1, CR2, 0);
-
-    while read_reg!(spi, spi1, SR, RXNE == 0) {
-        //rprintln!("{}", read_reg!(spi, spi1, SR));
-    }
-    rprintln!("here");
-    data[0] = read_reg!(spi, spi1, DR) as u8;
-    while read_reg!(spi, spi1, SR, RXNE == 0) {}
-    data[1] = read_reg!(spi, spi1, DR) as u8;
-
-    rprintln!("Read data: {:02X?}", data);
-    //ready.set_high();
-    write_reg!(spi, spi1, DR, 2);
-    while read_reg!(spi, spi1, SR, TXE == 0) {}
- */
-    //ready.set_low();
-    //
-    // if let (Some(dp), Some(cp)) = (
-    //     pac::Peripherals::take(),
-    //     cortex_m::peripheral::Peripherals::take(),
-    // ) {
-    //     // Set up the LED. On the Nucleo-446RE it's connected to pin PA5.
-    //     let gpioa = dp.GPIOA.split();
-    //     //let mut led = gpioa.pa5.into_push_pull_output();
-    //
-    //     // Set up the system clock. We want to run at 48MHz for this one.
-    //     let rcc = dp.RCC.constrain();
-    //     let clocks = rcc.cfgr.sysclk(48.MHz()).freeze();
-    //
-    //     // Create a delay abstraction based on SysTick
-    //     let mut delay = cp.SYST.delay(&clocks);
-    //
-    //     let mut ready = gpioa.pa2.into_push_pull_output();
-    //     ready.set_low();
-    //
-    //     let sck = gpioa.pa5.into_alternate::<5>();
-    //     let mut miso = gpioa.pa6.into_alternate::<5>();
-    //     let mosi = gpioa.pa7.into_alternate::<5>();
-    //     let nss = gpioa.pa4.into_alternate::<5>();
-    //
-    //     // let mut spi = dp.SPI1.spi_slave(
-    //     //     (sck, miso, mosi, Some(Nss::from(nss))),
-    //     //     Mode {
-    //     //         phase: Phase::CaptureOnSecondTransition,
-    //     //         polarity: Polarity::IdleHigh,
-    //     //     }
-    //     // );
-    //
-    //     rprintln!("Initialized SPI");
-    //
-    //     // dostuff(&mut spi);
-    // }
-
-    loop {}
-
-
 }
