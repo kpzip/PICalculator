@@ -71,8 +71,11 @@ pub fn parse(input: &str) -> Result<Expression, ParseError> {
     let mut tokens = tokenizer::tokenize(input)?;
     // Reverse so we can pop() from the beginning
     tokens.reverse();
+    if tokens.is_empty() {
+        return Ok(Expression::Immediate(0.0));
+    }
     let mut symbol_stack = Vec::<HalfParsed>::new();
-    while !tokens.is_empty() || symbol_stack.len() > 1 {
+    while !tokens.is_empty() || symbol_stack.len() > 1 || symbol_stack[0].is_token() {
         // Try Reducing
         // Decimal Literals
         if let Some(HalfParsed::Token(Token::DecLiteral(val))) = symbol_stack.last() {
@@ -154,5 +157,9 @@ mod tests {
                 Box::new(Expression::Immediate(3.0))
             ))
         );
+        assert_eq!(
+            parse("489"),
+            Ok(Expression::Immediate(489.0))
+        )
     }
 }
