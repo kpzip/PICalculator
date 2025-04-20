@@ -2,25 +2,28 @@ use crate::parser::expression::Expression;
 use crate::parser::tokenizer::Token;
 use alloc::boxed::Box;
 use alloc::vec::Vec;
+use alloc::string::String;
 use core::error::Error;
 use core::fmt::{Display, Formatter};
+use alloc::borrow::ToOwned;
 
 pub mod expression;
 mod tokenizer;
 mod util;
 
 #[derive(Debug, PartialEq)]
-pub enum ParseError {
+pub enum ExpressionError {
     InvalidSyntax,
+    UnknownVariable(String),
 }
 
-impl Display for ParseError {
+impl Display for ExpressionError {
     fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
         f.write_str("Parse error")
     }
 }
 
-impl Error for ParseError {}
+impl Error for ExpressionError {}
 
 #[derive(Debug, PartialEq, Clone)]
 enum HalfParsed<'t> {
@@ -67,7 +70,7 @@ impl<'t> PartialEq<Token<'t>> for HalfParsed<'t> {
     }
 }
 
-pub fn parse(input: &str) -> Result<Expression, ParseError> {
+pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
     let mut tokens = tokenizer::tokenize(input)?;
     // Reverse so we can pop() from the beginning
     tokens.reverse();
@@ -82,6 +85,14 @@ pub fn parse(input: &str) -> Result<Expression, ParseError> {
             let val = *val;
             symbol_stack.pop();
             symbol_stack.push(HalfParsed::Expression(Expression::Immediate(val)));
+            continue;
+        }
+
+        // Variables
+        if let Some(HalfParsed::Token(Token::Identifier(val))) = symbol_stack.last() {
+            let val = *val;
+            symbol_stack.pop();
+            symbol_stack.push(HalfParsed::Expression(Expression::Var(val.to_owned())));
             continue;
         }
 
@@ -116,10 +127,23 @@ pub fn parse(input: &str) -> Result<Expression, ParseError> {
             }
         }
 
+        // Parenthesis
+        if symbol_stack.len() >= 3
+            && symbol_stack[symbol_stack.len() - 1] == Token::RParen
+            && symbol_stack[symbol_stack.len() - 2].is_expression()
+            && symbol_stack[symbol_stack.len() - 3] == Token::LParen
+        {
+            symbol_stack.pop();
+            let expr = symbol_stack.pop().unwrap().expression();
+            symbol_stack.pop();
+            symbol_stack.push(HalfParsed::Expression(expr));
+            continue;
+        }
+
         // Try Shifting
         // Error if we cant reduce and there are no more tokens to shift
         if tokens.is_empty() {
-            return Err(ParseError::InvalidSyntax);
+            return Err(ExpressionError::InvalidSyntax);
         }
         symbol_stack.push(HalfParsed::Token(tokens.pop().unwrap()));
     }

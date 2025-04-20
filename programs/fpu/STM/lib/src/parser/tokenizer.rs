@@ -1,4 +1,4 @@
-use crate::parser::ParseError;
+use crate::parser::ExpressionError;
 use alloc::vec::Vec;
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -15,7 +15,7 @@ pub enum Token<'s> {
     Whitespace,
 }
 
-pub fn get_next_token(input: &str) -> Result<(Token, &str), ParseError> {
+pub fn get_next_token(input: &str) -> Result<(Token, &str), ExpressionError> {
 
     if let Some(val) = token_decimal(input) {
         let (token_str, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
@@ -32,8 +32,17 @@ pub fn get_next_token(input: &str) -> Result<(Token, &str), ParseError> {
     } else if let Some(val) = token_minus(input) {
         let (_, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
         Ok((Token::Subtract, remainder))
+    } else if let Some(val) = token_l_paren(input) {
+        let (_, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
+        Ok((Token::LParen, remainder))
+    } else if let Some(val) = token_r_paren(input) {
+        let (_, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
+        Ok((Token::RParen, remainder))
+    } else if let Some(val) = token_ident(input) {
+        let (ident, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
+        Ok((Token::Identifier(ident), remainder))
     } else {
-        Err(ParseError::InvalidSyntax)
+        Err(ExpressionError::InvalidSyntax)
     }
 }
 
@@ -101,7 +110,32 @@ fn token_minus(input: &str) -> Option<usize> {
     }
 }
 
-pub fn tokenize(mut input: &str) -> Result<Vec<Token>, ParseError> {
+fn token_l_paren(input: &str) -> Option<usize> {
+    if input.starts_with('(') {
+        Some(1)
+    } else {
+        None
+    }
+}
+
+fn token_r_paren(input: &str) -> Option<usize> {
+    if input.starts_with(')') {
+        Some(1)
+    } else {
+        None
+    }
+}
+
+fn token_ident(input: &str) -> Option<usize> {
+    let val = input.chars().position(|c| c != '_' && !c.is_alphabetic()).unwrap_or(input.len());
+    if val == 0 {
+        None
+    } else {
+        Some(val)
+    }
+}
+
+pub fn tokenize(mut input: &str) -> Result<Vec<Token>, ExpressionError> {
     let mut ret = Vec::new();
     while input.len() > 0 {
         let values = get_next_token(input)?;
