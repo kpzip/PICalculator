@@ -315,12 +315,13 @@ fn sci_mode_fix_display(lines: &[Line], ready: &mut Pin<'A', 2, Output>, spi: &m
     let cursor_display_y = (cursor_line - *vertical) as u8;
 
     // Reset and redraw display
-    ready.set_high();
-    spi.write(&[0x81, 0x01]).unwrap();
     let vert_slice = &lines[*vertical as usize..min(*vertical as usize + DISPLAY_TEXT_HEIGHT, lines.len())];
     let horizontal_slice = vert_slice.iter().map(|l|{
         &l[*horizontal as usize..min(*horizontal as usize + DISPLAY_TEXT_WIDTH, l.len())]
     }).collect::<Box<[_]>>();
+    ready.set_high();
+    spi.write(&[0x81, 0x08]).unwrap(); // Turn off cursor
+    spi.write(&[0x81, 0x01]).unwrap();
     for i in 0..horizontal_slice.len() {
         let y = horizontal_slice[i];
         // Set cursor position to the beginning of the row
@@ -329,8 +330,46 @@ fn sci_mode_fix_display(lines: &[Line], ready: &mut Pin<'A', 2, Output>, spi: &m
             spi.write(&[0x82, x]).unwrap();
         }
     }
-    // Set Cursor back to the right position and end transmission
+    // Set Cursor back to the right position, and write one char if necessary in order to move the internal inaccessible CGRAM sub-word pointer
     spi.write(&[0x81, get_cursor_index(cursor_display_y, cursor_display_x)]).unwrap();
+    if cursor_display_x % 2 == 1 {
+        spi.write(&[0x82, lines[cursor_display_y as usize].as_bytes()[cursor_display_x as usize - 1]]).unwrap();
+    }
+
+    // Switch to graphics mode to draw the cursor manually
+    spi.write(&[0x81, 0x0C]).unwrap();
+    spi.write(&[0x81, 0x34]).unwrap();
+    spi.write(&[0x81, 0x36]).unwrap();
+
+    // Clear GDRAM Real Quick
+    for i in 0..32u8 {
+        spi.write(&[0x81, 0x80 | i]).unwrap();
+        spi.write(&[0x81, 0x80]).unwrap();
+        for _ in 0..16u8 {
+            spi.write(&[0x82, 0x00]).unwrap();
+            spi.write(&[0x82, 0x00]).unwrap();
+        }
+    }
+
+
+    let vertical_address = 15 + 16 * cursor_display_y;
+    let horizontal_address = cursor_display_x / 2;
+    let first_byte = cursor_display_x % 2 == 0;
+
+    // OR not AND!!!!!
+    spi.write(&[0x81, 0x80 | (vertical_address % 32)]).unwrap();
+    spi.write(&[0x81, 0x80 | if vertical_address >= 32 {horizontal_address + 8} else { horizontal_address }]).unwrap();
+
+    if first_byte {
+        spi.write(&[0x82, 0xFF]).unwrap();
+        spi.write(&[0x82, 0x00]).unwrap();
+    } else {
+        spi.write(&[0x82, 0x00]).unwrap();
+        spi.write(&[0x82, 0xFF]).unwrap();
+    }
+
+    // Switch back and end transmission
+    spi.write(&[0x81, 0x30]).unwrap();
     spi.write(&[0x00]).unwrap();
     ready.set_low();
 }
