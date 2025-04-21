@@ -1,6 +1,9 @@
-use crate::sci_error::SciErrorState;
-use crate::sci_mode::SciModeState;
+use sci_error::SciErrorState;
+use sci_mode::SciModeState;
 use stm32f4xx_hal::spi::{Instance, SpiSlave};
+
+pub mod sci_error;
+pub mod sci_mode;
 
 // 128 px wide by 64 px tall
 pub const DISPLAY_WIDTH: usize = 128;

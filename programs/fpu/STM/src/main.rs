@@ -5,15 +5,13 @@
 
 mod gui;
 mod keymaps;
-mod sci_error;
-mod sci_mode;
 mod util;
 
 extern crate alloc;
+extern crate panic_halt;
 
 use alloc::string::ToString;
 use core::ops::{Deref, DerefMut};
-use panic_halt as _; // panic handler
 
 use crate::hal::{pac, prelude::*};
 use cortex_m_rt::entry;
@@ -24,6 +22,7 @@ use stm32f4xx_hal as hal;
 
 use crate::gui::{CalculatorMenu, CalculatorState};
 use embedded_alloc::LlffHeap as Heap;
+use gui::{sci_error, sci_mode};
 
 #[global_allocator]
 static HEAP: Heap = Heap::empty();
