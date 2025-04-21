@@ -1,3 +1,4 @@
+#![feature(raw_ref_op)]
 #![allow(clippy::empty_loop)]
 #![no_main]
 #![no_std]
@@ -241,7 +242,7 @@ fn main() -> ! {
                                     }
                                     41 => {
                                         // down
-                                        if line_number < sci_mode_text[line_number as usize].len() as isize - 1 {
+                                        if line_number < sci_mode_text.len() as isize - 1 {
                                             line_number += 1;
                                             if column_number > sci_mode_text[line_number as usize].len() as isize {
                                                 column_number = sci_mode_text[line_number as usize].len() as isize;
@@ -301,10 +302,10 @@ fn main() -> ! {
 fn sci_mode_fix_display(lines: &[Line], ready: &mut Pin<'A', 2, Output>, spi: &mut SpiSlave<SPI1>, vertical: &mut isize, horizontal: &mut isize, cursor_line: isize, cursor_column: isize) {
 
     // If the cursor has gone beyond the bounds of the display, we need to correct for it
-    let cursor_display_x: isize = cursor_column - *horizontal;
-    let cursor_display_y: isize = cursor_line - *vertical;
-    let bg_correct_x: isize = if cursor_display_x < 0 { cursor_display_x } else if cursor_display_x >= DISPLAY_TEXT_WIDTH as isize { cursor_display_x - (DISPLAY_TEXT_WIDTH as isize - 1) } else { 0 };
-    let bg_correct_y: isize = if cursor_display_y < 0 { cursor_display_y } else if cursor_display_y >= DISPLAY_TEXT_HEIGHT as isize { cursor_display_y - (DISPLAY_TEXT_HEIGHT as isize -1) } else { 0 };
+    let old_cursor_display_x: isize = cursor_column - *horizontal;
+    let old_cursor_display_y: isize = cursor_line - *vertical;
+    let bg_correct_x: isize = if old_cursor_display_x < 0 { old_cursor_display_x } else if old_cursor_display_x >= DISPLAY_TEXT_WIDTH as isize { old_cursor_display_x - (DISPLAY_TEXT_WIDTH as isize - 1) } else { 0 };
+    let bg_correct_y: isize = if old_cursor_display_y < 0 { old_cursor_display_y } else if old_cursor_display_y >= DISPLAY_TEXT_HEIGHT as isize { old_cursor_display_y - (DISPLAY_TEXT_HEIGHT as isize -1) } else { 0 };
 
     // Move the background so that way we can see the cursor again
     *horizontal += bg_correct_x;
@@ -319,21 +320,21 @@ fn sci_mode_fix_display(lines: &[Line], ready: &mut Pin<'A', 2, Output>, spi: &m
     let horizontal_slice = vert_slice.iter().map(|l|{
         &l[*horizontal as usize..min(*horizontal as usize + DISPLAY_TEXT_WIDTH, l.len())]
     }).collect::<Box<[_]>>();
+
     ready.set_high();
-    spi.write(&[0x81, 0x08]).unwrap(); // Turn off cursor
     spi.write(&[0x81, 0x01]).unwrap();
+    spi.write(&[0x81, 0x02]).unwrap();
     for i in 0..horizontal_slice.len() {
         let y = horizontal_slice[i];
         // Set cursor position to the beginning of the row
         spi.write(&[0x81, get_cursor_index(i as u8, 0)]).unwrap();
+        // ??????? Correct for wrong first row
+        // if i == 0 {
+        //     spi.write(&[0x82, 0x20]).unwrap();
+        // }
         for x in y.bytes() {
             spi.write(&[0x82, x]).unwrap();
         }
-    }
-    // Set Cursor back to the right position, and write one char if necessary in order to move the internal inaccessible CGRAM sub-word pointer
-    spi.write(&[0x81, get_cursor_index(cursor_display_y, cursor_display_x)]).unwrap();
-    if cursor_display_x % 2 == 1 {
-        spi.write(&[0x82, lines[cursor_display_y as usize].as_bytes()[cursor_display_x as usize - 1]]).unwrap();
     }
 
     // Switch to graphics mode to draw the cursor manually
@@ -342,15 +343,28 @@ fn sci_mode_fix_display(lines: &[Line], ready: &mut Pin<'A', 2, Output>, spi: &m
     spi.write(&[0x81, 0x36]).unwrap();
 
     // Clear GDRAM Real Quick
-    for i in 0..32u8 {
-        spi.write(&[0x81, 0x80 | i]).unwrap();
-        spi.write(&[0x81, 0x80]).unwrap();
-        for _ in 0..16u8 {
-            spi.write(&[0x82, 0x00]).unwrap();
-            spi.write(&[0x82, 0x00]).unwrap();
-        }
-    }
+    // for i in 0..32u8 {
+    //     spi.write(&[0x81, 0x80 | i]).unwrap();
+    //     spi.write(&[0x81, 0x80]).unwrap();
+    //     for _ in 0..16u8 {
+    //         spi.write(&[0x82, 0x00]).unwrap();
+    //         spi.write(&[0x82, 0x00]).unwrap();
+    //     }
+    // }
 
+    // Zero out all cursor locations
+    spi.write(&[0x81, 0x80 | 15]).unwrap();
+    spi.write(&[0x81, 0x80]).unwrap();
+    for _ in 0..16u8 {
+        spi.write(&[0x82, 0x00]).unwrap();
+        spi.write(&[0x82, 0x00]).unwrap();
+    }
+    spi.write(&[0x81, 0x80 | 31]).unwrap();
+    spi.write(&[0x81, 0x80]).unwrap();
+    for _ in 0..16u8 {
+        spi.write(&[0x82, 0x00]).unwrap();
+        spi.write(&[0x82, 0x00]).unwrap();
+    }
 
     let vertical_address = 15 + 16 * cursor_display_y;
     let horizontal_address = cursor_display_x / 2;
