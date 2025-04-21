@@ -4,6 +4,8 @@ use stm32f4xx_hal::spi::{Instance, SpiSlave};
 
 pub mod sci_error;
 pub mod sci_mode;
+mod graph_eq;
+mod graph;
 
 // 128 px wide by 64 px tall
 pub const DISPLAY_WIDTH: usize = 128;

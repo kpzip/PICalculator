@@ -19,10 +19,8 @@ use hal::gpio::alt::spi1::Nss;
 use hal::spi::{Mode, Phase, Polarity};
 use rtt_target::{rprintln, rtt_init_print};
 use stm32f4xx_hal as hal;
-
-use crate::gui::{CalculatorMenu, CalculatorState};
+use gui::{CalculatorMenu, CalculatorState, sci_error, sci_mode};
 use embedded_alloc::LlffHeap as Heap;
-use gui::{sci_error, sci_mode};
 
 #[global_allocator]
 static HEAP: Heap = Heap::empty();
@@ -42,9 +40,7 @@ fn main() -> ! {
     let dp = pac::Peripherals::take().unwrap();
     let cp = cortex_m::Peripherals::take().unwrap();
 
-    // Set up the LED. On the Nucleo-446RE it's connected to pin PA5.
     let gpioa = dp.GPIOA.split();
-    //let mut led = gpioa.pa5.into_push_pull_output();
 
     // Set up the system clock. We want to run at 48MHz for this one.
     let rcc = dp.RCC.constrain();
