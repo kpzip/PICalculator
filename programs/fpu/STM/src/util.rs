@@ -5,9 +5,8 @@ pub fn truncate_trailing_zeros(mut string: String) -> String {
         if string.as_bytes()[i] != '0' as u8 {
             if string.as_bytes()[i] == '.' as u8 {
                 string.truncate(i);
-            }
-            else {
-                string.truncate(i+1);
+            } else {
+                string.truncate(i + 1);
             }
             break;
         }
