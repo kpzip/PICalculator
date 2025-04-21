@@ -4,8 +4,17 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-cortex-m = "0.7.7"
-cortex-m-rt = "0.7.5"
-stm32f4xx-hal = { version = "0.22.1", features = ["stm32f401"] }
-rtt-target = { version= "0.6.1", features = [] }
-panic-halt = "1.0.0"
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+embedded-alloc = "0.6.0"
+# Panic behaviour, see https://crates.io/keywords/panic-impl for alternatives
+panic-halt = "0.2"
+rtt-target = "0.6.1"
+
+[dependencies.stm32f4xx-hal]
+#path = "stm32f4xx-hal"
+version = "0.22.1"
+features = ["stm32f401", "defmt"] # replace the model of your microcontroller here and add other required features
+
+[dependencies.lib]
+path = "lib"
