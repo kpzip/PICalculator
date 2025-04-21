@@ -1,4 +1,4 @@
-use crate::parser::util::tanf64;
+use crate::parser::util::{tanf64, to_radians};
 use alloc::boxed::Box;
 use core::fmt::Debug;
 use core::intrinsics::{cosf64, sinf64};
@@ -13,30 +13,32 @@ pub enum Expression {
     Sub(Box<Expression>, Box<Expression>),
     Mul(Box<Expression>, Box<Expression>),
     Div(Box<Expression>, Box<Expression>),
-    Trig(Trig, Box<Expression>),
+    Func(Func, Box<Expression>),
     Var(String),
 }
 
 impl Expression {
-    pub fn evaluate(&self, lvt: &mut BTreeMap<String, f64>, overrides: &[(String, f64)]) -> Result<f64, ExpressionError> {
+    pub fn evaluate(&self, lvt: &mut BTreeMap<String, f64>, overrides: &[(String, f64)], degrees: bool) -> Result<f64, ExpressionError> {
         match self {
             Expression::Immediate(val) => Ok(*val),
-            Expression::Add(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides)? + rhs.evaluate(lvt, overrides)?),
-            Expression::Sub(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides)? - rhs.evaluate(lvt, overrides)?),
-            Expression::Mul(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides)? * rhs.evaluate(lvt, overrides)?),
+            Expression::Add(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides, degrees)? + rhs.evaluate(lvt, overrides, degrees)?),
+            Expression::Sub(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides, degrees)? - rhs.evaluate(lvt, overrides, degrees)?),
+            Expression::Mul(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides, degrees)? * rhs.evaluate(lvt, overrides, degrees)?),
             Expression::Div(lhs, rhs) => {
-                let rhs = rhs.evaluate(lvt, overrides)?;
+                let rhs = rhs.evaluate(lvt, overrides, degrees)?;
                 if rhs == 0.0 {
                     Err(ExpressionError::DivisionByZero)
                 } else {
-                    Ok(lhs.evaluate(lvt, overrides)? / rhs)
+                    Ok(lhs.evaluate(lvt, overrides, degrees)? / rhs)
                 }
             },
-            Expression::Trig(f, a) => unsafe {
+            Expression::Func(f, a) => unsafe {
+                let inner = a.evaluate(lvt, overrides, degrees)?;
+                let inner_rad = if degrees { to_radians(inner) } else { inner };
                 match f {
-                    Trig::Sin => Ok(sinf64(a.evaluate(lvt, overrides)?)),
-                    Trig::Cos => Ok(cosf64(a.evaluate(lvt, overrides)?)),
-                    Trig::Tan => Ok(tanf64(a.evaluate(lvt, overrides)?)),
+                    Func::Sin => Ok(sinf64(inner_rad)),
+                    Func::Cos => Ok(cosf64(inner_rad)),
+                    Func::Tan => Ok(tanf64(inner_rad)),
                 }
             },
             Expression::Var(name) => {
@@ -52,7 +54,7 @@ impl Expression {
 }
 
 #[derive(Debug, PartialEq, Clone)]
-pub enum Trig {
+pub enum Func {
     Sin,
     Cos,
     Tan,

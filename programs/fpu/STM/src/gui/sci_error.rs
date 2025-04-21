@@ -46,11 +46,9 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
         ExpressionError::UnknownVariable(ref var) => "Unknown Variable",
         ExpressionError::DivisionByZero => "Divide By Zero",
     };
-    ready.set_high();
+    ready.set_high().unwrap();
     clear_gdram(spi);
     spi.write(&[0x81, 0x01]).unwrap();
-    // Have to do this since the PIC doesn't add the proper delay for the display reset
-    spi.write(&[0x81, 0x02]).unwrap();
     spi.write(&[0x81, get_cursor_index(0, 0)]).unwrap();
     for b in message.bytes() {
         spi.write(&[0x82, b]).unwrap();
@@ -64,5 +62,5 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
         spi.write(&[0x82, b]).unwrap();
     }
     spi.write(&[0x00]).unwrap();
-    ready.set_low();
+    ready.set_low().unwrap();
 }

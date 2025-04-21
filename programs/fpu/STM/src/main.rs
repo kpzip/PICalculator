@@ -74,29 +74,13 @@ fn main() -> ! {
 
     loop {
         match spi.read(&mut data) {
-            Ok(_) => {
+            Ok(()) => {
                 rprintln!("Received data: {:02X?}", data);
                 // Key press code
                 if data[0] == 1 {
                     let key_id = data[1];
-                    match calc_state.mode {
-                        CalculatorMenu::Sci => {
-                            sci_mode::handle_button_press(key_id, &mut calc_state)
-                        }
-                        CalculatorMenu::SciError => {
-                            sci_error::handle_button_press(key_id, &mut calc_state)
-                        }
-                        _ => unimplemented!(),
-                    }
-                    match calc_state.mode {
-                        CalculatorMenu::Sci => {
-                            sci_mode::update_gui(&mut calc_state, &mut spi, &mut ready)
-                        }
-                        CalculatorMenu::SciError => {
-                            sci_error::update_gui(&mut calc_state, &mut spi, &mut ready)
-                        }
-                        _ => unimplemented!(),
-                    }
+                    gui::handle_button_press(key_id, &mut calc_state);
+                    gui::update_gui(&mut calc_state, &mut spi, &mut ready);
                 } else {
                     rprintln!("Error Unknown Request: {:02X?}", data);
                 }

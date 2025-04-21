@@ -1,4 +1,4 @@
-use crate::parser::expression::Expression;
+use crate::parser::expression::{Expression, Func};
 use crate::parser::tokenizer::Token;
 use alloc::boxed::Box;
 use alloc::vec::Vec;
@@ -80,6 +80,8 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
     }
     let mut symbol_stack = Vec::<HalfParsed>::new();
     while !tokens.is_empty() || symbol_stack.len() > 1 || symbol_stack[0].is_token() {
+
+
         // Try Reducing
         // Decimal Literals
         if let Some(HalfParsed::Token(Token::DecLiteral(val))) = symbol_stack.last() {
@@ -91,10 +93,13 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
 
         // Variables
         if let Some(HalfParsed::Token(Token::Identifier(val))) = symbol_stack.last() {
-            let val = *val;
-            symbol_stack.pop();
-            symbol_stack.push(HalfParsed::Expression(Expression::Var(val.to_owned())));
-            continue;
+            // If there is a parenthesis, wait to parse as either multiplication or function call
+            if tokens.last() != Some(&Token::LParen) {
+                let val = *val;
+                symbol_stack.pop();
+                symbol_stack.push(HalfParsed::Expression(Expression::Var(val.to_owned())));
+                continue;
+            }
         }
 
         // Binary Expression
@@ -109,26 +114,47 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
                 || symbol_stack[symbol_stack.len() - 2] == Token::Subtract)
                 || (next_token.is_none()
                     || (next_token.unwrap() != &Token::Multiply
-                        && next_token.unwrap() != &Token::Divide))
+                        && next_token.unwrap() != &Token::Divide
+                        && next_token.unwrap() != &Token::LParen))
             {
-                let expr1 = symbol_stack.pop().unwrap().expression();
-                let op = symbol_stack.pop().unwrap().token();
-                let expr2 = symbol_stack.pop().unwrap().expression();
 
-                let combined_expr: Expression = match op {
-                    Token::Multiply => Expression::Mul(Box::new(expr2), Box::new(expr1)),
-                    Token::Divide => Expression::Div(Box::new(expr2), Box::new(expr1)),
-                    Token::Add => Expression::Add(Box::new(expr2), Box::new(expr1)),
-                    Token::Subtract => Expression::Sub(Box::new(expr2), Box::new(expr1)),
-                    _ => continue,
-                };
+                let op = symbol_stack[symbol_stack.len() - 2].clone().token();
 
-                symbol_stack.push(HalfParsed::Expression(combined_expr));
-                continue;
+                match op {
+                    Token::Multiply => {
+                        let expr1 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.pop();
+                        let expr2 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.push(HalfParsed::Expression(Expression::Mul(Box::new(expr2), Box::new(expr1))));
+                        continue;
+                    },
+                    Token::Divide => {
+                        let expr1 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.pop();
+                        let expr2 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.push(HalfParsed::Expression(Expression::Div(Box::new(expr2), Box::new(expr1))));
+                        continue;
+                    },
+                    Token::Add => {
+                        let expr1 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.pop();
+                        let expr2 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.push(HalfParsed::Expression(Expression::Add(Box::new(expr2), Box::new(expr1))));
+                        continue;
+                    }
+                    Token::Subtract => {
+                        let expr1 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.pop();
+                        let expr2 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.push(HalfParsed::Expression(Expression::Sub(Box::new(expr2), Box::new(expr1))));
+                        continue;
+                    },
+                    _ => { },
+                }
             }
         }
 
-        // Parenthesis
+        // Parenthesis + function calls
         if symbol_stack.len() >= 3
             && symbol_stack[symbol_stack.len() - 1] == Token::RParen
             && symbol_stack[symbol_stack.len() - 2].is_expression()
@@ -137,7 +163,42 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
             symbol_stack.pop();
             let expr = symbol_stack.pop().unwrap().expression();
             symbol_stack.pop();
-            symbol_stack.push(HalfParsed::Expression(expr));
+            if let Some(pre) = symbol_stack.last() {
+                match pre {
+                    HalfParsed::Token(t) => {
+                        if let Token::Identifier(name) = t{
+                            match *name {
+                                // Match Known functions here
+                                "sin" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Sin, Box::new(expr))));
+                                }
+                                "cos" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Cos, Box::new(expr))));
+                                }
+                                "tan" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Tan, Box::new(expr))));
+                                }
+                                var => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Mul(Box::new(Expression::Var(var.to_owned())), Box::new(expr))));
+                                }
+                            }
+                        } else {
+                            symbol_stack.push(HalfParsed::Expression(expr));
+                        }
+                    }
+                    HalfParsed::Expression(_) => {
+                        // Multiplication
+                        let expr2 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.push(HalfParsed::Expression(Expression::Mul(Box::new(expr2), Box::new(expr))));
+                    }
+                }
+            } else {
+                symbol_stack.push(HalfParsed::Expression(expr));
+            }
             continue;
         }
 
@@ -185,6 +246,10 @@ mod tests {
         assert_eq!(
             parse("489"),
             Ok(Expression::Immediate(489.0))
+        );
+        assert_eq!(
+            parse("2(4+5)"),
+            Ok(Expression::Mul(Box::new(Expression::Immediate(2.0)), Box::new(Expression::Add(Box::new(Expression::Immediate(4.0)), Box::new(Expression::Immediate(5.0))))))
         )
     }
 }

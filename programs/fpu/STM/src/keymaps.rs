@@ -1,3 +1,5 @@
+use crate::gui::CalculatorState;
+
 // Keymap when not in alpha or second
 const NORMAL_KEYMAP: &[(u8, &str)] = &[
     (2, "."),
@@ -16,13 +18,21 @@ const NORMAL_KEYMAP: &[(u8, &str)] = &[
     (17, "*"),
     (11, "/"),
     (25, "("),
+    (26, "sin("),
+    (27, "cos("),
+    (28, "tan("),
 ];
 
 // Keymap when in second mode
-const SECOND_KEYMAP: &[(u8, &str)] = &[(25, ")")];
+const SECOND_KEYMAP: &[(u8, &str)] = &[
+    (25, ")"),
+    (26, "arcsin("),
+    (27, "arccos("),
+    (28, "arctan("),
+];
 
-pub fn get_key_text(key: u8, second: bool, alpha: bool) -> Option<&'static str> {
-    if second { SECOND_KEYMAP } else { NORMAL_KEYMAP }
+pub fn get_key_text(key: u8, state: &CalculatorState) -> Option<&'static str> {
+    if state.second { SECOND_KEYMAP } else { NORMAL_KEYMAP }
         .iter()
         .find(|m| m.0 == key)
         .map(|x| x.1)

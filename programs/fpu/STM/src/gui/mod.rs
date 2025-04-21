@@ -1,3 +1,5 @@
+use stm32f4xx_hal::gpio::Pin;
+use stm32f4xx_hal::hal::digital::OutputPin;
 use sci_error::SciErrorState;
 use sci_mode::SciModeState;
 use stm32f4xx_hal::spi::{Instance, SpiSlave};
@@ -41,6 +43,57 @@ impl CalculatorState {
             sci_state: SciModeState::new(),
             sci_err_state: SciErrorState::new(),
         }
+    }
+}
+
+pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
+    match key_id {
+        24 => {
+            // Alpha
+            calc_state.alpha = !calc_state.alpha;
+        }
+        30 => {
+            // Second
+            calc_state.second = !calc_state.second;
+        }
+        12 => {
+            // Degrees / Radians
+            if !calc_state.second {
+                calc_state.degrees = true;
+            } else {
+                calc_state.degrees = false;
+            }
+        }
+        _ => {
+            // Do nothing
+        }
+    }
+    match calc_state.mode {
+        CalculatorMenu::Sci => {
+            sci_mode::handle_button_press(key_id, calc_state)
+        }
+        CalculatorMenu::SciError => {
+            sci_error::handle_button_press(key_id, calc_state)
+        }
+        _ => unimplemented!(),
+    }
+}
+
+pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
+    state: &mut CalculatorState,
+    mut spi: &mut SpiSlave<SPI>,
+    ready: &mut Pin<L, N, MODE>,
+) where
+    Pin<L, N, MODE>: OutputPin
+{
+    match state.mode {
+        CalculatorMenu::Sci => {
+            sci_mode::update_gui(state, spi, ready)
+        }
+        CalculatorMenu::SciError => {
+            sci_error::update_gui(state, spi, ready)
+        }
+        _ => unimplemented!(),
     }
 }
 

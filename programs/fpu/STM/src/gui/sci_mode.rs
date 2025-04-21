@@ -61,7 +61,7 @@ impl DerefMut for Line {
 }
 
 pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
-    if let Some(text) = get_key_text(key_id, calc_state.second, calc_state.alpha) {
+    if let Some(text) = get_key_text(key_id, &calc_state) {
         // Text Key
         // Make sure calc_state.sci_state.text is setup properly and that the cursor is inbounds
         if calc_state.sci_state.text.is_empty() {
@@ -86,14 +86,6 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
         }
     } else {
         match key_id {
-            24 => {
-                // Alpha
-                calc_state.alpha = !calc_state.alpha;
-            }
-            30 => {
-                // Second
-                calc_state.second = !calc_state.second;
-            }
             19 => {
                 // Del
                 if !calc_state.sci_state.text[calc_state.sci_state.line_number as usize].is_empty()
@@ -108,21 +100,28 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
             13 => {
                 // Clear
                 if !calc_state.sci_state.text[calc_state.sci_state.line_number as usize].is_ans {
-                    calc_state
-                        .sci_state
-                        .text
-                        .remove(calc_state.sci_state.line_number as usize);
                     if let Some(n2) = calc_state
                         .sci_state
                         .text
-                        .get(calc_state.sci_state.line_number as usize)
+                        .get(calc_state.sci_state.line_number as usize + 1)
                     {
                         if n2.is_ans {
                             calc_state
                                 .sci_state
                                 .text
                                 .remove(calc_state.sci_state.line_number as usize);
+                            calc_state
+                                .sci_state
+                                .text
+                                .remove(calc_state.sci_state.line_number as usize);
+                        } else {
+                            calc_state
+                                .sci_state
+                                .text
+                                .remove(calc_state.sci_state.line_number as usize);
                         }
+                    } else {
+                        calc_state.sci_state.text[calc_state.sci_state.line_number as usize].clear();
                     }
                     if calc_state.sci_state.text.is_empty() {
                         calc_state
@@ -204,7 +203,7 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
                             .as_str(),
                     );
                     match parsed {
-                        Ok(e) => match e.evaluate(&mut calc_state.sci_state.variable_table, &[]) {
+                        Ok(e) => match e.evaluate(&mut calc_state.sci_state.variable_table, &[], calc_state.degrees) {
                             Ok(val) => {
                                 calc_state
                                     .sci_state
@@ -330,8 +329,6 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
 
     ready.set_high();
     spi.write(&[0x81, 0x01]).unwrap();
-    // Have to do this since the PIC doesn't add the proper delay for the display reset
-    spi.write(&[0x81, 0x02]).unwrap();
     for i in 0..horizontal_slice.len() {
         let y = horizontal_slice[i].0;
         // Set cursor position to the beginning of the row
