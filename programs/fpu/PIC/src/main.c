@@ -14,7 +14,7 @@
 #fuses PLL_DIV_1 PLL_DIV_4
 #use delay(clock=20M, RESTART_WDT)
 
-#define SPI_DELAY 10
+#define SPI_DELAY 200
 
 // LED statuses
 static uint8_t second = 0;
@@ -38,15 +38,15 @@ void display_command(uint8_t data, uint8_t rs) {
 	spi_write((data << 4) & 0xF0);
 	output_high(DSS);
 
-	delay_ms(SPI_DELAY);
+	delay_us(SPI_DELAY);
 }
 
 void send_to_STM(uint8_t b) {
 	output_low(COSS);
 	// spi_write(0x01); // PIC -> STM
-	// delay_ms(SPI_DELAY);
+	// delay_us(SPI_DELAY);
 	spi_write(0x01); // Key Pressed
-	//delay_ms(SPI_DELAY);
+	//delay_us(SPI_DELAY);
 	spi_write(b);    // Key Pressed Data
 	output_high(COSS);
 }
@@ -55,7 +55,7 @@ uint8_t handle_possible_STM_response() {
 	output_low(COSS);
 	/* spi_write(0x00); // STM -> PIC
 	while (TRUE) {
-		delay_ms(SPI_DELAY);
+		delay_us(SPI_DELAY);
 		uint8_t status = spi_read(0x00); // Read STM Status
 		switch(status) {
 		case 0: // Still Waiting
@@ -80,6 +80,7 @@ uint8_t handle_possible_STM_response() {
 		
 		switch (status & 0x7F) { // Cut off top bit
 		case 0: // No data
+			output_high(COSS);
 			return 0;
 		case 1: // Display command, RS=0
 			display_rs = 0;
@@ -88,6 +89,7 @@ uint8_t handle_possible_STM_response() {
 			display_rs = 1;
 			break;
 		default:
+			output_high(COSS);
 			return 0;
 		}
 		
@@ -98,7 +100,7 @@ uint8_t handle_possible_STM_response() {
 
 		// Top bit is set if the STM has more data to send
 		more_data = status & 0x80;
-		delay_ms(SPI_DELAY);
+		//delay_us(SPI_DELAY);
 		
 	} while (more_data);
 
@@ -146,12 +148,35 @@ void main() {
 
 	// Initialize display
 	display_command(0x30, 0); // Function set: 8 bit interface, basic instruction set
-	// display_command(0x08, 0); // Display status: Everything off
+	// display_command(0x0C, 0); // Display status: Everything off
 	// display_command(0x10, 0); // Cursor: Move left (?)
-	display_command(0x0E, 0); // Display status: Display, cursor, and blink on
+	display_command(0x0C, 0); // Display status: Display, cursor, and blink on
 	display_command(0x01, 0); // Clear
 	display_command(0x06, 0); // Make cursor move right
 	// display_command(0x80, 0); // Home the cursor (unneccesary)
+	
+	// Switch to graphics mode for zeroing
+	display_command(0x0C, 0);
+	display_command(0x34, 0);
+	display_command(0x36, 0);
+
+	// Zero out GDRAM
+	for (uint8_t i = 0; i < 32; i++) {
+		display_command(0x80 | i, 0);
+		display_command(0x80, 0);
+		for (uint8_t j = 0; j < 16; j++) {
+			display_command(0x00, 1);
+			display_command(0x00, 1);
+		}
+	}
+
+	display_command(0x80 | 15, 0);
+	display_command(0x80, 0);
+	display_command(0xFF, 1);
+	display_command(0x00, 1);
+
+	// Switch back
+	display_command(0x30, 0);
 
 	// Sync
 	output_high(RADIANS_LED);

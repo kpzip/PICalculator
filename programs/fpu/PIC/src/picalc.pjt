@@ -106,12 +106,13 @@ TraceLines=100
 TraceFull=0
 CodeCoverageReset=0
 [Windows]
-2=0000 c:\mplab\projects\picalc~1\programs\fpu\pic\src\main.c 4 10 874 448 9 4
-1=0004 154 203 1024 641 9 0
+3=0000 c:\mplab\projects\picalc~1\programs\fpu\pic\src\main.c 4 10 874 448 9 4
+2=0004 132 174 985 612 9 0
+1=0000 c:\mplab\projects\picalc~1\programs\fpu\pic\src\defini~1.h 88 116 941 522 9 4
 0=0010 22 106 502 650 9 4 48
 [mru-list]
-1=c:\mplab\projects\picalc~1\programs\piconly\src\main.c
-2=c:\mplab\projects\picalc~1\programs\fpu\pic\src\main.c
-3=c:\mplab\projects\picalc~1\programs\simple\src\main.sym
-4=c:\mplab\psplus.err
-5=c:\mplab\projects\picalc~1\programs\piconly\src\main.lst
+1=c:\mplab\projects\picalc~1\programs\fpu\pic\src\defini~1.h
+2=c:\mplab\projects\picalc~1\programs\fpu\pic\src\test\test_d~1.h
+3=c:\mplab\projects\picalc~1\programs\piconly\src\main.c
+4=c:\mplab\projects\picalc~1\programs\fpu\pic\src\main.c
+5=c:\mplab\projects\picalc~1\programs\simple\src\main.sym
