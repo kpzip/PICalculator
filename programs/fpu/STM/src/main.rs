@@ -195,20 +195,6 @@ fn main() -> ! {
                                     // Update display
                                     // Have to do this every time due to cursor issue
                                     sci_mode_fix_display(&sci_mode_text, &mut ready, &mut spi, &mut text_vertical_offset, &mut text_horizontal_offset, line_number, column_number);
-                                    // If the cursor is still within the horizontal bounds, we can simply write the new text
-                                    // if column_number - text_horizontal_offset < DISPLAY_TEXT_WIDTH as isize {
-                                    //
-                                    //     ready.set_high();
-                                    //     for b in text.bytes() {
-                                    //         spi.write(&[0x82, b]).unwrap();
-                                    //     }
-                                    //     spi.write(&[0x00]).unwrap();
-                                    //     ready.set_low();
-                                    //
-                                    // } else {
-                                    //     // fix
-                                    //     sci_mode_fix_display(&sci_mode_text, &mut ready, &mut spi, &mut text_vertical_offset, &mut text_horizontal_offset, line_number, column_number);
-                                    // }
                                 } else {
                                     ready.set_high();
                                     spi.write(&[0x00]).unwrap();
@@ -341,16 +327,6 @@ fn sci_mode_fix_display(lines: &[Line], ready: &mut Pin<'A', 2, Output>, spi: &m
     spi.write(&[0x81, 0x0C]).unwrap();
     spi.write(&[0x81, 0x34]).unwrap();
     spi.write(&[0x81, 0x36]).unwrap();
-
-    // Clear GDRAM Real Quick
-    // for i in 0..32u8 {
-    //     spi.write(&[0x81, 0x80 | i]).unwrap();
-    //     spi.write(&[0x81, 0x80]).unwrap();
-    //     for _ in 0..16u8 {
-    //         spi.write(&[0x82, 0x00]).unwrap();
-    //         spi.write(&[0x82, 0x00]).unwrap();
-    //     }
-    // }
 
     // Zero out all cursor locations
     spi.write(&[0x81, 0x80 | 15]).unwrap();
