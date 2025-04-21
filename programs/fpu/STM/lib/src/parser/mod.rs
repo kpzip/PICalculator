@@ -13,8 +13,9 @@ mod util;
 
 #[derive(Debug, PartialEq)]
 pub enum ExpressionError {
-    InvalidSyntax,
+    InvalidSyntax(usize),
     UnknownVariable(String),
+    DivisionByZero,
 }
 
 impl Display for ExpressionError {
@@ -143,7 +144,7 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
         // Try Shifting
         // Error if we cant reduce and there are no more tokens to shift
         if tokens.is_empty() {
-            return Err(ExpressionError::InvalidSyntax);
+            return Err(ExpressionError::InvalidSyntax(0));
         }
         symbol_stack.push(HalfParsed::Token(tokens.pop().unwrap()));
     }

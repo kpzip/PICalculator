@@ -15,7 +15,7 @@ pub enum Token<'s> {
     Whitespace,
 }
 
-pub fn get_next_token(input: &str) -> Result<(Token, &str), ExpressionError> {
+pub fn get_next_token(input: &str, position: usize) -> Result<(Token, &str), ExpressionError> {
 
     if let Some(val) = token_decimal(input) {
         let (token_str, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
@@ -42,7 +42,7 @@ pub fn get_next_token(input: &str) -> Result<(Token, &str), ExpressionError> {
         let (ident, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
         Ok((Token::Identifier(ident), remainder))
     } else {
-        Err(ExpressionError::InvalidSyntax)
+        Err(ExpressionError::InvalidSyntax(position))
     }
 }
 
@@ -136,9 +136,11 @@ fn token_ident(input: &str) -> Option<usize> {
 }
 
 pub fn tokenize(mut input: &str) -> Result<Vec<Token>, ExpressionError> {
+    let mut position: usize = 0;
     let mut ret = Vec::new();
     while input.len() > 0 {
-        let values = get_next_token(input)?;
+        let values = get_next_token(input, position)?;
+        position += input.len() - values.1.len();
         input = values.1;
         if values.0 != Token::Whitespace {
             ret.push(values.0);

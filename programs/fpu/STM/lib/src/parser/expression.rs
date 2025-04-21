@@ -24,7 +24,14 @@ impl Expression {
             Expression::Add(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides)? + rhs.evaluate(lvt, overrides)?),
             Expression::Sub(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides)? - rhs.evaluate(lvt, overrides)?),
             Expression::Mul(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides)? * rhs.evaluate(lvt, overrides)?),
-            Expression::Div(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides)? / rhs.evaluate(lvt, overrides)?),
+            Expression::Div(lhs, rhs) => {
+                let rhs = rhs.evaluate(lvt, overrides)?;
+                if rhs == 0.0 {
+                    Err(ExpressionError::DivisionByZero)
+                } else {
+                    Ok(lhs.evaluate(lvt, overrides)? / rhs)
+                }
+            },
             Expression::Trig(f, a) => unsafe {
                 match f {
                     Trig::Sin => Ok(sinf64(a.evaluate(lvt, overrides)?)),
