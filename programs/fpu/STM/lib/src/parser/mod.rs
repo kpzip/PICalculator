@@ -181,6 +181,22 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
                                     symbol_stack.pop();
                                     symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Tan, Box::new(expr))));
                                 }
+                                "arcsin" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Arcsin, Box::new(expr))));
+                                }
+                                "arccos" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Arccos, Box::new(expr))));
+                                }
+                                "arctan" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Arctan, Box::new(expr))));
+                                }
+                                "gamma" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Gamma, Box::new(expr))));
+                                }
                                 "log" => {
                                     symbol_stack.pop();
                                     symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Log, Box::new(expr))));
