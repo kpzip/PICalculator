@@ -21,6 +21,13 @@ const NORMAL_KEYMAP: &[(u8, &str)] = &[
     (26, "sin("),
     (27, "cos("),
     (28, "tan("),
+    (7, "X"),
+    (1, "Y"),
+    (31, "gamma("),
+    (32, "^"),
+    (33, "^2"),
+    (34, "log("),
+    (35, "e^")
 ];
 
 // Keymap when in second mode

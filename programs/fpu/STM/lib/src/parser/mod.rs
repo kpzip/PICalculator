@@ -181,6 +181,14 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
                                     symbol_stack.pop();
                                     symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Tan, Box::new(expr))));
                                 }
+                                "log" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Log, Box::new(expr))));
+                                }
+                                "ln" => {
+                                    symbol_stack.pop();
+                                    symbol_stack.push(HalfParsed::Expression(Expression::Func(Func::Ln, Box::new(expr))));
+                                }
                                 var => {
                                     symbol_stack.pop();
                                     symbol_stack.push(HalfParsed::Expression(Expression::Mul(Box::new(Expression::Var(var.to_owned())), Box::new(expr))));

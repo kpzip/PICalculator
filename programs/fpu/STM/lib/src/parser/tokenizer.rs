@@ -4,6 +4,7 @@ use alloc::vec::Vec;
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Token<'s> {
     DecLiteral(f64),
+    Power,
     Multiply,
     Divide,
     Add,
@@ -41,7 +42,10 @@ pub fn get_next_token(input: &str, position: usize) -> Result<(Token, &str), Exp
     } else if let Some(val) = token_ident(input) {
         let (ident, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
         Ok((Token::Identifier(ident), remainder))
-    } else {
+    } else if let Some(val) = token_pow(input) {
+        let (_, remainder) = input.split_at_checked(val).unwrap_or((input, ""));
+        Ok((Token::Power, remainder))
+    }else {
         Err(ExpressionError::InvalidSyntax(position))
     }
 }
@@ -76,6 +80,14 @@ fn token_decimal(input: &str) -> Option<usize> {
         counter += 1;
     }
     Some(counter)
+}
+
+fn token_pow(input: &str) -> Option<usize> {
+    if input.starts_with('^') {
+        Some(1)
+    } else {
+        None
+    }
 }
 
 fn token_multiply(input: &str) -> Option<usize> {

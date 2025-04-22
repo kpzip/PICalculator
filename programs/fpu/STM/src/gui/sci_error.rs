@@ -36,7 +36,7 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
 
 pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
     state: &mut CalculatorState,
-    mut spi: &mut SpiSlave<SPI>,
+    spi: &mut SpiSlave<SPI>,
     ready: &mut Pin<L, N, MODE>,
 ) where
     Pin<L, N, MODE>: OutputPin
@@ -47,7 +47,15 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
         ExpressionError::DivisionByZero => "Divide By Zero",
     };
     ready.set_high().unwrap();
+
+    spi.write(&[0x81, 0x0C]).unwrap();
+    spi.write(&[0x81, 0x34]).unwrap();
+    spi.write(&[0x81, 0x36]).unwrap();
+
     clear_gdram(spi);
+
+    spi.write(&[0x81, 0x30]).unwrap();
+
     spi.write(&[0x81, 0x01]).unwrap();
     spi.write(&[0x81, get_cursor_index(0, 0)]).unwrap();
     for b in message.bytes() {

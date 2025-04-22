@@ -3,6 +3,7 @@ use stm32f4xx_hal::hal::digital::OutputPin;
 use sci_error::SciErrorState;
 use sci_mode::SciModeState;
 use stm32f4xx_hal::spi::{Instance, SpiSlave};
+use crate::gui::graph_eq::GraphEqState;
 
 pub mod sci_error;
 pub mod sci_mode;
@@ -31,6 +32,7 @@ pub struct CalculatorState {
     pub mode: CalculatorMenu,
     pub sci_state: SciModeState,
     pub sci_err_state: SciErrorState,
+    pub graph_eq_state: GraphEqState,
 }
 
 impl CalculatorState {
@@ -42,6 +44,7 @@ impl CalculatorState {
             mode: CalculatorMenu::Sci,
             sci_state: SciModeState::new(),
             sci_err_state: SciErrorState::new(),
+            graph_eq_state: GraphEqState::new(),
         }
     }
 }
@@ -75,13 +78,16 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
         CalculatorMenu::SciError => {
             sci_error::handle_button_press(key_id, calc_state)
         }
+        CalculatorMenu::GraphEq => {
+            graph_eq::handle_button_press(key_id, calc_state)
+        }
         _ => unimplemented!(),
     }
 }
 
 pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
     state: &mut CalculatorState,
-    mut spi: &mut SpiSlave<SPI>,
+    spi: &mut SpiSlave<SPI>,
     ready: &mut Pin<L, N, MODE>,
 ) where
     Pin<L, N, MODE>: OutputPin
@@ -92,6 +98,9 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
         }
         CalculatorMenu::SciError => {
             sci_error::update_gui(state, spi, ready)
+        }
+        CalculatorMenu::GraphEq => {
+            graph_eq::update_gui(state, spi, ready)
         }
         _ => unimplemented!(),
     }

@@ -3,7 +3,8 @@ use alloc::boxed::Box;
 use core::fmt::Debug;
 use core::intrinsics::{cosf64, sinf64};
 use alloc::collections::BTreeMap;
-use alloc::string::String;
+use alloc::string::{ParseError, String};
+use std::intrinsics::{log10f64, logf64};
 use crate::parser::ExpressionError;
 
 #[derive(Debug, PartialEq, Clone)]
@@ -39,6 +40,12 @@ impl Expression {
                     Func::Sin => Ok(sinf64(inner_rad)),
                     Func::Cos => Ok(cosf64(inner_rad)),
                     Func::Tan => Ok(tanf64(inner_rad)),
+                    Func::Arcsin => { Err(ExpressionError::InvalidSyntax(0)) }
+                    Func::Arccos => { Err(ExpressionError::InvalidSyntax(0)) }
+                    Func::Arctan => { Err(ExpressionError::InvalidSyntax(0)) }
+                    Func::Gamma => { Err(ExpressionError::InvalidSyntax(0)) }
+                    Func::Log => { Ok(log10f64(inner))}
+                    Func::Ln => { Ok(logf64(inner)) }
                 }
             },
             Expression::Var(name) => {
@@ -58,4 +65,10 @@ pub enum Func {
     Sin,
     Cos,
     Tan,
+    Arcsin,
+    Arccos,
+    Arctan,
+    Gamma,
+    Log,
+    Ln,
 }
