@@ -14,7 +14,7 @@
 #fuses PLL_DIV_1 PLL_DIV_4
 #use delay(clock=20M, RESTART_WDT)
 
-#define SPI_DELAY 200
+#define SPI_DELAY 76
 
 // LED statuses
 static uint8_t second = 0;
@@ -37,7 +37,10 @@ void display_command(uint8_t data, uint8_t rs) {
 	spi_write(data & 0xF0);
 	spi_write((data << 4) & 0xF0);
 	output_high(DSS);
-
+	// Need to delay longer for display reset command
+	if (data == 0x01 && rs == 0) {
+		delay_us(1600-SPI_DELAY);
+	}
 	delay_us(SPI_DELAY);
 }
 
