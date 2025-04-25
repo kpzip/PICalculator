@@ -3,12 +3,14 @@ use stm32f4xx_hal::hal::digital::OutputPin;
 use sci_error::SciErrorState;
 use sci_mode::SciModeState;
 use stm32f4xx_hal::spi::{Instance, SpiSlave};
+use crate::gui::graph::GraphState;
 use crate::gui::graph_eq::GraphEqState;
 
 pub mod sci_error;
 pub mod sci_mode;
 mod graph_eq;
 mod graph;
+mod constants;
 
 // 128 px wide by 64 px tall
 pub const DISPLAY_WIDTH: usize = 128;
@@ -33,6 +35,7 @@ pub struct CalculatorState {
     pub sci_state: SciModeState,
     pub sci_err_state: SciErrorState,
     pub graph_eq_state: GraphEqState,
+    pub graph_state: GraphState,
 }
 
 impl CalculatorState {
@@ -45,6 +48,7 @@ impl CalculatorState {
             sci_state: SciModeState::new(),
             sci_err_state: SciErrorState::new(),
             graph_eq_state: GraphEqState::new(),
+            graph_state: GraphState::new(),
         }
     }
 }
@@ -81,6 +85,9 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
         CalculatorMenu::GraphEq => {
             graph_eq::handle_button_press(key_id, calc_state)
         }
+        CalculatorMenu::Graph => {
+            graph::handle_button_press(key_id, calc_state)
+        }
         _ => unimplemented!(),
     }
 }
@@ -101,6 +108,9 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
         }
         CalculatorMenu::GraphEq => {
             graph_eq::update_gui(state, spi, ready)
+        }
+        CalculatorMenu::Graph => {
+            graph::update_gui(state, spi, ready)
         }
         _ => unimplemented!(),
     }

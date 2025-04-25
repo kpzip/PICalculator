@@ -36,6 +36,7 @@ const SECOND_KEYMAP: &[(u8, &str)] = &[
     (26, "arcsin("),
     (27, "arccos("),
     (28, "arctan("),
+    (34, "ln("),
 ];
 
 pub fn get_key_text(key: u8, state: &CalculatorState) -> Option<&'static str> {

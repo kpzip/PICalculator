@@ -1,6 +1,6 @@
 use core::intrinsics::{cosf64, sinf64};
 
-const PI: f64 = 3.14159265358979323846264338327950288_f64;
+const PI: f64 = core::f64::consts::PI;
 
 pub fn to_radians(value: f64) -> f64 {
     value * PI / 180.0
@@ -10,6 +10,7 @@ pub fn to_radians(value: f64) -> f64 {
 pub unsafe fn tanf64(value: f64) -> f64 {
     unsafe { sinf64(value) / cosf64(value) }
 }
+
 pub fn str_after(string: &str, index: usize) -> &str {
     if index >= string.len() {
         ""

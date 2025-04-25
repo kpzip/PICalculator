@@ -1,5 +1,7 @@
 use alloc::string::String;
 use core::cmp::{max, min};
+use lib::parser::{parse, ExpressionError};
+use lib::parser::expression::Expression;
 use stm32f4xx_hal::gpio::Pin;
 use stm32f4xx_hal::hal::digital::OutputPin;
 use stm32f4xx_hal::spi::{Instance, SpiSlave};
@@ -63,6 +65,18 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
             }
             36 => {
                 // Graph
+                match parse(calc_state.graph_eq_state.eq1.as_str()) {
+                    Ok(expr) => {
+                        calc_state.graph_state.expr = expr;
+                        calc_state.mode = CalculatorMenu::Graph;
+                    }
+                    Err(_) => {
+                        // Fail Silently for now
+                    }
+                };
+            }
+            37 => {
+                // Exit
                 calc_state.mode = CalculatorMenu::Sci;
             }
             _ => {}

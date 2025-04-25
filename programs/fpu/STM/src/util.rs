@@ -13,3 +13,11 @@ pub fn truncate_trailing_zeros(mut string: String) -> String {
     }
     string
 }
+
+pub fn abs(val: i8) -> i8 {
+    if val < 0 {
+        -val
+    } else {
+        val
+    }
+}

@@ -4,7 +4,6 @@ use core::fmt::Debug;
 use core::intrinsics::{cosf64, sinf64};
 use alloc::collections::BTreeMap;
 use alloc::string::{ParseError, String};
-use std::intrinsics::{log10f64, logf64};
 use crate::parser::ExpressionError;
 
 #[derive(Debug, PartialEq, Clone)]
@@ -19,7 +18,7 @@ pub enum Expression {
 }
 
 impl Expression {
-    pub fn evaluate(&self, lvt: &mut BTreeMap<String, f64>, overrides: &[(String, f64)], degrees: bool) -> Result<f64, ExpressionError> {
+    pub fn evaluate(&self, lvt: &mut BTreeMap<String, f64>, overrides: &[(&str, f64)], degrees: bool) -> Result<f64, ExpressionError> {
         match self {
             Expression::Immediate(val) => Ok(*val),
             Expression::Add(lhs, rhs) => Ok(lhs.evaluate(lvt, overrides, degrees)? + rhs.evaluate(lvt, overrides, degrees)?),
@@ -44,8 +43,8 @@ impl Expression {
                     Func::Arccos => { Err(ExpressionError::InvalidSyntax(0)) }
                     Func::Arctan => { Err(ExpressionError::InvalidSyntax(0)) }
                     Func::Gamma => { Err(ExpressionError::InvalidSyntax(0)) }
-                    Func::Log => { Ok(log10f64(inner))}
-                    Func::Ln => { Ok(logf64(inner)) }
+                    Func::Log => { Ok(core::intrinsics::log10f64(inner))}
+                    Func::Ln => { Ok(core::intrinsics::logf64(inner)) }
                 }
             },
             Expression::Var(name) => {
