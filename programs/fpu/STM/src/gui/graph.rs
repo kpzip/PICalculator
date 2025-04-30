@@ -110,13 +110,13 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
         for horizontal_pos in 0..8usize {
             let mut msb: u8 = 0;
             let mut lsb: u8 = 0;
-            if vertical_pos != ORIGIN_Y_PX_IDX {
+            if vertical_pos != ORIGIN_Y_PX_IDX + (state.graph_state.graph_y_offset/state.graph_state.graph_y_scale) as usize {
                 for i in 0..8usize {
                     let vert = ((DISPLAY_HEIGHT - 1) - vertical_pos) as i8;
                     let index = horizontal_pos * 16 + i;
                     // Fix artifacts
                     let same_as_prev = if i > 0 { values[index-1] == values[index] } else { false };
-                    if (values[index] > vert && vert > values[index + 1]) || (values[index] < vert && vert < values[index + 1]) || (values[index] == vert && !(same_as_prev && abs(values[index] - values[index+1]) > 1)) || (index == ORIGIN_X_PX_IDX) {
+                    if (values[index] > vert && vert > values[index + 1]) || (values[index] < vert && vert < values[index + 1]) || (values[index] == vert && !(same_as_prev && abs(values[index] - values[index+1]) > 1)) || (index == ORIGIN_X_PX_IDX + (state.graph_state.graph_x_offset/state.graph_state.graph_x_scale) as usize) {
                         msb |= 0x80 >> i
                     }
                 }
@@ -125,7 +125,7 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
                     let index = horizontal_pos * 16 + 8 + i;
                     // Fix artifacts
                     let same_as_prev = if i > 0 { values[index-1] == values[index] } else { false };
-                    if (values[index] > vert && vert > values[index + 1]) || (values[index] < vert && vert < values[index + 1]) || (values[index] == vert && !(same_as_prev && abs(values[index] - values[index+1]) > 1)) || (index == ORIGIN_X_PX_IDX) {
+                    if (values[index] > vert && vert > values[index + 1]) || (values[index] < vert && vert < values[index + 1]) || (values[index] == vert && !(same_as_prev && abs(values[index] - values[index+1]) > 1)) || (index == ORIGIN_X_PX_IDX + (state.graph_state.graph_x_offset/state.graph_state.graph_x_scale) as usize) {
                         lsb |= 0x80 >> i
                     }
                 }
