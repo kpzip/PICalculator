@@ -8505,16 +8505,6 @@
 	)
 	(wire
 		(pts
-			(xy 326.39 175.26) (xy 326.39 179.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c5f96e5-7ff8-4210-bd14-11cf8352ca39")
-	)
-	(wire
-		(pts
 			(xy 193.04 31.75) (xy 193.04 34.29)
 		)
 		(stroke
@@ -10395,16 +10385,6 @@
 	)
 	(wire
 		(pts
-			(xy 326.39 186.69) (xy 326.39 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7e56d685-a107-4796-ab5b-01af072544c3")
-	)
-	(wire
-		(pts
 			(xy 299.72 22.86) (xy 302.26 22.86)
 		)
 		(stroke
@@ -11652,6 +11632,16 @@
 			(type default)
 		)
 		(uuid "b9dbc4f3-246e-48bf-91ca-e064cd7d387e")
+	)
+	(wire
+		(pts
+			(xy 326.39 175.26) (xy 326.39 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9fb42c0-fb22-4d13-a832-bd9753a7bc10")
 	)
 	(wire
 		(pts
@@ -18775,7 +18765,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Buzzer_Beeper:Buzzer_TDK_PS1240P02BT_D12.2mm_H6.5mm"
+		(property "Footprint" "Buzzer_Beeper:Buzzer_12x9.5RM7.6"
 			(at 328.295 170.18 90)
 			(effects
 				(font
@@ -22691,74 +22681,6 @@
 			(project ""
 				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
 					(reference "U3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 326.39 182.88 0)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bb4f4d27-8bc0-468c-a40d-389600fe38e8")
-		(property "Reference" "R16"
-			(at 322.072 182.88 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "200Ω"
-			(at 324.104 182.88 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_1206_3216Metric_Pad1.30x1.75mm_HandSolder"
-			(at 327.406 182.626 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 326.39 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 326.39 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b62f668b-a0a6-4521-902c-f1838eebf572")
-		)
-		(pin "2"
-			(uuid "da930c37-d22e-454b-b9b2-c6add04d1bb2")
-		)
-		(instances
-			(project "proj"
-				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
-					(reference "R16")
 					(unit 1)
 				)
 			)
