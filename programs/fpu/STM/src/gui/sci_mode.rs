@@ -86,6 +86,11 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
         }
     } else {
         match key_id {
+            18 => {
+                // Constants
+                calc_state.constants_state.previous_screen = CalculatorMenu::Sci;
+                calc_state.mode = CalculatorMenu::Constants
+            }
             19 => {
                 // Del
                 if !calc_state.sci_state.text[calc_state.sci_state.line_number as usize].is_empty()

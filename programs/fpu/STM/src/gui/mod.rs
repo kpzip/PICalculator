@@ -3,6 +3,7 @@ use stm32f4xx_hal::hal::digital::OutputPin;
 use sci_error::SciErrorState;
 use sci_mode::SciModeState;
 use stm32f4xx_hal::spi::{Instance, SpiSlave};
+use crate::gui::constants::ConstantsState;
 use crate::gui::graph::GraphState;
 use crate::gui::graph_eq::GraphEqState;
 
@@ -20,11 +21,13 @@ pub const DISPLAY_HEIGHT: usize = 64;
 pub const DISPLAY_TEXT_WIDTH: usize = 16;
 pub const DISPLAY_TEXT_HEIGHT: usize = 4;
 
+#[derive(Clone, Copy)]
 pub enum CalculatorMenu {
     Sci,
     SciError,
     GraphEq,
     Graph,
+    Constants,
 }
 
 pub struct CalculatorState {
@@ -36,6 +39,7 @@ pub struct CalculatorState {
     pub sci_err_state: SciErrorState,
     pub graph_eq_state: GraphEqState,
     pub graph_state: GraphState,
+    pub constants_state: ConstantsState,
 }
 
 impl CalculatorState {
@@ -49,6 +53,7 @@ impl CalculatorState {
             sci_err_state: SciErrorState::new(),
             graph_eq_state: GraphEqState::new(),
             graph_state: GraphState::new(),
+            constants_state: ConstantsState::new(),
         }
     }
 }
@@ -88,6 +93,9 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
         CalculatorMenu::Graph => {
             graph::handle_button_press(key_id, calc_state)
         }
+        CalculatorMenu::Constants => {
+            constants::handle_button_press(key_id, calc_state)
+        }
         _ => unimplemented!(),
     }
 }
@@ -111,6 +119,9 @@ pub fn update_gui<SPI: Instance, MODE, const L: char, const N: u8>(
         }
         CalculatorMenu::Graph => {
             graph::update_gui(state, spi, ready)
+        }
+        CalculatorMenu::Constants => {
+            constants::update_gui(state, spi, ready)
         }
         _ => unimplemented!(),
     }
