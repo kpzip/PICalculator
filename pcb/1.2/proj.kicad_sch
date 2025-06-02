@@ -4,6 +4,11 @@
 	(generator_version "9.0")
 	(uuid "9b3fd51f-0cc8-4d93-a874-8128b084ae71")
 	(paper "A3")
+	(title_block
+		(title "PICalculator")
+		(date "2025-05-08")
+		(rev "1.2")
+	)
 	(lib_symbols
 		(symbol "74xx:74HC238"
 			(exclude_from_sim no)
