@@ -68,22 +68,25 @@ fn main() -> ! {
     // Buffer for reading in SPI data
     let mut data: [u8; 2] = [0; 2];
 
+    let mut small_data: [u8; 1] = [0; 1];
+
     // Calc State
     let mut calc_state = CalculatorState::new();
 
 
     loop {
-        match spi.read(&mut data) {
+
+        match spi.read(&mut small_data) {
             Ok(()) => {
                 rprintln!("Received data: {:02X?}", data);
                 // Key press code
-                if data[0] == 1 {
+                /*if data[0] == 1 {
                     let key_id = data[1];
                     gui::handle_button_press(key_id, &mut calc_state);
                     gui::update_gui(&mut calc_state, &mut spi, &mut ready);
                 } else {
                     rprintln!("Error Unknown Request: {:02X?}", data);
-                }
+                }*/
             }
             Err(e) => {
                 rprintln!("Error: {:?}", e);
