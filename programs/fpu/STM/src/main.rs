@@ -41,7 +41,10 @@ fn main() -> ! {
     let dp = pac::Peripherals::take().unwrap();
     let cp = cortex_m::Peripherals::take().unwrap();
 
-    dp.FLASH.acr().write();
+    // let flash = dp.FLASH;
+    // flash.acr().modify(|_r, w| unsafe {
+    //     w.latency().bits(0b1111)
+    // });
 
     let gpioa = dp.GPIOA.split();
 
