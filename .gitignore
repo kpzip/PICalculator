@@ -24,6 +24,7 @@ Cargo.lock
 \#auto_saved_files\#
 *.kicad_prl
 fp-info-cache
+.history/
 
 # RustRover
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
