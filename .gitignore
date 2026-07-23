@@ -17,6 +17,8 @@ Cargo.lock
 *.bak
 **/proj-backups/*
 **/output/*
+**/outputs/*
+**/jlcpcb/*
 *.gbr
 *.drl
 *.gbrjob
