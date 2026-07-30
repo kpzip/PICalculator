@@ -8969,7 +8969,7 @@
 	)
 	(wire
 		(pts
-			(xy 350.52 182.88) (xy 350.52 193.04)
+			(xy 347.98 182.88) (xy 347.98 193.04)
 		)
 		(stroke
 			(width 0)
@@ -9196,6 +9196,16 @@
 			(type default)
 		)
 		(uuid "0c9cbef1-4757-4a58-87eb-e6bef76f278c")
+	)
+	(wire
+		(pts
+			(xy 402.59 130.81) (xy 400.05 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0cbf8795-29fc-4644-a2d0-c6319f1ae831")
 	)
 	(wire
 		(pts
@@ -9499,16 +9509,6 @@
 	)
 	(wire
 		(pts
-			(xy 400.05 121.92) (xy 400.05 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "19f49b6c-e394-41d8-b254-5f7e3e372360")
-	)
-	(wire
-		(pts
 			(xy 110.49 186.69) (xy 93.98 186.69)
 		)
 		(stroke
@@ -9576,6 +9576,16 @@
 			(type default)
 		)
 		(uuid "1c89c838-934e-43d4-b98d-abe381958f88")
+	)
+	(wire
+		(pts
+			(xy 157.48 129.54) (xy 160.02 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1cb7a17c-837d-4b8a-825f-d1ba646b076f")
 	)
 	(wire
 		(pts
@@ -10059,7 +10069,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 157.48) (xy 132.08 156.21)
+			(xy 132.08 157.48) (xy 132.08 154.94)
 		)
 		(stroke
 			(width 0)
@@ -11009,7 +11019,7 @@
 	)
 	(wire
 		(pts
-			(xy 350.52 193.04) (xy 345.44 193.04)
+			(xy 347.98 193.04) (xy 345.44 193.04)
 		)
 		(stroke
 			(width 0)
@@ -11306,6 +11316,16 @@
 			(type default)
 		)
 		(uuid "677992ae-2ede-4b30-a469-4423c05057ae")
+	)
+	(wire
+		(pts
+			(xy 400.05 125.73) (xy 400.05 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67ab00b0-cb3f-42c6-85b4-fa1cd487e60b")
 	)
 	(wire
 		(pts
@@ -11629,6 +11649,16 @@
 	)
 	(wire
 		(pts
+			(xy 172.72 133.35) (xy 172.72 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7db0d9c5-ced0-4cb8-ac84-0c8bbfc46c1e")
+	)
+	(wire
+		(pts
 			(xy 318.77 64.77) (xy 318.77 67.31)
 		)
 		(stroke
@@ -11826,6 +11856,16 @@
 			(type default)
 		)
 		(uuid "870565e6-044b-472c-8fd8-06c94e5fdd83")
+	)
+	(wire
+		(pts
+			(xy 149.86 119.38) (xy 149.86 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8752ae67-73a3-4b6e-86d0-8a3c799eee4a")
 	)
 	(wire
 		(pts
@@ -12619,6 +12659,16 @@
 	)
 	(wire
 		(pts
+			(xy 149.86 137.16) (xy 149.86 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aba0bfd8-438b-448d-8e75-10b11d3d9773")
+	)
+	(wire
+		(pts
 			(xy 288.29 29.21) (xy 288.29 38.1)
 		)
 		(stroke
@@ -12736,6 +12786,16 @@
 			(type default)
 		)
 		(uuid "afae8945-fd41-4cdd-bad4-44517de9d706")
+	)
+	(wire
+		(pts
+			(xy 402.59 125.73) (xy 400.05 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b063e83b-121d-41bb-8e84-69c3630490e2")
 	)
 	(wire
 		(pts
@@ -13026,16 +13086,6 @@
 			(type default)
 		)
 		(uuid "b9dbc4f3-246e-48bf-91ca-e064cd7d387e")
-	)
-	(wire
-		(pts
-			(xy 400.05 130.81) (xy 400.05 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b9fb42c0-fb22-4d13-a832-bd9753a7bc10")
 	)
 	(wire
 		(pts
@@ -13689,6 +13739,16 @@
 	)
 	(wire
 		(pts
+			(xy 172.72 123.19) (xy 172.72 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d74a9afa-4da9-430d-95f1-d89eb5935fd8")
+	)
+	(wire
+		(pts
 			(xy 134.62 78.74) (xy 151.13 78.74)
 		)
 		(stroke
@@ -13766,6 +13826,16 @@
 			(type default)
 		)
 		(uuid "d8b1b745-2e63-4676-92df-bc7918dcb503")
+	)
+	(wire
+		(pts
+			(xy 139.7 129.54) (xy 142.24 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d911c0c8-e1d0-40d7-85ce-5efee9291967")
 	)
 	(wire
 		(pts
@@ -14449,6 +14519,16 @@
 	)
 	(wire
 		(pts
+			(xy 400.05 130.81) (xy 400.05 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1957b77-94f5-4dde-939a-3d4aefc72079")
+	)
+	(wire
+		(pts
 			(xy 260.35 55.88) (xy 260.35 64.77)
 		)
 		(stroke
@@ -14719,7 +14799,7 @@
 	)
 	(wire
 		(pts
-			(xy 340.36 182.88) (xy 350.52 182.88)
+			(xy 340.36 182.88) (xy 347.98 182.88)
 		)
 		(stroke
 			(width 0)
@@ -14808,6 +14888,54 @@
 		(uuid "0b9110ab-880f-47fb-9186-db5eb00fc3af")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 213.6843 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "CORDY_5V"
+		(shape input)
+		(at 139.7 129.54 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0f89ea4d-f879-4787-b4bb-7b5273d98741")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 127.22 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "CORDY_5V"
+		(shape input)
+		(at 137.16 68.58 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "11c95bb7-2f33-4b98-b339-3c14e7a020d3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 149.64 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15035,30 +15163,6 @@
 			)
 		)
 	)
-	(global_label "CORDY"
-		(shape input)
-		(at 137.16 68.58 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "65a3ec17-2e7d-46fe-a203-31f91e14ee6a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 146.3743 68.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-	)
 	(global_label "RAD"
 		(shape input)
 		(at 364.49 128.27 90)
@@ -15216,6 +15320,30 @@
 		(uuid "a57ebc5b-d45a-45ad-8311-68740a5a3207")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 205.7014 199.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "CORDY"
+		(shape input)
+		(at 160.02 129.54 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "aa9ed6a7-8746-433b-866c-70f23124a0ad")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 169.2343 129.54 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15606,7 +15734,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 49.53 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -15628,7 +15756,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 49.53 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -15840,7 +15968,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 365.76 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15905,7 +16033,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 365.76 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -15927,7 +16055,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 365.76 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -16480,7 +16608,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 226.06 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16545,7 +16673,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 226.06 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -16567,7 +16695,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 226.06 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -16671,7 +16799,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A475KA8NQNC"
+		(property "Manufacturer Part Number" "CL10A475KO8NNNC"
 			(at 321.31 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -16693,7 +16821,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C69335"
+		(property "Vendor Part Number" "C19666"
 			(at 321.31 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -16997,7 +17125,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 281.94 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17062,7 +17190,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 281.94 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -17084,7 +17212,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 281.94 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -17434,7 +17562,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A226MO7JZNC"
+		(property "Manufacturer Part Number" "CL10A226MQ8NRNC"
 			(at 400.05 201.93 0)
 			(hide yes)
 			(show_name no)
@@ -17456,7 +17584,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C2762594"
+		(property "Vendor Part Number" "C59461"
 			(at 400.05 201.93 0)
 			(hide yes)
 			(show_name no)
@@ -17560,7 +17688,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT031KFLF"
+		(property "Manufacturer Part Number" "0603WAF1001T5E"
 			(at 232.41 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -17582,7 +17710,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177649"
+		(property "Vendor Part Number" "C21190"
 			(at 232.41 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -18214,7 +18342,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT032KFLF"
+		(property "Manufacturer Part Number" "0603WAF2001T5E"
 			(at 232.41 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -18236,7 +18364,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177639"
+		(property "Vendor Part Number" "C22975"
 			(at 232.41 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -18275,7 +18403,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 132.08 156.21 0)
+		(at 132.08 154.94 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18285,7 +18413,7 @@
 		(dnp no)
 		(uuid "1b9e677e-6d72-4fe3-9f7d-86b71f5ac944")
 		(property "Reference" "#PWR030"
-			(at 132.08 160.02 0)
+			(at 132.08 158.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18296,7 +18424,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 131.826 152.4 0)
+			(at 131.826 151.13 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18306,7 +18434,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 132.08 156.21 0)
+			(at 132.08 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18317,7 +18445,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 132.08 156.21 0)
+			(at 132.08 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18328,7 +18456,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 132.08 156.21 0)
+			(at 132.08 154.94 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18988,7 +19116,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 337.82 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19053,7 +19181,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 337.82 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -19075,7 +19203,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 337.82 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -19179,7 +19307,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10B105KB8NQNC"
+		(property "Manufacturer Part Number" "CL10A105KB8NNNC"
 			(at 149.86 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -19201,7 +19329,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C5199872"
+		(property "Vendor Part Number" "C15849"
 			(at 149.86 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -19706,7 +19834,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 124.46 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -19728,7 +19856,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 124.46 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -20158,7 +20286,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 254 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20223,7 +20351,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 254 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -20245,7 +20373,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 254 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -20303,7 +20431,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 337.82 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20368,7 +20496,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 337.82 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -20390,7 +20518,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 337.82 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -20525,7 +20653,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 226.06 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -20590,7 +20718,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 226.06 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -20612,7 +20740,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 226.06 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -20994,7 +21122,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 226.06 60.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21059,7 +21187,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 226.06 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -21081,7 +21209,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 226.06 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -21245,6 +21373,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 149.86 139.7 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "35e96c22-2284-4f6a-9220-f1fcc6b60e5e")
+		(property "Reference" "#PWR064"
+			(at 149.86 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 149.86 143.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 149.86 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 149.86 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3171b17e-1b9c-4579-a838-7ae79e078b3e")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "#PWR064")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:D")
 		(at 254 46.99 180)
 		(unit 1)
@@ -21265,7 +21470,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 254 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21330,7 +21535,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 254 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -21352,7 +21557,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 254 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -21410,7 +21615,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 365.76 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21475,7 +21680,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 365.76 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -21497,7 +21702,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 365.76 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -21555,7 +21760,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 309.88 69.85 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21620,7 +21825,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 309.88 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -21642,7 +21847,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 309.88 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -22055,7 +22260,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 309.88 60.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22120,7 +22325,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 309.88 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -22142,7 +22347,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 309.88 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -22478,7 +22683,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 226.06 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22543,7 +22748,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 226.06 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -22565,7 +22770,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 226.06 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -22669,7 +22874,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A225KA8NNNC"
+		(property "Manufacturer Part Number" "CL10A225KO8NNNC"
 			(at 147.32 245.11 0)
 			(hide yes)
 			(show_name no)
@@ -22691,7 +22896,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C57895"
+		(property "Vendor Part Number" "C23630"
 			(at 147.32 245.11 0)
 			(hide yes)
 			(show_name no)
@@ -22903,7 +23108,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 281.94 69.85 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -22968,7 +23173,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 281.94 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -22990,7 +23195,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 281.94 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -23433,7 +23638,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "MMBT3904WT1G"
+		(property "Manufacturer Part Number" "MMBT3904(RANGE:100-300)"
 			(at 397.51 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -23455,7 +23660,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C58011"
+		(property "Vendor Part Number" "C20526"
 			(at 397.51 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -23963,7 +24168,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 232.41 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -23985,7 +24190,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 232.41 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -24166,7 +24371,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT032KFLF"
+		(property "Manufacturer Part Number" "0603WAF2001T5E"
 			(at 246.38 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -24188,7 +24393,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177639"
+		(property "Vendor Part Number" "C22975"
 			(at 246.38 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -24292,7 +24497,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 36.83 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -24314,7 +24519,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 36.83 144.78 0)
 			(hide yes)
 			(show_name no)
@@ -25061,6 +25266,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+5V")
+		(at 149.86 119.38 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "554a917e-d436-4c0e-ad68-974af7463929")
+		(property "Reference" "#PWR063"
+			(at 149.86 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+5V"
+			(at 149.606 115.57 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 149.86 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 149.86 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ba03d775-417e-4d0c-b668-5c54ebd15584")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "#PWR063")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 36.83 151.13 0)
 		(unit 1)
@@ -25281,7 +25563,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 96.52 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -25303,7 +25585,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 96.52 31.75 0)
 			(hide yes)
 			(show_name no)
@@ -25407,7 +25689,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 207.01 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -25429,7 +25711,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 207.01 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -25487,7 +25769,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 254 60.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25552,7 +25834,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 254 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -25574,7 +25856,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 254 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -25632,7 +25914,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 309.88 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25697,7 +25979,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 309.88 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -25719,7 +26001,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 309.88 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -25823,7 +26105,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 194.31 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -25845,7 +26127,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 194.31 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -26072,7 +26354,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A475KA8NQNC"
+		(property "Manufacturer Part Number" "CL10A475KO8NNNC"
 			(at 271.78 199.39 0)
 			(hide yes)
 			(show_name no)
@@ -26094,7 +26376,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C69335"
+		(property "Vendor Part Number" "C19666"
 			(at 271.78 199.39 0)
 			(hide yes)
 			(show_name no)
@@ -26333,7 +26615,7 @@
 	)
 	(symbol
 		(lib_id "Device:Buzzer")
-		(at 402.59 128.27 0)
+		(at 405.13 128.27 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -26343,7 +26625,7 @@
 		(dnp no)
 		(uuid "6605cd26-5439-4074-86e6-e45b883e0279")
 		(property "Reference" "BZ1"
-			(at 405.638 121.158 0)
+			(at 408.178 121.158 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -26353,7 +26635,7 @@
 			)
 		)
 		(property "Value" "WT-1205"
-			(at 405.638 123.698 0)
+			(at 408.178 123.698 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -26363,7 +26645,7 @@
 			)
 		)
 		(property "Footprint" "Buzzer_Beeper:Buzzer_12x9.5RM7.6"
-			(at 401.955 125.73 90)
+			(at 404.495 125.73 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26374,7 +26656,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 401.955 125.73 90)
+			(at 404.495 125.73 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26385,7 +26667,7 @@
 			)
 		)
 		(property "Description" "Buzzer, polarized"
-			(at 402.59 128.27 0)
+			(at 405.13 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26396,7 +26678,7 @@
 			)
 		)
 		(property "Manufacturer Part Number" "AI-1223-TWT-5V-5-R"
-			(at 402.59 128.27 0)
+			(at 405.13 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26407,7 +26689,7 @@
 			)
 		)
 		(property "Vendor" "Digi-Key"
-			(at 402.59 128.27 0)
+			(at 405.13 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26418,7 +26700,7 @@
 			)
 		)
 		(property "Vendor Part Number" "668-1458-ND"
-			(at 402.59 128.27 0)
+			(at 405.13 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26429,7 +26711,7 @@
 			)
 		)
 		(property "IS SW" ""
-			(at 402.59 128.27 0)
+			(at 405.13 128.27 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26598,7 +26880,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 337.82 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26663,7 +26945,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 337.82 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -26685,7 +26967,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 337.82 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -26969,6 +27251,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+5V")
+		(at 172.72 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6a99cebf-56ba-402d-8eb3-b931d6721b99")
+		(property "Reference" "#PWR065"
+			(at 172.72 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+5V"
+			(at 172.466 119.38 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 172.72 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 172.72 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 172.72 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0f60cdf9-5ca5-49f8-8faf-84629d1b5287")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "#PWR065")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 219.71 144.78 0)
 		(unit 1)
@@ -27189,7 +27548,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 300.99 199.39 0)
 			(hide yes)
 			(show_name no)
@@ -27211,7 +27570,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 300.99 199.39 0)
 			(hide yes)
 			(show_name no)
@@ -27269,7 +27628,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 365.76 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27334,7 +27693,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 365.76 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -27356,7 +27715,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 365.76 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -27615,7 +27974,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10B105KB8NQNC"
+		(property "Manufacturer Part Number" "CL10A105KB8NNNC"
 			(at 257.81 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -27637,7 +27996,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C5199872"
+		(property "Vendor Part Number" "C15849"
 			(at 257.81 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -27695,7 +28054,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 281.94 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27760,7 +28119,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 281.94 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -27782,7 +28141,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 281.94 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -27840,7 +28199,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 309.88 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27905,7 +28264,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 309.88 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -27927,7 +28286,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 309.88 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -28031,7 +28390,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT0310KFLF"
+		(property "Manufacturer Part Number" "0603WAF1002T5E"
 			(at 201.93 165.1 0)
 			(hide yes)
 			(show_name no)
@@ -28053,7 +28412,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177644"
+		(property "Vendor Part Number" "C25804"
 			(at 201.93 165.1 0)
 			(hide yes)
 			(show_name no)
@@ -29155,7 +29514,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 337.82 69.85 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29220,7 +29579,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 337.82 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -29242,7 +29601,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 337.82 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -29700,7 +30059,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 281.94 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -29765,7 +30124,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 281.94 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -29787,7 +30146,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 281.94 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -29949,6 +30308,132 @@
 	)
 	(symbol
 		(lib_id "Device:C")
+		(at 172.72 129.54 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "927d7655-7edb-4510-8a83-c173075d6e4e")
+		(property "Reference" "C30"
+			(at 176.53 128.2699 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 176.53 130.8099 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 173.6852 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 172.72 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 172.72 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
+			(at 172.72 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Vendor" "LCSC"
+			(at 172.72 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Vendor Part Number" "C1525"
+			(at 172.72 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IS SW" ""
+			(at 172.72 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "19763afa-3eb7-4d2b-92fd-972da230f704")
+		)
+		(pin "2"
+			(uuid "27101d4f-a372-47a2-a183-92e39d88ed23")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "C30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
 		(at 219.71 138.43 0)
 		(unit 1)
 		(body_style 1)
@@ -30014,7 +30499,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 219.71 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -30036,7 +30521,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 219.71 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -30217,7 +30702,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT0310KFLF"
+		(property "Manufacturer Part Number" "0603WAF1002T5E"
 			(at 143.51 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -30239,7 +30724,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177644"
+		(property "Vendor Part Number" "C25804"
 			(at 143.51 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -30343,7 +30828,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A475KA8NQNC"
+		(property "Manufacturer Part Number" "CL10A475KO8NNNC"
 			(at 274.32 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -30365,7 +30850,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C69335"
+		(property "Vendor Part Number" "C19666"
 			(at 274.32 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -30874,7 +31359,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 365.76 69.85 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30939,7 +31424,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 365.76 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -30961,7 +31446,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 365.76 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -31019,7 +31504,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 254 69.85 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -31084,7 +31569,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 254 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -31106,7 +31591,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 254 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -31610,7 +32095,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT032KFLF"
+		(property "Manufacturer Part Number" "0603WAF2001T5E"
 			(at 218.44 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -31632,7 +32117,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177639"
+		(property "Vendor Part Number" "C22975"
 			(at 218.44 182.88 0)
 			(hide yes)
 			(show_name no)
@@ -31690,7 +32175,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 365.76 60.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -31755,7 +32240,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 365.76 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -31777,7 +32262,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 365.76 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -31809,6 +32294,238 @@
 			(project "proj"
 				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
 					(reference "D30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Logic_LevelTranslator:SN74LV1T34DBV")
+		(at 149.86 129.54 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "aba42da8-dba6-4a1f-af23-2e47fbae79bf")
+		(property "Reference" "U9"
+			(at 158.75 120.142 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SN74LV1T34DBV"
+			(at 158.75 122.682 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+			(at 133.35 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/sn74lv1t34.pdf"
+			(at 160.02 134.62 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single Power Supply, Single Buffer GATE, CMOS Logic, Level Shifter, SOT-23-5"
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "AVAILABILITY" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MF" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MP" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PACKAGE" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PRICE" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PARTREV" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "STANDARD" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer Part Number" "SN74LV1T34DBVR"
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Vendor" "LCSC"
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Vendor Part Number" "C100024"
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "IS SW" ""
+			(at 149.86 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "edb91925-dd13-4286-bf42-72684d15f017")
+		)
+		(pin "5"
+			(uuid "6912aa6d-b724-46e9-abfe-7d7a993b9e7b")
+		)
+		(pin "4"
+			(uuid "848cadc7-3227-4be6-acda-11ff4c6ea4a7")
+		)
+		(pin "3"
+			(uuid "be0dc959-04b8-49c2-b1eb-835dd79b795b")
+		)
+		(pin "1"
+			(uuid "31343770-9b76-450d-acdf-c7daf5c970af")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "U9")
 					(unit 1)
 				)
 			)
@@ -32171,7 +32888,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 337.82 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32236,7 +32953,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 337.82 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -32258,7 +32975,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 337.82 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -32829,7 +33546,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCA03200RFLF"
+		(property "Manufacturer Part Number" "0603WAF2000T5E"
 			(at 386.08 151.13 90)
 			(hide yes)
 			(show_name no)
@@ -32851,7 +33568,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C22369809"
+		(property "Vendor Part Number" "C8218"
 			(at 386.08 151.13 90)
 			(hide yes)
 			(show_name no)
@@ -33324,7 +34041,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 309.88 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -33389,7 +34106,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 309.88 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -33411,7 +34128,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 309.88 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -33469,7 +34186,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 309.88 25.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -33534,7 +34251,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 309.88 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -33556,7 +34273,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 309.88 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -33660,7 +34377,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 137.16 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -33682,7 +34399,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 137.16 29.21 0)
 			(hide yes)
 			(show_name no)
@@ -33887,6 +34604,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 172.72 135.89 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bea46f75-da36-44a1-9674-0d00de366220")
+		(property "Reference" "#PWR066"
+			(at 172.72 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 172.72 139.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 172.72 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 172.72 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 172.72 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2349479e-7890-4a31-91a8-4f96a36e8624")
+		)
+		(instances
+			(project "proj"
+				(path "/9b3fd51f-0cc8-4d93-a874-8128b084ae71"
+					(reference "#PWR066")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:D")
 		(at 365.76 46.99 180)
 		(unit 1)
@@ -33907,7 +34701,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 365.76 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -33972,7 +34766,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 365.76 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -33994,7 +34788,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 365.76 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -34175,7 +34969,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 226.06 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -34240,7 +35034,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 226.06 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -34262,7 +35056,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 226.06 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -34474,7 +35268,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 337.82 60.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -34539,7 +35333,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 337.82 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -34561,7 +35355,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 337.82 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -34878,7 +35672,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT031KFLF"
+		(property "Manufacturer Part Number" "0603WAF1001T5E"
 			(at 218.44 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -34900,7 +35694,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177649"
+		(property "Vendor Part Number" "C21190"
 			(at 218.44 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -35240,7 +36034,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 254 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -35305,7 +36099,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 254 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -35327,7 +36121,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 254 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -35508,7 +36302,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 254 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -35573,7 +36367,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 254 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -35595,7 +36389,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 254 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -35777,7 +36571,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0603JRNPO9BN100"
+		(property "Manufacturer Part Number" "CL05C100JB5NNNC"
 			(at 373.38 201.93 0)
 			(hide yes)
 			(show_name no)
@@ -35799,7 +36593,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C106245"
+		(property "Vendor Part Number" "C32949"
 			(at 373.38 201.93 0)
 			(hide yes)
 			(show_name no)
@@ -35857,7 +36651,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 365.76 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -35922,7 +36716,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 365.76 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -35944,7 +36738,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 365.76 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -36002,7 +36796,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 281.94 60.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -36067,7 +36861,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 281.94 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -36089,7 +36883,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 281.94 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -36273,7 +37067,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 281.94 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -36338,7 +37132,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 281.94 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -36360,7 +37154,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 281.94 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -36464,7 +37258,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT0310KFLF"
+		(property "Manufacturer Part Number" "0603WAF1002T5E"
 			(at 132.08 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -36486,7 +37280,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177644"
+		(property "Vendor Part Number" "C25804"
 			(at 132.08 177.8 0)
 			(hide yes)
 			(show_name no)
@@ -36667,7 +37461,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 254 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -36732,7 +37526,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 254 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -36754,7 +37548,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 254 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -37015,7 +37809,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 309.88 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -37080,7 +37874,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 309.88 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -37102,7 +37896,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 309.88 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -37160,7 +37954,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 337.82 78.74 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -37225,7 +38019,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 337.82 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -37247,7 +38041,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 337.82 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -38229,7 +39023,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT03100KFLF"
+		(property "Manufacturer Part Number" "0402WGF1003TCE"
 			(at 360.68 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -38251,7 +39045,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177608"
+		(property "Vendor Part Number" "C25741"
 			(at 360.68 214.63 0)
 			(hide yes)
 			(show_name no)
@@ -38309,7 +39103,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 226.06 52.07 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -38374,7 +39168,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 226.06 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -38396,7 +39190,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 226.06 55.88 0)
 			(hide yes)
 			(show_name no)
@@ -39190,7 +39984,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 226.06 69.85 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -39255,7 +40049,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 226.06 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -39277,7 +40071,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 226.06 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -39458,7 +40252,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 245.11 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -39480,7 +40274,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 245.11 138.43 0)
 			(hide yes)
 			(show_name no)
@@ -39661,7 +40455,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 281.94 43.18 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -39726,7 +40520,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 281.94 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -39748,7 +40542,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 281.94 46.99 0)
 			(hide yes)
 			(show_name no)
@@ -39930,7 +40724,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT031KFLF"
+		(property "Manufacturer Part Number" "0603WAF1001T5E"
 			(at 246.38 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -39952,7 +40746,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177649"
+		(property "Vendor Part Number" "C21190"
 			(at 246.38 171.45 0)
 			(hide yes)
 			(show_name no)
@@ -40211,7 +41005,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 185.42 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -40233,7 +41027,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 185.42 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -40414,7 +41208,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A226MO7JZNC"
+		(property "Manufacturer Part Number" "CL10A226MQ8NRNC"
 			(at 387.35 201.93 0)
 			(hide yes)
 			(show_name no)
@@ -40436,7 +41230,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C2762594"
+		(property "Vendor Part Number" "C59461"
 			(at 387.35 201.93 0)
 			(hide yes)
 			(show_name no)
