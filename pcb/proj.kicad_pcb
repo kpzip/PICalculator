@@ -154,7 +154,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0603JRNPO9BN100"
+		(property "Manufacturer Part Number" "CL05C100JB5NNNC"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -180,7 +180,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C106245"
+		(property "Vendor Part Number" "C32949"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -725,7 +725,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "31ab52ff-1b04-421a-8f62-9c0aa0da433c")
@@ -788,7 +788,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -814,7 +814,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2035,7 +2035,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT032KFLF"
+		(property "Manufacturer Part Number" "0603WAF2001T5E"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2061,7 +2061,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177639"
+		(property "Vendor Part Number" "C22975"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2989,7 +2989,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "50821a75-4d4e-4732-9de6-5a7aee3846b6")
@@ -3052,7 +3052,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3078,7 +3078,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4785,7 +4785,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "af8dbb5a-2a25-4f4b-8764-8c372bab730f")
@@ -4848,7 +4848,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4874,7 +4874,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5559,7 +5559,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "3466f6e5-9249-4a7c-9ca4-61544721c3c1")
@@ -5622,7 +5622,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5648,7 +5648,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7608,7 +7608,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7634,7 +7634,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7818,7 +7818,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT0310KFLF"
+		(property "Manufacturer Part Number" "0603WAF1002T5E"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7844,7 +7844,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177644"
+		(property "Vendor Part Number" "C25804"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7983,7 +7983,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "d9d5358e-2df9-45fa-853f-4f2aa9a95a4d")
@@ -8046,7 +8046,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8072,7 +8072,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10131,7 +10131,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "a29157df-6f02-4884-8bf1-94c58dba70af")
@@ -10194,7 +10194,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10220,7 +10220,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10950,7 +10950,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10976,7 +10976,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11972,7 +11972,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT031KFLF"
+		(property "Manufacturer Part Number" "0603WAF1001T5E"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11998,7 +11998,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177649"
+		(property "Vendor Part Number" "C21190"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12790,7 +12790,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "4347a9b0-177f-49a7-b3be-700a87936667")
@@ -12853,7 +12853,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12879,7 +12879,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13158,7 +13158,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "d236552e-f0b6-4f31-a147-96938b2bb118")
@@ -13221,7 +13221,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13247,7 +13247,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13526,7 +13526,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "d1f15c86-4df3-4133-b77e-3c5e0b9c1385")
@@ -13589,7 +13589,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13615,7 +13615,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14300,7 +14300,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "b5b651c4-a619-428d-be74-1b8d70b3cc49")
@@ -14363,7 +14363,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14389,7 +14389,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15645,7 +15645,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "d05a1c2a-9b9f-46a2-a6b4-4e575b90c433")
@@ -15708,7 +15708,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15734,7 +15734,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16058,7 +16058,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16084,7 +16084,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16268,7 +16268,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT031KFLF"
+		(property "Manufacturer Part Number" "0603WAF1001T5E"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16294,7 +16294,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177649"
+		(property "Vendor Part Number" "C21190"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16478,7 +16478,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A475KA8NQNC"
+		(property "Manufacturer Part Number" "CL10A475KO8NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16504,7 +16504,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C69335"
+		(property "Vendor Part Number" "C19666"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17565,7 +17565,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "6eeb9b2a-0dc4-4f04-bd50-56ddf3a0c709")
@@ -17628,7 +17628,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17654,7 +17654,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17933,7 +17933,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "b6b9f78e-28c6-4bd2-8abb-9a62ff7ed9f6")
@@ -17996,7 +17996,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18022,7 +18022,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18346,7 +18346,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18372,7 +18372,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18917,7 +18917,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "d7104a7f-26db-4291-9aee-0e3364a5b656")
@@ -18980,7 +18980,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19006,7 +19006,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21071,7 +21071,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "e62ce67d-d6d4-4ffc-ae88-784079b53ec8")
@@ -21134,7 +21134,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21160,7 +21160,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21890,7 +21890,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A226MO7JZNC"
+		(property "Manufacturer Part Number" "CL10A226MQ8NRNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21916,7 +21916,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C2762594"
+		(property "Vendor Part Number" "C59461"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22506,7 +22506,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22532,7 +22532,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22671,7 +22671,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "13e5180a-f543-4edf-8902-e2ae04185b1c")
@@ -22734,7 +22734,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22760,7 +22760,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23340,7 +23340,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "14aa8271-ef6a-499d-9c91-6e35bf438e4f")
@@ -23403,7 +23403,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23429,7 +23429,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23753,7 +23753,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23779,7 +23779,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24324,7 +24324,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "16c62662-6d84-4b44-a30c-b6ab059d72fd")
@@ -24387,7 +24387,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24413,7 +24413,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24947,7 +24947,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24973,7 +24973,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -25571,7 +25571,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -25597,7 +25597,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -25736,7 +25736,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "c076a918-4478-4b6a-942c-095fbcfc69d0")
@@ -25799,7 +25799,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -25825,7 +25825,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -26466,7 +26466,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "7d317649-da89-4f21-a9b1-92aa5c3a4b05")
@@ -26529,7 +26529,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -26555,7 +26555,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27240,7 +27240,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "b9280b1b-2e2e-42e0-b758-f4792ce455d6")
@@ -27303,7 +27303,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27329,7 +27329,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27653,7 +27653,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A226MO7JZNC"
+		(property "Manufacturer Part Number" "CL10A226MQ8NRNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27679,7 +27679,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C2762594"
+		(property "Vendor Part Number" "C59461"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27863,7 +27863,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27889,7 +27889,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -28028,7 +28028,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "5160c27a-e07a-483f-9106-fabdbeb81674")
@@ -28091,7 +28091,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -28117,7 +28117,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -29364,7 +29364,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -29390,7 +29390,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -29529,7 +29529,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "72d6bf9a-9099-4bb2-a58f-fa931388da75")
@@ -29592,7 +29592,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -29618,7 +29618,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -29897,7 +29897,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "4d6aad0e-8a56-46c4-b8e4-d72e6d7ef6eb")
@@ -29960,7 +29960,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -29986,7 +29986,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -30265,7 +30265,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "0997b2ee-cf4f-4860-a36f-2a5feaa923f2")
@@ -30328,7 +30328,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -30354,7 +30354,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31084,7 +31084,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT0310KFLF"
+		(property "Manufacturer Part Number" "0603WAF1002T5E"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31110,7 +31110,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177644"
+		(property "Vendor Part Number" "C25804"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31294,7 +31294,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT03100KFLF"
+		(property "Manufacturer Part Number" "0402WGF1003TCE"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31320,7 +31320,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177608"
+		(property "Vendor Part Number" "C25741"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31669,7 +31669,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "4e4dfbf1-bd1a-48d8-9d97-38603c425286")
@@ -31732,7 +31732,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -31758,7 +31758,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -32037,7 +32037,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "15aef51c-834c-41cf-bef2-c07f613db538")
@@ -32100,7 +32100,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -32126,7 +32126,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33135,7 +33135,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10B105KB8NQNC"
+		(property "Manufacturer Part Number" "CL10A105KB8NNNC"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33161,7 +33161,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C5199872"
+		(property "Vendor Part Number" "C15849"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33300,7 +33300,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "846f713c-48b5-463a-9ddb-5bf5c7da5a03")
@@ -33363,7 +33363,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33389,7 +33389,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33923,7 +33923,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A475KA8NQNC"
+		(property "Manufacturer Part Number" "CL10A475KO8NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -33949,7 +33949,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C69335"
+		(property "Vendor Part Number" "C19666"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -34539,7 +34539,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT0310KFLF"
+		(property "Manufacturer Part Number" "0603WAF1002T5E"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -34565,7 +34565,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177644"
+		(property "Vendor Part Number" "C25804"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -34751,7 +34751,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "MMBT3904WT1G"
+		(property "Manufacturer Part Number" "MMBT3904(RANGE:100-300)"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -34777,7 +34777,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C58011"
+		(property "Vendor Part Number" "C20526"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -35953,7 +35953,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "9c2c26c1-c90a-4032-85a6-9c449a04d590")
@@ -36016,7 +36016,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -36042,7 +36042,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -37539,7 +37539,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "c5b7f5b8-e73d-4b06-bd47-b623f39b8bfd")
@@ -37602,7 +37602,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -37628,7 +37628,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -37953,7 +37953,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT032KFLF"
+		(property "Manufacturer Part Number" "0603WAF2001T5E"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -37979,7 +37979,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177639"
+		(property "Vendor Part Number" "C22975"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -38163,7 +38163,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCA03200RFLF"
+		(property "Manufacturer Part Number" "0603WAF2000T5E"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -38189,7 +38189,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C22369809"
+		(property "Vendor Part Number" "C8218"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -38373,7 +38373,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -38399,7 +38399,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -38944,7 +38944,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "249120fa-872f-4481-b1dd-12006586fa9b")
@@ -39007,7 +39007,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -39033,7 +39033,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -40334,7 +40334,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "58f38268-349b-49ea-be6f-9c5c78bfaaa1")
@@ -40397,7 +40397,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -40423,7 +40423,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -40909,7 +40909,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "b466b5ca-59de-40fb-a5ff-164faebe1954")
@@ -40972,7 +40972,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -40998,7 +40998,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -41975,7 +41975,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42001,7 +42001,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42186,7 +42186,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT032KFLF"
+		(property "Manufacturer Part Number" "0603WAF2001T5E"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42212,7 +42212,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177639"
+		(property "Vendor Part Number" "C22975"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42635,7 +42635,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "a67667b3-feb3-48f4-8b73-912718353bef")
@@ -42698,7 +42698,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -42724,7 +42724,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -43409,7 +43409,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "3c6a02fd-491c-493f-9e00-ddd1ddc69777")
@@ -43472,7 +43472,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -43498,7 +43498,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -43777,7 +43777,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "da8593f1-0b2c-4034-a0ca-6e97504ce594")
@@ -43840,7 +43840,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -43866,7 +43866,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -45557,7 +45557,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "14bd5fa9-aad3-427a-ae30-833f4e8ac7f7")
@@ -45620,7 +45620,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -45646,7 +45646,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -45970,7 +45970,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CC0402KRX7R9BB104"
+		(property "Manufacturer Part Number" "CL05B104KO5NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -45996,7 +45996,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C131394"
+		(property "Vendor Part Number" "C1525"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -47326,7 +47326,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "RCT031KFLF"
+		(property "Manufacturer Part Number" "0603WAF1001T5E"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -47352,7 +47352,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C177649"
+		(property "Vendor Part Number" "C21190"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -47897,7 +47897,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "db973523-5ef9-4dd7-8699-0202f59cb0d1")
@@ -47960,7 +47960,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -47986,7 +47986,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -48963,7 +48963,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A225KA8NNNC"
+		(property "Manufacturer Part Number" "CL10A225KO8NNNC"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -48989,7 +48989,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C57895"
+		(property "Vendor Part Number" "C23630"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -50327,7 +50327,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10B105KB8NQNC"
+		(property "Manufacturer Part Number" "CL10A105KB8NNNC"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -50353,7 +50353,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C5199872"
+		(property "Vendor Part Number" "C15849"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -50492,7 +50492,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "ca7b4b6d-14d8-40f5-88cc-4158a9de9a75")
@@ -50555,7 +50555,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -50581,7 +50581,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -50860,7 +50860,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "3e7988da-8c5a-4d76-8a42-d35e6c36ce04")
@@ -50923,7 +50923,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -50949,7 +50949,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -51552,7 +51552,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "CL10A475KA8NQNC"
+		(property "Manufacturer Part Number" "CL10A475KO8NNNC"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -51578,7 +51578,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C69335"
+		(property "Vendor Part Number" "C19666"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -51717,7 +51717,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "93d0ed85-3d3a-4147-8056-00157b03102b")
@@ -51780,7 +51780,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -51806,7 +51806,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -52085,7 +52085,7 @@
 				)
 			)
 		)
-		(property "Value" "SMD1200PL-TP"
+		(property "Value" "B5819W"
 			(at 0 2.1 0)
 			(layer "F.Fab")
 			(uuid "c721c6da-f5b6-43cd-8cd8-da364d6e7302")
@@ -52148,7 +52148,7 @@
 				)
 			)
 		)
-		(property "Manufacturer Part Number" "SMD1200PL-TP"
+		(property "Manufacturer Part Number" "B5819W SL"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -52174,7 +52174,7 @@
 				)
 			)
 		)
-		(property "Vendor Part Number" "C151777"
+		(property "Vendor Part Number" "C8598"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -52447,33 +52447,64 @@
 		(layer "Edge.Cuts")
 		(uuid "b5fdf91e-3dbf-439c-be44-0b4a3ae4609d")
 	)
-	(gr_text "{dblquote}boosts [..] personal \nattractiveness and charisma{dblquote}\n-Prof. Loai Salem"
-		(at 130.95 101.9 0)
-		(layer "F.SilkS")
-		(uuid "b28a6aaf-437a-43d2-8f6a-25677b738058")
+	(gr_text "PIC"
+		(at 130.95 96.7 0)
+		(layer "F.Cu")
+		(uuid "911983ba-bc7e-4eb7-8294-98188935bfa5")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.1)
+				(face "Arial Black")
+				(size 2 2)
+				(thickness 0.2)
 			)
 			(justify left bottom)
 		)
-	)
-	(gr_text "alculator"
-		(at 136.3 96.35 0)
-		(layer "F.SilkS")
-		(uuid "cba7ec21-1dec-4d69-89aa-fcb0ff1e3f81")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.1)
+		(render_cache "PIC" 0
+			(polygon
+				(pts
+					(xy 132.355304 94.363131) (xy 132.492612 94.395605) (xy 132.602919 94.445697) (xy 132.691085 94.51218)
+					(xy 132.76248 94.59746) (xy 132.814762 94.699617) (xy 132.847826 94.822075) (xy 132.859612 94.969403)
+					(xy 132.847006 95.119969) (xy 132.81138 95.246837) (xy 132.75451 95.35438) (xy 132.676064 95.445799)
+					(xy 132.580346 95.516342) (xy 132.45924 95.569865) (xy 132.307033 95.604776) (xy 132.116625 95.617501)
+					(xy 131.781646 95.617501) (xy 131.781646 96.36) (xy 131.152233 96.36) (xy 131.152233 95.203265)
+					(xy 131.781646 95.203265) (xy 131.929413 95.203265) (xy 132.047042 95.194781) (xy 132.126422 95.173135)
+					(xy 132.178053 95.142327) (xy 132.21776 95.097695) (xy 132.241193 95.046498) (xy 132.249249 94.9865)
+					(xy 132.242222 94.927357) (xy 132.221764 94.875738) (xy 132.187456 94.829818) (xy 132.141322 94.797432)
+					(xy 132.067358 94.774619) (xy 131.95396 94.765582) (xy 131.781646 94.765582) (xy 131.781646 95.203265)
+					(xy 131.152233 95.203265) (xy 131.152233 94.351346) (xy 132.184891 94.351346)
+				)
 			)
-			(justify left bottom)
+			(polygon
+				(pts
+					(xy 133.199965 94.351346) (xy 133.828035 94.351346) (xy 133.828035 96.36) (xy 133.199965 96.36)
+				)
+			)
+			(polygon
+				(pts
+					(xy 135.598063 95.530429) (xy 136.148098 95.697247) (xy 136.102155 95.848004) (xy 136.043942 95.975267)
+					(xy 135.974319 96.082173) (xy 135.88893 96.176238) (xy 135.791643 96.252933) (xy 135.681228 96.313349)
+					(xy 135.56196 96.354597) (xy 135.415409 96.381507) (xy 135.236217 96.391263) (xy 135.018893 96.379314)
+					(xy 134.842756 96.346485) (xy 134.700837 96.296374) (xy 134.603862 96.242153) (xy 134.512068 96.169852)
+					(xy 134.424852 96.077487) (xy 134.342044 95.962372) (xy 134.278788 95.84103) (xy 134.231652 95.700814)
+					(xy 134.201779 95.538638) (xy 134.191224 95.35091) (xy 134.203388 95.148812) (xy 134.237767 94.975251)
+					(xy 134.292019 94.826022) (xy 134.364977 94.697573) (xy 134.456716 94.587163) (xy 134.566834 94.494431)
+					(xy 134.694044 94.420978) (xy 134.840897 94.36657) (xy 135.010729 94.332208) (xy 135.207519 94.320083)
+					(xy 135.399968 94.331162) (xy 135.560441 94.362034) (xy 135.693966 94.409952) (xy 135.804815 94.473346)
+					(xy 135.902934 94.556625) (xy 135.989734 94.661328) (xy 136.065449 94.790444) (xy 136.129413 94.947909)
+					(xy 135.575104 95.07113) (xy 135.542645 94.984339) (xy 135.514532 94.934965) (xy 135.45714 94.87249)
+					(xy 135.388869 94.826887) (xy 135.311095 94.798722) (xy 135.22254 94.78903) (xy 135.122321 94.799973)
+					(xy 135.037772 94.831258) (xy 134.965464 94.882564) (xy 134.903436 94.956214) (xy 134.860486 95.043698)
+					(xy 134.830734 95.169962) (xy 134.819295 95.347491) (xy 134.827659 95.521427) (xy 134.849545 95.648307)
+					(xy 134.880972 95.738413) (xy 134.919312 95.800439) (xy 134.973558 95.853081) (xy 135.037146 95.890717)
+					(xy 135.111939 95.914081) (xy 135.20068 95.922316) (xy 135.313717 95.910072) (xy 135.400203 95.876454)
+					(xy 135.466416 95.823276) (xy 135.517778 95.752408) (xy 135.56215 95.656771)
+				)
+			)
 		)
 	)
 	(gr_text "PIC"
 		(at 130.95 96.7 0)
-		(layer "F.SilkS")
+		(layer "F.Mask")
 		(uuid "2eb62b7d-aa9a-417d-97b8-990ca9d05fb2")
 		(effects
 			(font
@@ -52524,6 +52555,30 @@
 					(xy 135.466416 95.823276) (xy 135.517778 95.752408) (xy 135.56215 95.656771)
 				)
 			)
+		)
+	)
+	(gr_text "{dblquote}boosts [..] personal \nattractiveness and charisma{dblquote}\n-Prof. Loai Salem"
+		(at 130.95 101.9 0)
+		(layer "F.SilkS")
+		(uuid "b28a6aaf-437a-43d2-8f6a-25677b738058")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "alculator"
+		(at 136.3 96.35 0)
+		(layer "F.SilkS")
+		(uuid "cba7ec21-1dec-4d69-89aa-fcb0ff1e3f81")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
 		)
 	)
 	(gr_text "PICalculator v1.5\nDesigned by:\nKyle Schmerge\nMax Pastushkov\nhttps://github.com/kpzip/PICalculator\n"
@@ -60731,7 +60786,10 @@
 				(xy 132.964778 106.390494) (xy 132.975716 106.377938) (xy 133.013459 106.319195) (xy 133.037742 106.266022)
 				(xy 133.042147 106.251024) (xy 133.048382 106.222372) (xy 133.053407 106.187437) (xy 133.053844 106.184217)
 				(xy 133.053843 106.184212) (xy 133.053844 106.18421) (xy 133.053916 106.180381) (xy 133.054317 106.172456)
-				(xy 133.0555 106.15817) (xy 133.0555 90.537331) (xy 133.054321 90.51535) (xy 133.051484 90.488979)
+				(xy 133.0555 106.15817) (xy 133.0555 96.734087) (xy 133.055141 96.727399) (xy 133.071205 96.659403)
+				(xy 133.121481 96.610884) (xy 133.178963 96.596756) (xy 136.353383 96.596756) (xy 136.353383 94.114591)
+				(xy 133.178448 94.114591) (xy 133.111409 94.094906) (xy 133.065654 94.042102) (xy 133.054871 93.980354)
+				(xy 133.0555 93.972761) (xy 133.0555 90.537331) (xy 133.054321 90.51535) (xy 133.051484 90.488979)
 				(xy 133.047962 90.467256) (xy 133.046317 90.459698) (xy 133.041769 90.446812) (xy 133.029263 90.411379)
 				(xy 133.015593 90.384086) (xy 133.001786 90.356517) (xy 133.001779 90.356507) (xy 133.001773 90.356496)
 				(xy 132.999421 90.352979) (xy 132.993772 90.342607) (xy 132.989409 90.338001) (xy 132.973321 90.313935)
@@ -63494,7 +63552,13 @@
 				(xy 130.75 86.737331) (xy 130.75 90.4) (xy 132.708171 90.4) (xy 132.743106 90.405023) (xy 132.758104 90.409427)
 				(xy 132.816855 90.447172) (xy 132.816879 90.4472) (xy 132.816882 90.447202) (xy 132.816883 90.447204)
 				(xy 132.818042 90.448541) (xy 132.845518 90.503402) (xy 132.847163 90.51096) (xy 132.85 90.537331)
-				(xy 132.85 106.15817) (xy 132.849999 106.158176) (xy 132.85 106.158179) (xy 132.844975 106.193114)
+				(xy 132.85 93.972761) (xy 132.849999 93.972767) (xy 132.85 93.97277) (xy 132.844975 94.007705) (xy 132.84057 94.022703)
+				(xy 132.802827 94.081446) (xy 132.802792 94.081476) (xy 132.802791 94.081478) (xy 132.802789 94.081478)
+				(xy 132.801458 94.082633) (xy 132.746597 94.110109) (xy 132.739039 94.111754) (xy 132.712668 94.114591)
+				(xy 130.946733 94.114591) (xy 130.946733 96.596756) (xy 132.708171 96.596756) (xy 132.743106 96.601779)
+				(xy 132.758104 96.606183) (xy 132.816855 96.643928) (xy 132.816879 96.643956) (xy 132.816882 96.643958)
+				(xy 132.816883 96.64396) (xy 132.818042 96.645297) (xy 132.845518 96.700158) (xy 132.847163 96.707716)
+				(xy 132.85 96.734087) (xy 132.85 106.15817) (xy 132.849999 106.158176) (xy 132.85 106.158179) (xy 132.844975 106.193114)
 				(xy 132.84057 106.208112) (xy 132.802827 106.266855) (xy 132.802792 106.266885) (xy 132.802791 106.266887)
 				(xy 132.802789 106.266887) (xy 132.801458 106.268042) (xy 132.746597 106.295518) (xy 132.739039 106.297163)
 				(xy 132.712668 106.3) (xy 127.948764 106.3) (xy 127.920812 106.296808) (xy 127.893934 106.290589)
@@ -69762,38 +69826,38 @@
 				(xy 96.594486 95.7005) (xy 96.781118 95.67094) (xy 96.960832 95.612547) (xy 97.129199 95.52676)
 				(xy 97.282073 95.41569) (xy 97.41569 95.282073) (xy 97.52676 95.129199) (xy 97.612547 94.960832)
 				(xy 97.67094 94.781118) (xy 97.698547 94.606814) (xy 97.7005 94.594486) (xy 97.7005 94.405513) (xy 97.67094 94.218881)
-				(xy 97.636802 94.113818) (xy 97.632814 94.101545) (xy 97.614049 94.043791) (xy 97.612986 94.040023)
-				(xy 97.611989 94.038016) (xy 97.610197 94.034317) (xy 97.609259 94.032714) (xy 97.608991 94.032189)
-				(xy 97.535243 93.88745) (xy 97.535243 93.887449) (xy 97.535241 93.887447) (xy 97.52676 93.870801)
-				(xy 97.526759 93.870799) (xy 97.480635 93.807316) (xy 97.41569 93.717927) (xy 97.282073 93.58431)
-				(xy 97.129199 93.47324) (xy 96.960836 93.387454) (xy 96.781118 93.329059) (xy 96.781112 93.329058)
-				(xy 96.594491 93.2995) (xy 96.594486 93.2995) (xy 96.594481 93.2995) (xy 96.405519 93.2995) (xy 96.405514 93.2995)
-				(xy 96.405509 93.2995) (xy 96.218886 93.329058) (xy 96.218884 93.329058) (xy 96.218881 93.329059)
-				(xy 96.039163 93.387454) (xy 95.954981 93.430347) (xy 95.870799 93.47324) (xy 95.783579 93.53661)
-				(xy 95.783578 93.53661) (xy 95.729794 93.575686) (xy 95.722419 93.579816) (xy 95.579816 93.722419)
-				(xy 95.575686 93.729794) (xy 95.53661 93.783578) (xy 95.53661 93.783579) (xy 95.47324 93.870799)
-				(xy 95.38745 94.039169) (xy 95.387448 94.039175) (xy 95.368706 94.09686) (xy 95.368706 94.096863)
-				(xy 95.353133 94.128536) (xy 95.34431 94.141439) (xy 95.290232 94.185662) (xy 95.290221 94.185666)
-				(xy 95.290221 94.185667) (xy 95.290219 94.185667) (xy 95.283062 94.188692) (xy 95.280642 94.189715)
-				(xy 95.232364 94.1995) (xy 91.272564 94.1995) (xy 91.237623 94.194475) (xy 91.222624 94.19007) (xy 91.207629 94.180433)
-				(xy 91.190529 94.175413) (xy 91.163855 94.152301) (xy 91.157036 94.144432) (xy 91.132815 94.101545)
-				(xy 91.114049 94.043791) (xy 91.112548 94.03917) (xy 91.109258 94.032714) (xy 91.041892 93.9005)
-				(xy 91.02676 93.870801) (xy 91.026758 93.870798) (xy 91.026757 93.870796) (xy 90.980635 93.807316)
-				(xy 90.91569 93.717927) (xy 90.782073 93.58431) (xy 90.629199 93.47324) (xy 90.460836 93.387454)
-				(xy 90.281118 93.329059) (xy 90.281112 93.329058) (xy 90.094491 93.2995) (xy 90.094486 93.2995)
-				(xy 90.094481 93.2995) (xy 89.905519 93.2995) (xy 89.905514 93.2995) (xy 89.905509 93.2995) (xy 89.718886 93.329058)
-				(xy 89.718884 93.329058) (xy 89.718881 93.329059) (xy 89.539163 93.387454) (xy 89.454981 93.430347)
-				(xy 89.370799 93.47324) (xy 89.283579 93.53661) (xy 89.283578 93.53661) (xy 89.229794 93.575686)
-				(xy 89.222419 93.579816) (xy 89.079816 93.722419) (xy 89.075686 93.729794) (xy 89.03661 93.783578)
-				(xy 89.03661 93.783579) (xy 88.97324 93.870799) (xy 88.964756 93.88745) (xy 88.887454 94.039163)
-				(xy 88.829059 94.218881) (xy 88.829058 94.218884) (xy 88.829058 94.218886) (xy 88.7995 94.405507)
-				(xy 29.5005 94.405507) (xy 29.5005 91.072094) (xy 36.254237 91.072094) (xy 36.297945 91.291822)
-				(xy 36.297946 91.291826) (xy 36.297947 91.291829) (xy 36.29795 91.291839) (xy 36.297953 91.291847)
-				(xy 36.297958 91.291861) (xy 36.37336 91.4739) (xy 36.373365 91.473909) (xy 36.373375 91.473926)
-				(xy 36.482861 91.637783) (xy 36.482862 91.637784) (xy 36.482867 91.63779) (xy 36.622208 91.777131)
-				(xy 36.622214 91.777136) (xy 36.622218 91.777139) (xy 36.786079 91.886628) (xy 36.786092 91.886635)
-				(xy 36.856726 91.915892) (xy 36.962553 91.959726) (xy 36.966962 91.961812) (xy 37.161453 92.0005)
-				(xy 37.358543 92.0005) (xy 37.358544 92.0005) (xy 37.380216 91.996188) (xy 37.488582 91.974632)
+				(xy 97.641089 94.127011) (xy 97.637053 94.114591) (xy 97.61516 94.04721) (xy 97.612547 94.039168)
+				(xy 97.612545 94.039165) (xy 97.612545 94.039163) (xy 97.610304 94.034765) (xy 97.609994 94.03397)
+				(xy 97.609259 94.032714) (xy 97.608991 94.032189) (xy 97.535243 93.88745) (xy 97.535243 93.887449)
+				(xy 97.535241 93.887447) (xy 97.52676 93.870801) (xy 97.526759 93.870799) (xy 97.480635 93.807316)
+				(xy 97.41569 93.717927) (xy 97.282073 93.58431) (xy 97.129199 93.47324) (xy 96.960836 93.387454)
+				(xy 96.781118 93.329059) (xy 96.781112 93.329058) (xy 96.594491 93.2995) (xy 96.594486 93.2995)
+				(xy 96.594481 93.2995) (xy 96.405519 93.2995) (xy 96.405514 93.2995) (xy 96.405509 93.2995) (xy 96.218886 93.329058)
+				(xy 96.218884 93.329058) (xy 96.218881 93.329059) (xy 96.039163 93.387454) (xy 95.954981 93.430347)
+				(xy 95.870799 93.47324) (xy 95.783579 93.53661) (xy 95.783578 93.53661) (xy 95.729794 93.575686)
+				(xy 95.722419 93.579816) (xy 95.579816 93.722419) (xy 95.575686 93.729794) (xy 95.53661 93.783578)
+				(xy 95.53661 93.783579) (xy 95.47324 93.870799) (xy 95.38745 94.039169) (xy 95.387448 94.039175)
+				(xy 95.368706 94.09686) (xy 95.368706 94.096863) (xy 95.353133 94.128536) (xy 95.34431 94.141439)
+				(xy 95.290232 94.185662) (xy 95.290221 94.185666) (xy 95.290221 94.185667) (xy 95.290219 94.185667)
+				(xy 95.283062 94.188692) (xy 95.280642 94.189715) (xy 95.232364 94.1995) (xy 91.272564 94.1995)
+				(xy 91.237623 94.194475) (xy 91.222624 94.19007) (xy 91.207629 94.180433) (xy 91.190529 94.175413)
+				(xy 91.163855 94.152301) (xy 91.157036 94.144432) (xy 91.132815 94.101545) (xy 91.126294 94.081476)
+				(xy 91.112548 94.03917) (xy 91.109898 94.03397) (xy 91.041892 93.9005) (xy 91.02676 93.870801) (xy 91.026758 93.870798)
+				(xy 91.026757 93.870796) (xy 90.980635 93.807316) (xy 90.91569 93.717927) (xy 90.782073 93.58431)
+				(xy 90.629199 93.47324) (xy 90.460836 93.387454) (xy 90.281118 93.329059) (xy 90.281112 93.329058)
+				(xy 90.094491 93.2995) (xy 90.094486 93.2995) (xy 90.094481 93.2995) (xy 89.905519 93.2995) (xy 89.905514 93.2995)
+				(xy 89.905509 93.2995) (xy 89.718886 93.329058) (xy 89.718884 93.329058) (xy 89.718881 93.329059)
+				(xy 89.539163 93.387454) (xy 89.454981 93.430347) (xy 89.370799 93.47324) (xy 89.283579 93.53661)
+				(xy 89.283578 93.53661) (xy 89.229794 93.575686) (xy 89.222419 93.579816) (xy 89.079816 93.722419)
+				(xy 89.075686 93.729794) (xy 89.03661 93.783578) (xy 89.03661 93.783579) (xy 88.97324 93.870799)
+				(xy 88.964756 93.88745) (xy 88.887454 94.039163) (xy 88.829059 94.218881) (xy 88.829059 94.218883)
+				(xy 88.829058 94.218886) (xy 88.7995 94.405507) (xy 29.5005 94.405507) (xy 29.5005 91.072094) (xy 36.254237 91.072094)
+				(xy 36.297945 91.291822) (xy 36.297946 91.291826) (xy 36.297947 91.291829) (xy 36.29795 91.291839)
+				(xy 36.297953 91.291847) (xy 36.297958 91.291861) (xy 36.37336 91.4739) (xy 36.373365 91.473909)
+				(xy 36.373375 91.473926) (xy 36.482861 91.637783) (xy 36.482862 91.637784) (xy 36.482867 91.63779)
+				(xy 36.622208 91.777131) (xy 36.622214 91.777136) (xy 36.622218 91.777139) (xy 36.786079 91.886628)
+				(xy 36.786092 91.886635) (xy 36.856726 91.915892) (xy 36.962553 91.959726) (xy 36.966962 91.961812)
+				(xy 37.161453 92.0005) (xy 37.358543 92.0005) (xy 37.358544 92.0005) (xy 37.380216 91.996188) (xy 37.488582 91.974632)
 				(xy 37.488583 91.974632) (xy 37.501301 91.972102) (xy 37.551835 91.962051) (xy 37.733914 91.886632)
 				(xy 37.897782 91.777139) (xy 38.037139 91.637782) (xy 38.137586 91.487452) (xy 38.144114 91.478567)
 				(xy 38.15138 91.469547) (xy 38.151381 91.469548) (xy 38.166319 91.451004) (xy 38.223701 91.411152)
