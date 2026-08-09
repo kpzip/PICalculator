@@ -23301,6 +23301,7 @@
 		)
 		(property "Sim.Pins" "1=K 2=A"
 			(at 354.33 148.59 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24748,6 +24749,7 @@
 		)
 		(property "Sim.Pins" "1=K 2=A"
 			(at 344.17 148.59 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -35538,6 +35540,7 @@
 		)
 		(property "Sim.Pins" "1=K 2=A"
 			(at 334.01 148.59 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -39696,6 +39699,7 @@
 		)
 		(property "Sim.Pins" "1=K 2=A"
 			(at 364.49 148.59 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
