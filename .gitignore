@@ -27,6 +27,7 @@ Cargo.lock
 *.kicad_prl
 fp-info-cache
 .history/
+ibom.html
 
 # RustRover
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
