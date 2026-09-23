@@ -1,4 +1,3 @@
-#![feature(raw_ref_op)]
 #![allow(clippy::empty_loop)]
 #![no_main]
 #![no_std]

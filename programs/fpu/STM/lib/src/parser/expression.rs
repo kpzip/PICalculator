@@ -1,7 +1,6 @@
-use crate::parser::util::{tanf64, to_radians};
+use crate::parser::util::to_radians;
 use alloc::boxed::Box;
 use core::fmt::Debug;
-use core::intrinsics::{cosf64, sinf64};
 use alloc::collections::BTreeMap;
 use alloc::string::{ParseError, String};
 use crate::parser::ExpressionError;
@@ -32,19 +31,19 @@ impl Expression {
                     Ok(lhs.evaluate(lvt, overrides, degrees)? / rhs)
                 }
             },
-            Expression::Func(f, a) => unsafe {
+            Expression::Func(f, a) => {
                 let inner = a.evaluate(lvt, overrides, degrees)?;
                 let inner_rad = if degrees { to_radians(inner) } else { inner };
                 match f {
-                    Func::Sin => Ok(sinf64(inner_rad)),
-                    Func::Cos => Ok(cosf64(inner_rad)),
-                    Func::Tan => Ok(tanf64(inner_rad)),
+                    Func::Sin => Ok(libm::sin(inner_rad)),
+                    Func::Cos => Ok(libm::cos(inner_rad)),
+                    Func::Tan => Ok(libm::tan(inner_rad)),
                     Func::Arcsin => { Err(ExpressionError::InvalidSyntax(0)) }
                     Func::Arccos => { Err(ExpressionError::InvalidSyntax(0)) }
                     Func::Arctan => { Err(ExpressionError::InvalidSyntax(0)) }
                     Func::Gamma => { Err(ExpressionError::InvalidSyntax(0)) }
-                    Func::Log => { Ok(core::intrinsics::log10f64(inner))}
-                    Func::Ln => { Ok(core::intrinsics::logf64(inner)) }
+                    Func::Log => { Ok(libm::log10(inner))}
+                    Func::Ln => { Ok(libm::log(inner)) }
                 }
             },
             Expression::Var(name) => {
