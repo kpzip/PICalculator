@@ -21,6 +21,9 @@ use stm32f4xx_hal as hal;
 use gui::{CalculatorMenu, CalculatorState, sci_error, sci_mode};
 use embedded_alloc::LlffHeap as Heap;
 use stm32f4xx_hal::flash::{FlashExt, LockedFlash};
+use stm32f4xx_hal::gpio::Pin;
+use stm32f4xx_hal::hal::digital::OutputPin;
+use stm32f4xx_hal::spi::{Instance, SpiSlave};
 
 #[global_allocator]
 static HEAP: Heap = Heap::empty();
@@ -85,16 +88,32 @@ fn main() -> ! {
                 rprintln!("Received data: {:02X?}", data);
                 // Key press code
                 if data[0] == 1 {
+                    rprintln!("Handling Key Press!");
                     let key_id = data[1];
                     gui::handle_button_press(key_id, &mut calc_state);
                     gui::update_gui(&mut calc_state, &mut spi, &mut ready);
+                    rprintln!("Done!");
                 } else {
                     rprintln!("Error Unknown Request: {:02X?}", data);
+                    reset_pic_interface(&mut spi, &mut ready);
+                    continue;
                 }
             }
             Err(e) => {
                 rprintln!("Error: {:?}", e);
+                reset_pic_interface(&mut spi, &mut ready);
             }
         }
     }
+}
+
+fn reset_pic_interface<SPI: Instance, MODE, const L: char, const N: u8>(
+spi: &mut SpiSlave<SPI>,
+ready: &mut Pin<L, N, MODE>,
+) where
+Pin<L, N, MODE>: OutputPin
+{
+    let _ = ready.set_high();
+    let _ = spi.write(&[0x00]);
+    let _ = ready.set_low();
 }
