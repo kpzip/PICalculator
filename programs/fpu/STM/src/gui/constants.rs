@@ -1,3 +1,4 @@
+use alloc::string::ToString;
 use core::cmp::min;
 use stm32f4xx_hal::gpio::Pin;
 use stm32f4xx_hal::hal::digital::OutputPin;
@@ -25,6 +26,27 @@ pub const BOLTZMANN_CONSTANT: f64 = 1.38e-23;
 const CONSTANTS_TEXT: &[&str] = &[
     "Pi",
     "e",
+    "E0",
+    "U0",
+    "h",
+    "Na",
+    "F",
+    "R (Si)",
+    "R (L/mol*atm)",
+    "kb",
+];
+
+const CONSTANTS_VALUES: &[f64] = &[
+    PI,
+    E,
+    VACUUM_PERMITTIVITY,
+    VACUUM_PERMEABILITY,
+    PLANKS_CONSTANT,
+    AVOGADROS_NUMBER,
+    FARADAYS_CONSTANT,
+    GAS_CONSTANT_SI,
+    GAS_CONSTANT_L_ATM,
+    BOLTZMANN_CONSTANT,
 ];
 
 pub struct ConstantsState {
@@ -62,6 +84,11 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
             if calc_state.constants_state.cursor_vertical_position < CONSTANTS_TEXT.len() - 1 {
                 calc_state.constants_state.cursor_vertical_position += 1;
             }
+        }
+        5 => {
+            // Enter
+            calc_state.mode = calc_state.constants_state.previous_screen;
+            calc_state.write_text(CONSTANTS_VALUES[calc_state.constants_state.cursor_vertical_position].to_string().as_str());
         }
         _ => {
 

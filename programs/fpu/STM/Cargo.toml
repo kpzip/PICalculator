@@ -18,3 +18,6 @@ features = ["stm32f401", "defmt"] # replace the model of your microcontroller he
 
 [dependencies.lib]
 path = "lib"
+
+[profile.dev]
+opt-level = 3

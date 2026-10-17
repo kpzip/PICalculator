@@ -40,6 +40,7 @@ pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
         37 => {
             calc_state.mode = CalculatorMenu::Sci;
         }
+
         _ => {
             // Do Nothing
         }

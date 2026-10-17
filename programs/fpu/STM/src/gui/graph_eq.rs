@@ -9,7 +9,7 @@ use crate::gui::{clear_gdram, CalculatorMenu, CalculatorState, DISPLAY_TEXT_WIDT
 use crate::gui::sci_mode::Line;
 use crate::keymaps::get_key_text;
 
-const EQ_1_PREFIX: &str = "Y=";
+pub(crate) const EQ_1_PREFIX: &str = "Y=";
 
 pub struct GraphEqState {
     pub eq1: String,
@@ -29,12 +29,14 @@ impl GraphEqState {
 
 pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
     if let Some(text) = get_key_text(key_id, &calc_state) {
-        if calc_state.graph_eq_state.cursor_pos >= EQ_1_PREFIX.len() {
-            calc_state.graph_eq_state.eq1.insert_str(calc_state.graph_eq_state.cursor_pos - EQ_1_PREFIX.len(), text);
-            calc_state.graph_eq_state.cursor_pos += text.len();
-        }
+        calc_state.write_text(text);
     } else {
         match key_id {
+            18 => {
+                // Constants
+                calc_state.constants_state.previous_screen = CalculatorMenu::GraphEq;
+                calc_state.mode = CalculatorMenu::Constants
+            }
             19 => {
                 // Del
                 if calc_state.graph_eq_state.cursor_pos >= EQ_1_PREFIX.len() {

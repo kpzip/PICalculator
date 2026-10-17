@@ -1,3 +1,4 @@
+use alloc::string::String;
 use stm32f4xx_hal::gpio::Pin;
 use stm32f4xx_hal::hal::digital::OutputPin;
 use sci_error::SciErrorState;
@@ -6,6 +7,7 @@ use stm32f4xx_hal::spi::{Instance, SpiSlave};
 use crate::gui::constants::ConstantsState;
 use crate::gui::graph::GraphState;
 use crate::gui::graph_eq::GraphEqState;
+use crate::gui::sci_mode::Line;
 
 pub mod sci_error;
 pub mod sci_mode;
@@ -54,6 +56,41 @@ impl CalculatorState {
             graph_eq_state: GraphEqState::new(),
             graph_state: GraphState::new(),
             constants_state: ConstantsState::new(),
+        }
+    }
+
+    pub fn write_text(&mut self, text: &str) {
+        match self.mode {
+            CalculatorMenu::Sci => {
+                // Make sure calc_state.sci_state.text is setup properly and that the cursor is inbounds
+                if self.sci_state.text.is_empty() {
+                    self
+                        .sci_state
+                        .text
+                        .push(Line::new(false, String::new()));
+                }
+                if self.sci_state.line_number >= self.sci_state.text.len() as isize {
+                    self.sci_state.line_number = (self.sci_state.text.len() - 1) as isize;
+                }
+                // No writing to ans state.text
+                if !self.sci_state.text[self.sci_state.line_number as usize].is_ans {
+                    // Write character to the line
+                    self.sci_state.text[self.sci_state.line_number as usize]
+                        .insert_str(self.sci_state.column_number as usize, text);
+                    self.sci_state.column_number += text.len() as isize;
+
+                    // Update display
+                    // Have to do this every time due to cursor issue
+                } else {
+                }
+            }
+            CalculatorMenu::GraphEq => {
+                if self.graph_eq_state.cursor_pos >= crate::gui::graph_eq::EQ_1_PREFIX.len() {
+                    self.graph_eq_state.eq1.insert_str(self.graph_eq_state.cursor_pos - crate::gui::graph_eq::EQ_1_PREFIX.len(), text);
+                    self.graph_eq_state.cursor_pos += text.len();
+                }
+            }
+            _ => {}
         }
     }
 }

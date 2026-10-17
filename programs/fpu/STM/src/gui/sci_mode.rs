@@ -41,7 +41,7 @@ pub struct Line {
     pub is_ans: bool,
 }
 impl Line {
-    fn new(is_ans: bool, text: String) -> Self {
+    pub(crate) fn new(is_ans: bool, text: String) -> Self {
         Self { text, is_ans }
     }
 }
@@ -63,27 +63,7 @@ impl DerefMut for Line {
 pub fn handle_button_press(key_id: u8, calc_state: &mut CalculatorState) {
     if let Some(text) = get_key_text(key_id, &calc_state) {
         // Text Key
-        // Make sure calc_state.sci_state.text is setup properly and that the cursor is inbounds
-        if calc_state.sci_state.text.is_empty() {
-            calc_state
-                .sci_state
-                .text
-                .push(Line::new(false, String::new()));
-        }
-        if calc_state.sci_state.line_number >= calc_state.sci_state.text.len() as isize {
-            calc_state.sci_state.line_number = (calc_state.sci_state.text.len() - 1) as isize;
-        }
-        // No writing to ans state.text
-        if !calc_state.sci_state.text[calc_state.sci_state.line_number as usize].is_ans {
-            // Write character to the line
-            calc_state.sci_state.text[calc_state.sci_state.line_number as usize]
-                .insert_str(calc_state.sci_state.column_number as usize, text);
-            calc_state.sci_state.column_number += text.len() as isize;
-
-            // Update display
-            // Have to do this every time due to cursor issue
-        } else {
-        }
+        calc_state.write_text(text);
     } else {
         match key_id {
             18 => {
