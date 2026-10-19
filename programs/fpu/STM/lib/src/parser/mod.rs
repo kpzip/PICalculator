@@ -122,6 +122,7 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
 
                 match op {
                     Token::Multiply => {
+                      // !calc_state.sci_state.text[calc_state.sci_state.line_number as usize].is_empty()
                         let expr1 = symbol_stack.pop().unwrap().expression();
                         symbol_stack.pop();
                         let expr2 = symbol_stack.pop().unwrap().expression();
@@ -149,6 +150,13 @@ pub fn parse(input: &str) -> Result<Expression, ExpressionError> {
                         symbol_stack.push(HalfParsed::Expression(Expression::Sub(Box::new(expr2), Box::new(expr1))));
                         continue;
                     },
+                    Token::Power => {
+                        let expr1 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.pop();
+                        let expr2 = symbol_stack.pop().unwrap().expression();
+                        symbol_stack.push(HalfParsed::Expression(Expression::Pow(Box::new(expr2), Box::new(expr1))));
+                        continue;
+                    }
                     _ => { },
                 }
             }

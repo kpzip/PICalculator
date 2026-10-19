@@ -22,6 +22,7 @@ pub const FARADAYS_CONSTANT: f64 = 96485.3329;
 pub const GAS_CONSTANT_SI: f64 = 8.314;
 pub const GAS_CONSTANT_L_ATM: f64 = 0.08602;
 pub const BOLTZMANN_CONSTANT: f64 = 1.38e-23;
+const BOHR_MAGNETON: f64 = 9.274_010_065_7e-24;
 
 const CONSTANTS_TEXT: &[&str] = &[
     "Pi",
@@ -34,6 +35,7 @@ const CONSTANTS_TEXT: &[&str] = &[
     "R (Si)",
     "R (L/mol*atm)",
     "kb",
+    "ub",
 ];
 
 const CONSTANTS_VALUES: &[f64] = &[
@@ -47,6 +49,7 @@ const CONSTANTS_VALUES: &[f64] = &[
     GAS_CONSTANT_SI,
     GAS_CONSTANT_L_ATM,
     BOLTZMANN_CONSTANT,
+    BOHR_MAGNETON,
 ];
 
 pub struct ConstantsState {

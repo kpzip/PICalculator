@@ -12,6 +12,7 @@ pub enum Expression {
     Sub(Box<Expression>, Box<Expression>),
     Mul(Box<Expression>, Box<Expression>),
     Div(Box<Expression>, Box<Expression>),
+    Pow(Box<Expression>, Box<Expression>),
     Func(Func, Box<Expression>),
     Var(String),
 }
@@ -31,6 +32,7 @@ impl Expression {
                     Ok(lhs.evaluate(lvt, overrides, degrees)? / rhs)
                 }
             },
+            Expression::Pow(lhs, rhs) => Ok(libm::pow(lhs.evaluate(lvt, overrides, degrees)?, rhs.evaluate(lvt, overrides, degrees)?)),
             Expression::Func(f, a) => {
                 let inner = a.evaluate(lvt, overrides, degrees)?;
                 let inner_rad = if degrees { to_radians(inner) } else { inner };
@@ -38,12 +40,12 @@ impl Expression {
                     Func::Sin => Ok(libm::sin(inner_rad)),
                     Func::Cos => Ok(libm::cos(inner_rad)),
                     Func::Tan => Ok(libm::tan(inner_rad)),
-                    Func::Arcsin => { Err(ExpressionError::InvalidSyntax(0)) }
-                    Func::Arccos => { Err(ExpressionError::InvalidSyntax(0)) }
-                    Func::Arctan => { Err(ExpressionError::InvalidSyntax(0)) }
-                    Func::Gamma => { Err(ExpressionError::InvalidSyntax(0)) }
-                    Func::Log => { Ok(libm::log10(inner))}
-                    Func::Ln => { Ok(libm::log(inner)) }
+                    Func::Arcsin => Ok(libm::asin(inner_rad)),
+                    Func::Arccos => Ok(libm::acos(inner_rad)),
+                    Func::Arctan => Ok(libm::atan(inner_rad)),
+                    Func::Gamma => Ok(libm::tgamma(inner)),
+                    Func::Log => Ok(libm::log10(inner)),
+                    Func::Ln => Ok(libm::log(inner)),
                 }
             },
             Expression::Var(name) => {
